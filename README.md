@@ -1,6 +1,5 @@
-# sylhare.github.io
+## sylhare.github.io
 My own github page
-
 You can try it here: https://sylhare.github.io/index.html
 
 ## Github Integration
@@ -18,50 +17,59 @@ Dashboard available here: https://codeclimate.com/dashboard
 #### Travis CI
 Automatic test and deploy: https://travis-ci.org/
 
+### Heroku
+Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud: 
+https://www.heroku.com/
+
+### Perfomrance
+#### Opbeat
+JavaScript performance monitoring synch with deployment tool (heroku): https://opbeat.com/
+For the config: https://opbeat.com/sylhare/sylhare-frontend/releases/setup/instructions/
+
 
 ---
 ### Others to test
-### Solano CI
+#### Solano CI
 Massively Parallel Continuous Integration and Deployment: https://github.com/integrations/solano-ci
 
-### CicleCI
+#### CicleCI
 Automatically build, test, and deploy your project in minuteshttps://github.com/integrations/circle-ci
 
 #### Runnable
 Full-stack environments for every branch, and any application: https://github.com/integrations/runnable
 
-### Postman
+#### Postman
 The complete toolchain for API development: https://github.com/integrations/postman
 
-### Rollbar
+#### Rollbar
 Full-stack error monitoring for developers: https://github.com/integrations/rollbar
 
-### Netlify
+#### Netlify
 Continuous deployment for modern static websites: https://github.com/integrations/netlify
 
-### Codecov
+#### Codecov
 Code coverage done right: https://github.com/integrations/codecov
 
-### Codacy
+#### Codacy
 Automated code reviews to help developers ship better software, faster: https://github.com/integrations/codacy
 
-### Ebert
+#### Ebert
 Get thorough code reviews and ship with confidence: https://github.com/integrations/ebert
 
-### QuantifiedCode
+#### QuantifiedCode
 Automated code review and repair for Python: https://github.com/integrations/quantifiedcode
 
-### Zappr
+#### Zappr
 Enforceable guidelines for your repository: https://github.com/integrations/zappr
 
-### CodeFactor
+#### CodeFactor
 Automated Code Review for GitHub: https://github.com/integrations/codefactor
 
-### Better Code Hub
+#### Better Code Hub
 Your Definition of Done for Code Quality: https://github.com/integrations/better-code-hub
 
-### Pyup.io
+#### Pyup.io
 Security and dependency updates for Python projects: https://github.com/integrations/pyup-io
 
-### Everhour
+#### Everhour
 Time tracking and estimates inside of your GitHub issues: https://github.com/integrations/everhour
