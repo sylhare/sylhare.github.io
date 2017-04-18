@@ -11,20 +11,24 @@ The view version is linked to my github url: https://sylhare.gitbooks.io/manual
 
 ### Code Reviews
 #### Code Climate
+Gives a mark based on code standard for your code, works for Javacript.
 Dashboard available here: https://codeclimate.com/dashboard
 
 ### Automatic build
 #### Travis CI
+Have a test configuration file and allow travis to start building the repository to see if the build passes or fails
 Automatic test and deploy: https://travis-ci.org/
 
-### Heroku
-Heroku is a platform as a service (PaaS) that enables developers to build, run, and operate applications entirely in the cloud: 
-https://www.heroku.com/
+#### Heroku
+Enables developers to build, run, and operate applications entirely in the cloud
+Heroku is a platform as a service (PaaS) that: https://www.heroku.com/
+Getting started: https://devcenter.heroku.com/start 
+
+Langauge: Java, Ruby, nodeJS, Go, php, python, scala Clojure
 
 ### Perfomrance
-#### Opbeat
+#### Opbeat <a href="https://opbeat.com" title="Opbeat"><img src="http://opbeat-brand-assets.s3-website-us-east-1.amazonaws.com/svg/logo/logo.svg" align="right" height="25px"></a>
 JavaScript performance monitoring synch with deployment tool (heroku): https://opbeat.com/
-For the config: https://opbeat.com/sylhare/sylhare-frontend/releases/setup/instructions/
 
 
 ---
