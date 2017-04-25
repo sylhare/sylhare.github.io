@@ -1,10 +1,34 @@
-dependencies:
-  pre:
+machine:
+#  firefox: 47.0.1
+  python:
+    version: 2.7.10
+    version: 2.7.11
+    version: 2.7.12
+    version: 3.1.4
+    version: 3.1.5
+    version: 3.2.5
+    version: 3.2.6
+    version: 3.3.5
+    version: 3.3.6
+    version: 3.4.3
+    version: 3.4.4
+    version: 3.5.1
+    version: 3.5.2
+    version: 3.5.3
+    version: 3.6.0
+    version: 3.6.1
+
+#dependencies:
+#  pre:
 # Install firefox
-    - pip install mozdownload mozinstall
-    - mozdownload --version latest --destination firefox.tar.bz2
-    - mozinstall firefox.tar.bz2
+#    - pip install mozdownload mozinstall
+#    - mozdownload --version latest --destination firefox.tar.bz2
+#    - mozinstall firefox.tar.bz2
     
-test:
-  - "firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"
-  - sleep 20
+#test:
+
+deployment:
+  production:
+    branch: "master"
+    commands:
+      - "timeout 100 firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"

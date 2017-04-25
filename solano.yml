@@ -1,5 +1,4 @@
 firefox: '27.0.1'
 
 tests:
-  - "firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"
-  - sleep 20
+  - "timeout 100 firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"

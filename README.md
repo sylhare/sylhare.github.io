@@ -75,41 +75,20 @@ Automatic test and deploy: [https://travis-ci.org/](https://travis-ci.org/)
 Work with a `solano.yml` file, similar as travis CI.
 Massively Parallel Continuous Integration and Deployment: [https://github.com/integrations/solano-ci](https://github.com/integrations/solano-ci)
 
-Available for:
-
-- JUnit
-- Java
-- Scala
-- Clojure
-- Javascript
-- Go
-- NodeJS and Io.js
-- PHP
-- Python
-- Ruby
-- R
-- Erlang
+The dashboard is avalaible [here](https://ci.solanolabs.com/#) for: *JUnit, Java, Scala, Clojure, Javascript, Go, NodeJS and Io.js, PHP, Python, Ruby, R, Erlang*.
 
 #### CicleCI
 It works with a dashboard in which you can see all targeted repository, so far the best view. Works the same as the other two with a `circle.yml` for configuration.
 Automatically build, test, and deploy your project in minutes: [https://github.com/integrations/circle-ci](https://github.com/integrations/circle-ci)
 
-Available for this languages:
-
-- Clojure 	
-- Elixir 	
-- Go 	
-- JavaScript 
-- PHP 	
-- Python 	
-- Ruby
+The Circle CI dashboard is available [here](https://circleci.com/dashboard) for this supported languages: *Clojure, Elixir, Go, JavaScript, PHP, Python, Ruby*
 
 #### Heroku
 Enables developers to build, run, and operate applications entirely in the cloud
 Heroku is a platform as a service (PaaS) that: https://www.heroku.com/
 Getting started: https://devcenter.heroku.com/start 
 
-Langauge: Java, Ruby, nodeJS, Go, php, python, scala Clojure
+Langauges: *Java, Ruby, nodeJS, Go, php, python, scala Clojure*
 
 ---
 ### Others to test

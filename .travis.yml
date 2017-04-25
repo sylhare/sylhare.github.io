@@ -23,23 +23,20 @@ before_script:
 #  - "export DISPLAY=:99.0"
 #  - "sh -e /etc/init.d/xvfb start"
 # http://stackoverflow.com/questions/12644001/how-to-add-the-missing-randr-extension
-   - "env XVFB=/usr/bin/Xvfb"
-   - "env XVFBARGS=':10 -screen 1 1024x768x24 -ac +extension GLX +extension RANDR +render -noreset'"
-   - "env PIDFILE=/var/run/xvfb.pid"
-   - "exec start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --exec $XVFB --$XVFBARGS"
+  - "env XVFB=/usr/bin/Xvfb"
+  - "env XVFBARGS=':10 -screen 1 1024x768x24 -ac +extension GLX +extension RANDR +render -noreset'"
+  - "env PIDFILE=/var/run/xvfb.pid"
+  - "exec start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --exec $XVFB --$XVFBARGS"
 
 # Test the internet
-  - "ping www.google.com"
-  - sleep 3
-  - "^C"
+  - "timeout 3 ping www.google.com"
   - "/sbin/ifconfig"
   - "ip address"
 
   
 # command to run tests
 script: 
-  - "firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"
-  - sleep 20
+  - "timeout 100 firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"
   
 branches:
   only:
