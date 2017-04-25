@@ -1,4 +1,4 @@
-## sylhare.github.io [![Build Status](https://travis-ci.org/Sylhare/sylhare.github.io.svg?branch=master)](https://travis-ci.org/Sylhare/sylhare.github.io)
+## sylhare.github.io [![Build Status](https://travis-ci.org/Sylhare/sylhare.github.io.svg?branch=master)](https://travis-ci.org/Sylhare/sylhare.github.io) ![Licence](https://img.shields.io/badge/license-MIT-blue.svg)
 My own github page
 
 You can try it here: [sylhare.github.io](https://sylhare.github.io/index.html)
@@ -15,11 +15,27 @@ Here is a cool website with all the languages used on github: [githut](http://gi
 Github has an API that can be use to develop scripts  or create application linked on it (the integrations below for example).
 Here is the link to the API documentation : [github Developer](https://developer.github.com/v3/)
 
+### Github Badges
+
+
+A thing, I was looking for are the badges used to customise and give precious information on the `readme.md` file on each repository. Some are generated automatically (like the build badge from travis).
+
+Others are available as `.svg` available here:
+
+- [For the Badge](https://forthebadge.com/)
+
+	[![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com)
+
+- [shields.io](http://shields.io/) 
+
+	![shields.io](https://img.shields.io/dub/dd/vibe-d.svg)
+
 ## Github Integration
 
 ### Documentation
 #### GitBook
 Available to write your own book on github: [https://www.gitbook.com/book/sylhare/manual/details](https://www.gitbook.com/book/sylhare/manual/details)
+
 The view version is linked to my github url: [https://sylhare.gitbooks.io/manual](https://sylhare.gitbooks.io/manual)
 
 ### Code Reviews
@@ -38,6 +54,7 @@ It can be configured through a `.travis.yml` file in the repository.
 ### Heroku
 Enables developers to build, run, and operate applications entirely in the cloud
 Heroku is a platform as a service (PaaS) that: [https://www.heroku.com/](https://www.heroku.com/)
+
 Getting started: [https://devcenter.heroku.com/start ](https://devcenter.heroku.com/start )
 
 
@@ -49,10 +66,43 @@ JavaScript performance monitoring synch with deployment tool (heroku for example
 There's some extra steps that will be necessary to do when making it available. I don't have active webapp so I can only have a limited use of it.
 
 
-### Automatic build
+### Continuous Integration (CI)
 #### Travis CI
 Have a test configuration file and allow travis to start building the repository to see if the build passes or fails
-Automatic test and deploy: https://travis-ci.org/
+Automatic test and deploy: [https://travis-ci.org/](https://travis-ci.org/)
+
+#### Solano CI
+Work with a `solano.yml` file, similar as travis CI.
+Massively Parallel Continuous Integration and Deployment: [https://github.com/integrations/solano-ci](https://github.com/integrations/solano-ci)
+
+Available for:
+
+- JUnit
+- Java
+- Scala
+- Clojure
+- Javascript
+- Go
+- NodeJS and Io.js
+- PHP
+- Python
+- Ruby
+- R
+- Erlang
+
+#### CicleCI
+It works with a dashboard in which you can see all targeted repository, so far the best view. Works the same as the other two with a `circle.yml` for configuration.
+Automatically build, test, and deploy your project in minutes: [https://github.com/integrations/circle-ci](https://github.com/integrations/circle-ci)
+
+Available for this languages:
+
+- Clojure 	
+- Elixir 	
+- Go 	
+- JavaScript 
+- PHP 	
+- Python 	
+- Ruby
 
 #### Heroku
 Enables developers to build, run, and operate applications entirely in the cloud
@@ -61,20 +111,8 @@ Getting started: https://devcenter.heroku.com/start
 
 Langauge: Java, Ruby, nodeJS, Go, php, python, scala Clojure
 
-### Perfomrance
-#### Opbeat <a href="https://opbeat.com" title="Opbeat"><img src="http://opbeat-brand-assets.s3-website-us-east-1.amazonaws.com/svg/logo/logo.svg" align="right" height="25px"></a>
-JavaScript performance monitoring synch with deployment tool (heroku): https://opbeat.com/
->>>>>>> origin/master
-
-
 ---
 ### Others to test
-#### Solano CI
-Massively Parallel Continuous Integration and Deployment: [https://github.com/integrations/solano-ci](https://github.com/integrations/solano-ci)
-
-#### CicleCI
-Automatically build, test, and deploy your project in minutes: [https://github.com/integrations/circle-ci](https://github.com/integrations/circle-ci)
-
 #### Runnable
 Full-stack environments for every branch, and any application: [https://github.com/integrations/runnable](https://github.com/integrations/runnable)
 

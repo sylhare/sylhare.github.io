@@ -1,0 +1,10 @@
+dependencies:
+  pre:
+# Install firefox
+    - pip install mozdownload mozinstall
+    - mozdownload --version latest --destination firefox.tar.bz2
+    - mozinstall firefox.tar.bz2
+    
+test:
+  - "firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"
+  - sleep 20
