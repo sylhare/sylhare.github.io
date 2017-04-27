@@ -1,4 +1,5 @@
 firefox: '27.0.1'
 
 tests:
-  - "timeout 100 firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"
+  - sudo apt-get install xvfb
+  - config_test.sh

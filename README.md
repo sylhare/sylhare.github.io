@@ -28,7 +28,7 @@ Others are available as `.svg` available here:
 
 - [shields.io](http://shields.io/) 
 
-	![shields.io](https://img.shields.io/dub/dd/vibe-d.svg)
+	[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/45afb680-d4e6-4e66-93ea-bcfa79eb8a87.svg)]()
 
 ## Github Integration
 
@@ -43,20 +43,19 @@ The view version is linked to my github url: [https://sylhare.gitbooks.io/manual
 IT will give a rating to you repository (pyhton, javascript, jave) based on general code rules (duplication of code, display, ...). A good way to improve your coding style.
 Dashboard available here: [https://codeclimate.com/dashboard](https://codeclimate.com/dashboard)
 
-### Automatic build
-#### Travis CI
-Have a test configuration file and allow travis to start building the repository to see if the build passes or fails.
+#### QuantifiedCode
+Check for python errors and convention mistake on Pyhton. Plus gives some insights on how to correct them. Easy to use. It's based on [pyLint](https://www.pylint.org/) and PEP8 style guide corrections.
 
-CI stands for Continuous integration
-Automatic test and deploy: [https://travis-ci.org/](https://travis-ci.org/)
-It can be configured through a `.travis.yml` file in the repository.
+Automated code review and repair for Python: [https://github.com/integrations/quantifiedcode](https://github.com/integrations/quantifiedcode)
 
-### Heroku
-Enables developers to build, run, and operate applications entirely in the cloud
-Heroku is a platform as a service (PaaS) that: [https://www.heroku.com/](https://www.heroku.com/)
+Access the [Dashboard](https://www.quantifiedcode.com/app/projects).
 
-Getting started: [https://devcenter.heroku.com/start ](https://devcenter.heroku.com/start )
+#### Codacy
+Automated code reviews to help developers ship better software, faster: [https://github.com/integrations/codacy](https://github.com/integrations/codacy)
 
+You can try on your repository and a rank (like code climate) is attributed on your [Dashboard](https://www.codacy.com/projects). It recognizes java, python, javascript ...
+
+The errors are categorized depending on the type and there's also some advices on how to correct them.
 
 ### Perfomrance
 #### Opbeat <a href="https://opbeat.com" title="Opbeat"><img src="http://opbeat-brand-assets.s3-website-us-east-1.amazonaws.com/svg/logo/logo.svg" align="right" height="25px"></a>
@@ -77,8 +76,8 @@ Massively Parallel Continuous Integration and Deployment: [https://github.com/in
 
 The dashboard is avalaible [here](https://ci.solanolabs.com/#) for: *JUnit, Java, Scala, Clojure, Javascript, Go, NodeJS and Io.js, PHP, Python, Ruby, R, Erlang*.
 
-#### CicleCI
-It works with a dashboard in which you can see all targeted repository, so far the best view. Works the same as the other two with a `circle.yml` for configuration.
+#### Cicle CI
+It works with a dashboard in which you can see all targeted repository. Works the same as the other two with a `circle.yml` for configuration.
 Automatically build, test, and deploy your project in minutes: [https://github.com/integrations/circle-ci](https://github.com/integrations/circle-ci)
 
 The Circle CI dashboard is available [here](https://circleci.com/dashboard) for this supported languages: *Clojure, Elixir, Go, JavaScript, PHP, Python, Ruby*
@@ -107,14 +106,8 @@ Continuous deployment for modern static websites: [https://github.com/integratio
 #### Codecov
 Code coverage done right: [https://github.com/integrations/codecov](https://github.com/integrations/codecov)
 
-#### Codacy
-Automated code reviews to help developers ship better software, faster: [https://github.com/integrations/codacy](https://github.com/integrations/codacy)
-
 #### Ebert
 Get thorough code reviews and ship with confidence: [https://github.com/integrations/ebert](https://github.com/integrations/ebert)
-
-#### QuantifiedCode
-Automated code review and repair for Python: [https://github.com/integrations/quantifiedcode](https://github.com/integrations/quantifiedcode)
 
 #### Zappr
 Enforceable guidelines for your repository: [https://github.com/integrations/zappr](https://github.com/integrations/zappr)

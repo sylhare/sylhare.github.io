@@ -1,25 +1,13 @@
 machine:
-#  firefox: 47.0.1
+# Need to use [tox] for multiple versions of python or else
+# https://ben.fogbutter.com/2016/02/20/testing-multiple-python-versions-on-circleci.html
   python:
-    version: 2.7.10
-    version: 2.7.11
-    version: 2.7.12
-    version: 3.1.4
-    version: 3.1.5
-    version: 3.2.5
-    version: 3.2.6
-    version: 3.3.5
-    version: 3.3.6
-    version: 3.4.3
-    version: 3.4.4
-    version: 3.5.1
     version: 3.5.2
-    version: 3.5.3
-    version: 3.6.0
-    version: 3.6.1
+#  firefox: 47.0.1
 
-#dependencies:
-#  pre:
+dependencies:
+  pre:
+    - sudo apt-get install xvfb
 # Install firefox
 #    - pip install mozdownload mozinstall
 #    - mozdownload --version latest --destination firefox.tar.bz2
@@ -31,4 +19,4 @@ deployment:
   production:
     branch: "master"
     commands:
-      - "timeout 100 firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"
+      - config_test.sh
