@@ -3,12 +3,12 @@ machine:
 # https://ben.fogbutter.com/2016/02/20/testing-multiple-python-versions-on-circleci.html
   python:
     version: 3.5.2
-#  firefox: 47.0.1
+# firefox: 
+#    version: 47.0.1
 
-dependencies:
-  pre:
-    - sudo apt-get install xvfb
-    - firefox -v
+#dependencies:
+#  pre:
+#    - "sudo apt-get install xvfb"
 # Install firefox
 #    - pip install mozdownload mozinstall
 #    - mozdownload --version latest --destination firefox.tar.bz2

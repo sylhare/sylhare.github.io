@@ -2,4 +2,5 @@ firefox: '42.0'
 
 tests:
   - firefox -v
+  - "timeout 30 firefox 'https://www.youtube.com/watch?v=wdxlc2UdAmg' && movie=$?"
   - bash config_test.sh || echo "fails"

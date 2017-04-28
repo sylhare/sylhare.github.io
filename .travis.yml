@@ -35,7 +35,7 @@ before_script:
   
 # command to run tests
 script: 
-  - "timeout 100 firefox https://www.youtube.com/watch?v=wdxlc2UdAmg"
+  - "bash config_test.sh"
   
 branches:
   only:
