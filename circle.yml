@@ -19,6 +19,8 @@ machine:
 #    - mozinstall firefox.tar.bz2
 test:
   override:
+    - "Xvfb :99 -screen 0 800x600x16 +extension RANDR || echo 'fail'"
+  post:
     - "bash config_test.sh || echo 'fails'"
   
 #deployment:
