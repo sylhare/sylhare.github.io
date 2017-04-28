@@ -2,5 +2,5 @@ firefox: '42.0'
 
 tests:
   - firefox -v
-  - "Xvfb :99 -screen 0 800x600x16 +extension RANDR"
+  - "Xvfb :99 -screen 0 800x600x16 +extension RANDR &"
   - bash config_test.sh || echo "fails"
