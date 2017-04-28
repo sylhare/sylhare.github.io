@@ -8,15 +8,17 @@ machine:
 dependencies:
   pre:
     - sudo apt-get install xvfb
+    - firefox -v
 # Install firefox
 #    - pip install mozdownload mozinstall
 #    - mozdownload --version latest --destination firefox.tar.bz2
 #    - mozinstall firefox.tar.bz2
     
-#test:
-
-deployment:
-  production:
-    branch: "master"
-    commands:
-      - config_test.sh
+test:
+  - ./config_test.sh
+  
+#deployment:
+#  production:
+#    branch: "master"
+#    commands:
+      

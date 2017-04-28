@@ -1,5 +1,5 @@
-firefox: '27.0.1'
+firefox: '42.0'
 
 tests:
   - sudo apt-get install xvfb
-  - config_test.sh
+  - ./config_test.sh

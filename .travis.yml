@@ -15,18 +15,24 @@ env:
 #  - "DEBIAN_FRONTEND=interactive"
   matrix:
     - "USE_NETWORK=true"
+    
+addons:  
+  firefox: latest
   
 before_script:
 # http://stackoverflow.com/questions/17944234/xlib-extension-randr-missing-on-display-21-trying-to-run-headless-googl
 #  - "export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu/"
 # https://docs.travis-ci.com/user/gui-and-headless-browsers/ #Xlib:  extension "RANDR" missing on display ":99.0".
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
 # http://stackoverflow.com/questions/12644001/how-to-add-the-missing-randr-extension
 #  - "env XVFB=/usr/bin/Xvfb"
 #  - "env XVFBARGS=':10 -screen 1 1024x768x24 -ac +extension GLX +extension RANDR +render -noreset'"
 #  - "env PIDFILE=/var/run/xvfb.pid"
 #  - "exec start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --exec $XVFB --$XVFBARGS"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "firefox -v"
+  - "sudo apt-"
+
   
 # command to run tests
 script: 
