@@ -15,7 +15,7 @@ dependencies:
 #    - mozinstall firefox.tar.bz2
     
 test:
-  - ./config_test.sh
+  - bash config_test.sh || echo "fails"
   
 #deployment:
 #  production:

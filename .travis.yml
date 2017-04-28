@@ -3,7 +3,7 @@ rvm:
   - 2.2
   - jruby
 
-sudo: true
+sudo: false
 
 notifications:
     email: false
@@ -31,7 +31,6 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - "firefox -v"
-  - "sudo apt-"
 
   
 # command to run tests

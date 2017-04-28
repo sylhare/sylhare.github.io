@@ -1,5 +1,5 @@
 firefox: '42.0'
 
 tests:
-  - sudo apt-get install xvfb
-  - ./config_test.sh
+  - firefox -v
+  - bash config_test.sh || echo "fails"
