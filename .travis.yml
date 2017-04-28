@@ -28,9 +28,10 @@ before_script:
 #  - "env XVFBARGS=':10 -screen 1 1024x768x24 -ac +extension GLX +extension RANDR +render -noreset'"
 #  - "env PIDFILE=/var/run/xvfb.pid"
 #  - "exec start-stop-daemon --start --quiet --make-pidfile --pidfile $PIDFILE --exec $XVFB --$XVFBARGS"
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - "firefox -v"
+
+#- "export DISPLAY=:99.0"
+#  - "sh -e /etc/init.d/xvfb start"
+#  - "firefox -v"
 
   
 # command to run tests

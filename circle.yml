@@ -1,10 +1,14 @@
-machine:
+#machine:
 # Need to use [tox] for multiple versions of python or else
 # https://ben.fogbutter.com/2016/02/20/testing-multiple-python-versions-on-circleci.html
-  python:
-    version: 3.5.2
+#  python:
+#    version: 3.5.2
 # firefox: 
 #    version: 47.0.1
+machine:
+  timezone: UTC
+  java:
+    version: oraclejdk8
 
 #dependencies:
 #  pre:
@@ -13,9 +17,9 @@ machine:
 #    - pip install mozdownload mozinstall
 #    - mozdownload --version latest --destination firefox.tar.bz2
 #    - mozinstall firefox.tar.bz2
-    
 test:
-  - bash config_test.sh || echo "fails"
+  override:
+    - "bash config_test.sh || echo 'fails'"
   
 #deployment:
 #  production:

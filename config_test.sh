@@ -2,14 +2,16 @@
 # Compiling the java files and running them
 
 #Start xvfb
-Xvfb :99 -screen 0 800x600x16 +extension RANDR || echo "fail"
+export DISPLAY=:99.0
+#export DISPLAY=:1.0
+echo "starting screen"
+Xvfb :99 -screen 0 800x600x16 +extension RANDR & || echo "fail"
 test=$?
 xdpyinfo -display :1 >/dev/null 2>&1 && echo "In use" || echo "Free"
 #Check if display 99 of xfvb is used (should be the one in use)
 xdpyinfo -display :99 >/dev/null 2>&1 && echo "In use" || echo "Free"
 
-#export DISPLAY=:1.0
-
+echo "starting movie"
 timeout 99 firefox "https://www.youtube.com/watch?v=wdxlc2UdAmg"
 movie=$? 
 
