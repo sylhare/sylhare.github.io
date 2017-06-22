@@ -35,6 +35,7 @@ before_script:
   
 # command to run tests
 script: 
+  - "bash setting_firefox.sh || echo 'fail'"
   - "bash config_test.sh"
   
 branches:

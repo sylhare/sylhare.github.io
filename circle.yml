@@ -19,9 +19,13 @@ machine:
 #    - mozinstall firefox.tar.bz2
 test:
   override:
-    - "Xvfb :99 -screen 0 800x600x16 +extension RANDR &"
+    - "Xvfb :99 -screen 0 800x600x16 +extension RANDR"
+          background: true
+    - "sleep 5" # to give some time to start the screen
   post:
-    - "bash config_test.sh || echo 'fails'"
+    - "bash setting_firefox.sh || echo 'fail'"
+    - "bash config_test.sh"
+    
   
 #deployment:
 #  production:

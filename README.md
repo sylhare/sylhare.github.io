@@ -17,7 +17,6 @@ Here is the link to the API documentation : [github Developer](https://developer
 
 ### Github Badges
 
-
 A thing, I was looking for are the badges used to customise and give precious information on the `readme.md` file on each repository. Some are generated automatically (like the build badge from travis).
 
 Others are available as `.svg` available here:
@@ -89,6 +88,14 @@ Getting started: https://devcenter.heroku.com/start
 
 Langauges: *Java, Ruby, nodeJS, Go, php, python, scala Clojure*
 
+### Code Coverage
+
+#### Codecov
+Information on how to set up codecov: [here](https://docs.codecov.io/docs/supported-languages)
+Code coverage done right: [integrations codecov](https://github.com/integrations/codecov)
+
+Access to my [dashboard](https://codecov.io/gh/Sylhare)
+
 ---
 ### Others to test
 #### Runnable
@@ -102,9 +109,6 @@ Full-stack error monitoring for developers: [https://github.com/integrations/rol
 
 #### Netlify
 Continuous deployment for modern static websites: [https://github.com/integrations/netlify](https://github.com/integrations/netlify)
-
-#### Codecov
-Code coverage done right: [https://github.com/integrations/codecov](https://github.com/integrations/codecov)
 
 #### Ebert
 Get thorough code reviews and ship with confidence: [https://github.com/integrations/ebert](https://github.com/integrations/ebert)
