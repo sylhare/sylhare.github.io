@@ -1,8 +1,7 @@
 language: ruby
 rvm:
-  - 2.2
-  - jruby
- - rbx-2
+  - 2.3.3
+  
 #sudo: false
 
 notifications:
@@ -31,7 +30,7 @@ notifications:
 #  - "export DISPLAY=:99.0"
 #  - "sh -e /etc/init.d/xvfb start"
 #  - "firefox -v"
-  - "Xvfb :99 -screen 0 800x600x16 +extension RANDR &"
+#  - "Xvfb :99 -screen 0 800x600x16 +extension RANDR &"
   
 # command to run tests
 #script: 
