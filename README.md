@@ -1,129 +1,216 @@
-## sylhare.github.io [![Build Status](https://travis-ci.org/Sylhare/sylhare.github.io.svg?branch=master)](https://travis-ci.org/Sylhare/sylhare.github.io) ![Licence](https://img.shields.io/badge/license-MIT-blue.svg)
-My own github page
+# Type Theme
 
-You can try it here: [sylhare.github.io](https://sylhare.github.io/index.html)
+![Default Type Theme blog](https://user-images.githubusercontent.com/816965/30518919-d5978024-9bcd-11e7-81b3-3dd07e99a1f9.png)
 
-## Github Information 
-### Language on Github
+A free and open-source [Jekyll](https://jekyllrb.com) theme. Great for blogs and easy to customize.
 
-How the language bot recognise what is in your repository (the colored bar on top of it) : [github-linguist](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
+[Demo](https://rohanchandra.github.io/type-theme/)
 
-Here is a cool website with all the languages used on github: [githut](http://githut.info/)
+## Usage
 
-### Github API
+1. Fork and clone the [Type Theme repo](https://github.com/rohanchandra/type-theme): `git clone https://github.com/rohanchandra/type-theme`
+2. [Install Jekyll](https://jekyllrb.com/docs/installation/): `gem install jekyll`
+3. Install the theme's dependencies: `bundle install`
+4. Customize the theme (see below)
+5. Run the Jekyll server: `jekyll serve`
 
-Github has an API that can be use to develop scripts  or create application linked on it (the integrations below for example).
-Here is the link to the API documentation : [github Developer](https://developer.github.com/v3/)
+## Customizing Type Theme
 
-### Github Badges
+Open `_config.yml` in a text editor to change most of the blog's settings.
 
-A thing, I was looking for are the badges used to customise and give precious information on the `readme.md` file on each repository. Some are generated automatically (like the build badge from travis).
+If a variable in this document is marked as "optional", disable the feature by removing all text from the variable. For example, to prevent the avatar from rendering in the header, the avatar line should read:
 
-Others are available as `.svg` available here:
+```
+theme:
+  title: Type Theme
+  avatar:
+  gravatar:
+```
 
-- [For the Badge](https://forthebadge.com/)
+Notice the avatar variable is left intentionally blank.
 
-	[![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com)
+Below is a summary of the configuration options in Type Theme.
 
-- [shields.io](http://shields.io/) 
+### Site configuration
+The most common configurations, included here for guidance, are:
 
-	[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/45afb680-d4e6-4e66-93ea-bcfa79eb8a87.svg)]()
+Jekyll website *without* a subpath (such as a GitHub Pages website for a given username):
 
-## Github Integration
+```
+# SITE CONFIGURATION
+baseurl: ""
+url: "https://username.github.io"
+```
 
-### Documentation
-#### GitBook
-Available to write your own book on github: [https://www.gitbook.com/book/sylhare/manual/details](https://www.gitbook.com/book/sylhare/manual/details)
+Jekyll website *with* subpath (like the Type Theme demo page):
 
-The view version is linked to my github url: [https://sylhare.gitbooks.io/manual](https://sylhare.gitbooks.io/manual)
+```
+# SITE CONFIGURATION
+baseurl: "/sub-directory"
+url: "https://username.github.io/"
+```
 
-### Code Reviews
-#### Code Climate
-IT will give a rating to you repository (pyhton, javascript, jave) based on general code rules (duplication of code, display, ...). A good way to improve your coding style.
-Dashboard available here: [https://codeclimate.com/dashboard](https://codeclimate.com/dashboard)
+Please configure this in `_config.yml` before using the theme.
 
-#### QuantifiedCode
-Check for python errors and convention mistake on Pyhton. Plus gives some insights on how to correct them. Easy to use. It's based on [pyLint](https://www.pylint.org/) and PEP8 style guide corrections.
+### Meta
 
-Automated code review and repair for Python: [https://github.com/integrations/quantifiedcode](https://github.com/integrations/quantifiedcode)
+Meta variables hold basic information about your Jekyll site which will be used throughout the site and as meta properties for search engines, browsers, and the site's RSS feed.
 
-Access the [Dashboard](https://www.quantifiedcode.com/app/projects).
+Change these variables in `_config.yml`:
 
-#### Codacy
-Automated code reviews to help developers ship better software, faster: [https://github.com/integrations/codacy](https://github.com/integrations/codacy)
+| Variable | Example | Description | Optional |
+|-------------|----------------------------------|--------------------------------------------------------------------------------------------------------------------------------|----------|
+| title | My Jekyll Blog | Name of website | Yes |
+| avatar | assets/img/avatar.png | Path of avatar image, to be displayed in the theme's header | Yes |
+| gravatar | f9879d71855b5ff21e4963273a886bfc | [MD5 hash of your email address](https://secure.gravatar.com/site/implement/hash/) to load your Gravatar in the theme's header | Yes |
+| description | My blog posts | Short description, primarily used by search engines | Yes |
 
-You can try on your repository and a rank (like code climate) is attributed on your [Dashboard](https://www.codacy.com/projects). It recognizes java, python, javascript ...
+### Header and footer text
 
-The errors are categorized depending on the type and there's also some advices on how to correct them.
-
-### Perfomrance
-#### Opbeat <a href="https://opbeat.com" title="Opbeat"><img src="http://opbeat-brand-assets.s3-website-us-east-1.amazonaws.com/svg/logo/logo.svg" align="right" height="25px"></a>
-Gives a mark based on code standard for your code, works for Javacript.
-JavaScript performance monitoring synch with deployment tool (heroku for example): [https://opbeat.com/](https://opbeat.com/)
-
-There's some extra steps that will be necessary to do when making it available. I don't have active webapp so I can only have a limited use of it.
+Change these variables in `_config.yml`:
 
 
-### Continuous Integration (CI)
-#### Travis CI
-Have a test configuration file and allow travis to start building the repository to see if the build passes or fails
-Automatic test and deploy: [https://travis-ci.org/](https://travis-ci.org/)
+| Variable | Example | Description | Optional |
+|---------------------------|------------------------------|-------------------------------------------------------------------------|----------|
+| header_text | Welcome to my Jekyll blog | HTML (shown below the navigation) with a background colour for emphasis | Yes |
+| header_text_feature_image | assets/img/sample_feature_img_3.png | Background image for the header text | Yes |
+| footer_text | Copyright 2014 | HTML (shown at end of the site) with lighter text | Yes |
 
-#### Solano CI
-Work with a `solano.yml` file, similar as travis CI.
-Massively Parallel Continuous Integration and Deployment: [https://github.com/integrations/solano-ci](https://github.com/integrations/solano-ci)
+### Icons
 
-The dashboard is avalaible [here](https://ci.solanolabs.com/#) for: *JUnit, Java, Scala, Clojure, Javascript, Go, NodeJS and Io.js, PHP, Python, Ruby, R, Erlang*.
+Add your username on selected websites in the icon section of the `_config.yml` file to display the site's icon from [Font Awesome](https://fortawesome.github.io/Font-Awesome/) in the header navigation. All icon variables should be your username enclosed in quotes (e.g. "username"), except for the following variables:
 
-#### Cicle CI
-It works with a dashboard in which you can see all targeted repository. Works the same as the other two with a `circle.yml` for configuration.
-Automatically build, test, and deploy your project in minutes: [https://github.com/integrations/circle-ci](https://github.com/integrations/circle-ci)
 
-The Circle CI dashboard is available [here](https://circleci.com/dashboard) for this supported languages: *Clojure, Elixir, Go, JavaScript, PHP, Python, Ruby*
+| Variable | Example | Description | Optional |
+|----------------|-------------------------------------------------|--------------------------------------------------------|----------|
+| rss | true | Takes boolean value (true/false) to show RSS feed icon | Yes |
+| email_address | type@example.com | Email address | Yes |
+| linkedin | https://www.linkedin.com/in/FirstLast | Full URL to profile on LinkedIn | Yes |
+| stack_exchange | https://stackoverflow.com/users/0000/first-last | Full URL to profile on Stack Exchange | Yes |
 
-#### Heroku
-Enables developers to build, run, and operate applications entirely in the cloud
-Heroku is a platform as a service (PaaS) that: https://www.heroku.com/
-Getting started: https://devcenter.heroku.com/start 
+### Scripts
 
-Langauges: *Java, Ruby, nodeJS, Go, php, python, scala Clojure*
+Change these variables in `_config.yml`:
 
-### Code Coverage
 
-#### Codecov
-Information on how to set up codecov: [here](https://docs.codecov.io/docs/supported-languages)
-Code coverage done right: [integrations codecov](https://github.com/integrations/codecov)
+| Variable | Example | Description | Optional |
+|------------------|--------------|-------------------------------------------------------------------------------------------------------------------------------------|----------|
+| google_analytics | UA-123456-01 | Google Analytics [tracking ID](https://support.google.com/analytics/answer/1032385?hl=en) | Yes |
+| disqus_shortname | shortname | Disqus [shortname](https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-) | Yes |
+| katex | true | Takes boolean value (true/false) to conditionally load [KaTeX](https://khan.github.io/KaTeX/) scripts required for math typesetting | Yes |
 
-Access to my [dashboard](https://codecov.io/gh/Sylhare)
+Scripts listed here are only loaded if you provide a value in the `_config.yml` file.
 
+### Localization strings
+
+Change localization string variables in `_config.yml`.
+
+English text used in the theme (such as the "continue reading" label) has been grouped  so you can quickly translate the theme or change labels to suit your needs.
+
+### Colours, typography, padding
+
+![A selection of colours set in Type Theme by modifying the CSS](https://cloud.githubusercontent.com/assets/816965/5142488/130869a6-71d7-11e4-8a38-a69ec1673436.png)
+
+
+| Variable | Example | Description | Optional |
+|--------------|----------------------------|--------------------------------------|--------------------------------------------------------------|
+| google_fonts | "Playfair+Display:400,700\ | PT+Sans:400,700,700italic,400italic" | [Google Fonts](https://www.google.com/fonts) to load for use |
+
+Navigate to the `_sass > base` directory and open `_variables.scss` to change colours, typography and padding used in the theme with CSS.
+
+Once you have loaded a Google Font in `config.yml`, you can integrate the fonts into your CSS by changing the font-family in `_variables.scss`. For example, after loading the Playfair Display and PT Sans fonts from Google:
+
+```
+// Typography
+$font-family-main: 'PT Sans', Helvetica, Arial, sans-serif;
+$font-family-headings: 'Playfair Display', Helvetica, Arial, sans-serif;
+```
+
+Mozilla's [ColorPicker](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool) is a helpful tool to get your preferred colours in hexadecimal or RGBA form for use in `_variables.scss`.
+
+## Posts and pages in Type Theme
+Please refer to the [Jekyll docs for writing posts](https://jekyllrb.com/docs/posts/). Non-standard features are documented below.
+
+### Math typesetting
+Wrap math expressions with `$$` signs in your posts and make sure you have set the `katex` variable in `_config.yml` to `true` for math typesetting.
+
+For inline math typesetting, type your math expression on the *same line* as your content. For example:
+
+```
+Type math within a sentence $$2x^2 + x + c$$ to display inline
+```
+
+For display math typesetting, type your math expression on a *new line*. For example:
+
+```
+$$
+  \bar{y} = {1 \over n} \sum_{i = 1}^{n}y_i
+$$
+```
+
+Type Theme makes use for [KaTeX](https://khan.github.io/KaTeX/) for typesetting.
+
+### Feature images
+
+![Posts with geometric feature images](https://cloud.githubusercontent.com/assets/816965/5142406/19726478-71d6-11e4-8111-94f788b0e44d.png)
+
+Add a feature image by specifying a path to an image in the [front matter](http://jekyllrb.com/docs/frontmatter/) in the form of `feature-img: "img/PATH_TO_IMAGE.png"`.
+
+For example:
+
+```
 ---
-### Others to test
-#### Runnable
-Full-stack environments for every branch, and any application: [https://github.com/integrations/runnable](https://github.com/integrations/runnable)
+layout: post
+title: Hello World
+feature-img: "assets/img/sample_feature_img.png"
+---
+```
 
-#### Postman
-The complete toolchain for API development: [https://github.com/integrations/postman](https://github.com/integrations/postman)
+### Hiding pages from navigation
 
-#### Rollbar
-Full-stack error monitoring for developers: [https://github.com/integrations/rollbar](https://github.com/integrations/rollbar)
+In the Front Matter of a page, add `hide: true` to prevent the page from showing up in the header's navigation bar (visitors can still visit the URL through other means).
 
-#### Netlify
-Continuous deployment for modern static websites: [https://github.com/integrations/netlify](https://github.com/integrations/netlify)
+For example:
 
-#### Ebert
-Get thorough code reviews and ship with confidence: [https://github.com/integrations/ebert](https://github.com/integrations/ebert)
+```
+---
+layout: page
+title: "Error 404: Page not found"
+permalink: /404.html
+hide: true
+---
+```
 
-#### Zappr
-Enforceable guidelines for your repository: [https://github.com/integrations/zappr](https://github.com/integrations/zappr)
+### Tags
 
-#### CodeFactor
-Automated Code Review for GitHub: [https://github.com/integrations/codefactor](https://github.com/integrations/codefactor)
+Post tags should be placed between `[]` in your post metadata. Seperate each tag with a comma.
 
-#### Better Code Hub
-Your Definition of Done for Code Quality: [https://github.com/integrations/better-code-hub](https://github.com/integrations/better-code-hub)
+For example:
 
-#### Pyup.io
-Security and dependency updates for Python projects: [https://github.com/integrations/pyup-io](https://github.com/integrations/pyup-io)
+```
+---
+layout: post
+title: Markdown and HTML
+tags: [sample, markdown, html]
+---
+```
 
-#### Everhour
-Time tracking and estimates inside of your GitHub issues: [https://github.com/integrations/everhour](https://github.com/integrations/everhour)
+A tags listing will be automatically generated using the `tags.html` file provided in Type theme. If you're not using the tags feature it is safe to delete `tags.html`.
+
+### Subtitles
+A subtitle can be displayed below your title on permalink post pages.
+
+To enable this feature, add `subtitle` to your post metadata.
+
+For example:
+
+```
+---
+layout: post
+title: "This is a title"
+subtitle: "This is a subtitle"
+---
+```
+
+## License
+[The MIT License (MIT)](https://github.com/rohanchandra/type-theme/blob/master/LICENSE)
