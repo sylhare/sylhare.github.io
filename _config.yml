@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
-baseurl: "/type-theme"
-url: "https://rohanchandra.github.io/"
+baseurl: ""
+url: "https://sylhare.github.io"
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -14,12 +14,10 @@ theme_settings:
   # Header and footer text
   header_text: >
      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-
      <p>Remove all header text in <code>_config.yml</code> to disable this feature.</p>
   header_text_feature_image:
   footer_text: >
    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/rohanchandra/type-theme">Type Theme</a>
-
   # Icons
   rss: false
   email_address: # Full email address, e.g. "sam@example.com"
@@ -29,7 +27,7 @@ theme_settings:
   facebook:
   flickr:
   gitlab:
-  github: "rohanchandra/type-theme"
+  github: "sylhare"
   google_plus:
   instagram:
   linkedin:  # Full URL
@@ -70,6 +68,10 @@ theme_settings:
 paginate: 5
 paginate_path: "blog/page:num"
 
+# used for portfolio on home page
+collections:
+  - portfolio
+
 # BUILD SETTINGS
 markdown: kramdown
 highlighter: rouge
@@ -77,7 +79,7 @@ sass:
   sass_dir: _sass
   style: :compressed
 plugins: [jekyll-paginate]
-theme: jekyll-theme-type
+# theme: jekyll-theme-type #Warning on github
 exclude:
   - Gemfile
-  - Gemfile.lock
+- Gemfile.lock
