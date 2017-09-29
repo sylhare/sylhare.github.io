@@ -4,18 +4,16 @@
 	<meta name="description" content="{% if page.excerpt %}{{ page.excerpt | strip_html | strip_newlines | truncate: 160 }}{% else %}{{ site.theme_settings.description }}{% endif %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="{{ "/assets/css/bootstrap.min.css.css" | prepend: site.baseurl }}">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ "/assets/css/portfolio.css" | prepend: site.baseurl }}">
+    
 	<!-- CSS -->
 	<link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
-	<link rel="stylesheet" href="{{ "/assets/css/portfolio.css" | prepend: site.baseurl }}">
-    
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="{{ "/assets/css/bootstrap.min.css" | prepend: site.baseurl }}">
-    <script src="{{ "/assets/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
-    
-    <!-- jQuery  -->
-    <script src="{{ "/assets/js/jquery.min.js" | prepend: site.baseurl }}"></script>
 
-	<!-- Favicon -->
+	<!--Favicon-->
 	<link rel="shortcut icon" href="{{ site.baseurl }}/{{ site.theme_settings.favicon }}" type="image/x-icon">
 
 	<!-- Canonical -->
