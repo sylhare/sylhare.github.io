@@ -82,4 +82,4 @@ plugins: [jekyll-paginate]
 # theme: jekyll-theme-type #Warning on github
 exclude:
   - Gemfile
-- Gemfile.lock
+  - Gemfile.lock

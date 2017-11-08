@@ -26,6 +26,7 @@ This can be used when you are updating your local repository with the remote one
     git push origin <your-git-branch> #(typically 'master', but not always)
 
 ### Remove a folder from git but not local
+Useful to solve conflicts
 
 	git rm -r --cached myFolder
 
@@ -45,12 +46,12 @@ Or in a one liner:
 A branch is for work. A tag marks a place in time. By tagging each branch merge we can resurrect a branch if that is needed.
 
 	git checkout <feature-branch>
-	git pull origin
+	git pull origin 				 # Making sure it's last version of feature branch
 	git checkout <release-branch>
 	git pull origin
 	git merge --no-ff <feature-branch>
 	git push origin master
-	git tag -a branch-<feature-branch> -m "Merge <feature-branch> into <release-branch>"
+	git tag -a <tag name> -m "Merge <feature-branch> into <release-branch>"
 	git push --tags origin
 	git branch -d <feature-branch>
 	git push origin :<feature-branch> #to push deleted bransh to remote
