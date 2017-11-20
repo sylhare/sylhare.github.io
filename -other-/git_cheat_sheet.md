@@ -18,7 +18,6 @@ This can be used when you are updating your local repository with the remote one
 ### Add a remote repository link
 	git remote add <remote nickname> https://github.com/user/repository
 
-
 ### Remove a folder:
 
     git rm -r one-of-the-directories
@@ -34,12 +33,18 @@ Useful to solve conflicts
 
 step by step:
 
-	git branch iss53
-	git checkout iss53
+	git branch patch-1
+	git checkout patch-1
 
 Or in a one liner:
 
-	git checkout -b iss53
+	git checkout -b patch-1
+
+### Get a remote branch
+
+You are on your local repository and you want to fetch a remote branch.
+
+	git checkout --track origin/patch-1
 
 ### Close a branch (for feature development)
 
