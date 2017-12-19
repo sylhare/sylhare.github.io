@@ -18,7 +18,6 @@ This can be used when you are updating your local repository with the remote one
 ### Add a remote repository link
 	git remote add <remote nickname> https://github.com/user/repository
 
-
 ### Remove a folder:
 
     git rm -r one-of-the-directories
@@ -26,6 +25,7 @@ This can be used when you are updating your local repository with the remote one
     git push origin <your-git-branch> #(typically 'master', but not always)
 
 ### Remove a folder from git but not local
+Useful to solve conflicts
 
 	git rm -r --cached myFolder
 
@@ -33,24 +33,30 @@ This can be used when you are updating your local repository with the remote one
 
 step by step:
 
-	git branch iss53
-	git checkout iss53
+	git branch patch-1
+	git checkout patch-1
 
 Or in a one liner:
 
-	git checkout -b iss53
+	git checkout -b patch-1
+
+### Get a remote branch
+
+You are on your local repository and you want to fetch a remote branch.
+
+	git checkout --track origin/patch-1
 
 ### Close a branch (for feature development)
 
 A branch is for work. A tag marks a place in time. By tagging each branch merge we can resurrect a branch if that is needed.
 
 	git checkout <feature-branch>
-	git pull origin
+	git pull origin 				 # Making sure it's last version of feature branch
 	git checkout <release-branch>
 	git pull origin
 	git merge --no-ff <feature-branch>
 	git push origin master
-	git tag -a branch-<feature-branch> -m "Merge <feature-branch> into <release-branch>"
+	git tag -a <tag name> -m "Merge <feature-branch> into <release-branch>"
 	git push --tags origin
 	git branch -d <feature-branch>
 	git push origin :<feature-branch> #to push deleted bransh to remote
