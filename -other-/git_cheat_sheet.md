@@ -54,3 +54,30 @@ A branch is for work. A tag marks a place in time. By tagging each branch merge 
 	git push --tags origin
 	git branch -d <feature-branch>
 	git push origin :<feature-branch> #to push deleted bransh to remote
+
+
+### Checkout a remote branch
+
+In your workflow you'll often need to checkout and fetch branches from a remote repository to do code review of your colleagues for example.
+
+Usage:
+
+    git checkout -b <local-branch> <remote-branch>
+    git fetch
+
+So for example I have a branch called feature/abc remotely
+
+    git checkout -b feature/abc origin/feature/abc
+
+There is also a shortcut for this command:
+
+    git checkout --track -b <remote-branch>
+    
+Or
+
+    git fetch
+
+    git branch -r
+
+    git checkout <branch_name>
+
