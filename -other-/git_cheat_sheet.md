@@ -7,6 +7,14 @@
 ### Update local from remote (on an already initiated repo)
 
 	git pull origin
+    
+### See log of the repository
+
+Use:
+
+    git log
+
+To exit `git log` type `q` on the terminal.
 
 ### Stash changes
 
@@ -14,9 +22,11 @@ This can be used when you are updating your local repository with the remote one
 
 	git stash #to save your local changes
 	git drop #to drop your local changes
+    git pop #to get back your local changes
 
 ### Add a remote repository link
-	git remote add <remote nickname> https://github.com/user/repository
+	
+    git remote add <remote nickname> https://github.com/user/repository
 
 ### Remove a folder:
 
@@ -87,3 +97,14 @@ Or
 
     git checkout <branch_name>
 
+
+### Revert a commit
+Commits are identified by a special number, a commit hash usually looking like `860652a4ab3749a72401b2ceaacf68b27afbc404` it can also be identified with the first 7 numbers like `860652a`
+
+
+#### Revert a merge-commit
+For a merge commit you need to use:
+
+    git revert 860652a -m 1
+    
+Which will revert the merge commit `860652a` to the previous commit with the `1`.
