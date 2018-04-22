@@ -4,6 +4,9 @@ My own github page
 You can try it here: [sylhare.github.io](https://sylhare.github.io/index.html)
 
 ## Github Information 
+
+There's a website compiling all of github information, it's called [librairies.io](https://libraries.io/github/Sylhare). 
+
 ### Language on Github
 
 How the language bot recognise what is in your repository (the colored bar on top of it) : [github-linguist](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
