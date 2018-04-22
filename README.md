@@ -9,6 +9,7 @@ You can try it here: [sylhare.github.io](https://sylhare.github.io/index.html)
 How the language bot recognise what is in your repository (the colored bar on top of it) : [github-linguist](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 
 Here is a cool website with all the languages used on github: [githut](http://githut.info/)
+Here is a github repo to see all language and their color: [github-colors](https://github.com/ozh/github-colors)
 
 ### Github API
 
