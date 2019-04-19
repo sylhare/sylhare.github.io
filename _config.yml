@@ -1,8 +1,9 @@
 # SITE CONFIGURATION
-url: https://sylhare.github.io/ 
-baseurl: #
-title: none
-description: none
+baseurl: "/Type-on-Strap"
+url: "https://sylhare.github.io"
+title: Type on Strap # site's title
+description: "A website with blog posts and pages" # used by search engines
+
 
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
@@ -13,11 +14,10 @@ theme_settings:
   gravatar: # Email MD5 hash
 
   # Header and footer text
-  header_text: > #two or three lines to describe your site
-     <p>Change header text in <code>_config.yml</code> <br> to update this feature.</p>
-  header_text_feature_image: assets/img/pexels/triangular.jpeg
+  header_text: Change header text in <code>_config.yml</code>
+  header_feature_image: assets/img/pexels/triangular.jpeg
   footer_text: >
-   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
+    Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Icons
   rss: true  # Make sure you created a feed.xml with feed.xml layout
@@ -43,24 +43,45 @@ theme_settings:
   vimeo:
   wordpress:
   youtube:
+  
+  # Sharing options
+  share_buttons:
+    facebook: true
+    twitter: true
+    google_plus: true
+    tumblr:
+    pinterest:
+    pocket:
+    reddit: true
+    linkedin:
+    wordpress:
+    email: true
 
   # Scripts / Features 
   google_analytics: # Tracking ID, e.g. "UA-000000-01"
   disqus_shortname:
   katex: true # Enable if using math markup
-  portfolio: false
-  search: false
-  tags: false
+  
+  special_page:
+    search: 
+      icon: "search"
+      enabled: true
+    tags:
+      icon: "tags"
+      enabled: true
   
   # Localization strings
   str_follow_on: "Follow on"
   str_rss_follow: "Follow RSS feed"
+  str_share_on: "Share on"
+  str_add_to: "Add to"
   str_email: "Email"
+  str_tweet: "Tweet"
+  str_pin_it: "Pin it"
   str_next_post: "Next post"
   str_previous_post: "Previous post"
   str_next_page: "Next"
   str_previous_page: "Prev"
-  str_continue_reading: "Continue reading"
   str_javascript_required_disqus: "Please enable JavaScript to view comments."
 
   # Colours, typography and padding
@@ -70,7 +91,7 @@ theme_settings:
   # Post navigation
   post_navigation: true
   
-
+  
 # PAGINATION
 paginate: 5
 paginate_path: "blog/page:num"
@@ -91,4 +112,4 @@ sass:
   style: :compressed
 plugins: [jekyll-paginate, jekyll-seo-tag]
 #theme: type-on-strap # Uncomment if using the theme as a jekyll theme gem
-exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png"]
+exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png", "package.json", "node_modules", "gulpfile.js", ".idea/*"]
