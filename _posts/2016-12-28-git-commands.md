@@ -1,3 +1,9 @@
+---
+layout: post
+title: Git commands
+tags: [git]
+---
+
 ## Git commands
 
 ### See remote links
