@@ -1,5 +1,5 @@
 # Site settings
-title: 'your awesome title'
+title: "Sylhare's blog"
 description: 'your web description'
 keywords: 'your web keywords, another keywords'
 url: 'https://sylhare.github.io' # your host
@@ -13,7 +13,6 @@ nav:
 # Personalisation
 author: true
 name: 'Sylhare'
-webtitle: "Sylhare's blog"
 bio: "It's me"
 about: true
 aboutyou: "This is a blog where I am going to put stuff for a time then completely forget about it :)"
@@ -40,7 +39,7 @@ kramdown:
   input: GFM
 highlighter: rouge
 # Available themes: autumn\ default\ emacs\ friendly\ manni\ murphy\ pastie\ perldoc\ tango
-pygmentsTheme: 'pygments_autumn'
+pygmentsTheme: 'tango'
 
 # 友情链接
 friends:
