@@ -98,9 +98,7 @@ There is also a shortcut for this command:
 Or
 
     git fetch
-
     git branch -r
-
     git checkout <branch_name>
 
 
