@@ -38,12 +38,12 @@
   <!-- 页面宽度小于800px -->
   <div class="post-changearea">
     {% if page.next.url %}
-      <a href="{{ page.next.url }}" class="leftchange" style="border-right: 1px solid #9A85FF;border-bottom: 2px solid #9A85FF;"><span>Next<br><br>{{ page.next.title }}</span></a>
+      <a href="{{ page.next.url }}" class="leftchange" style="border-right: 1px solid #9A85FF;border-bottom: 2px solid #9A85FF;"><span>Next<br><br>{{ page.next.title }}</span><</a>
     {% else %}
       <a href="javascript:;" class="leftchange" style="border-right: 1px solid #9A85FF;border-bottom: 2px solid #9A85FF;"><span><br>No articles there</span></a>
     {% endif %}
     {% if page.previous.url %}
-      <a href="{{ page.previous.url }}" class="rightchange" style="border-left: 1px solid #9A85FF;border-bottom: 2px solid #9A85FF;"><span>Previous<br><br>{{ page.previous.title }}</span></a>
+      <a href="{{ page.previous.url }}" class="rightchange" style="border-left: 1px solid #9A85FF;border-bottom: 2px solid #9A85FF;"><span>Previous<br><br>{{ page.previous.title }}</span><</a>
     {% else %}
       <a href="javascript:;" class="rightchange" style="border-left: 1px solid #9A85FF;border-bottom: 2px solid #9A85FF;"><span><br>No articles there</span></a>
     {% endif %}
@@ -54,10 +54,10 @@
   <!-- 页面宽度大于800px -->
   <div class="left-area">
     {% if page.next.url %}
-      <a href="{{ page.next.url }}" class="btn bounceInLeft animated" onmouseover="showLeft();this.style.color='{{ page.color }}';" onmouseout="goneLeft();this.style.color='rgba(0,0,0,.2)';"></a>
+      <a href="{{ page.next.url }}" class="btn bounceInLeft animated" onmouseover="showLeft();this.style.color='{{ page.color }}';" onmouseout="goneLeft();this.style.color='rgba(0,0,0,.2)';"><</a>
       <div id="left-tab" style="display:none;"><span class="left-san"></span><span class="left-main" style="color:{{ page.color }};"><sapn class="main">{{ page.next.title }}</sapn></span></div>
     {% else %}
-      <a href="javascript:;" class="btn bounceInLeft animated" onmouseover="showLeft();this.style.color='{{ page.color }}';" onmouseout="goneLeft();this.style.color='rgba(0,0,0,.2)';"></a>
+      <a href="javascript:;" class="btn bounceInLeft animated" onmouseover="showLeft();this.style.color='{{ page.color }}';" onmouseout="goneLeft();this.style.color='rgba(0,0,0,.2)';"><</a>
       <div id="left-tab" style="display:none;"><span class="left-san"></span><span class="left-main" style="color:{{ page.color }};"><sapn class="main">No articles there</sapn></span></div>
     {% endif %}
   </div>
