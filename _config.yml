@@ -7,8 +7,8 @@ url: 'https://sylhare.github.io' # your host
 # Navigation bar
 nav:
   blog: '/'
-  tags: '/tags.html'
-  about: '/about.html'
+  tags: '/pages/tags.html'
+  about: '/pages/about.html'
 
 # Personalisation
 author: true

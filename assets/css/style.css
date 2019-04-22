@@ -29,6 +29,14 @@ a{
     height: 100%;
     margin: 0 auto;
 }
+
+.white .logo a {
+    color: white;
+}
+.white .top-nav ul li a {
+    color: white;
+}
+
 .logo{
     height: 100%;
     width: auto;
