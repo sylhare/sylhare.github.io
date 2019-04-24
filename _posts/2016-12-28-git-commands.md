@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Git commands
+color: rgb(255,210,32)
 tags: [git]
 ---
 
