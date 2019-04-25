@@ -32,11 +32,20 @@
   {% endif %}
 
   <!-- 文章内容 -->
+    <div class="page-content">
   {{ page.content }}
+        </div>
   <!-- 引入share模块 -->
   {% include share.html %}
 </div>
-
+    
+    
+<style>
+    .page-content a { 
+        color: {{ page.color }} !important;
+    }    
+</style> 
+    
 <!-- 底部锚点 -->
 <a id="htmldown" name="htmldown"></a>
 <!-- 引入评论模块 -->
@@ -66,6 +75,6 @@
         document.body.scrollTop = 0;  //非ie
     }
 </script>
-<script src="/assets/js/main.js"></script>
+<script src="/assets/js/main.js"></script>   
 </body>
 </html>
