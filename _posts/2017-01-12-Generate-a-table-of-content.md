@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Generate a table of content
-color: rgb(255,90,90)
+color: rgb(187, 10, 30)
 tags: [jekyll]
 ---
 

@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Generate a table of content
+title: Publish a gem
 color: rgb(187, 10, 30)
 tags: [ruby]
 ---
