@@ -14,13 +14,13 @@ tags: [ctf]
 
 Can you decrypt the message on that picture?
 
-![challenge](_assets/img/message.png)
+![challenge](assets/img/message.png)
 
 ## Write-up
 
 For this challenge, you had to download the font displayed in the image and decrypt the message. Here is a table for the translation
 
-![decrypt](_assets/img/decrypt.png)
+![decrypt](assets/img/decrypt.png)
 
 And here is the message:
 
