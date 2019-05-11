@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Publish a gem
-color: #E08119
+title: Parametrized java function
+color: rgb(224, 146, 25)
 tags: [java]
 ---
 

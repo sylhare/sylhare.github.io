@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Publish a pyhton package
-color: #00539C
+color: rgb(0,83,156)
 tags: [python]
 ---
 

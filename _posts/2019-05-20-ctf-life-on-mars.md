@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Git commands
-color: #2A293E
+title: NSEC2018 - Life on Mars
+color: rgb(42,41,62)
 tags: [ctf]
 ---
 
