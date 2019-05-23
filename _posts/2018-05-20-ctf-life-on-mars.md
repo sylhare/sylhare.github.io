@@ -5,14 +5,9 @@ color: rgb(42,41,62)
 tags: [ctf]
 ---
 
-# NSEC 2018 : Life on Mars?
-
-**Category:** forensic
-**Points:** 3
-**Solves:**
-**Description:**
-
-Can you decrypt the message on that picture?
+- **Category:** forensic
+- **Points:** 3
+- **Description:** Can you decrypt the message on that picture?
 
 ![challenge]({{ "/assets/img/message.png" | relative_url }})
 
