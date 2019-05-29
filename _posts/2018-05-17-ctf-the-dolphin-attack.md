@@ -56,7 +56,7 @@ If you play the audio you should hear:
 
 Which bring you to this image where the flag is (The see weed brownies):
 
-![image]({{"assets/img/dolphin.png" | relative_url }})
+![image]({{"assets/img/dolphin.jpg" | relative_url }})
 
 
 [4]: https://forum.audacityteam.org/viewtopic.php?t=95331      
