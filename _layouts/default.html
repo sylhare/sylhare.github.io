@@ -1,42 +1,11 @@
-<!-- 首页及其他页面的布局-Layout -->
 <!DOCTYPE html>
-<html>
-<head>
-<!-- 引入head标签 -->
-{% include head.html %}
-</head>
-<body>
-<header id="index-header">
-    {% include header.html %}
-</header>
-
-{% include boot.html %}
-
-<!-- 页面主体 -->
-{{ content }}
-
-{% include footer.html %}
-
-<!-- 引用wow.js的动画效果 -->
-<script src="/assets/js/wow.js"></script>
-<script>
-    var wow = new WOW({
-        boxClass: 'wow',
-        animateClass: 'animated',
-        // offset: 5,
-        mobile: true,
-        live: true
-    });
-    wow.init();
-</script>
-<!-- 页面刷新回到顶部 -->
-<script>
-    window.onbeforeunload = function(){
-        //刷新后页面自动回到顶部
-        document.documentElement.scrollTop = 0;  //ie下
-        document.body.scrollTop = 0;  //非ie
-    }
-</script>
-
-</body>
+<html lang="en">
+  {% include head.html %}
+  <body>
+    {% include navbar.html %}
+    <div class="content">
+      {{ content }}
+    </div>
+    {% include footer.html %}
+  </body>
 </html>
