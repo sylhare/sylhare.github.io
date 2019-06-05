@@ -25,6 +25,7 @@ It would take insane people during an insane amount of time to get it manually, 
 
 Looking at the type of image we'd get it looked like some kind of machine learning challenge,
 with images of dog looking like muffin or donuts:
+
 ![vision]({{"assets/img/vision-dog.png" | relative_url }}) ![vision]({{"assets/img/vision-muffin.png" | relative_url }})
 
 However after trying some, it feels like some images come back very often meaning there must not be more than 20 to 50 images total.
