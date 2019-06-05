@@ -35,6 +35,10 @@
         @extend .header-txt-shadow;
     }
 
+    h1 {
+        font-family: $font-family-logo;
+    }
+
     p:last-child {
         margin-bottom: 0;
     }

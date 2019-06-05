@@ -8,13 +8,13 @@ description: "Well, here it is"
 theme_settings:
   # Meta
   title: "Sylhare's blog"
-  avatar: assets/img/triangle.svg
+  avatar: assets/img/triangle.png
   color_image: /assets/img/lineart.png # In post when you set color
   favicon: assets/favicon.ico
 
   # Header and footer text
-  header_text: Change header text in <code>_config.yml</code>
-  header_feature_image: assets/img/pexels/triangular.webp
+  header_text: Well here it is.
+  header_feature_image: assets/img/pexels/triangular.jpeg
   footer_text: >
     Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
