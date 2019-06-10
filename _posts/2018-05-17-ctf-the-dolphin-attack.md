@@ -24,12 +24,12 @@ If you record a phrase, and shift it above 20 kHz, then play it back, you can’
 
 ## The challenge
 
-On one of the challenge, you get access to this audio:
+In one of the challenges, you get access to this audio:
 
 <audio controls src="{{"/assets/other/dolphin.wav" | relative_url}}">
 <p>Your browser doesn't support HTML5 audio. Here is a <a href="{{"/assets/other/dolphin.wav" | relative_url}}">link to the audio</a> instead.</p></audio>
 
-Thanksfully we had heard about the `dolphin attack` vector (and the obvious name of the challenge),
+Thankfully we had heard about the `dolphin attack` vector (and the obvious name of the challenge),
  we decided to find out if there was any hidden message in the audio.
 
 The Audio opened in audacity reveals nothing on first hand:
@@ -40,7 +40,7 @@ Unfortunately we did not succeed in attacking ourselves (I guess Apple had patch
 So after some [looking around](https://forum.audacityteam.org/viewtopic.php?t=95331), we found how to get the message by demodulating the signal 
 in amplitude using a nyquist prompt in Audacity:
 
-```ny
+```bash
 ;version 4
     (setf cf 37000) ; the carrier frequency
     (let ((demod (mult *track* (hzosc cf))))
