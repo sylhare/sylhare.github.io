@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Publish a gem
+title: Publish a Ruby Gem
 color: rgb(187, 10, 30)
 tags: [ruby]
 ---
