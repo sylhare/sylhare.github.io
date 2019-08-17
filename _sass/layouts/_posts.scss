@@ -1,4 +1,3 @@
-article,
 .comments {
     @extend %padding-regular;
     border-bottom: 1px solid $border-color;
@@ -7,6 +6,7 @@ article,
 }
 
 article {
+    @extend .comments;
     header {
         margin-bottom: 6%;
         text-align: center;
@@ -49,7 +49,8 @@ header {
 
 /* --- Post info --- */
 .post-info {
-    /* For border in author
+    /*
+    // For border around author's icon
     border: 1px solid $border-color;
     padding-left: 0.5em;
     */
@@ -103,12 +104,12 @@ header {
 
     @media screen and (min-width: $break) {
         background-size: 120% auto;
-    } 
-    
+    }
+
     @media screen and (max-width: $break) {
         background-size: 200% auto;
-    } 
-    
+    }
+
     @media screen and (max-width: $sm-break) {
         background-size: 400% auto;
     }
