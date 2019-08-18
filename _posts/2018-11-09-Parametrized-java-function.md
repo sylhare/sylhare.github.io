@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Parametrized java function
-color: rgb(224, 146, 25)
+color: rgb(249, 103, 20)
 tags: [java]
 ---
 

@@ -12,7 +12,7 @@ tags: [ssh]
 You can check out [Github documentation](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for that.
 Creating a new ssh key with `ssh-keygen` you need to enter a passphrase if you went your ssh key to be encrypted:
 
-```
+```bash
 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
@@ -22,7 +22,7 @@ A pair of ssh keys will be created in `~/.ssh/`:
   
 If you get an error like that:
 
-```bash
+```
 Permissions 0777 for '/Users/username/.ssh/id_rsa' are too open.
 It is recommended that your private key files are NOT accessible by others.
 This private key will be ignored.
@@ -69,7 +69,7 @@ The `my _key.pem` and `my_key.pub` are a matching public and private key pair.
 
 You can get this message if for example someone is messing with the DNS or the IP of the site you want to access has changed.
 
-```bash
+```
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 @       WARNING: POSSIBLE DNS SPOOFING DETECTED!          @
 @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
