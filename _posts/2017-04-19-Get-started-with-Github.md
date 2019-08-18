@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Get started with Github
-color: rgb(216,174,71)
+color: rgb(107,91,149)
 tags: [git]
 ---
 
