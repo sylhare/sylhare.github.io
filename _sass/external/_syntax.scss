@@ -25,7 +25,7 @@ code.highlighter-rouge {
     padding: 0.2em 0.4em;
     font-size: $font-size-code;
     background-color: transparentize($base00, 0.85);
-    color: rgb(36, 41, 46);
+    color: $base02;
     border-radius: 2px;
     font-family: $monospace;
 }
@@ -64,18 +64,18 @@ code.highlighter-rouge {
 .highlight .hll{ background-color:$base06}
 
 .highlight{ 
- .c{ /* Comment */ color:$base04}
- .err{ /* Error */ color:$base08}
+ .c{ /* Comment */ color:$base03}
+ .err{ /* Error */ color:$base0f}
  .k{ /* Keyword */ color:$base0e}
  .l{ /* Literal */ color:$base09}
  .n{ /* Name */ color:$base05}
- .o{ /* Operator */ color:$base0c}
+ .o{ /* Operator */ color:$base06}
  .p{ /* Punctuation */ color:$base05}
- .cm{ /* Comment.Multiline */ color:$base04}
- .cp{ /* Comment.Preproc */ color:$base04}
- .c1{ /* Comment.Single */ color:$base04}
- .cs{ /* Comment.Special */ color:$base04}
- .gd{ /* Generic.Deleted */ color:$base08}
+ .cm{ /* Comment.Multiline */ color:$base03}
+ .cp{ /* Comment.Preproc */ color:$base03}
+ .c1{ /* Comment.Single */ color:$base03}
+ .cs{ /* Comment.Special */ color:$base03}
+ .gd{ /* Generic.Deleted */ color:$base0f}
  .ge{ /* Generic.Emph */ font-style:italic}
  .gh{ /* Generic.Heading */ color:$base05;  font-weight:bold}
  .gi{ /* Generic.Inserted */ color:$base0b}
@@ -84,7 +84,7 @@ code.highlighter-rouge {
  .gu{ /* Generic.Subheading */ color:$base0c;  font-weight:bold}
  .kc{ /* Keyword.Constant */ color:$base0e}
  .kd{ /* Keyword.Declaration */ color:$base0e}
- .kn{ /* Keyword.Namespace */ color:$base0c}
+ .kn{ /* Keyword.Namespace */ color:$base0e}
  .kp{ /* Keyword.Pseudo */ color:$base0e}
  .kr{ /* Keyword.Reserved */ color:$base0e}
  .kt{ /* Keyword.Type */ color:$base0a}
@@ -92,7 +92,7 @@ code.highlighter-rouge {
  .m{ /* Literal.Number */ color:$base09}
  .s{ /* Literal.String */ color:$base0b}
  .na{ /* Name.Attribute */ color:$base0d}
- .nb{ /* Name.Builtin */ color:$base05}
+ .nb{ /* Name.Builtin */ color:$base0c}
  .nc{ /* Name.Class */ color:$base0a}
  .no{ /* Name.Constant */ color:$base08}
  .nd{ /* Name.Decorator */ color:$base0c}
@@ -105,7 +105,7 @@ code.highlighter-rouge {
  .py{ /* Name.Property */ color:$base05}
  .nt{ /* Name.Tag */ color:$base0c}
  .nv{ /* Name.Variable */ color:$base08}
- .ow{ /* Operator.Word */ color:$base0c}
+ .ow{ /* Operator.Word */ color:$base0e}
  .w{ /* Text.Whitespace */ color:$base05}
  .mf{ /* Literal.Number.Float */ color:$base09}
  .mh{ /* Literal.Number.Hex */ color:$base09}
@@ -122,7 +122,7 @@ code.highlighter-rouge {
  .sr{ /* Literal.String.Regex */ color:$base0b}
  .s1{ /* Literal.String.Single */ color:$base0b}
  .ss{ /* Literal.String.Symbol */ color:$base0b}
- .bp{ /* Name.Builtin.Pseudo */ color:$base05}
+ .bp{ /* Name.Builtin.Pseudo */ color:$base08}
  .vc{ /* Name.Variable.Class */ color:$base08}
  .vg{ /* Name.Variable.Global */ color:$base08}
  .vi{ /* Name.Variable.Instance */ color:$base08}
