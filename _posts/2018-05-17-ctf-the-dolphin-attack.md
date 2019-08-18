@@ -1,6 +1,6 @@
 ---
 layout: post
-title: NSEC2018 - Dolhpin attack
+title: NSEC2018 - Dolphin attack
 color: rgb(42,41,62)
 tags: [ctf]
 ---

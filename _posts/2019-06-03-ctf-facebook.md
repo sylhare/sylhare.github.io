@@ -7,7 +7,7 @@ tags: [ctf]
 
 ## Introduction
 The facebook [CTF](https://fbctf.com/) kick started on the 1st of June to the 3rd of July. It was apparently using [ctfd.io](https://ctfd.io/)
-which is a plateform to host ctfs.
+which is a platform to host ctfs.
 
 ![vision]({{"assets/img/fb-challenges.png" | relative_url }})
 
@@ -26,8 +26,8 @@ Once at `100` the points of the flag was not going lower. Hence the faster you f
 
 ![vision]({{"assets/img/fb-scoreboard.png" | relative_url }})
  
-The winner was `Visit g.co/ctf ` a bit of troll, because that team is Google CTF and the sole member was `g+` aka Google +.
-Promoting there ctf for the 22th of June.
+The winner was `Visit g.co/ctf `, the sole member was `g+` aka let me guess Google +. 
+They might have been trolling the event to promote their ctf on the 22th of June 2019.
 
 ## Challenges
 

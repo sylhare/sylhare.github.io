@@ -10,7 +10,7 @@ tags: [python]
 A Python package is simply an organized collection of python modules. A python module is simply a single python file.
 
 To create a python package, create a directory and then add a `__init__.py` file. 
-Creating a package with `__init__.py` is all about making it easier to develop large Python projects. It provides an easy way for you to group large folders of many seperate python scripts into a single importable module.
+Creating a package with `__init__.py` is all about making it easier to develop large Python projects. It provides an easy way for you to group large folders of many separate python scripts into a single importable module.
 
 
 ## Use PyPI to distribute your package

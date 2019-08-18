@@ -10,7 +10,7 @@ tags: [kubernetes]
 [Kubernetes](https://kubernetes.io/) is an opensource orchestrator allowing to automate the deployment, scaling and management of containerized applications.
 Also named k8s the 8 for the eight letters in "ubernete" plus "s".
 
-It was originally developped by Google in Go.
+It was originally developed by Google in Go.
 Kubernetes means "Helmsman" the guy who holds "Governor" in greek. Let's get sailing!
 
 ## Helm
@@ -44,7 +44,7 @@ It includes the services for **Docker** (container), **Kubelet** (management) an
 
 The kubelet is the primary “node agent” that runs on each node. The kubelet works in terms of a **PodSpec**. 
 A PodSpec is a YAML or JSON object that describes a pod.
-It then make sure that the pods descriped by the PodSpec are healthy. 
+It then make sure that the pods described by the PodSpec are healthy. 
 
 The Kubernetes network proxy or **kubeproxy** runs on each node, it is defined in the Cluster and tells how and through which ports the docker can in the pods can communicate. 
 
@@ -68,6 +68,6 @@ kubectl config view
 
 Mostly the kubernetes website.
 
-- [Kubetl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+- [Kubectl cheat sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
 - [Kubernetes Glossary](https://kubernetes.io/docs/reference/glossary/?fundamental=true)
 - [CloudOps](https://www.cloudops.com/)

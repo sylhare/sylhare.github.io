@@ -7,8 +7,8 @@ tags: [git]
 
 # Get started with Github
 
-The github site is really nice for easy commits, there are multiple tools provided to manage that on multiple plateform. ([Github Desktop](https://desktop.github.com/), [Kraken](https://support.gitkraken.com/how-to-install)).
-However I wanted to document and explore the command line way of commiting.
+The github site is really nice for easy commits, there are multiple tools provided to manage that on multiple platform. ([Github Desktop](https://desktop.github.com/), [Kraken](https://support.gitkraken.com/how-to-install)).
+However I wanted to document and explore the command line way of committing.
 
 ## Source
 
@@ -39,7 +39,7 @@ One-time configuration of the Git client. Replace what's in `" "` by your inform
 	git config --global user.email you@example.com
 ```
 
-All these informations will be store in the git config file:
+All these information will be store in the git config file:
 
 ```bash
 cat ~/.gitconfig
@@ -78,6 +78,6 @@ Then find your rsa key in the repository (by default, from the command prompt on
     cat ~/.ssh/id_rsa.pub
 ```
 
-Copy it in the right place on [Github]((https://github.com/settings/keys)) or [Gitlab]((https://gitlab.com/profile/keys)) or via commande line (for windows, on the git one, to copy something into the git bash on Windows use `insert`):
+Copy it in the right place on [Github]((https://github.com/settings/keys)) or [Gitlab]((https://gitlab.com/profile/keys)) or via command line (for windows, on the git one, to copy something into the git bash on Windows use `insert`):
 
 	ssh-rsa AAAAB3NzaC1yc2EAAAADAQEL17Ufacg8cDhlQMS5NhV8z3GHZdhCrZbl4gz you@example.com

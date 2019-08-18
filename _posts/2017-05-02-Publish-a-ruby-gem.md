@@ -9,7 +9,7 @@ Using my `type-on-strap` gem as an example
 
 ## Prepare the gemspec
 
-I make sure the gem englobes all the files that I want using this regex in my `gemspec`:
+I make sure the gem encompass all the files that I want using this regex in my `gemspec`:
 
 ```ruby
 spec.files         = Dir.glob("**/{*,.*}").select do |f|

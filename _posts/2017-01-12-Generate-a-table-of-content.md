@@ -21,7 +21,7 @@ You need to put this at the beginning of the page where you want the table of co
 {:toc}
 ```
 
-It will then render the markdown and html titles (lines that begins with `#` or using the `<h1></h1>` tages)
+It will then render the markdown and html titles (lines that begins with `#` or using the `<h1></h1>` tags)
 
 # Using toc.js
 
