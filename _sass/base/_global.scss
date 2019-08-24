@@ -13,6 +13,10 @@ figure {
     box-sizing: content-box;
 }
 
+pre {
+    overflow-x: scroll;
+}
+
 html {
     background: $background-color;
 }
@@ -45,8 +49,8 @@ h6 {
     a {
         color: $text-color;
     }
-    
-    
+
+
 }
 
 h1 {
@@ -63,6 +67,15 @@ h3 {
 
 h4 {
     font-size: 1.15em;
+}
+
+iframe,
+img,
+embed,
+object,
+video {
+    max-width: 100%;
+    padding: 0 10%;
 }
 
 /* ---- Responsive ---- */
@@ -84,6 +97,15 @@ h4 {
     p, li {
         font-size: 0.8em;
     }
+
+    iframe,
+    img,
+    embed,
+    object,
+    video {
+        max-width: 100%;
+        padding: 0 1%;
+    }
 }
 
 @media screen and (max-width: $sm-break) {
@@ -102,6 +124,10 @@ h4 {
     }
     p, li {
         font-size: 0.8em;
+    }
+
+    table {
+        overflow-x: scroll;
     }
 }
 
@@ -123,7 +149,6 @@ table {
     table-layout: fixed;
     width: 100%;
     word-wrap: break-word;
-    overflow-x: scroll;
     display: inline-block;
 }
 
@@ -192,15 +217,6 @@ hr {
 a {
     color: $link-color;
     text-decoration: none;
-}
-
-iframe,
-img,
-embed,
-object,
-video {
-    max-width: 100%;
-    padding: 0 10%;
 }
 
 img[align=left] {
