@@ -12,7 +12,8 @@ tags: [excel]
 To manage the named ranges, you can go in **Formulas** > **Name Manager**. You can also use defined range by their name in Excel formulas.
 
 ##### 1. Static
-To [create a named range](https://support.office.com/fr-fr/article/Cr%C3%A9er-une-liste-d%C3%A9roulante-7693307a-59ef-400a-b769-c5402dce407b) in excel, you can select a column of data then **righ click** then select **define name** the name will be the name of the range and how it will be referred to.
+To [create a named range](https://support.office.com/fr-fr/article/Cr%C3%A9er-une-liste-d%C3%A9roulante-7693307a-59ef-400a-b769-c5402dce407b) in excel, 
+you can select a column of data then **righ click** then select **define name** the name will be the name of the range and how it will be referred to.
 The **refers to** is the range itself and is autopopulated with the range of selected cells when clicking on **define name**
 
 ##### 2. Dynamic
@@ -38,7 +39,8 @@ Then you can add this formula in the cells next to `C4` to map the cell using wh
 ```
 
 - The `MATCH` function will match the `ROW` of the entered value (here `C4`) and the `List` value to get the right one.
-- the `ADDRESS` function will map the found value and its relative position. (Used with `+1` or `-1` in the `ROW, COLUMN` you can modify the address you get. 
+- the `ADDRESS` function will map the found value and its relative position. 
+(Used with `+1` or `-1` in the `ROW, COLUMN` you can modify the address you get. 
 - the `INDIRECT` function print the value of the input coordinates (the `"tab_name!"` where the value is and the address of the found value).
 
 ##### 2. Another Example
@@ -82,7 +84,8 @@ This formula starting at `F3`, with `F3` the **criteria matching** look if the *
 =IFERROR(INDEX($E$3:$E$22,MATCH(ROWS($G$3:G3),$G$3:$G$22,0)),"")
 ```
 
-With `G3` in the **Occurence count** column. It works with `MATCH` and `INDEX` looking for occurence. The `IFERROR` will show the corresponding value indexed, or nothing.
+With `G3` in the **Occurence count** column. It works with `MATCH` and `INDEX` looking for occurence. 
+The `IFERROR` will show the corresponding value indexed, or nothing.
 
 You can use this formula to create the dynamic range from the **found values** in `H3`:
 
@@ -108,8 +111,6 @@ Me.ComboBox1.DropDown
 End Sub
 ```
 
-This sub ComboBox1_change() overwrites the default attitude of the ComboBox object when changed.
+This sub `ComboBox1_change()` overwrites the default attitude of the ComboBox object when changed.
 
-You also need some lists for the comboBox to update automatically, one for the dropdown that will be the results of the matched value of the occurence count.
-
-## Other tips
+You also need some lists for the comboBox to update automatically, one for the dropdown that will be the results of the matched value of the occurrence count.
