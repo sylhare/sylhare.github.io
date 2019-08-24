@@ -17,9 +17,11 @@
             </h1>
             {% include post_info.html post=post %}
           </header>
-          <div class="excerpt">
-              {{ post.excerpt | strip_html | escape }}
-          </div>
+          {% if site.theme_settings.excerpt %}
+              <div class="excerpt">
+                  {{ post.excerpt | strip_html | escape }}
+              </div>
+          {% endif %}
       </span>
     </div>
     {% endfor %}
