@@ -6,7 +6,8 @@ tags: [java]
 ---
 
 
-I wrote a post on [stackoverflow](https://stackoverflow.com/questions/2186931/java-pass-method-as-parameter/53219950#53219950) on how to use `java.util.function.Function` for simple method as parameter function. 
+I wrote a post on [stackoverflow](https://stackoverflow.com/questions/2186931/java-pass-method-as-parameter/53219950#53219950) 
+on how to use `java.util.function.Function` for simple method as parameter function. 
 
 Here is a simple example:
 
@@ -15,11 +16,13 @@ import java.util.function.Function;
 
 public class Foo {
 
+  /** Foo constructor **/
   private Foo(String parameter) {
     System.out.println("I'm a Foo " + parameter);
   }
 
-  public static Foo method(final String parameter) {
+  /** Static method `bar` from Foo class **/
+  public static Foo bar(final String parameter) {
     return new Foo(parameter);
   }
 
@@ -28,17 +31,18 @@ public class Foo {
   }
 
   public static void main(String[] args) {
-    parametrisedMethod(Foo::method).apply("from a method");
+    parametrisedMethod(Foo::bar).apply("from a method");
   }
 }
 ```
 
-Basically you have a `Foo` object with a default constructor. A `method` that will be called as a parameter from the `parametrisedMethod` which is of type `Function<String, Foo>`.
+Basically you have a `Foo` object with a default constructor. 
+A method `bar` that will be called as a parameter from the `parametrisedMethod` which is of type `Function<String, Foo>`.
 
 - `Function<String, Foo>` means that the function takes a `String` as parameter and return a `Foo`.
-- The `Foo::Method` correspond to a lambda like `x -> Foo.method(x);`
-- `parametrisedMethod(Foo::method)` could be seen as `x -> parametrisedMethod(Foo.method(x))`
-- The `.apply("from a method")` is basically to do `parametrisedMethod(Foo.method("from a method"))`
+- The `Foo::bar` correspond to a lambda like `x -> Foo.bar(x);`
+- `parametrisedMethod(Foo::bar)` could be seen as `x -> parametrisedMethod(Foo.bar(x))`
+- The `.apply("from a method")` is basically to do `parametrisedMethod(Foo.bar("from a method"))`
 
 Which will then return in the output:
 
@@ -46,4 +50,5 @@ Which will then return in the output:
 >> I'm a Foo from a method
 ```
 
-The example should be running as is, you can then try more complicated stuff from the above answers with different classes and interfaces.
+The example should be running as is, 
+you can then try more complicated stuff from the above answers with different classes and interfaces.
