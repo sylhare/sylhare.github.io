@@ -19,7 +19,7 @@ theme_settings:
     Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Blog
-  excerpt: false
+  excerpt: true
 
 
   # Icons
