@@ -19,7 +19,7 @@ theme_settings:
     Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a>
 
   # Blog
-  excerpt: true
+  excerpt: truncate
 
 
   # Icons
@@ -32,14 +32,13 @@ theme_settings:
   flickr:
   gitlab:
   github: "sylhare"
-  google_plus:
   instagram:
   keybase:
   linkedin:  # Full URL
   pinterest:
   reddit:
   soundcloud:
-  stack_exchange:  # Full URL
+  stack_exchange: "https://stackoverflow.com/users/7747942/sylhare?tab=profile" # Full URL
   steam:
   tumblr:
   twitter: # "twitter username"

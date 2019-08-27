@@ -19,7 +19,11 @@
           </header>
           {% if site.theme_settings.excerpt %}
               <div class="excerpt">
-                  {{ post.content | strip_html | truncate: '250' | escape }}
+                  {% if site.theme_settings.excerpt == "truncate" %}
+                     {{ post.content | strip_html | truncate: '250' | escape }}
+                  {% else %}
+                     {{ post.excerpt | strip_html | escape }}
+                  {% endif %}
               </div>
           {% endif %}
       </span>
