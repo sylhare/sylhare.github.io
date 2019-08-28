@@ -38,7 +38,7 @@ theme_settings:
   pinterest:
   reddit:
   soundcloud:
-  stack_exchange: "https://stackoverflow.com/users/7747942/sylhare?tab=profile" # Full URL
+  stack_overflow: "https://stackoverflow.com/users/7747942/sylhare?tab=profile" # Full URL
   steam:
   tumblr:
   twitter: # "twitter username"
