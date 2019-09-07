@@ -73,11 +73,7 @@ The `entry_points` is another special attribute which is what the program will d
 Here is an example from the command line:
 
 ```python
-entry_points={
-          'console_scripts': [
-              'package_hello = package.module:hello_world'
-          ]
-      }
+entry_points={'console_scripts': ['package_hello = package.module:hello_world']}
 ```
 
 What it does is once you've installed the `package_name`, then when you call it in bash using the command `package_hello`:
@@ -111,7 +107,7 @@ pandoc --from=markdown --to=rst --output=README.rst docs/README.md
 python setup.py sdist
 ```
     
-- Download and install `twine` which will allow you to safely upload your project
+- Download and install `twine` which will allow you to safely upload your project.
 
 ```bash
 pip install twine
