@@ -20,7 +20,7 @@ The **refers to** is the range itself and is autopopulated with the range of sel
 To get a [dynamic named range](https://trumpexcel.com/named-ranges-in-excel/) you will need to replace the **refers to** of the named range by this kind of formula (for example if values are in the A column):
 
 ```coffee
-	=$A$2:INDEX($A$2:$A$100;COUNTIF($A$2:$A$100;"<>"&""))
+=$A$2:INDEX($A$2:$A$100;COUNTIF($A$2:$A$100;"<>"&""))
 ```
 This formula will start looking at value from `A2` to the index (the coordinates) of the last non empty cell (up to 100 in here).
 It will only refers to the populated cells in the dynamic named range.
