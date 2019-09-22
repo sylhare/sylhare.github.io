@@ -27,6 +27,17 @@ gem build type-on-strap.gemspec
 gem unpack type-on-strap-x.x.gem 
 ```
 
+## Run the gem locally
+
+Here I had a jekyll gem so I updated my Gemfile with the current gem version I wanted to test:
+
+```ruby
+source "https://rubygems.org"
+gem "type-on-strap", "1.x.x", path: "."
+```
+
+And the did the usual `bundle exec jekyll serve`.
+
 ## Deploy the gem
 
 No I want to push the gem online and test it from there. 
