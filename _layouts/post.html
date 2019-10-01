@@ -1,11 +1,13 @@
 ---
 layout: default
 ---
+{% include share_thumbnail.html page=page %}
+
 <article {% if page.feature-img or page.color %}class="feature-image"{% endif %}>
   <header id="main" style="">
     {% unless page.hide_title %}
       <h1 id="{{ page.title | cgi_escape }}" class="title">{{ page.title }}</h1>
-      {% include post_info.html post=page %}
+      {% include post_info.html author=page.author date=page.date %}
     {% endunless %}
   </header>
   <section class="post-content">
@@ -28,14 +30,14 @@ layout: default
 </article>
 
 <!-- Disqus -->
-{% if site.theme_settings.disqus_shortname %}
+{% if site.disqus_shortname or site.theme_settings.disqus_shortname %}
 <div class="comments">
   {% include disqus.html %}
 </div>
 {% endif %}
 
 <!-- Post navigation -->
-{% if site.theme_settings.post_navigation %}
+{% if site.post_navigation  or site.theme_settings.post_navigation %}
   {% include post_nav.html %}
 {% endif %}
 
@@ -49,9 +51,9 @@ layout: default
     header#main { background-color: {{ page.color }} !important; }
   {% endif %}
 
-  {% if page.feature-img %}{% assign image_url = page.feature-img %}{% elsif page.color %}{% assign image_url = site.theme_settings.color_image %}{% endif %}
   header#main {
     background-repeat:no-repeat;
-    background-image: url('{{ image_url | relative_url }}');
+    {% if page.feature-img %} background-image: url('{{ page.feature-img | relative_url }}');
+    {% elsif page.color %}background-image: url('{{ site.color_image | relative_url }}');  {% endif %}
   }
 </style>
