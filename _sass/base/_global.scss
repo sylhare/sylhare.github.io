@@ -98,12 +98,17 @@ img[align=right] {
   h3 {
     font-size: 1em;
   }
-  h4,
-  .meta {
+  h4, tr, th, .meta {
     font-size: 0.9em;
   }
-  p, li {
+  p, li, td {
     font-size: 0.8em;
+  }
+  li li{
+    font-size: 0.95em;
+  }
+  li li *{
+    font-size: 1em;
   }
 
   iframe,
@@ -132,6 +137,12 @@ img[align=right] {
   }
   p, li {
     font-size: 0.8em;
+  }
+  li li{
+    font-size: 0.95em;
+  }
+  li li *{
+    font-size: 1em;
   }
 
   table {
