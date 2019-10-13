@@ -17,6 +17,7 @@ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 ```
 
 A pair of ssh keys will be created in `~/.ssh/`:
+
   - Public one: `id_rsa.pub` that you can share with others
   - Private one: `id_rsa` that you need to keep private
   

@@ -12,20 +12,25 @@ Intended for Centos or Redhat.
 ## Linux Users and groups
 
 A user is a number uid. Information on the user is stored in `/etc/passwd`
+
 ```bash
 #to add a user
 useradd <username>
 ```
+
 Use `id` to identify the user your are using right now.
 
-A group is a number gid by default the group name is the user's name, the gid will be the next available. Information for groups are stored in `/etc/group` 
+A group is a number gid by default the group name is the user's name, the gid will be the next available. 
+Information for groups are stored in `/etc/group` 
+
 ```bash
 #to add a group
 groupadd <groupname>
 ```
 
-`uid` and `gid` are two completely different number that both starts at `1000` (up to `2^16` for backward compatibility) and get incremented for each creation of group and user. They may not be in sync.
-Root's uid is `0`. If you need a uid for a system you would create it between `201` to `999`. From `1` to `200` it is assigned by the operating system by default.
+`uid` and `gid` are two completely different number that both starts at `1000` (up to `2^16` for backward compatibility) and get incremented for each creation of group and user. 
+They may not be in sync. Root's uid is `0`. 
+If you need a uid for a system you would create it between `201` to `999`. From `1` to `200` it is assigned by the operating system by default.
 
 ## Password
 
@@ -37,13 +42,13 @@ Type `passwd` to change the password.
 There are three pieces of information stored in a modern password hash:
 `$1$gCjLa2/Z$6Pu0EK0AzfCjxjv2hoLOB/`
 
-1. `1`: The hashing algorithm. The number `1` indicates an MD5 hash. The number `6` appears when
+ 1. `1`: The hashing algorithm. The number `1` indicates an MD5 hash. The number `6` appears when
 a SHA-512 hash is used.
-2. `gCjLa2/Z`: The salt used to encrypt the hash. This is originally chosen at random. The
+ 2. `gCjLa2/Z`: The salt used to encrypt the hash. This is originally chosen at random. The
 salt and the unencrypted password are combined and encrypted to create the encrypted
 password hash. The use of a salt prevents two users with the same password from having
 identical entries in the `/etc/shadow` file.
-3. `6Pu0EK0AzfCjxjv2hoLOB/`: The encrypted hash
+ 3. `6Pu0EK0AzfCjxjv2hoLOB/`: The encrypted hash
 
 ### Password aging
 
@@ -74,6 +79,7 @@ The rights can be seen using `ls -l`:
  ```
  
 Here we have the first:
+
  - `-` because it is a file (`d` for a directory).
  - The first set `rwx` of rights for the user
  - The second set `rw-` of rights for the group

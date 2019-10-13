@@ -2,7 +2,7 @@
 layout: post
 title: Linux Shell editors
 color: rgb(242,85,44)
-tags: [linux]
+tags: linux
 ---
 
 # Shell Editors
@@ -16,19 +16,19 @@ Launch the editor
 
 	nano 
 
-- `[ctrl] + [x]` to exit (it will ask to save before quiting)
-- `[ctrl] + [r]` to open a file, write down the path 
-- `[ctrl] + [w]` will search for a word 
-- `[ctrl] + [k]` will copy the line
-- `[ctrl] + [u]` will paste the line
-- `[alt] + [/]` to go at the end of the file
-- `[alt] + [\]` to go at the beginning of the file
-- `[ctrl] + [o]` to write or save in a new or old file 
+- <kbd>ctrl</kbd> + <kbd>x</kbd> to exit (it will ask to save before quiting)
+- <kbd>ctrl</kbd> + <kbd>r</kbd> to open a file, write down the path 
+- <kbd>ctrl</kbd> + <kbd>w</kbd> will search for a word 
+- <kbd>ctrl</kbd> + <kbd>k</kbd> will copy the line
+- <kbd>ctrl</kbd> + <kbd>u</kbd> will paste the line
+- <kbd>alt</kbd> + <kbd>/</kbd> to go at the end of the file
+- <kbd>alt</kbd> + <kbd>\</kbd> to go at the beginning of the file
+- <kbd>ctrl</kbd> + <kbd>o</kbd> to write or save in a new or old file 
 
 
 
 ## VIM
-VIM is a shell editor similar to Emacs that can be used in command line. It has multiple features and can be very powerfull for text editing. There are more [here](http://www.radford.edu/~mhtay/CPSC120/VIM_Editor_Commands.htm) for the commands.
+VIM is a shell editor similar to Emacs that can be used in command line. It has multiple features and can be very powerfull for text editing. There are more <kbd>here</kbd>(http://www.radford.edu/~mhtay/CPSC120/VIM_Editor_Commands.htm) for the commands.
 
 To launch the command line editing tool
 
@@ -41,8 +41,8 @@ To open filename in this depository
 
 #### insert mode
 
-- `[Insert]` press insert key on the key board to start editing the file
-- `[Esc.]` pres the esc. key to quit the insert mode
+- <kbd>Insert</kbd> press insert key on the key board to start editing the file
+- <kbd>Esc.</kbd> pres the esc. key to quit the insert mode
 - `:help` for Help
 - `:%s/word/test/i` to replace `word` by `test`, `i` means that it is not case sensitive
 - `:w /home/usr/filename` to write with `w` the newly created `filename` in `/home/usr`
@@ -52,9 +52,9 @@ To open filename in this depository
 
 #### command mode
 
-- `[d] [d]` delete the selected line
-- `[y] [y]` Copy the selected line
-- `[p]` past the line where the cursor is or at the end by default
+- <kbd>d</kbd> <kbd>d</kbd> delete the selected line
+- <kbd>y</kbd> <kbd>y</kbd> Copy the selected line
+- <kbd>p</kbd> past the line where the cursor is or at the end by default
 
 
 ## Emacs
@@ -64,9 +64,9 @@ Install emacs text file editor, because it's not by default on all distribution
 
 	sudo apt-get install emacs 
 
-- `[ctrl] + [x]` then `[1]` enlarges the editing window
-- `[ctrl] + [x]` then `[ctrl] + [w]` allows to write the content in a different file
-- `[ctrl] + [k]` then `[y]` allows to cut and past the line
+- <kbd>ctrl</kbd> + <kbd>x</kbd> then <kbd>1</kbd> enlarges the editing window
+- <kbd>ctrl</kbd> + <kbd>x</kbd> then <kbd>ctrl</kbd> + <kbd>w</kbd> allows to write the content in a different file
+- <kbd>ctrl</kbd> + <kbd>k</kbd> then <kbd>y</kbd> allows to cut and past the line
 
  
 ## Stream Editor - sed

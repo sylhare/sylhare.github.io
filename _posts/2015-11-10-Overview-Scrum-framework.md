@@ -7,14 +7,14 @@ tags: [agile]
 
 ## SCRUM framework
 
-Started in 1995, book released in 2001. Latest version was released in 2011.</br>
+Started in 1995, book released in 2001. Latest version was released in 2011.
 Author: Ken Schawner and Jeff Sutherland  
 
 ### Artifact
 
-- **Backlog** (prioritized task that adds the most priority) | Product Owner
-- **Sprint** (time box to do items from the backlog) | TEAM
-- **Increment** (what you deliver) | TEAM
+- **Backlog** (prioritized task that adds the most priority) - Product Owner
+- **Sprint** (time box to do items from the backlog) - TEAM
+- **Increment** (what you deliver) - TEAM
 
 ### Roles
 
@@ -59,7 +59,7 @@ Team (cross functional, self organizing group, have necessary skills to deliver 
 	- *What will you do today?*
 	- *Is there something blocking you? Need help?*
 
-Sync the team, the team is owner of this planning. Sprint tasks should look like a wave (From  the left (todo) for the lesser priority tasks to the right (done) for top priotity tasks).
+Sync the team, the team is owner of this planning. Sprint tasks should look like a wave (From  the left (todo) for the lesser priority tasks to the right (done) for top priority tasks).
 
 if a task in the sprint takes more time than estimated, you have to decide if you keep it or if you move it to the next sprint depending if you are on target or not. 
 
@@ -69,14 +69,14 @@ You make commitment to the team, problem solving and talk is done after the dail
 
 - **Time:** 1-4Hrs
 - **Players:** PO, SM, TEAM
-- **Product focused**, occurs at the end of the sprint demonstrates sprint increment, get feedbacks and create new tasks, change prioritize, have new ideas, improve the product to please the product owner 
+- **Product focused**, occurs at the end of the sprint demonstrates sprint increment, get feedback and create new tasks, change prioritize, have new ideas, improve the product to please the product owner 
 - **Key elements**:
 	- Celebrate the work that was done
 	- Share the knowledge to the team / stakeholders
 	- Get Feedback on the product.
     - PO validates if the stories are accepted or not.
 	
-Team success or a team failure according to the "GOAL" of the sprint, requirements with acceptance criterias.
+Team success or a team failure according to the "GOAL" of the sprint, requirements with acceptance criteria.
 DEMO should not exceed a 2hours.
 
 
@@ -104,7 +104,7 @@ DEMO should not exceed a 2hours.
 
 
 #### Product Backlog Grooming
-*'NOT OFFICAL EVENT'*
+*NOT OFFICAL EVENT*
 
 - **Time:** max 10%
 - Make sure you do not run out of stuff to do, stories, tasks for the future in the middle of the sprint
@@ -125,13 +125,16 @@ It is recommended to implement early on metrics (choosen by the team) in order t
 - The WIP (work in progress), the amount of task currently in progress
 - The elapsed time of an issue (time between the creation and the completion)
 
-This information will help take decisions during the daily scrum on how the team is doing. It is also a key component during the retrospective where you can comment and take action:
-	- Find the root cause of a sudden drop in a metric
-	- Add a new metric to monitore a new aspect
-	- Remove old metric that are not relevant anymore 
+This information will help take decisions during the daily scrum on how the team is doing. 
+It is also a key component during the retrospective where you can comment and take action:
+
+- Find the root cause of a sudden drop in a metric
+- Add a new metric to monitore a new aspect
+- Remove old metric that are not relevant anymore 
 
 #### Burntdown
 
-Sprint Burntdown chart, how to evaluate the work that has been done (based on the story points) compared with the remaining amount of time. It is the most used metric for the SCRUM framework.
+Sprint Burntdown chart, how to evaluate the work that has been done (based on the story points) compared with the remaining amount of time. 
+It is the most used metric for the SCRUM framework.
 
 > "Information helps you make decision"

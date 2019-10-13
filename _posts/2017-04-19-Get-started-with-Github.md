@@ -61,7 +61,6 @@ Type on the command prompt `cmd.exe` (on Windows, not in the git one).
 You will be prompted for the following information. Press enter to accept the defaults. Defaults appear in parentheses.
 
 ```bash
-
     Generating public/private rsa key pair.
     Enter file in which to save the key (/Users/you/.ssh/id_rsa):
     Enter passphrase (empty for no passphrase):

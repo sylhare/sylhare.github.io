@@ -59,8 +59,8 @@ Here are a couple of nice third party script you can use to get some data out of
 
   - [gitfame](https://pypi.org/project/git-fame/): Pretty-print git repository collaborators sorted by contributions.
   
-    ```bash
-    pip install git-fame
-    git config --global alias.fame "!python -m gitfame"
-    git fame .
-    ```
+```bash
+pip install git-fame
+git config --global alias.fame "!python -m gitfame"
+git fame .
+```

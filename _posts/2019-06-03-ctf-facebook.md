@@ -12,6 +12,7 @@ which is a platform to host ctfs.
 ![vision]({{"assets/img/fb-challenges.png" | relative_url }})
 
 The challenges were separated into 5 categories:
+
  - reversing: Usually a `.tar` to download and exploit
  - pwnable: Some server your could `nc` or `ssh` in, with sometime provided the source code of the application
  - crypto: Different type of crypto challenges

@@ -32,6 +32,7 @@ User story are validated with acceptance test, test cases (+ non fonctional requ
 
 #### The 3C rule
 The 3C rule to create User stories.
+
 - Components 3C: 
 	- **C**ard
     - **C**onversation

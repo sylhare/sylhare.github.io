@@ -16,6 +16,7 @@ If you record a phrase, and shift it above 20 kHz, then play it back, you can’
  unfortunately, phone and computer microphones can. [from fraud watch international](https://fraudwatchinternational.com/expert-explanations/what-is-a-dolphin-attack/)
 
 “Dolphin Attacks” can be used to [from UW-Madison](https://it.wisc.edu/news/dolphin-attack-hacking-phones-via-ultrasound/):
+
   - Open malicious websites, which can launch a drive-by-download attack or exploit a device with 0-day vulnerabilities.
   - Spy on users by initiating outgoing video/phone calls, therefore getting access to video or sound of the devices surroundings.
   - Inject fake information by sending fake text messages and emails, online posts, calendar events, etc.
