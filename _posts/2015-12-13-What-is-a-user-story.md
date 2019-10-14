@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Estimation in Agile
+title: What is a user story
 color: rgb(42,140,152)
 tags: [agile]
 ---

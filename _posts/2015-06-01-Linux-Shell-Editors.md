@@ -28,7 +28,7 @@ Launch the editor
 
 
 ## VIM
-VIM is a shell editor similar to Emacs that can be used in command line. It has multiple features and can be very powerfull for text editing. There are more <kbd>here</kbd>(http://www.radford.edu/~mhtay/CPSC120/VIM_Editor_Commands.htm) for the commands.
+VIM is a shell editor similar to Emacs that can be used in command line. It has multiple features and can be very powerfull for text editing. There are more [here](http://www.radford.edu/~mhtay/CPSC120/VIM_Editor_Commands.htm) for the commands.
 
 To launch the command line editing tool
 
