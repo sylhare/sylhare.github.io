@@ -122,7 +122,7 @@ gradle run
 
 ### Make the fat Jar
 
-The fat jar task:
+The fat jar task (updated to work with Gradle `5.x`:
 
 ```kotlin
 val fatJar = task("fatJar", type = Jar::class) {
@@ -131,7 +131,7 @@ val fatJar = task("fatJar", type = Jar::class) {
         attributes["Main-Class"] = "hello.MainKt"
     }
     from(
-        configurations.runtime.map {
+        configurations["runtimeClasspath"].map {
             if (it.isDirectory) it else zipTree(it)
         }
     )
