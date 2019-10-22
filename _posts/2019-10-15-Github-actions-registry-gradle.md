@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Use Github to deploy and self host a package
-color: rgb(214,102,133)
+color: rgb(221,65,36)
 tags: [kotlin]
 ---
 
