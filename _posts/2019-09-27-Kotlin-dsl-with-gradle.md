@@ -81,7 +81,7 @@ Then add the task
 ```kotlin
 tasks.withType<JacocoReport> {
     reports {
-        xml.isEnabled = false
+        xml.isEnabled = true
         csv.isEnabled = false
         html.destination = file("${buildDir}/reports/jacoco")
     }
@@ -89,7 +89,7 @@ tasks.withType<JacocoReport> {
 ```
 
 
-
+You can now roll the test code coverage with jacoco using `gradle test jacocoTestReport`.
 
 ## Execute the project
 
