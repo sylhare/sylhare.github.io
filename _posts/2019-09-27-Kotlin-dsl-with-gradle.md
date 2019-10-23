@@ -68,6 +68,8 @@ dependencies {
 
 ### Jacoco
 
+#### Create code coverage task
+
 Code coverage with jacoco plugin
 
 ```kotlin
@@ -88,8 +90,26 @@ tasks.withType<JacocoReport> {
 }
 ```
 
-
 You can now roll the test code coverage with jacoco using `gradle test jacocoTestReport`.
+
+#### Ignore a class from coverage
+
+If you have a `main` class which can't be tested and you'd rather remove it from coverage, you would do it like:
+
+```kotlin
+tasks.withType<JacocoReport> {
+    doFirst {
+        classDirectories = fileTree("build/classes/kotlin/main").apply {
+            exclude("**/MainKt.class")
+        }
+    }
+    
+    // ... your other stuff
+    
+}
+```
+
+And `MainKt` is not considered for the coverage anymore!
 
 ## Execute the project
 
