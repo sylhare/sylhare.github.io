@@ -36,7 +36,7 @@ allprojects {
 }
 ```
 
-You want to specify the kotlin version and plugin you wish to use
+You want to specify the kotlin version and plugin you wish to use:
 
 ```kotlin
 plugins {
@@ -44,7 +44,7 @@ plugins {
 }
 ```
 
-And add the basic dependencies
+And add the basic dependencies:
 
 ```kotlin
 dependencies {
@@ -165,6 +165,16 @@ You can then run it using:
 ```bash
 java -jar hello-kotlin-far-1.0.jar
 ```
+
+### Make the wrapper
+
+For your project to work almost anywhere, you can use the wrapper:
+
+```
+gradle wrapper
+```
+
+Then you'll be able to use `./gradlew` instead of gradle and your project should run fine 👍
 
 ## Sources
 

@@ -120,6 +120,7 @@ jobs:
 With that you can build and test your project at each push.
 When you want to deploy, let's say anytime you create a new tag with the version, you can add another workflow `publish.yml`:
 
+{% raw %}
 ```yml
 name: Publish to Github Registry on Tag
 
@@ -143,11 +144,13 @@ jobs:
         GPR_API_KEY: ${{ secrets.GPR_API_KEY }}
       run: ./gradlew publish
 ```
+{% endraw %}
 
 Also Github generates automatically a token `GITHUB_TOKEN` that can be use in the workflow, 
 which means you could have done that to use the defined one instead of creating a secret:
 
+{% raw %}
 ```yml
 GPR_API_KEY: ${{ secrets.GITHUB_TOKEN }} 
 ```
-
+{% endraw %}
