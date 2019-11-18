@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kotlin dsl with gradle
+title: Kotlin dsl with gradle 4.8
 color: rgb(214,102,133)
 tags: [kotlin]
 ---
@@ -21,7 +21,7 @@ Kotlin is so general that it reaches specific programming niche.
 
 ## Basic set up
 
-Basic set up for your kotlin project:
+Basic set up for your kotlin project with Gradle **4.8**:
 
 - group: the top level package(s) under `src.main`
 - version: the version of your application
@@ -175,6 +175,8 @@ gradle wrapper
 ```
 
 Then you'll be able to use `./gradlew` instead of gradle and your project should run fine 👍
+
+> Now if you have the opportunity to use a newer version of gradle, do it. 
 
 ## Sources
 
