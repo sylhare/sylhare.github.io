@@ -16,6 +16,9 @@ List of contributes per commits:
 
 ```bash
 git shortlog --all -s -n
+
+Get the number of line per contributors
+git ls-files | while read f; do git blame -w -M -C -C --line-porcelain "$f" | grep -I '^author '; done | sort -f | uniq -ic | sort -n
 ```
 
 List of commits between two commits:
