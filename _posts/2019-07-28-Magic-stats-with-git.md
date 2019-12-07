@@ -8,7 +8,12 @@ tags: [git]
 ## What's git log
 
 Git log is a powerful tool in git that allows you to browse through the repository history.
-It saves a bunch of information (tag, commit authoer, message, date, ...)
+It saves a bunch of information (tag, commit author, message, date, ...)
+
+First you may want to pull origin from every repository using:
+```bash
+find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull origin master \;
+```
 
 ## Some nice alias
 
