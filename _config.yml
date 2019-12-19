@@ -49,5 +49,5 @@ sass:
 plugins: [jekyll-paginate, jekyll-seo-tag]
 exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", ".idea",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js", "themes"]
-theme: type-on-strap
 remote_theme: sylhare/Type-on-Strap
+theme: type-on-strap

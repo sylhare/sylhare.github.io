@@ -1,4 +1,4 @@
-FROM sylhare/type-on-strap:v2.0.1
+FROM sylhare/type-on-strap:latest
 
 WORKDIR /app
 COPY ./ /app
