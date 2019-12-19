@@ -18,7 +18,7 @@ RUN pip install pytest pytest-cov
 Building my docker using:
 
 ```bash
-docker build -t python3-pytest
+docker build . -t python3-pytest
 ```
 
 I can make sure it works as intended using:
