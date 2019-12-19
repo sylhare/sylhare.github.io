@@ -16,6 +16,7 @@ after_script:
   - gem install type-on-strap
   - gem install jekyll-theme-type-on-strap
   - docker build . -t sylhare-blog
+  - docker pull sylhare/jekyll
   
 notifications:
   email: false
