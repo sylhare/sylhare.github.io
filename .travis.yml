@@ -6,7 +6,6 @@ rvm:
   - 2.7.0
   
 before_install:
-  - gem update --system
   - gem install bundler  
 
 script: 
@@ -16,6 +15,7 @@ script:
 after_script:  
   - gem install type-on-strap
   - gem install jekyll-theme-type-on-strap
+  - docker build . -t sylhare-blog
   
 notifications:
   email: false

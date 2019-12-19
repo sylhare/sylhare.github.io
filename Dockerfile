@@ -1,11 +1,8 @@
-FROM ruby:2.5-alpine
+FROM sylhare/jekyll:latest
 
 WORKDIR /app
 COPY ./ /app
 
-RUN apk add --no-cache build-base gcc bash cmake git
-RUN gem install jekyll
-RUN gem install bundler
 RUN bundle install
 
 EXPOSE 4000
