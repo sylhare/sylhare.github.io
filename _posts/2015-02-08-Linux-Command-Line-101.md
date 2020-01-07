@@ -190,8 +190,8 @@ Console per default, with graphical environment
 
     tty1
 
-Use **`ctrl + alt + f2`** to go to tty2 session. 
-Use **`ctrl + alt + f3`** to go to tty3 session, and so on.
+Use <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>f2</kbd> to go to tty2 session. 
+Use <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>f3</kbd> to go to tty3 session, and so on.
 
 
 

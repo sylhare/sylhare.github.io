@@ -18,7 +18,7 @@ Readings from [Daniel Shiffman - Open Source Course](https://github.com/shiffman
 * [Processing and FLOSS](https://medium.com/processing-foundation/processing-and-floss-d35aa4607f4c) by Casey Reas
 * [A Time for Action — Innovating for Diversity & Inclusion in Open Source Communities](https://medium.com/mozilla-open-innovation/a-time-for-action-innovating-for-diversity-inclusion-in-open-source-communities-6922fef4675e) by Emma Irwin
 * [How We’re Making Code of Conduct Enforcement Real — and Scaling it](https://medium.com/mozilla-open-innovation/how-were-making-code-of-conduct-enforcement-real-and-scaling-it-3e382cf94415) by Emma Irwin
-* [#ethicalCS: bring ethics, identity, and impact to Computer Science education](https://medium.com/@ed_saber/ethicalcs-bring-ethics-identity-and-impact-to-computer-science-education-eae5a9d4682) by Saber Khan
+* [EthicalCS: bring ethics, identity, and impact to Computer Science education](https://medium.com/@ed_saber/ethicalcs-bring-ethics-identity-and-impact-to-computer-science-education-eae5a9d4682) by Saber Khan
 
 ## ONAP
 
@@ -32,7 +32,7 @@ Readings from [Daniel Shiffman - Open Source Course](https://github.com/shiffman
 
 #### Getting access to the source code
 
-Onap is composed of a big [list of projects](https://gerrit.onap.org/r/#/admin/projects/) on which you can contribute to.
+ONAP is composed of a big [list of projects](https://gerrit.onap.org/r/#/admin/projects/) on which you can contribute to.
 
 To have a preview of the projects you can check the mirrored repositories on [Github/onap](https://github.com/onap). As mirror you can't really contribute to them that way.
 
