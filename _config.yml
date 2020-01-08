@@ -6,7 +6,7 @@ description: "Well, here it is"
 
 # THEME-SPECIFIC CONFIGURATION
 # Meta
-avatar: assets/img/triangle.png
+avatar: assets/img/rocket-icon.png
 color_image: /assets/img/lineart.png # In post when you set color
 favicon: assets/favicon.ico
 
