@@ -40,6 +40,7 @@ $text-shadow: #3f3f3f;
 $search-color: #999;
 
 // Header colours
+$header-background-color: $theme-color;  // Only used when no header image
 $header-link-color: #383838;
 $header-text-color: #fff;
 $navbar-separator-opacity: 0;
@@ -47,6 +48,7 @@ $navbar-separator-opacity: 0;
 // Feature image for articles
 $feature-image-text-color: #fff;
 $feature-image-size: cover; // options include "cover", "contain", "auto"
+
 // Header description box
 $header-desc-background-color: $theme-color;
 $header-desc-text-color: #FFF;
