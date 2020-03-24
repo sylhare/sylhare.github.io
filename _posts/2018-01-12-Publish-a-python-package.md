@@ -121,4 +121,5 @@ python -m twine upload dist/*
 
 When you upload your project, it might be refused due to naming problem. If that's the case you will have to rename your project.
 
-> More python example at [sylhare/Python](https://github.com/sylhare/Python)
+> More python example at [sylhare/Python](https://github.com/sylhare/Python) or 
+get started with a [python seed template](https://github.com/sylhare/pyhon-seed)
