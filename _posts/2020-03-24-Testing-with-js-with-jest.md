@@ -7,7 +7,7 @@ tags: [js]
 
 ## Introduction
 
-[Jest](https://jestjs.io/) is an Open source test framework developped by Facebook and compatible
+[Jest](https://jestjs.io/) is an Open source test framework developed by Facebook and compatible
 with a lot of framework.
 
 Jest is fast, and already pre configured to get started with it. So it simply works.
@@ -69,12 +69,13 @@ Here are some commands you can add in your package.json to work with jest:
   },
 ```
 
-Just `jest` runs the test, but you might want to use `--watch` to run the tests automatically 
-at each modifications (You can also specify in the watch which tests to re-run in case you have a lot).
-It is pretty cool to get the coverage right from the testing tool with `--coverage`.
+Just `jest` runs the test, but you might want to use:
+  - `--watch` to run the tests automatically at each modifications.  
+You can also specify in the watch which tests to re-run in case you have a lot.
+  - `--coverage` to get the coverage right from the testing tool
+  - `--clearCache`when jest get jammed (happened to me with Vue.js Framework), 
+  last resort when tests are failing for no reasons 
 
-Finally I came across project where jest bugged for some reason (with Vue.js framework). 
-Using the `--clearCache` saved my day and the tests where failing for no apparent reasons.
 
 One last, that was useful when linting the project was this one to easy fix trailing spaces and other noise errors using:
 ```json

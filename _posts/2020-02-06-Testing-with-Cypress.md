@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Testing your web application with Cypress
+title: Testing web applications with Cypress
 color: rgb(239, 192, 80)
 tags: [js]
 ---
@@ -96,7 +96,7 @@ Here is how you should add your cypress commands in your `package.json`.
   }
 ```
 
-The `cypress run` allows you to run all cypress tests in the `integration` folder headlessly.
+The `cypress run` allows you to run "headless" all cypress tests in the `integration` folder.
 So it is fully compatible with a CI/CD pipeline.
 The `cypress open` is a great feature when debugging, because it starts an interactive window where you can
 select the tests suite you want to run, and display the live test output in a browser.
