@@ -10,9 +10,38 @@ May it be alone or to be deploy in a cluster. Here is my list of tips.
 
 ## Make that Docker run
 
-Here are some tips, I found useful in different occasion to make your docker run.
-Let say you have an image named `image` to ease the annotation. 
+Let's say you have an image named `image` to ease the annotation. 
 And let's assume `mycontainer` is a terrific name for a container.
+
+### Difference between ENTRYPOINT and CMD
+
+Let's say you have you have a dockerfile like that:
+
+```dockerfile
+FROM ubuntu:16.04
+
+
+ENTRYPOINT ["echo", "Hello"]
+CMD ["World"]
+```
+
+If you run the docker you should get:
+
+```bash
+docker --rm run --name mycontainer image
+Hello world
+docker --rm run github --name mycontainer image 
+Hello github
+```
+
+Basically, you can use both or just one of them. When you run the docker they will behave like:
+  - `ENTRYPOINT` can't be overridden, but can take argument (or not) and will be executed. 
+  - `CMD` is a command that will be run by default, that can be overridden with `exec`.
+
+
+### Some override examples
+
+Here are some tips, I found useful in different occasion to make your docker run.
 
  - Running detached using `-d`:
 ```bash 
@@ -22,12 +51,13 @@ docker run -d --name mycontainer image
  ```bash
  docker run --rm --name mycontainer image
  ```
- - Execute yolo within the container using `exec`:
+ - Execute yolo within the container using `exec` which run a process in your docker:
  ```bash
  docker run --name mycontainer image
  docker exec -it mycontainer /bin/bash
  docker exec mycontainer /bin/sh -c "echo 'hello';echo 'world';echo '!'"
  ```
+
 
 
 ## Using variables
