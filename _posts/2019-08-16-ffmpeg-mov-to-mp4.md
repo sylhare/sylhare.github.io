@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Bulk convert .mov to .mp4 with ffmpeg
+title: Bulk convert .mov to .mp4 with ffmpeg 🎥
 color: rgb(254 ,132, 14)
 tags: [windows]
 ---
