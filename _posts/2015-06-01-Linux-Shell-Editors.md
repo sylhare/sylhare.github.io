@@ -2,7 +2,7 @@
 layout: post
 title: Linux Shell editors
 color: rgb(242,85,44)
-tags: linux
+tags: [linux]
 ---
 
 # Shell Editors

@@ -2,7 +2,7 @@
 layout: post
 title: Linux Commands 101
 color: rgb(187, 10, 30)
-tags: [Linux]
+tags: [linux]
 ---
 
 Intended for Centos or Redhat.

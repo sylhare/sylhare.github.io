@@ -27,3 +27,4 @@ jekyll-theme-type-on-strap.gemspec
 *copy.md
 themes/*
 .jekyll-cache/*
+**/.jekyll-cache/*

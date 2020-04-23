@@ -20,7 +20,6 @@ Let's say you have you have a dockerfile like that:
 ```dockerfile
 FROM ubuntu:16.04
 
-
 ENTRYPOINT ["echo", "Hello"]
 CMD ["World"]
 ```

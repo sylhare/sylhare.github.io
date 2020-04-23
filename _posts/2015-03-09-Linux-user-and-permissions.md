@@ -2,7 +2,7 @@
 layout: post
 title: Linux Users and permissions
 color: rgb(255, 111, 97)
-tags: [Linux]
+tags: [linux]
 ---
 
 # User and permissions

@@ -2,7 +2,7 @@
 layout: post
 title: Certificates, certificates everywhere
 color: rgb(187, 10, 30)
-tags: [Linux]
+tags: [linux]
 ---
 
 Certificates are everywhere ...

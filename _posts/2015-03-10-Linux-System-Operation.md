@@ -2,7 +2,7 @@
 layout: post
 title: Linux System Operation
 color: rgb(255, 111, 97)
-tags: [Linux]
+tags: [linux]
 ---
 
 # System Configuration commands
