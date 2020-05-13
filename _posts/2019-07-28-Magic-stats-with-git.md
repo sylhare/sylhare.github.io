@@ -17,12 +17,14 @@ find . -type d -depth 1 -exec git --git-dir={}/.git --work-tree=$PWD/{} pull ori
 
 ## Some nice alias
 
-List of contributes per commits:
+List of contributes per commits, 
+You can have just the log for the first one `gitlog`, or you want a more detail view with the second one `gitauthor`:
 
 ```bash
+# gitlog
 git shortlog --all -s -n
 
-Get the number of line per contributors
+# gitauthor Get the number of line per contributors
 git ls-files | while read f; do git blame -w -M -C -C --line-porcelain "$f" | grep -I '^author '; done | sort -f | uniq -ic | sort -n
 ```
 
