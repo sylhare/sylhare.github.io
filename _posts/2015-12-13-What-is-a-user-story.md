@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What is a user story
+title: What's a User Story?
 color: rgb(42,140,152)
 tags: [agile]
 ---
