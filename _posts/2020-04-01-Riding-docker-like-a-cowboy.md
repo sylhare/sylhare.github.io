@@ -170,3 +170,42 @@ docker cp $id:/src/. target
 # From the host to your container
 docker cp src/. $id:/target
 ``` 
+
+## Docker images
+
+There are multiple base images that can be used to create a docker file.
+And based on those the subsequent commands might differ.
+
+### Centos
+
+This is a centos one, you can use `yum` or `dnf`:
+
+```dockerfile
+FROM centos:centos8
+
+RUN dnf update -y && dnf install -y python3-pip
+RUN yum install python3-pip
+```
+
+### Ubuntu
+
+This one is a classic ubuntu, behaves like it.
+
+```dockerfile
+FROM python:3.6
+
+RUN apt-get install <package>
+```
+
+### Alpine
+
+Those ones are like the `-alpine` on them. They are light distribution of Unix.
+You use `apk` to add package like:
+
+```dockerfile
+FROM python:3.6-alpine
+
+RUN apk update && apk --no-cache add bash
+```
+
+They don't have bash installed, they use `/bin/sh` by default.
