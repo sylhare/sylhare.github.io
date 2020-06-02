@@ -7,6 +7,10 @@ const data = [{"name": "A"}, {"name": "B"}, {"name": "C"}, {"name": "D"}, {"name
 
 const d3_color = d3.scaleOrdinal(d3.schemeCategory20);
 
+function randRange(max) {
+    return Math.round(Math.random() * max)
+}
+
 // Behaviour when moved
 function ticked(node) {
     node
@@ -46,35 +50,15 @@ var node = svg.append("g")
   .enter();
 
 var circles = node.append("circle")
-  .attr("cx", () => { return Math.random() * width })
-  .attr("cy", () => { return Math.random() * height })
+  .attr("cx", () => { return 70 + randRange(width - 70) })
+  .attr("cy", () => { return 70 + randRange(height - 70) })
   .attr("r", 30)
   .data(exampleData)
   .style("fill", color)
   .style("fill-opacity", 0.7);
 
-// UPDATE SIMULATION EXAMPLE
-// let simulation = d3.forceSimulation();
-//
-// function setupSimulation() {
-//   simulation
-//     .nodes(data)
-//     .force("center", d3.forceCenter())
-//     .force("charge", d3.forceManyBody().strength(.01))
-//     .force("collide", d3.forceCollide().strength(.01).radius(30).iterations(1))
-//       .force("x", d3.forceX())
-//       .force("y", d3.forceY())
-//     .on("tick", () => ticked(node));
-// }
-//
-// function updateSimulation() {
-//   simulation.alpha(0.3).alphaTarget(0).restart();
-// }
 
-//setupSimulation();
-//d3.interval(() => {updateSimulation()}, 2000);
-
-/* GRAVITY EXAMPLE */
+/* FORCE EXAMPLE */
 
 // append the svg object to the body of the page
 var svg_pack = createSvg("#d3gravity");
@@ -99,6 +83,61 @@ simulation_pack
   .nodes(data)
   .on("tick", () => ticked(node_pack));
 
+
+/* UPDATE SIMULATION EXAMPLE */
+
+var svg_up = createSvg("#d3SimulationUpdate");
+var node_up = svg_up.append("g").selectAll(".node")
+  .attr("stroke", "#fff")
+  .attr("stroke-width", 1.5);
+
+var simultation_up = d3.forceSimulation()
+  .force("charge", d3.forceManyBody().strength(-150))
+  .force("forceX", d3.forceX().strength(.1)) // Distribute the force on the X axis
+  .force("forceY", d3.forceY().strength(.1)) // Distribute the force on the Y axis
+  .force("center", d3.forceCenter().x(width / 2).y(height / 2))
+  .alphaTarget(1)
+  .on("tick", () => ticked(node_up));
+
+function restart(data) {
+    var t = d3.transition().duration(750);
+
+    node_up = node_up.data(data);
+
+    node_up.exit()
+      .style("fill", "#b26745")
+      .transition(t)
+      .attr("r", 1e-6)
+      .remove();
+
+    node_up
+      .transition(t)
+      .style("fill", d3_color)
+      .attr("r", function(d){ return d.size; });
+
+    node_up = node_up.enter()
+      .append("circle")
+      .attr("r", function(d){ return d.size })
+      .style("fill", color)
+      .merge(node_up);
+
+    // Update and restart the simulation.
+    simultation_up
+      .nodes(data)
+      .force("collide", d3.forceCollide()
+        .strength(1).radius((d) => { return d.size + 10; }).iterations(1));
+
+}
+
+function randomizeData(){
+    return [...Array(randRange(25)).keys()].map(
+      element => {return {name: element.toString(), size: randRange(50)}}
+    );
+}
+
+d3.interval(() => restart(randomizeData()), 2000);
+
+restart(randomizeData());
 
 /* TOOLTIP EXAMPLE */
 
