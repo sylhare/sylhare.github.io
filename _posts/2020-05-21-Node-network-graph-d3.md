@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Create a dynamic node network graph with D3.js
+title: Create a node network graph with D3.js
 color: rgb(239, 192, 80)
 tags: [js]
 ---
