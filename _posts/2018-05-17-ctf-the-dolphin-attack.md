@@ -5,7 +5,7 @@ color: rgb(42,41,62)
 tags: [ctf]
 ---
 
-## What is a Dolphin attack?
+## What is a 🐬 Dolphin attack?
 
 A Dolphin attack is a term that has been given to the method of accessing a smartphone 
 without the users’ consent by executing ultrasonic commands.
