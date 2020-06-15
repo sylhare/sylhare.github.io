@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Magic stats with git
+title: ✨ Magic stats with git
 color: rgb(216,174,71)
 tags: [git]
 ---
@@ -60,6 +60,11 @@ Show the last commits made on the project:
 
 ```bash
 git log --graph --oneline --abbrev-commit --decorate --all
+```
+
+Get the commit time of a commit sha:
+```bash
+git show -s --format=%ct $COMMIT_SHA
 ```
 
 ## Third party tools

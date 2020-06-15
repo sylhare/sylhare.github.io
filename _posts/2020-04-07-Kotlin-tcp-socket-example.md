@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kotlin tcp with java sockets
+title: Kotlin tcp with java sockets 🧦
 color: rgb(214,102,133)
 tags: [kotlin]
 ---

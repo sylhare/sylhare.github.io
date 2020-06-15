@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Testing js with Jest
+title: Testing js with 🃏 Jest
 color: rgb(239, 192, 80)
 tags: [js]
 ---
