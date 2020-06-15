@@ -94,7 +94,7 @@ However for simple use case your test client / server might be real close to you
 
 ## Using a framework: ktor
 
-[Ktor](https://ktor.io/) is a framework for building asynchronous (coroutines) servers and clients in connected systems using Kotlin.
+[Ktor](https://ktor.io/) is a framework for building asynchronous (coroutine) servers and clients in connected systems using Kotlin.
 Made by the same people that made Kotlin.
 
 Ktor in addition to HTTP handling, also supports client and server, TCP and UDP raw sockets.

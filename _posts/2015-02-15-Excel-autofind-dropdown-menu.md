@@ -5,7 +5,7 @@ color: rgb(0, 110 ,81)
 tags: [excel]
 ---
 
-## Excel autofind drop down menu
+## Excel auto find drop down menu
 
 #### Create a Named range
 
@@ -13,8 +13,8 @@ To manage the named ranges, you can go in **Formulas** > **Name Manager**. You c
 
 ##### 1. Static
 To [create a named range](https://support.office.com/fr-fr/article/Cr%C3%A9er-une-liste-d%C3%A9roulante-7693307a-59ef-400a-b769-c5402dce407b) in excel, 
-you can select a column of data then **righ click** then select **define name** the name will be the name of the range and how it will be referred to.
-The **refers to** is the range itself and is autopopulated with the range of selected cells when clicking on **define name**
+you can select a column of data then **right click** then select **define name** the name will be the name of the range and how it will be referred to.
+The **refers to** is the range itself and is auto populated with the range of selected cells when clicking on **define name**
 
 ##### 2. Dynamic
 To get a [dynamic named range](https://trumpexcel.com/named-ranges-in-excel/) you will need to replace the **refers to** of the named range by this kind of formula (for example if values are in the A column):
@@ -55,7 +55,7 @@ Or you can use this formula which will look in `List` if it finds the value in `
 
 [Here](https://trumpexcel.com/excel-drop-down-list-with-search-suggestions/) is a sweet example that requires 1 column with the values and 3 helping columns and a cell that will be used to do the google like search:
 
-| **E**. Available values | **F**. criteria matching | **G**. Occurence count | **H**. Found values |
+| **E**. Available values | **F**. criteria matching | **G**. Occurrence count | **H**. Found values |
 |------------------|-------------------|-----------------|--------------|
 | value_one        | 1                 | 1               | value_one    |
 | value_two        | 0                 |                 | value_three  |
@@ -68,9 +68,9 @@ Or you can use this formula which will look in `List` if it finds the value in `
 =ISNUMBER(IFERROR(SEARCH($B$3,E3,1);""))
 ```
 
-This formula returns 1 if part of what is in cell `E3` in the **Available values** coulumn is also in cell `B3`, the **search cell**.
+This formula returns 1 if part of what is in cell `E3` in the **Available values** column is also in cell `B3`, the **search cell**.
 
-- Column #3 : **Occurence count** you add this formula:
+- Column #3 : **Occurrence count** you add this formula:
 
 ```coffee
 =IF(F3=1;COUNTIF($F$3:F3,1);"") 
@@ -84,7 +84,7 @@ This formula starting at `F3`, with `F3` the **criteria matching** look if the *
 =IFERROR(INDEX($E$3:$E$22,MATCH(ROWS($G$3:G3),$G$3:$G$22,0)),"")
 ```
 
-With `G3` in the **Occurence count** column. It works with `MATCH` and `INDEX` looking for occurence. 
+With `G3` in the **Occurrence count** column. It works with `MATCH` and `INDEX` looking for occurrence. 
 The `IFERROR` will show the corresponding value indexed, or nothing.
 
 You can use this formula to create the dynamic range from the **found values** in `H3`:
@@ -93,7 +93,7 @@ You can use this formula to create the dynamic range from the **found values** i
 =$H$3:INDEX($H$3:$H$22;MAX($G$3:$G$22);1)
 ```
 
-The name will be used for the combobox (dropdown in developper > insert > activeX). Here are the properties to look for:
+The name will be used for the combobox (dropdown in developer > insert > activeX). Here are the properties to look for:
 
 - AutoWordSelect: False
 - LinkedCell: B3

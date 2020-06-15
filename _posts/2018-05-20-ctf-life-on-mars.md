@@ -31,7 +31,7 @@ yb gsv mrmvgvvmgs ovggvi hglk
 zoo oldvixzhv
 ```
 
-You can decode it using an `atbash` [decrypter](http://crypto.interactive-maths.com/atbash-cipher.html) to get the message that lets you create the flag:
+You can decode it using an `atbash` [decipher](http://crypto.interactive-maths.com/atbash-cipher.html) to get the message that lets you create the flag:
 
 ```
 greeting stop the firss half of

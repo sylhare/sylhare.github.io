@@ -76,7 +76,7 @@ lead time is how much work is in progress divided by average completion rate
 
 ### XP Xtrem programming
 
-XP Xtrem programming invented by .Kent.Beck mid 1990's is a Lightweight, Efficient, Low-Risk, Flexible, "predictable", Scientific and Fun displine of software development. It leverage pair programming, pair negociation. 
+XP Xtrem programming invented by .Kent.Beck mid 1990's is a Lightweight, Efficient, Low-Risk, Flexible, "predictable", Scientific and Fun displine of software development. It leverage pair programming, pair negotiation. 
 
 With self organizing, team are empowered and motivated by trust to their own decisions and commitment.
 It's consensus driven with constant constructive desagreement driving the team development and success.
@@ -95,9 +95,9 @@ It's consensus driven with constant constructive desagreement driving the team d
 We can map some of them with SCRUM roles:
 
 - **Customer** is like the Product Owner
-- **Programmer** is like the team but share ownership, does not test but deliver something fully functionnal (unit testing)
+- **Programmer** is like the team but share ownership, does not test but deliver something fully functional (unit testing)
 - **Tester** is understanding the behaviour of a the solution 
-- **Coach** is part of Scrum Master also called *"batman"* referenced to britsh officer domestic at the front. The role diminish as the team mature
+- **Coach** is part of Scrum Master also called *"batman"* referenced to british officer domestic at the front. The role diminish as the team mature
 - **Tracker** is part of Scrum Master that tracks time
 
 #### Individual practices
@@ -105,15 +105,15 @@ We can map some of them with SCRUM roles:
 - Refactoring clean solution and keep functionality
 - Simple Design
 - Test-Driven Development create an automated test case that defines a desired new or improved functionality 
-- Pair Programming real time pair review. live analysis, negociation, collaboration, one is on the computer and the other one give you directions
+- Pair Programming real time pair review. live analysis, negotiation, collaboration, one is on the computer and the other one give you directions
 
 #### Team practices:
 
 - Collective Ownership add value, no one is blamed, they care
 - Coding Standard Make sure everyone use the same language
 - Sustainable Pace 40 hours week
-- Metaphor a guiding vision to build inovation and create vocabulary of something that doesn't exist'
-- Continuous integration All the developper are building and test coded software many times a day.
+- Metaphor a guiding vision to build innovation and create vocabulary of something that doesn't exist'
+- Continuous integration All the developer are building and test coded software many times a day.
 
 #### Organizational practices:
 
@@ -137,7 +137,7 @@ ADHOC - is a unique solution that can not be generalized. It lead to risks
 - Decide as late as possible
 - Deliver as fast as possible
 - Empower the team
-- Build intergrity in
+- Build integrity in
 - See the whole
 
 #### 8 Waste types
@@ -167,7 +167,7 @@ Then you write the tests that verify the expected results of the test cases.
 | Test phase   | where TDD is involved    |
 |--------------|--------------------------|
 | Acceptance.  |                          |
-| Fonctional.  | TDD is used here too     |
+| Functional.  | TDD is used here too     |
 | Integration. | to be automated with TDD |
 | Unit.        | -                        |
 
@@ -218,7 +218,7 @@ All the process generated from Kaizen be sum up into these steps:
 Out of the kaizen you can find those famous frameworks:
 
 - Toyota kata which is a subset of PDCA (Plan, Do, Check, Act)
-- Kaizen 5S (Sort, Straigthen / Set in order, Shine, Standardize, Sustain)
+- Kaizen 5S (Sort, Straighten / Set in order, Shine, Standardize, Sustain)
        
 ### AM. Agile Modeling
 Also called Xtreme Modeling, it was made by. Scott. Ambler
@@ -231,7 +231,7 @@ Also called Xtreme Modeling, it was made by. Scott. Ambler
 - Model Storming spike methodology
         
 ### AUP. Agile Unified Process 
-This process is the lightweight version of the Rational Unified Process developped by Scott Ambler. 
+This process is the lightweight version of the Rational Unified Process developed by Scott Ambler. 
 The AUP applies agile techniques including test-driven development (TDD), agile modeling (AM), agile change management, and database refactoring to improve productivity.
 
 - Step 1 inception 1 iteration

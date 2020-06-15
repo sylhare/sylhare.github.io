@@ -30,7 +30,7 @@ Adding links to the issues can be mapped to the jira link field using:
 
 Basic representation on how to add an issue with the mandatory fields:
 
-- Issue id: from your excelsheet, must be unique at each import
+- Issue id: from your excel sheet, must be unique at each import
 - Parent id: used for subtasks only
 - Issuetype: Must match the ones in Jira so that it maps automatically
 	
@@ -46,7 +46,7 @@ Basic representation on how to add an issue with the mandatory fields:
 For epics and the linked issues under those epics you need:
 
 - Epic Name: Little name of the epic
-- Summary: lenghty name of the epic
+- Summary: lengthy name of the epic
 - Epic Link: To link the epic to the story
     - The Epic Name `the car` define in excel
     - The issue key `PLANE-7` of an existing epic in jira 

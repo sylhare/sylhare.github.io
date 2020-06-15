@@ -5,7 +5,7 @@ color: rgb(239, 192, 80)
 tags: [js]
 ---
 
-## d3.js
+## D3.js
 
 ### Introduction
 
@@ -125,7 +125,7 @@ node_up.exit()
 
 ### Interval
 
-When you want to update your canvas at a set inerval.
+When you want to update your canvas at a set interval.
 You may use another d3 method called _d3.interval()_ which works as a timeout:
 
 ```js

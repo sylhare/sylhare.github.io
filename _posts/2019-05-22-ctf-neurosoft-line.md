@@ -5,7 +5,7 @@ color: rgb(42,41,62)
 tags: [ctf]
 ---
 
-During the competition there was at some point a craiglist kind of paper for a synapse experiment
+During the competition there was at some point a Craiglist kind of paper for a synapse experiment
 with Neurosoft (The company that implements chips in your brain).
 
 On the coupon was a website [neuro://synapse-trials.ctf](neuro://synapse-trials.ctf) and a phone number `1-647-490-NSEC`.

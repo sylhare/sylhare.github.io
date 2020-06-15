@@ -14,7 +14,7 @@ The [Linux Foundation](http://www.linuxfoundation.org/) is a large open source n
 Readings from [Daniel Shiffman - Open Source Course](https://github.com/shiffman/Open-Source-Course-ITP)
 
 * [What Does “Open Source” Even Mean?](https://medium.com/@kenjagan/what-does-open-source-even-mean-6bd47befe696) by Jen Kagan
-* [Inessential Weirdnesses in Open Source Software ](https://www.harihareswara.net/sumana/2016/05/21/0) by Sumana Harihareswara
+* [Inessential Weirdness's in Open Source Software ](https://www.harihareswara.net/sumana/2016/05/21/0) by Sumana Harihareswara
 * [Processing and FLOSS](https://medium.com/processing-foundation/processing-and-floss-d35aa4607f4c) by Casey Reas
 * [A Time for Action — Innovating for Diversity & Inclusion in Open Source Communities](https://medium.com/mozilla-open-innovation/a-time-for-action-innovating-for-diversity-inclusion-in-open-source-communities-6922fef4675e) by Emma Irwin
 * [How We’re Making Code of Conduct Enforcement Real — and Scaling it](https://medium.com/mozilla-open-innovation/how-were-making-code-of-conduct-enforcement-real-and-scaling-it-3e382cf94415) by Emma Irwin
@@ -28,7 +28,7 @@ Readings from [Daniel Shiffman - Open Source Course](https://github.com/shiffman
 - The carrier-scale Software Defined Networks (SDNs) that contain them
 - Higher-level services that combine the above
 
-### Contributing to Onap
+### Contributing to ONAP
 
 #### Getting access to the source code
 

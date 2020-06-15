@@ -24,7 +24,7 @@ User stories can be built such as:
 
 > **As** ..who..**, I want** ..what.. **so that** ..why..
 
-User story are validated with acceptance test, test cases (+ non fonctional requirements)
+User story are validated with acceptance test, test cases (+ non functional requirements)
 
 > **Given** ..condition.. **When** ..action.. **Then**..expected reaction
 
@@ -90,13 +90,13 @@ Here is a short example so you get the idea.
 
 Story name: `As a customer I want to be able to buy a cookie with the app`
 
-- Rules: The customer can't buy something with a higer price than what's in his account
+- Rules: The customer can't buy something with a higher price than what's in his account
 - Question: How can we check the customer's account?
-- Acceptance Criterias: Given the customer click on pay on the app the money goes he can buy the cookie
+- Acceptance Criteria: Given the customer click on pay on the app the money goes he can buy the cookie
 - Question: How can we assert that the cookie is bought?
     - Doesn't have to be just a `cookie` that is irrelevant and untestable. We can change the name of the story
     - We need to assert the money is out of the account transfer with seller account's number
-- Revised Acceptance Criterias: Given the customer click on pay on the app, his money gets transferred to the seller account's number
+- Revised Acceptance Criteria: Given the customer click on pay on the app, his money gets transferred to the seller account's number
 
 #### Story points
 
@@ -139,4 +139,4 @@ Gives everyone the same definition of a done story, it may include:
 - Unit tests were passed successfully
 - QA tests were passed
 - Meets the acceptance criteria
-- Sufficientrly documented
+- Sufficiently documented

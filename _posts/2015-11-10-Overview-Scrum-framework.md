@@ -85,10 +85,10 @@ DEMO should not exceed a 2hours.
 - **Time:** 45min - 3hrs
 - **Players:** SM, TEAM
 - **Process focused** see what went well or bad and look for best practices, impact the way we work) 
-- Adapt: improvement list (priority improve process over deliver, need to pounder)
+- Adapt: improvement list (priority improve process over deliver, need to ponder)
 - Inspect: Get a good understanding or the lesson learn
 	- Impediment current issues
-	- Improvement things we want to be better in the futur (more effort)
+	- Improvement things we want to be better in the future (more effort)
 	
 - **Questions:** 
 	- *What went well during the sprint cycle?*
@@ -99,12 +99,12 @@ DEMO should not exceed a 2hours.
 	- Last Retro action plan - 5 min
 	- Brainstorm (creation of the post-it) - 5min
 	- Discussion and sharing of the post-it - 30 min
-	- Priorisation - 5 min
+	- Prioritisation - 5 min
 	- Action plan to address the 3 most important items - 10 to 15min
 
 
 #### Product Backlog Grooming
-*NOT OFFICAL EVENT*
+*NOT OFFICIAL EVENT*
 
 - **Time:** max 10%
 - Make sure you do not run out of stuff to do, stories, tasks for the future in the middle of the sprint
@@ -117,7 +117,7 @@ Product Owner can stop a sprint that goes really wrong.
 
 Metrics in whatever agile methodology you choose to use are not meant for higher management, but rather as a tool for the team to auto evaluate and improve recursively. 
 
-It is recommended to implement early on metrics (choosen by the team) in order to get feedbacks on your process. It can be good indicator of:
+It is recommended to implement early on metrics (chosen by the team) in order to get feedback on your process. It can be good indicator of:
 
 - Your Sprint health (changes in the sprint backlog)
 - The number of blocked item
@@ -129,7 +129,7 @@ This information will help take decisions during the daily scrum on how the team
 It is also a key component during the retrospective where you can comment and take action:
 
 - Find the root cause of a sudden drop in a metric
-- Add a new metric to monitore a new aspect
+- Add a new metric to monitor a new aspect
 - Remove old metric that are not relevant anymore 
 
 #### Burntdown

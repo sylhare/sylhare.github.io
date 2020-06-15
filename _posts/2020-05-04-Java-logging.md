@@ -242,7 +242,7 @@ You can also use reference to other appender for logging different modules, clas
 [Logstash](https://www.elastic.co/logstash) from _elastic_ is an open source, server-side data processing pipeline that ingests data from a multitude of sources simultaneously, 
 transforms it, and then sends it to your favorite "stash."
 
-You can use the logstash encoder which provides logback encoders, layouts, and appenders to log in JSON and other formats supported by Jackson.
+You can use the logstash encoder which provides logback encoders, layouts, and appender to log in JSON and other formats supported by Jackson.
 
 ```kotlin
 implementation("net.logstash.logback:logstash-logback-encoder:6.2")

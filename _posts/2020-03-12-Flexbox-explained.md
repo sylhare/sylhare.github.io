@@ -80,4 +80,4 @@ Here are a list of problems and solution of flexbox related issues:
 - [Alsa Creation](https://www.alsacreations.com/tuto/lire/1493-CSS3-Flexbox-Layout-module.html) for the images
 - [Mozilla flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) for the specs.
 - [CSS ticks](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) for a guide to flexbox
-- [Cheat cheet](http://apps.workflower.fi/css-cheats/?name=flexbox) by @sakamies
+- [Cheat sheet](http://apps.workflower.fi/css-cheats/?name=flexbox) by @sakamies

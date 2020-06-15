@@ -21,7 +21,7 @@ You can restrict that by overriding the basic configurations.
 
 ```js
 describe("Jest tests", function () {
-  // Adds todos on what needs to be tested
+  // Adds todo on what needs to be tested
   test.todo('Well this is not exactly how it should be tested'); 
   
   it('is a simple test', () => {

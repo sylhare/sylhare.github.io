@@ -135,7 +135,7 @@ Change user to root, the password will be asked
 	
 	su root
 
-Open a new subshell environment
+Open a new sub shell environment
 	
 	bash
 
@@ -147,7 +147,7 @@ to quit the root session, or quit the terminal
 
 	exit
 
-Create a variable in the environment and export it to all subshell
+Create a variable in the environment and export it to all sub shell
 	
 	VARIABLE = "test"
 	export VARIABLE
