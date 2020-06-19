@@ -58,8 +58,8 @@ $header-desc-text-color: #FFF;
 
 /*  Syntax highlighting  */
 // Syntax typography
-$monospace: Monaco, Consolas, "Lucida Console", monospace !default;
-$font-size-code: 0.75em !default; // ~12px
+$monospace: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, sans-serif !default;
+$font-size-code: 0.85em !default; // ~13px
 $border-radius: 4px !default;
 
 // base16 Dracula Theme
