@@ -29,7 +29,7 @@ And a flex item that has different attributes:
 
 ```css
 .item {
-  // default flex value, also called 'initial'
+  /* default flex value, also called 'initial' */
      flex: 0 1 auto;
   /*
    * Which are the values for:

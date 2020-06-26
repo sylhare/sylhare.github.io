@@ -61,6 +61,11 @@ You can set a `retry.backoff.ms` to pause in between retries. (default to 100ms)
 The `delivery.timeout.ms` puts a limit to report the result or failure from a producer:
 send() - batching - awaits send - retry - back off 
 
+The offset is a simple integer number that is used by Kafka to maintain the current position of a consumer.
+The `auto-offset-reset` can be set to:
+ - `earliest` Go through all of the record since it lost the offset  
+ - `latest` Go from the latest record when the offset is lost
+
 ## Interact with Kafka
 
 There are usually two types of applications interacting with it:
