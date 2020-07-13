@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Load test your application with Locust 🦗
+title: Load test your app with 🦗 Locust 
 color: rgb(255, 111, 97)
 tags: [python]
 ---

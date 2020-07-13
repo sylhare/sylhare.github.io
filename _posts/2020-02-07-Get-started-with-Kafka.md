@@ -2,7 +2,7 @@
 layout: post
 title: Get Started with Kafka
 color: rgb(147, 85, 41)
-tags: [kafka, kotlin]
+tags: [kafka]
 ---
 
 [Kafka ®](https://kafka.apache.org/) is part of the apache foundation and is described as a distributed streaming platform that
