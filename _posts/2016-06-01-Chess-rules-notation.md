@@ -2,39 +2,35 @@
 layout: post
 title: Chess rules ♜
 color: rgb(63,105,170)
-tags: [os]
+tags: [java]
 ---
 
 ## Chess Rules
 
 ### Generic Chess Rules
 
+Some of the generic rules that you can find on [wikipedia](https://en.wikipedia.org/wiki/Chess):
+
 - White always starts first.
-- King can't move to a "check" case.
-	- If King can't move it's "checkmate". 
+- King ♚ can't move to a "check" case.
+- If King ♚ can only move to checked cases then it's "checkmate"
+- If the player has to move, but all of his moves are checked cases, then it's "stalemate"
 
-#### Castling
 
-Castling is when King goes to the available case of its color before an untouched Rook. When castling, the Rook jumping over the King next to it.
+### Pawn Specification
 
-#### Pawn promotion
+- Castling: This is when King ♚ goes to the available case of its color before an untouched Rook. 
+When castling, the Rook jumping over the King next to it.
+- Pawn promotion: A pawn ♟ becomes Queen ♛ if they reach the other hand of the board.
+- "En passant": Pawn can advance two cases when first move.
+  - *En passant* is a way to capture a pawn right after it mades its two cases move, going diagonal behind it with another pawn.
 
-A pawn becomes Queen if they reach the other hand of the board.
-
-#### "En passant"
-
-Pawn can advance two cases when first move.
-
-*En passant* is a way to capture a pawn right after it mades its two cases move, going diagonal behind it with another pawn.
-
-![](https://upload.wikimedia.org/wikipedia/commons/0/09/Ajedrez_animaci%C3%B3n_en_passant.gif)
+{% include aligner.html images="en_passant.gif" %}
 
 ## Notation
 ### Algebraic Notation
 It's the [method](https://en.wikipedia.org/wiki/Algebraic_notation_(chess)) for recording and describing the moves in a game of chess.
-The program will understand the moves and play them.
-
-I will put here the main characteristics that will be used by the program
+I will put here the main characteristics:
 
 - **Movements**
 	- Be5 : move Bishop to e5
@@ -80,6 +76,10 @@ The board is a 8x8 checker wuth coordinates:
   1   a1 b1 c1 d1 e1 f1 g1 h1 
 ```
 
+And you place the pawns like followed:
+
+{% include aligner.html images="chess.png" %}
+
 ## Implementation
 
 ### Process
@@ -106,7 +106,7 @@ so you can go as you want.
     ChessBoard board = new ChessBoard();
     pawn pawn = new pawn();
     board.add(pawn, "d7");
-    assertEquals(pawn, board.get["d7"]);
+    assertEquals(pawn, board.get("d7"));
    }
 ``` 
 
