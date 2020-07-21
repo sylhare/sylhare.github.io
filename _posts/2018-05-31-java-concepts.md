@@ -10,11 +10,12 @@ tags: [java]
 
 Beside hearing that in Java everything is about objects, and all declaration has to have a data type,
 that makes it a strongly typed language.
-But here are some key features that are good to keep in mind. 
-If one want to learn, I would suggest going on these websites:
 
-- [Open Classroom](https://openclassrooms.com/courses/apprenez-a-programmer-en-java) (French)
-- [Sololearn](https://www.sololearn.com/Course/Java/) (English)
+Basically you define a class (sort of an object blue print). 
+Then with that class you can create multiple similar object which can interact. Like creating multiple house from the same blue print.
+
+The class defines the object's properties, and method; its behaviour. 
+And here is what Java allows you to do when creating classes.
 
 ### I. Encapsulation
 
@@ -34,36 +35,47 @@ Packages are Like the folders where the `.java` file is stored
 
 #### public
 
-It has no restrictions and can be available from anywhere and modified direclty. However the class which it's called from should be instanced before.
+A public field has no restrictions and can be available from anywhere and modified directly.
+For classes that when public can be seen and instantiated from different package.
 
 #### Other keywords
+
+There are a lot of keywords that would require a bit more of in depth explanation, so I'll just add two of the most commons ones.
 
 ##### final
 
 The final key word should be placed before the type.
 
 - For a variable, it means it can't be reassigned.
-- For a method, it means it can't be overrided in by a child class. (So an abstract method can't be final) 
-- For a class, it means that a child class can't be created from the final one.
+- For a method, it means it can't be overridden in by a child class. (So an abstract method can't be final) 
+- For a class, it means that a child class can't be created from the final one. (no inheritance)
 
 ##### static
 
-A static field, method or class has a single instance for the whole class that defines it, even if there is no instance of this class in the program. It can so be called from anywhere. </br>
-It should be placed before the final keyword.
+A static field, method or class has a single instance for the whole class that defines it, even if there is no instance of this class in the program. 
+It can so be called from anywhere. 
+
+According to the [java style guide](http://cr.openjdk.java.net/%7Ealundblad/styleguide/index-v6.html), it should be placed before the final keyword:
+
+```java
+private static final String EXAMPLE = "test";
+```
 
 
 ### II. Polymorphism
 
-Polymorphism refers to the idea of having multiple forms, it occurs with child class and parent class when you inherite or pass a method. Each class can have its own implementation of the same method.
+Polymorphism refers to the idea of having multiple forms, it occurs with child class and parent class when you inherit or pass a method. 
+Each class can have its own implementation of the same method.
 
 #### Overriding
 
-Overriding is *runtime polymorphism* when you change the inherited method (can't override final or static, can't narrow encapsulation). Overrinding is tagged in java thanks to the `@Overriding` keyword.
+Overriding is *runtime polymorphism* when you change the inherited method (can't override final or static, because you can't narrow encapsulation).  
+To specify this, the annotation `@Override` is used.
 
 #### Overloading
 
-Overloading is *compile-time polymorphism* when you declare multiple time the same method but with different input. There's no particular keyword for over loading, only multiple methods with same name but different arguments.
-</br></br>
+Overloading is *compile-time polymorphism* when you declare multiple time the same method but with different input. 
+There's no particular keyword or annotation for over loading. It is already visible with multiple methods using the same name with different arguments.
 
 ### III. Inheritance
 
@@ -72,10 +84,12 @@ Inheritance refers to the process that enables one class to acquire the methods 
 - The class inheriting is the *subclass* (also called *child class* or *derived class*).
 - The class whose properties are inherited is the *super class* (also called *parent class* or *base class*)
 
-Inheritance can be regulated thanks to the encapsulation keywords seen above (public, private, ...). </br>
-The parent constructor (which are called when the class is instanced) can't be inherited by the child class. However it is automatically called in the constructor of the child class.
+Inheritance can be regulated thanks to the encapsulation keywords seen above (public, private, ...). 
+The parent constructor (which are called when the class is instanced) can't be inherited by the child class. 
+However it is automatically called in the constructor of the child class.
 
-The `super()` method can be used to call the parent constructor directly. You can also use the `super` keyword to call directly methods or variables from the parent class (for example `super.method()` or `super.value`)
+The `super()` method can be used to call the parent constructor directly. 
+You can also use the `super` keyword to call directly methods or variables from the parent class (for example `super.method()` or `super.value`)
 
 ### IV. Abstraction
 
@@ -85,12 +99,15 @@ In Java, abstraction is achieved using abstract classes and interfaces.
 
 #### abstract class
 
-An abstract class is a class that have at least one abstract method marked with the `abstract` keyword (put in the definition instead of `public` for example). An abstract method is only a definition, it does not have a body. </br> 
+An abstract class is a class that have at least one abstract method marked with the `abstract` keyword 
+(put in the definition instead of `public` for example). 
+An abstract method is only a definition, it does not have a body.  
 The abstract element are to be implemented in the child class when inherited, it used to give a default behaviour and common characteristics.
 
 #### Interfaces
 
-There's no constructors in an Interface, there's only abstract methods and variables. The interface is set thanks to the `implement` keyword at the definition of the class.</br>
+There's no constructors in an Interface, there's only abstract methods and variables. 
+The interface is set thanks to the `implements` keyword at the definition of the class.
 If you wish to store instanced variables however it is best practice to use an Enum instead.
 
 ## Libraries
@@ -134,7 +151,7 @@ Maven can now be used to build the project:
 - `mvn package` to create the library package (such as a JAR file for example)
 - `mvn test` to use the maven "surefire" plugin to run unit test in the `src/test/jave` folder with a matching `*Test`name
 - `mvn install` to add your project's JAR file to your local repository (like a `compile` but making it ready as a dependency to be referenced by another project
-- `mvn clean install` to copy the librairies if the first one fails.
+- `mvn clean install` to copy the libraries if the first one fails.
 
 ##### Getting started
 
