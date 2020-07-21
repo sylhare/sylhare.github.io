@@ -13,7 +13,8 @@ tags: [ctf]
 
 ## Write-up
 
-For this challenge, you had to download the font displayed in the image and decrypt the message. Here is a table for the translation
+For this challenge, you had to download the font displayed in the image and decrypt the message. 
+Here is a table for the translation
 
 ![decrypt]({{"assets/img/decrypt.png" | relative_url }})
 
@@ -45,7 +46,8 @@ by the nineteenth letter stop
 all lowercase
 ```
 
-which gives the flag `207l3fs`
+which gives the flag `207l3fs`.
+[Atbash](https://en.wikipedia.org/wiki/Atbash) is a substitution cypher used apparently to encrypt hebrew alphabet.
 
 ## Other write-ups and resources
 

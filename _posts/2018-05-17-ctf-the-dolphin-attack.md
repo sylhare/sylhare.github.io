@@ -61,4 +61,4 @@ If you play the audio you should hear:
 
 Which bring you to [this image](tinyurl.com/56463452321) where the flag is (The see weed brownies):
 
-![image]({{"assets/img/dolphin.jpg" | relative_url }})
+{% include aligner.html images="dolphin.jpg" %}
