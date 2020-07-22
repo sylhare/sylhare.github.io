@@ -35,7 +35,7 @@ You can see that there are the main app `App.vue` and then two folders _componen
 To Better understand how vue works, it build a page based on the _app_ which is based on a _view_ which is based on _components_.
 All of those elements are `.vue` files, vue.js has a very good picture describing it:
 
-{% include aligner.html images="vue-components.png" %}
+{% include aligner.html images="vue-components.png" column=1 %}
 
 In your vue app, you try to decompose everything in simple reusable and testable components.
 Those components can also be easily tested with js and it make your application more flexible and robust overall.
@@ -53,7 +53,7 @@ Then we have the javascript that describe the behaviour of the component.
 Usually it implies changes on the data presented on the component or what gets visible.
 
 Here is a schema of how vue.js handle it and get [reactive](https://vuejs.org/v2/guide/reactivity.html):
-{% include aligner.html images="vue-reactivity.png" %}
+{% include aligner.html images="vue-reactivity.png" column=1 %}
 
 ## Vue Component
 
