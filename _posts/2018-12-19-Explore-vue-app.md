@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Exploration of the Vue.js framework 
-color: rgb(239, 192, 80)
+color: rgb(66, 184, 131)
 tags: [js]
 ---
 
