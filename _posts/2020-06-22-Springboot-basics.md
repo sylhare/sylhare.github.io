@@ -19,7 +19,7 @@ Spring Boot on the other hand is an extension of the spring framework which remo
 required for setting up a Spring application. Eliminating the boilerplate's configuration of a framework that was 
 eliminating the boilerplate's code require to get your application started.
 
-From [baeldung's spring boot article], Here are just a few of the features in Spring Boot:
+From [baeldung's spring boot article](https://www.baeldung.com/spring-vs-spring-boot), Here are just a few of the features in Spring Boot:
 
   - Opinionated ‘starter' dependencies to simplify build and application configuration
   - Embedded server to avoid complexity in application deployment

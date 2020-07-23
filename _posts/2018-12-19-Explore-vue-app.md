@@ -62,6 +62,7 @@ Here is a schema of how vue.js handle it and get [reactive](https://vuejs.org/v2
 Let's get into _MyComponent.vue_, a basic component, first the html part:
 
 ```html
+{% raw %}
 <template>
   <div>
     <div class="message"> {{ message }} {{ msg }}</div>
@@ -71,11 +72,12 @@ Let's get into _MyComponent.vue_, a basic component, first the html part:
     </div>
   </div>
 </template>
+{% endraw %}
 ```
 
-You can see the _<template>_ tags that make up the vue html template.
+You can see the _{% raw %}< template >{% endraw %}_ tags that make up the vue html template.
 Some of those template attributes are:
-  - `{{ message }}`, `{{ msg }}`: define a variable that will be replaced at run time by a value in the js.
+  - `{% raw %}{{ message }}{% endraw %}`, `{% raw %}{{ msg }}{% endraw %}`: define a variable that will be replaced at run time by a value in the js.
   - `v-model="username"`: which will map the input to the username value define in the js
   - `v-if="error"`: which is a computed value from error, this div will appear when error() returns true  
 
@@ -132,7 +134,7 @@ export default {
 ```
 
 Here you can see another component in which we import _MyComponent_ from our component folder.
-You can see the custom tag `<MyComponent ...>`, and for it to work you need to declare _MyComponent_ in your export of the component.
+You can see the custom tag `{% raw %}< MyComponent ... >{% endraw %}`, and for it to work you need to declare _MyComponent_ in your export of the component.
 
 
 ## Test Vue Component
