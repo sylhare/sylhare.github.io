@@ -22,8 +22,8 @@ They greet you and inform you that the waiting time is unusually long, before pu
 music. After multiple `your call is important to us` and `2'30"` of music we finally get to ear Cameron, 
 which soon starts shooting binaries at us:
 
-<audio controls src="{{"/assets/other/neurosoft-last.wav" | relative_url}}">
-<p>Your browser doesn't support HTML5 audio. Here is a <a href="{{"/assets/other/dolphin.wav" | relative_url}}">link to the audio</a> instead.</p></audio>
+<audio controls src="{{"/assets/sound/neurosoft-last.wav" | relative_url}}">
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="{{"/assets/sound/dolphin.wav" | relative_url}}">link to the audio</a> instead.</p></audio>
 
 After using software phone, we can record the whole call, then thanks to our own Voice To Text implementation
 (we could have used a software available online) we manage to get the message:
