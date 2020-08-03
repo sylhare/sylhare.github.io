@@ -148,7 +148,7 @@ internal class Endpoints {
     private lateinit var myComponent: MyComponent
 
     @GetMapping(value = ["/example"])
-    internal fun depositMessage() = ResponseEntity(myComponent.doStruff(), HttpStatus.ACCEPTED)
+    internal fun getExample() = ResponseEntity(myComponent.doStruff(), HttpStatus.ACCEPTED)
     
 }
 ```

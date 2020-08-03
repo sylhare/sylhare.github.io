@@ -39,11 +39,11 @@ The view version is linked to my github url: [https://sylhare.gitbooks.io/manual
 
 ### Code Reviews
 #### Code Climate
-IT will give a rating to you repository (pyhton, javascript, jave) based on general code rules (duplication of code, display, ...). A good way to improve your coding style.
+IT will give a rating to you repository (python, javascript, java) based on general code rules (duplication of code, display, ...). A good way to improve your coding style.
 Dashboard available here: [https://codeclimate.com/dashboard](https://codeclimate.com/dashboard)
 
 #### QuantifiedCode
-Check for python errors and convention mistake on Pyhton. Plus gives some insights on how to correct them. Easy to use. It's based on [pyLint](https://www.pylint.org/) and PEP8 style guide corrections.
+Check for python errors and convention mistake on Python. Plus gives some insights on how to correct them. Easy to use. It's based on [pyLint](https://www.pylint.org/) and PEP8 style guide corrections.
 
 Automated code review and repair for Python: [https://github.com/integrations/quantifiedcode](https://github.com/integrations/quantifiedcode)
 
