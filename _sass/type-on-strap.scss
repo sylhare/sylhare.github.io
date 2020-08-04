@@ -2,7 +2,6 @@
 @import 'base/variables';
 // External
 @import 'external/reset';
-@import 'external/syntax';
 @import 'external/font-awesome';
 @import 'external/pacifico';
 @import 'external/katex';
@@ -10,6 +9,7 @@
 // Base
 @import 'base/global';
 @import 'base/utility';
+@import 'base/highlight';
 // Posts
 @import 'layouts/posts';
 @import 'layouts/blog';

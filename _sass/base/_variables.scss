@@ -68,12 +68,12 @@ $base00: #2B2B2B !default;  // Default Background
 $base01: #383838 !default;  // Lighter Background (Used for status bars)
 $base02: #454545 !default;  // Selection Background
 $base03: #808080 !default;  // Dark Foreground (Used for status bars)
-$base04: #8f8f8f !default;  // Comments, Invisibles, Line Highlighting
+$base04: #8f8f8f !default;  // Comments, Invisible, Line Highlighting
 $base05: #AFBFCC !default;  // Light Foreground (Not often used)
 $base06: #EEFFFF !default;  // Light Background (Not often used)
 $base07: #FFFFFF !default;  // Default Foreground, Caret, Delimiters, Operators
 $base08: $base07; //#E8BF6A !default;  // Parenthesis, Caret, Delimiters, Operators
-$base09: $base07; //#6697BC !default;  // Classes, Markup Bold, Search Text Background
+$base09: #CC7832; //#6697BC !default;  // Classes, Markup Bold, Search Text Background
 $base0a: #6A8759 !default;  // Strings, Inherited Class, Markup Code, Diff Inserted
 $base0b: #F9C56D !default;  // Functions, Methods, Attribute IDs, Headings
 $base0c: #BB97BF !default;  // Support, Regular Expressions, Escape Characters, Markup Quotes
