@@ -1,2 +1,2 @@
 source "https://rubygems.org"
-gem 'type-on-strap', ">= 2.2.4", "< 3.0"
+gem 'type-on-strap', ">= 2.2.5", "< 3.0"
