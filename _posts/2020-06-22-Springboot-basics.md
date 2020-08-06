@@ -19,11 +19,26 @@ Spring Boot on the other hand is an extension of the spring framework which remo
 required for setting up a Spring application. Eliminating the boilerplate's configuration of a framework that was 
 eliminating the boilerplate's code require to get your application started.
 
+### Boilerplate
+
+[Boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code) refers to code that needs to be added in multiple application with little to no alteration.
+"Verbose" language needs a lot of so called Boilerplate to add a minor functionality.
+
+It comes from the printing industry where boiler plates referred to sturdy printing plate that looked issued from the metal of a boiler.
+
+On the side of the code, I see it in a kitchen where you want to make pasta.
+The boilerplate (spring in this case) would bring the stove to do so, but you would still need to add the pan, water and type of pasta.
+Springboot is this case would be spring (the stove) which comes with already prepared pans and water (the boot part of it, ready to start).
+
+You only need to add the pasta which would be your feature in this comparison.
+
+### Springboot features
+
 From [baeldung's spring boot article](https://www.baeldung.com/spring-vs-spring-boot), Here are just a few of the features in Spring Boot:
 
   - Opinionated ‘starter' dependencies to simplify build and application configuration
   - Embedded server to avoid complexity in application deployment
-  - Metrics, Helth check, and externalized configuration
+  - Metrics, Health check, and externalized configuration
   - Automatic config for Spring functionality – whenever possible
 
 Spring Boot removes most of the code you need to get started, so that you can actually start coding features faster.
@@ -174,7 +189,7 @@ fun main(args: Array<String>) {
 }
 ```
 
-The SpringBootApplication annotation is what enables Spring Boot auto configuration and component scanning.
+The _SpringBootApplication_ annotation is what enables Spring Boot auto configuration and component scanning.
 So that's for the Spring IoC Container / Dependency injection to get in play load the application context, etc ...
 The `SpringApplication.run(...)` method is a [convenient way to bootstrap](https://docs.spring.io/spring-boot/docs/2.1.10.RELEASE/reference/html/boot-features-spring-application.html) 
 the Spring application that is started from the `main()` method. 
