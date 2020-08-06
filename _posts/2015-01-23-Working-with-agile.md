@@ -164,13 +164,9 @@ In Test Driven Development you create the test first for that will be passed or 
 First you write the test cases, the boundaries of your system.
 Then you write the tests that verify the expected results of the test cases. 
 
-| Test phase   | where TDD is involved    |
-|--------------|--------------------------|
-| Acceptance.  |                          |
-| Functional.  | TDD is used here too     |
-| Integration. | to be automated with TDD |
-| Unit.        | -                        |
-
+It's mostly a development "framework" or rather a state of mind.
+Where you start simple by creating a failing test, then implement the easiest / fastest way you can.
+And finally you refactor so your code stays clean and maintainable.
 
 ### FDD. Feature driven development
 
