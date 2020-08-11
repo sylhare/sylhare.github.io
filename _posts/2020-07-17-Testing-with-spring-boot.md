@@ -114,14 +114,14 @@ You can check and assert the result to make sure everything is alright.
 ```kotlin
 @Test
 fun simpleGetTest() {
-val result = testRestTemplate.exchange(
-    URI(applicationUrl() + "/v1/hello/world"),
-    HttpMethod.GET,
-    HttpEntity(""),
-    String::class.java)
+  val result = testRestTemplate.exchange(
+      URI(applicationUrl() + "/v1/hello/world"),
+      HttpMethod.GET,
+      HttpEntity(""),
+      String::class.java)
 
-Assertions.assertEquals(HttpStatus.OK, result.statusCode)
-Assertions.assertEquals("world", result.body)
+  Assertions.assertEquals(HttpStatus.OK, result.statusCode)
+  Assertions.assertEquals("world", result.body)
 }
 ```
 
