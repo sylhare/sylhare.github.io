@@ -106,6 +106,9 @@ You can see other annotations:
 
 ### Write your first test
 
+I came across [Kotlin Unit test best practice](https://phauer.com/2018/best-practices-unit-testing-kotlin/) 
+that gives a lot of cool tips on how to test your kotlin code.
+
 Here is a simple test to send a GET request to your application using the `testRestTemplate`. 
 A springboot test tool to make REST request, so that you can test the behaviour of your application.
 You can check and assert the result to make sure everything is alright.
