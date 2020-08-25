@@ -3,19 +3,25 @@ layout: post
 title: Publish a Ruby Gem 💎
 color: rgb(187, 10, 30)
 tags: [ruby]
+excerpt_separator: <!--more-->
 ---
 
-Using my `type-on-strap` gem as an example
+Let's see how to make a ruby gem using the right format and specs, 
+using the `type-on-strap` gem as an example.
+
+<!--more-->
 
 ## Prepare the gemspec
 
 I make sure the gem encompass all the files that I want using this regex in my `gemspec`:
 
 ```ruby
-spec.files         = Dir.glob("**/{*,.*}").select do |f|
-    f.match(%r{^(assets|pages|_(portfolio|includes|layouts|sass)/|(LICENSE|Gemfile|_config.yml|index.html)((\.(txt|md|markdown)|$)))}i)
+spec.files = Dir.glob("**/{*,.*}").select do |f|
+    f.match(%r{^(assets|pages|_(includes|layouts|sass)/|(Gemfile|index.html)((\.(txt|md|markdown)|$)))}i)
   end
 ```
+
+Here it uses a complex regex to select folder and files from all folder and sub folders.
 
 > I could have used a `.reject` to remove some files, or a `&` after `end` to add manually a directory/page with `Dir[file, directory/**]`.
 
