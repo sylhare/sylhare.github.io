@@ -14,7 +14,7 @@ which is a platform to host ctfs.
 The challenges were separated into 5 categories:
 
  - reversing: Usually a `.tar` to download and exploit
- - pwnable: Some server your could `nc` or `ssh` in, with sometime provided the source code of the application
+ - pwnable: Some server you can `nc` or `ssh` in, with sometime provided the source code of the application
  - crypto: Different type of crypto challenges
  - misc: Very broad that did not fit elsewhere
  - web: Challenges with a link to a web page where the flag was to be be uncovered.

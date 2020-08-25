@@ -20,22 +20,22 @@ You can have access to the source code at [sylhare/tcp](https://github.com/sylha
 ### Server and Client
 
 There are two concepts here:
-  - A server accepts clients connexion. 
+  - A server accepts clients connection. 
     ```kotlin
     val server = ServerSocket(9999)
     val socket = server.accept()
     ``` 
-  - A Client looks for a server to establish a connexion.
+  - A Client looks for a server to establish a connection.
     ```kotlin
     val socket = Socket("localhost", 9999)
     ```
   
-However once the connexion is establish ie the client socket is created and connected to the server.
+However once the connection is establish ie the client socket is created and connected to the server.
 Then bytes exchange can flow.
 
 ### Socket
 
-The Socket is that connexion between the server and the client.
+The Socket is that connection between the server and the client.
   - Server's socket input is client's socket output.
   - Server's socket output is client's socket input.
   
@@ -68,7 +68,7 @@ while (true) {
 
 ### Testing
 
-For testing a connexion, and your tcp server, client.
+For testing a connection, and your tcp server, client.
 You have a wide range of possibilities. 
 
 You can either mock the `socket` and the connection to test the logic 
@@ -87,7 +87,7 @@ You would do that using [mockK](https://mockk.io/) in kotlin
     }
 ```
 
-Create a real mock server / client that will send the data. With this, you can create a real connexion 
+Create a real mock server / client that will send the data. With this, you can create a real connection 
 and add some methods to control what is being sent and if it's received back. 
 However for simple use case your test client / server might be real close to your main code.
 

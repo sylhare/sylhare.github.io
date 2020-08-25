@@ -53,7 +53,7 @@ When ssh into a server the command executed is the bash shell so while it is run
 ### With ssh-copy-id
 
 To add yourself to a host as an authorized remote user `ssh-copy-id root@desktopY`
-There is a daemon called `ssh-agent` that makes a copy of the private key to facilitate the ssh connexion. 
+There is a daemon called `ssh-agent` that makes a copy of the private key to facilitate the ssh connection. 
 
 ### Using authorized_keys
 

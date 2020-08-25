@@ -10,7 +10,7 @@ Usually you don't see them, everything works fine until it does not.
 The most common place with certificate errors will be on website not using them or with errors. 
 
 ![warning]({{ "assets/img/http_warning.png" | relative_url }})
-*Like your connexion is not secure, your gonna die and all your data will be hacked*
+*Like your connection is not secure, you're going to die and all your data will be hacked*
 
 I might be exaggerating, it's not that complicated and you might not always getting hacked, but you surely gonna die.
 Anyway, how does it work?
@@ -38,7 +38,7 @@ Carl
  
 So then Carl gives is public key, saying I'm cool bro, look I know your dad, he signed my key. 
 And then your browser check and see that he public is checked by Google (yeah your browser is chrome #plot_twist).
-Once you get this certification, you know that server is indeed legit and you can start the encrypted and trusted connexion.
+Once you get this certification, you know that server is indeed legit and you can start the encrypted and trusted connection.
 
 You are "secured"!
 
