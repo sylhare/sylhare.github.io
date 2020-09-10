@@ -1,5 +1,5 @@
 {
-  "name": "type-on-strap",
+  "name": "jekyll-helper",
   "version": "1.0.0",
   "description": "Gulp file to manage the jekyll theme",
   "main": "gulpfile.js",
