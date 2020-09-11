@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/Sylhare/Type-on-Strap#readme",
   "devDependencies": {
-    "gulp": "^4.0.0",
+    "gulp": "^4.0.2",
     "gulp-imagemin": "^5.0.3"
   },
   "dependencies": {}
