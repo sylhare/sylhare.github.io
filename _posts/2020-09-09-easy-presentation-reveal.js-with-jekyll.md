@@ -10,8 +10,8 @@ tags: [jekyll]
 [Reveal.js](https://github.com/hakimel/reveal.js) is an open source HTML presentation framework.
 With [Reveal Jekyll](https://github.com/sylhare/Reveal-Jekyll), the goal is to make it easier to manage your presentation and just focus on the content in markdown.
 
-Basically you can see it as a boiler plate for your reveal.js presentation.
-You can either write your slides as separate markdown files or put everything in one.
+Basically you can see it as a boiler plate for your reveal.js presentation. 
+You can either write your slides as separate markdown files or put everything in one. [Check it out!](https://sylhare.github.io/Reveal-Jekyll/#/)
 
 What's more! All default plugins are pre bundled with it and almost all reveal.js features are compatible with your reveal jekyll presentation.
 
@@ -20,18 +20,18 @@ What's more! All default plugins are pre bundled with it and almost all reveal.j
 
 ## Set up
 
-Make sure to install bundle which will ease the installation of jekyll:
+You can go on [Reveal Jekyll](https://github.com/sylhare/Reveal-Jekyll) and click on [Use this template](https://github.com/sylhare/Reveal-Jekyll/generate)
+to clone and create your own repository.
+
+Then locally, make sure to install bundle which will ease the installation of jekyll:
 
 ```bash
 gem install bundle
 bundle install
 ```
 
-Run the presentation using:
+> You can go into settings to make your master branch generate a Github Page automatically at *username*.github.io/*repository_name*
 
-```bash
-bundle exec jekyll serve
-```
 
 ## Create your presentation
 
@@ -126,3 +126,10 @@ Basically you need 4 things to make it work as a gem:
 And that's it you'd be good to roll!
 
  
+## Run the presentation 
+
+One you all set, you can run locally using:
+
+```bash
+bundle exec jekyll serve
+```
