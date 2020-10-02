@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
 baseurl: ""
-url: "https://sylhare.github.io/"
+url: "https://sylhare.github.io"
 title: "Sylhare's blog"
 description: "Well, here it is"
 
