@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Java Core Concepts
+title: Java Core Concepts ♨️
 color: rgb(249, 103, 20)
 tags: [java]
 ---

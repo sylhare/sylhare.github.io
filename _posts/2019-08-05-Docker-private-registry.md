@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Docker deploy to another registry.
+title: Docker 🐳 deploy to another registry.
 color: rgb(13,183,237)
 tags: [docker]
 ---

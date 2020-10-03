@@ -5,7 +5,7 @@ color: rgb(13,183,237)
 tags: [docker]
 ---
 
-There are some information, that I feel are pertinent while messing around with a docker.
+There are some information, that I feel are pertinent while messing around with a docker 🐳.
 May it be alone or to be deploy in a cluster. Here is my list of tips.
 
 ## Make that Docker run

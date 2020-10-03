@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Contributing to a Linux Foundation open source project
+title: Contributing to a Linux 🐧 Foundation project
 color: rgb(38, 78, 54)
 tags: ['open source']
 ---

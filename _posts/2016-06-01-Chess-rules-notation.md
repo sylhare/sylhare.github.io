@@ -94,6 +94,7 @@ Because first you want it to work, then you can think about any pattern, or how 
 That way you can come move fast and write only necessary code. You can check _Refactoring_ by [Martin Fowler](https://martinfowler.com/books/refactoring.html).
 It's a well known book about what is refactoring and how to apply it.
 
+
 ### Example: Have a pawn on the board
 
 You could start with a basic test, you don't need it to be perfect.
@@ -110,10 +111,11 @@ so you can go as you want.
    }
 ``` 
 
-Then you can start implementing. I won't go into details there, as you go the code may evolve, 
+Then you can start implementing. I won't go into details there, as you go the code may evolve (with pattern and encapsulation), 
 and you may also refactor the tests as you may not want to have the `ChessBoard` instantiation done in a `before()` method.
 
 You may want to cover the _"unhappy"_ path too, for example trying to add a pawn in `a9` which is not a valid position.
+
 
 ### Example: To go further
 
