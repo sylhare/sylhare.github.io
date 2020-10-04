@@ -39,7 +39,6 @@ Here let's use TaskSequence `@seq_task(1)` (with the number corresponding of the
 instead of a `@task(1)` where the number correspond to the weight of the task.
 
 ```python
-
 class ExampleTaskSequence(TaskSequence):
     def __init__(self, parent):
         super().__init__(parent)

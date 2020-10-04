@@ -80,11 +80,11 @@ It is already visible with multiple methods using the same name with different a
 For example inside an object you could have:
 
 ```java
-public String hello(String world){
+public String hello(String world) {
     return "hello" + world;
 }    
 
-public String hello(int number){
+public String hello(int number) {
     return "hello #" + number;
 }
 ```

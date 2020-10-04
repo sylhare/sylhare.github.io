@@ -102,13 +102,13 @@ As you write your test, the classes, and objects does not exist yet,
 so you can go as you want. 
 
 ```java
- @Test
-  public void boardCanHavepawnTest() {
-    ChessBoard board = new ChessBoard();
-    pawn pawn = new pawn();
-    board.add(pawn, "d7");
-    assertEquals(pawn, board.get("d7"));
-   }
+@Test
+public void boardCanHavepawnTest() {
+  ChessBoard board = new ChessBoard();
+  pawn pawn = new pawn();
+  board.add(pawn, "d7");
+  assertEquals(pawn, board.get("d7"));
+}
 ``` 
 
 Then you can start implementing. I won't go into details there, as you go the code may evolve (with pattern and encapsulation), 

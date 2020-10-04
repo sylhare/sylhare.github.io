@@ -39,10 +39,10 @@ implementation("org.slf4j:jul-to-slf4j:1.7.28")
 Then you can use it like:
 
 ```kotlin
-    import org.slf4j.bridge.SLF4JBridgeHandler
+import org.slf4j.bridge.SLF4JBridgeHandler
 
-    SLF4JBridgeHandler.removeHandlersForRootLogger()
-    SLF4JBridgeHandler.install()
+SLF4JBridgeHandler.removeHandlersForRootLogger()
+SLF4JBridgeHandler.install()
 ```
 
 If used with logback, to be able to propagate its configuration, 
@@ -50,10 +50,10 @@ you need to add this in your _logabck.xml_ to reset J.U.L (Java Util Logger):
 
 
 ```xml
-    <contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
-        <!-- reset all previous level configurations of all j.u.l. loggers -->
-        <resetJUL>true</resetJUL>
-    </contextListener>
+<contextListener class="ch.qos.logback.classic.jul.LevelChangePropagator">
+    <!-- reset all previous level configurations of all j.u.l. loggers -->
+    <resetJUL>true</resetJUL>
+</contextListener>
 ```
 
 ## Logback
@@ -137,13 +137,13 @@ That's why it's often named "_STDOUT_" because that's where the messages will be
 
 
 ```xml
-    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
-        <layout class="ch.qos.logback.classic.PatternLayout">
-            <Pattern>
-                %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
-            </Pattern>
-        </layout>
-    </appender>
+<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <layout class="ch.qos.logback.classic.PatternLayout">
+        <Pattern>
+            %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n
+        </Pattern>
+    </layout>
+</appender>
 ```
 
 #### FileAppender
@@ -180,23 +180,23 @@ RollingFileAppender rotate log file, by date and size:
 Here `<file>` is used to specify the home directory of the logs. 
 
 ```xml
-    <appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${LOG_DIR}</file>
+<appender name="FILE-ROLLING" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <file>${LOG_DIR}</file>
 
-        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
-            <!-- each archived file, size max 10MB -->
-            <maxFileSize>10MB</maxFileSize>
-            <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
-            <totalSizeCap>20GB</totalSizeCap>
-            <!-- -->
-            <maxHistory>60</maxHistory>
-        </rollingPolicy>
+    <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+        <fileNamePattern>logs/archived/app.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+        <!-- each archived file, size max 10MB -->
+        <maxFileSize>10MB</maxFileSize>
+        <!-- total size of all archive files, if total size > 20GB, it will delete old archived file -->
+        <totalSizeCap>20GB</totalSizeCap>
+        <!-- -->
+        <maxHistory>60</maxHistory>
+    </rollingPolicy>
 
-        <encoder>
-            <pattern>%d %p %c{1.} [%t] %m%n</pattern>
-        </encoder>
-    </appender>
+    <encoder>
+        <pattern>%d %p %c{1.} [%t] %m%n</pattern>
+    </encoder>
+</appender>
 ```
 
 As you can it uses a variable `${HOME_LOG}` that can pass through system properties, or directly when 
