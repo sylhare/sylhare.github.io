@@ -1,6 +1,6 @@
 ---
 layout: post
-title: LDAP mysteries
+title: LDAP Mysteries
 color: rgb(145, 145, 233)
 tags: [database]
 ---
@@ -16,7 +16,8 @@ It is open source and uses standard mechanism for interacting with directory ser
 
 [Directory servers](https://en.wikipedia.org/wiki/Directory_service) is used to stored a wide variety of information 
 (network resources, users, groups and even access control).
-The most famous one would be [Microsoft's Active Directory](https://en.wikipedia.org/wiki/Active_Directory), but you can also find some other like the [Oracle Internet Directory](https://en.wikipedia.org/wiki/Oracle_Internet_Directory),
+The most famous one would be [Microsoft's Active Directory](https://en.wikipedia.org/wiki/Active_Directory), 
+but you can also find some other like the [Oracle Internet Directory](https://en.wikipedia.org/wiki/Oracle_Internet_Directory),
 and even famous open source ones like [Apache Directory](https://en.wikipedia.org/wiki/Apache_Directory) or [OpenLDAP](https://en.wikipedia.org/wiki/OpenLDAP).
 
 A directory server is a general term, for example the [DNS](https://www.ietf.org/rfc/rfc1034.txt) is the first directory service on the internet.
