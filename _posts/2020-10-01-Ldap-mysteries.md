@@ -11,18 +11,18 @@ tags: [database]
 
 ### More about the Concepts
 
-[LDAP](https://ldap.com/) is the Lightweight Directory Access Protocol. 
+[LDAP](https://ldap.com/) is the Lightweight Directory Access Protocol,also referred as [X.500](https://en.wikipedia.org/wiki/X.500) 
+(Which is a series of computer networking standards covering electronic directory services.)
 It is open source and uses standard mechanism for interacting with directory servers.
 
-[Directory servers](https://en.wikipedia.org/wiki/Directory_service) is used to stored a wide variety of information 
+[Directory servers](https://en.wikipedia.org/wiki/Directory_service) is used to store a wide variety of information 
 (network resources, users, groups and even access control).
 The most famous one would be [Microsoft's Active Directory](https://en.wikipedia.org/wiki/Active_Directory), 
 but you can also find some other like the [Oracle Internet Directory](https://en.wikipedia.org/wiki/Oracle_Internet_Directory),
 and even famous open source ones like [Apache Directory](https://en.wikipedia.org/wiki/Apache_Directory) or [OpenLDAP](https://en.wikipedia.org/wiki/OpenLDAP).
 
-A directory server is a general term, for example the [DNS](https://www.ietf.org/rfc/rfc1034.txt) is the first directory service on the internet.
-So the directory servers that we are interested in here are the one implementing the LDAP protocol, also referred as [X.500](https://en.wikipedia.org/wiki/X.500)
-(Which is a series of computer networking standards covering electronic directory services.)
+A directory service (server by extension) is a general term, for example the [DNS](https://www.ietf.org/rfc/rfc1034.txt) is the first directory service on the internet.
+So the directory servers we are interested in are the one that implements the LDAP protocol.
 
 > LDAP usually refers to the directory server implementing the LDAP protocol. 
 
@@ -56,7 +56,7 @@ The leafs are the entry, for example _bob_:
   - A single node along the path to this entry is called _relative distinguished name_ or RDN (We can have RDN `uid=bob,ou=people` from base `dc=example,dc=spring,dc=org`)
   
 
-### attributes
+### Attributes
 
 The LDAP data structures uses attributes on each leafs that are defined in a schema [rfc4519](https://tools.ietf.org/html/rfc4519).
 Depending on the LDAP implementation you can add new attributes on top of the default ones from [rfc2253](https://tools.ietf.org/html/rfc2253):
