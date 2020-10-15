@@ -30,6 +30,9 @@ kubectl create -f file.yaml
 Give the basic information of the components, (number, status, Age)
 ```
 kubectl get <component>
+
+# Get the logs for one application / component
+kubectl logs -l app=my-component
 ```
 
 To remove a component.
