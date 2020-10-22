@@ -164,13 +164,16 @@ You can find more about the syntax in [rfc4516](https://tools.ietf.org/html/rfc4
 LDAP is quite a widely use protocol so resources and help should not be too hard to get.
 
 
-<!--
+## Misc.
 
-## Implementation
+And finally some useful links if you want to implement it or better understand its data structure at the bytes level:
 
-There are a lot of already pre existing implementation of LDAP available.
+Spring [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
+LDAPv3 [Encodign reference](https://ldap.com/ldapv3-wire-protocol-reference-asn1-ber/)
+Basic Encoreding Rule [variable length](http://www.csc.villanova.edu/~cassel/netbook/ber/node4.html#SECTION00011200000000000000)
+LDAP packet and rfc [references](www.selfadsi.org/ldap.htm )
 
--->
+
 
 
 
