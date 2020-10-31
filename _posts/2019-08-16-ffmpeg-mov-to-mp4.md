@@ -19,20 +19,23 @@ To do it on windows easily, here are the small steps you need to follow:
 2. Unzip it and place it in `Program Files` for example.
 3. Add the ffmpeg to your `PATH` environment variable with the `cmd.exe` tool (windows CLI).
 
-```bash
+```batch
 setx /M PATH "D:\Program Files\ffmpeg\bin;%PATH%"
 ```
 
 4. Check that it is now working (you might need to source the env variables or re open `cmd.exe`) 
 
-```bash
+```batch
 ffmpeg -version
 ```
 
 5. Go to the directory with all the `.mov` files using the `CD` command, use `DIR` to display what's in the directory.
-6. Use a loop to convert all the `.mov` files from that directory to `.mp4` using ffmpeg.
+      - You can find the path to your folder in the explorer (click on the top bar).
+      - If the folder is situated in another disk like D, type `D:` to switch to it then use the `CD` command.
+      
+6. Run this loop command to convert all the `.mov` files from that directory to `.mp4` using ffmpeg.
 
-```bash
+```batch
 FOR /r %i IN (*.MOV) DO ffmpeg -i "%i" -vcodec h264 -acodec mp2 "%~ni.mp4"
 ```
 
