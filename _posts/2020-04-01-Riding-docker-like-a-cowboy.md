@@ -43,20 +43,22 @@ Basically, you can use both or just one of them. When you run the docker they wi
 Here are some tips, I found useful in different occasion to make your docker run.
 
  - Running detached using `-d`:
+ 
 ```bash 
 docker run -d --name mycontainer image
 ``` 
  - Delete the container after running `--rm` to avoid the `docker rm --force mycontainer`
+ 
  ```bash
  docker run --rm --name mycontainer image
  ```
  - Execute yolo within the container using `exec` which run a process in your docker:
+ 
  ```bash
  docker run --name mycontainer image
  docker exec -it mycontainer /bin/bash
  docker exec mycontainer /bin/sh -c "echo 'hello';echo 'world';echo '!'"
  ```
-
 
 
 ## Using variables

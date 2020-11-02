@@ -22,6 +22,7 @@ excerpt: truncate
 # Scripts / Features
 google_analytics: "UA-142123817-1"
 katex: true # Enable if using math markup
+mermaid: true
 
 # Post navigation
 post_navigation: true
