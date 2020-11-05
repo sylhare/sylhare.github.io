@@ -149,6 +149,7 @@ docker run --net=host -v "$PWD/src":/target --name mycontainer image
 ```
 
 This way you inject your `/src` directory as `/target` at root level in your docker container. 
+You can also use `--network="host"` to map localhost of the machine with localhost of the docker.
 
 ### Copy from and to the container
 #### Get your container ID
