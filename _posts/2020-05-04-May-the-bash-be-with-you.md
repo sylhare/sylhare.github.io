@@ -13,6 +13,20 @@ This is not an exhaustive list.
 - `sudo !!` to redo the command above as sudo. (which is a special case of a wider [rule](https://stackoverflow.com/questions/211378/hidden-features-of-bash/211913#211913))
 - Use `-x` while running a script to have debug information.
 
+#### Useful magic commands
+
+Search and replace in ".md" files strings. This one has been tested on Mac (the `-i '' -e` is necessary for mac)
+
+```bash
+find . -type f -name "*.md" -exec sed -i '' -e 's/search/replace/g' {} +
+```
+
+You can also use awk in your grep to select specific things like:
+
+```bash
+awk -F"[:(]" '{print $2}'
+# this:test(is super cool) -> returns test
+```
 
 ### Bash shortcuts
 
@@ -22,7 +36,6 @@ This is not an exhaustive list.
 - <kbd>ctrl</kbd> + <kbd>U</kbd>: to remove from there to the _beginning_ of the line
 - <kbd>ctrl</kbd> + <kbd>K</kbd>: to remove from there to the _end_ of the line
 - <kbd>ctrl</kbd> + <kbd>W</kbd>: to remove word per word the line
-
 
 
 ### Use bash files
