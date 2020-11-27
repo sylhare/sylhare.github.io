@@ -11,6 +11,8 @@ Deploy and manage containerized applications more easily with a fully managed Ku
 
 ## Azure Kubernetes Service
 
+### Create your cluster
+
 When you log into Azure Cloud you get a lot of possibilities and resources to play with.
 Almost everything can be done via the [Azure Cloud Portal](https://portal.azure.com) (a GUI), but that would be a very bad idea.
 The GUI is great to get a look at metrics, existing deployment or for testing around, 
@@ -30,6 +32,25 @@ The name of the cluster can't be change later.
 
 Once created (it can take a couple of minutes) you can access your Kubernetes cluster via your PC,
 or using the Azure Cloud Terminal (available as Bash or Powershell) with all the tools already installed.
+
+
+### Add RBAC with Azure AD
+
+You can use Kubernetes role-based access control (Kubernetes RBAC) with an addition with the Azure Active Directory.
+That way you can fine tune what users can do within your cluster.
+
+You can update your cluster with [Azure Active Directory (aad)](https://docs.microsoft.com/en-us/azure/aks/managed-aad) or create a new cluster. 
+Here is how you should do to update your cluster with a newly created AD group:
+
+```bash
+# Create your AD Group
+az ad group create --display-name myAKSAdminGroup --mail-nickname myAKSAdminGroup
+az aks update -g MyResourceGroup -n MyManagedCluster --enable-aad --aad-admin-group-object-ids <id-1>
+``` 
+
+That step is not mandatory but good to know that it is possible to secure even further your cluster.
+One of the good point of Azure its all the possibility it provides, 
+but it also be quiet complex to get a full understanding at the whole architecture and component in azure.
 You may need to get credentials so you can access your Kubernetes:
 
 ```bash
@@ -50,7 +71,7 @@ Apply new deployment using yaml file instead of the GUI using:
 kubectl apply -f deployment.yaml
 ```
 
-If you are using an Azure registry (to store your artifacts and docker images), you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad?view=azure-cli-latest) 
+If you are using an Azure registry to store your artifacts and docker images, you can use the [Azure CLI](https://docs.microsoft.com/en-us/cli/azure/ad?view=azure-cli-latest) 
 to attach it to your deployment using with `azureRegistry` the name of the registry:
 
 ```bash
