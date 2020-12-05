@@ -13,6 +13,8 @@ import java.net.ServerSocket
 import java.net.Socket
 ```
 
+If you already know it in Java then no suprise, but since you might be interested in Ktor or the kotlin syntax:
+
 > You can have access to the source code at [sylhare/tcp](https://github.com/sylhare/tcp).
 
 ## Implementation
