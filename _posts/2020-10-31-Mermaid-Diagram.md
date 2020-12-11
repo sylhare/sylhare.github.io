@@ -2,7 +2,7 @@
 layout: post
 title: Use mermaid-js 🧜‍♀️ to draw diagrams
 color: rgb(181,223,214)
-tags: [linux]
+tags: [open source]
 ---
 
 [Mermaid.js](https://mermaid-js.github.io/mermaid/) is a js library that transforms text into diagrams 
