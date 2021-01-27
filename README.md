@@ -3,3 +3,6 @@
 ### 🎨 You like this theme? 🎨
 
 #### It is the jekyll theme [Type-on-Strap](https://github.com/sylhare/Type-on-Strap) you can clone a fresh version [there](https://github.com/sylhare/Type-on-Strap) to get started 😉
+
+
+![streak](https://github-readme-streak-stats.herokuapp.com/?user=sylhare)
