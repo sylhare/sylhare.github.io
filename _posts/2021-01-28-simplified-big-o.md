@@ -120,7 +120,7 @@ It is logarithmic on [base 2](https://courses.lumenlearning.com/waymakercollegea
    - If $$n = 8$$, then there will be $$3$$ iteration.
    - And we have $${\mathrm{log}}_{2}\left(8\right)=3$$ because $${2}^{3}=8$$
 
-$${\mathrm{log}}_{b}\left(x\right)=y\Leftrightarrow {b}^{y}=x,\text{}b>0,b≠ 1$$
+$${\mathrm{log}}_{b}\left(x\right)=y\Leftrightarrow {b}^{y}=x$$
 
 ## To go further
 
