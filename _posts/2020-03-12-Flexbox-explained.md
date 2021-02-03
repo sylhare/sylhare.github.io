@@ -11,6 +11,27 @@ It is very powerful and allow your layout to dynamically adjust based on the siz
 
 ## Introduction
 
+### Working with HTML
+
+Let's say you have multiple elements that are nested like this:
+
+{% raw %}
+```html
+<div class="container">
+    <div class="item"> ... </div>
+    <div class="item"> ... </div>
+    <div class="item"> ... </div>
+</div>
+```
+{% endraw %}
+
+And you want to make sure that they are all align, and well.
+With the proper class assign like that we can now jump to the CSS part
+
+### Flex your CSS
+
+#### For the container
+
 Flexbox works with a flex container which has a flex display:
 
 ```css
@@ -25,7 +46,9 @@ Other nice attributes for the container:
  - `flex-wrap`: to avoid items overlaying the container, with `wrap` they'll automatically go on the next directional level
  - `justify-content` with `align-items`: To align items depending on the flex direction.
 
-And a flex item that has different attributes:
+### For the items
+
+A flex item that has different attributes:
 
 ```css
 .item {
