@@ -25,7 +25,7 @@ There are 4 types of metrics:
 - Histogram: measure the frequency of events in  pre-defined buckets (response duration)
 - Summary: measure with more accuracy on the application side the frequency of events in dynamic buckets.
 
-### Implement with Springboot in Kotlin
+### Enable it with Springboot in Kotlin
 
 #### Set up
 
@@ -39,14 +39,16 @@ implementation("org.springframework.boot:spring-boot-starter-actuator")
 implementation("io.micrometer:micrometer-registry-prometheus:1.3.5")
 ```
 
+#### Configuration
+
 Those will enable you to create and display the metrics. 
 [Micrometer](https://micrometer.io/) is an application metrics that supports multiple monitoring services.
 Then don't forget to update your _application.yml_ with metrics enabled. 
 This way you'll have all basic springboot prometheus metrics already created and advertised.
 
 ```yml
-
 management:
+  # Set the management port, if not set will take the default one.
   server:
     port: 9100
   # Enable prometheus and metrics endpoints
@@ -55,9 +57,10 @@ management:
       enabled: true
     prometheus:
       enabled: true
-  # Expose all metrics endpoints
+  # Expose all metrics endpoints at "/"
   endpoints:
     web:
+      base-path: "/"
       exposure:
         include: '*'
   # Enable prometheus metrics generation
@@ -67,7 +70,8 @@ management:
         enabled: true
 ```
 
-With the above config you should be able to check the metrics at [localhost:9000/actuator/prometheus](http://localhost:9000/actuator/prometheus).
+With the above config you should be able to check the metrics at [localhost:9100/prometheus](http://localhost:9100/prometheus).
+We set the base path to be `/` instead of `actuator`.
 Also you may need to set jmx to true (which is false by default in spring 2.x) for some metrics (like for kafka)
 
 ```yml
@@ -78,6 +82,38 @@ spring:
 
 [JMX](https://en.wikipedia.org/wiki/Java_Management_Extensions) is the Java Management Extension library that supply tools 
 for run time managing and monitoring.
+
+#### Test it
+
+Since you have enabled the metric, you can now test it.
+Depending if you set the management port to `9100` or let it default to be same as your app, you can get the endpoint and retrieve the data.
+
+Here is how you would test it:
+
+```kotlin
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@ExtendWith(SpringExtension::class)
+internal class EnppointTests {
+
+  var testRestTemplate = TestRestTemplate()
+
+  @Test
+  fun metricsTest() {
+    val result: ResponseEntity<Void> = testRestTemplate.exchange(
+        URI("http://localhost:9100/metrics"),
+        HttpMethod.GET,
+        HttpEntity(""),
+        Void::class.java)
+
+    Assertions.assertEquals(HttpStatus.OK, result.statusCode)
+  }
+}
+```
+
+If you use the default port, you can use `@LocalServerPort` to get it so that you don't need to hard code it in your test.
+
+
+### Add New Metrics
 
 #### Counter with Micrometer Core
 
