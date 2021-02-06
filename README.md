@@ -6,12 +6,11 @@ If you find a mistake, typo or want to comment on the blog let me know via an is
 
 #### It is the jekyll theme [Type-on-Strap](https://github.com/sylhare/Type-on-Strap) you can clone / use as a template a fresh version [there](https://github.com/sylhare/Type-on-Strap) to get started 😉
 
-### Stats
+### Stats for [profile readme](https://rahuldkjain.github.io/gh-profile-readme-generator/)
 
-Use [profile readme generator](https://rahuldkjain.github.io/gh-profile-readme-generator/), it gathers most of what you can find:
+<div>
+  <img height="170" align="left" src="https://github-readme-stats.vercel.app/api?username=sylhare&count_private=true&include_all_commits=true" />
+  <img src="https://github-readme-streak-stats.herokuapp.com/?user=sylhare" />
+</div>
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=sylhare&row=1&column=8)](https://github.com/ryo-ma/github-profile-trophy)
-
-![stats](https://github-readme-stats.vercel.app/api?username=sylhare&show_icons=true&locale=en) 
-
-![streak](https://github-readme-streak-stats.herokuapp.com/?user=sylhare)
