@@ -8,10 +8,10 @@ If you find a mistake, typo or want to comment on the blog let me know via an is
 
 ### Stats
 
-Use [profile readme generator](https://rahuldkjain.github.io/gh-profile-readme-generator/), it gathers most of what you can find
+Use [profile readme generator](https://rahuldkjain.github.io/gh-profile-readme-generator/), it gathers most of what you can find:
 
-[![trophy](https://github-profile-trophy.vercel.app/?username=sylhare)](https://github.com/ryo-ma/github-profile-trophy)
+[![trophy](https://github-profile-trophy.vercel.app/?username=sylhare&row=1&column=8)](https://github.com/ryo-ma/github-profile-trophy)
 
-![stats](https://github-readme-stats.vercel.app/api?username=sylhare&show_icons=true&locale=en)
+![stats](https://github-readme-stats.vercel.app/api?username=sylhare&show_icons=true&locale=en) 
 
 ![streak](https://github-readme-streak-stats.herokuapp.com/?user=sylhare)
