@@ -62,7 +62,6 @@ Here is a schema of how vue.js handle it and get [reactive](https://vuejs.org/v2
 Let's get into _MyComponent.vue_, a basic component, first the html part:
 
 ```html
-{% raw %}
 <template>
   <div>
     <div class="message"> {{ message }} {{ msg }}</div>
@@ -72,7 +71,6 @@ Let's get into _MyComponent.vue_, a basic component, first the html part:
     </div>
   </div>
 </template>
-{% endraw %}
 ```
 
 You can see the _{% raw %}< template >{% endraw %}_ tags that make up the vue html template.

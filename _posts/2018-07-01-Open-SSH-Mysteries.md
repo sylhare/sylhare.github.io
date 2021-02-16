@@ -35,9 +35,10 @@ You should change the key permission using:
 chmod 600 ~/.ssh/id_rsa
 ```
 
-## Make a SSH connection
+## SSH connection
 
-To make a ssh connection:
+### Basics 
+To connect via SSH to a server:
 
 ```bash
 ssh <user>@<remotehost> -p <port>
@@ -47,6 +48,20 @@ When you connect for the first time to a host, it will print its finger print an
 To check what happen for ssh connection, you can see at `/etc/ssh`
  
 When ssh into a server the command executed is the bash shell so while it is running you stay connected. You can quit by using `ctrl + d` or by typing `exit`.
+
+### With passphrase
+
+If you had created your ssh key with a passphrase, you might not want to enter your passphrase each time.
+For that you can save it in your ssh key to your ssh agent using:
+
+```bash
+# Start the ssh agent
+eval $(ssh-agent)
+# To add and save permanently
+ssh-add -k ~/.ssh/id_rsa
+```
+
+You may need to reboot for the config to be loaded.
 
 ## Add a SSH key to a remote host
  
