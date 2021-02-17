@@ -6,6 +6,23 @@
 const gulp = require('gulp');
 const imagemin = require('gulp-imagemin');
 const responsive = require('gulp-responsive'); // Supported formats: heic, heif, jpeg, jpg, png, raw, tiff, webp
+const fs = require('fs');
+
+
+// Use it gulp post -n '<title of the post>'
+gulp.task('post', function(callback){
+  let args = process.argv;
+  let title = args[args.length -1];
+  let filename = new Date().toLocaleDateString('en-CA') + '-' + title.toLowerCase().replaceAll(' ', '-') + '.md';
+  let content = '---\n' +
+    'layout: post\n' +
+    'title: ' + title + '\n' +
+    'color: rgb(50,50,50)\n' +
+    'tags: []\n' +
+    '---';
+  console.log('[' + new Date().toLocaleTimeString('en-CA', { hour12: false }) + '] File created: _posts/' + filename);
+  fs.writeFile(__dirname + '/../_posts/' + filename, content, callback);
+});
 
 gulp.task("img", function imging() {
   return gulp.src('img/**/*.{png,svg,jpg,webp,jpeg,gif}')
@@ -31,7 +48,6 @@ gulp.task('sharp_img', function () {
     }))
     .pipe(gulp.dest('img'))
 });
-
 gulp.task('thumbnails', function () {
   let settings = {
     width: '50%',
