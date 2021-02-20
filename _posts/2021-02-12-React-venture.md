@@ -6,7 +6,7 @@ tags: [js]
 ---
 
 [React](https://reactjs.org/) is a well known javascript library for building user interfaces.
-React is part of the Facebook Open source, and has very good documentation to [learn](https://reactjs.org/docs/introducing-jsx.html) 📚!
+React is part of the Facebook Open source, and has a very good documentation to [learn](https://reactjs.org/docs/introducing-jsx.html) 📚!
 
 You can get started with your own React application using [Create React App](https://github.com/facebook/create-react-app).
 It is a boilerplate app creator, you can use it via:
@@ -91,7 +91,7 @@ So let's just add some simple definition on those:
 
   - **props**: Props are like the parameters you pass down a function, or component. It stands for property.
   In React they must be [read only](https://reactjs.org/docs/components-and-props.html#props-are-read-only), you don't modify the props directly.
-  - **state**: Talking about stateful and stateless, state represents the current value(s) of a component. The state is like a "private value" and can't be updated [directly](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly).
+  - **state**: Talking about stateful and stateless, state represents the current value(s) of a component. The state is like a _"private member"_ and can't be updated [directly](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly).
   You need to use something like `setState()` so each time you update the state, it will render your component with its new value.
   - **lifecycle**: This is handling of the React component that will go through different stage from before it appears in the DOM, to being updated until after it gets removed.
   The React component [API](https://fr.reactjs.org/docs/react-component.html) provides methods to control the behavior in each of those stage
@@ -135,7 +135,7 @@ export default function FunctionalComponent() {
 }
 ```
 
-This component use the `useEffect` hook to update itself (via fetching some info) and we use `useState` hook to create and save the state of the component.
+This component use the `useEffect` hook to update itself (via fetching some info) and we use the `useState` hook to create and save the state of the component.
 
 You can also have high order component when for example you have a list for data for which each will be rendered via another component.
 So once you mastered the syntax, you'll be able to go fancy with those.
