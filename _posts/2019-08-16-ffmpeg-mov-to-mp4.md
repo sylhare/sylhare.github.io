@@ -15,7 +15,7 @@ It is a cross platform tool that we will use to make the conversion.
 
 To do it on windows easily, here are the small steps you need to follow:
 
-1. Download a ffmpeg windows build from [here](http://ffmpeg.zeranoe.com/builds/).
+1. Download a ffmpeg windows build from [ffmpeg.com](http://ffmpeg.zeranoe.com/builds/).
 2. Unzip it and place it in `Program Files` for example.
 3. Add the ffmpeg to your `PATH` environment variable with the `cmd.exe` tool (windows CLI).
 ```batch
@@ -33,4 +33,16 @@ ffmpeg -version
 FOR /r %i IN (*.MOV) DO ffmpeg -i "%i" -vcodec h264 -acodec mp2 "%~ni.mp4"
 ```
 
-And that's it you're done. Now you should have in that folder all of your files `.mov` and the `.mp4` with the same name.
+That's it you're done. Now you should have in that folder all of your files `.mov` and the `.mp4` with the same name.
+
+## Convert .ogg to .mp3
+
+If you have music you want to convert from one format to another (.ogg or else). You could do the same step,
+and just change the ffmpeg command with:
+
+```batch
+ffmpeg -i music.ogg music.mp3
+```
+
+The `-i` is the input *music.ogg*, the output name will be *music.mp3*.
+
