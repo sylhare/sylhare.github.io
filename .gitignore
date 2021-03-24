@@ -29,3 +29,4 @@ themes/*
 .jekyll-cache/*
 **/.jekyll-cache/*
 assets/package-lock.json
+type-on-strap-gem/*
