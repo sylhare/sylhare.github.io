@@ -22,14 +22,14 @@ To get a [dynamic named range](https://trumpexcel.com/named-ranges-in-excel/) yo
 ```coffee
 =$A$2:INDEX($A$2:$A$100;COUNTIF($A$2:$A$100;"<>"&""))
 ```
-This formula will start looking at value from `A2` to the index (the coordinates) of the last non empty cell (up to 100 in here).
+This formula will start looking at value from `A2` to the index (the coordinates) of the last non-empty cell (up to 100 in here).
 It will only refers to the populated cells in the dynamic named range.
 
 
 #### Get other information from the entered item
 ##### 1. Example:
 
-- You have a range of value with a define name: `list` with all the values to find.
+- You have a range of value with a defined name: `list` with all the values to find.
 - You have the case where the search value is entered in `C4`. 
 
 Then you can add this formula in the cells next to `C4` to map the cell using what has been entered in `C4`.
@@ -40,8 +40,8 @@ Then you can add this formula in the cells next to `C4` to map the cell using wh
 
 - The `MATCH` function will match the `ROW` of the entered value (here `C4`) and the `List` value to get the right one.
 - the `ADDRESS` function will map the found value and its relative position. 
-(Used with `+1` or `-1` in the `ROW, COLUMN` you can modify the address you get. 
-- the `INDIRECT` function print the value of the input coordinates (the `"tab_name!"` where the value is and the address of the found value).
+(Used with `+1` or `-1` in the `ROW, COLUMN` you can modify the address you get). 
+- the `INDIRECT` function print the value of the input coordinates (the `"tab_name!"` where the value is, and the address of the found value).
 
 ##### 2. Another Example
 
@@ -53,7 +53,8 @@ Or you can use this formula which will look in `List` if it finds the value in `
 
 #### Have a google like search
 
-[Here](https://trumpexcel.com/excel-drop-down-list-with-search-suggestions/) is a sweet example that requires 1 column with the values and 3 helping columns and a cell that will be used to do the google like search:
+[Here](https://trumpexcel.com/excel-drop-down-list-with-search-suggestions/) is a sweet example that requires 1 column with the values and 3 helping columns,
+and a cell that will be used to do the Google-like search:
 
 | **E**. Available values | **F**. criteria matching | **G**. Occurrence count | **H**. Found values |
 |------------------|-------------------|-----------------|--------------|
@@ -78,7 +79,7 @@ This formula returns 1 if part of what is in cell `E3` in the **Available values
 
 This formula starting at `F3`, with `F3` the **criteria matching** look if the **criteria matching** is 1 and count how many there was since first cell (`$F$3`).
 
-- Column #4 : **Found Values** stack all of the criteria matching values with this formula:
+- Column #4 : **Found Values** stack all the criteria matching values with this formula:
 
 ```coffee
 =IFERROR(INDEX($E$3:$E$22,MATCH(ROWS($G$3:G3),$G$3:$G$22,0)),"")
@@ -93,7 +94,8 @@ You can use this formula to create the dynamic range from the **found values** i
 =$H$3:INDEX($H$3:$H$22;MAX($G$3:$G$22);1)
 ```
 
-The name will be used for the combobox (dropdown in developer > insert > activeX). Here are the properties to look for:
+The name will be used for the combobox (dropdown in developer > insert > activeX). 
+Here are the properties to look for:
 
 - AutoWordSelect: False
 - LinkedCell: B3
@@ -101,7 +103,7 @@ The name will be used for the combobox (dropdown in developer > insert > activeX
 - MatchEntry: 2 – fmMatchEntryNone
 
 The LinkedCell `B3` is the searching cell, it will print the result of the search.
-If you haven't change the name of the combobox, the default one should be `ComboBox1` and you can copy paste that into the VBA part of your sheet:
+If you haven't change the name of the combobox, the default one should be `ComboBox1` and you can copy and paste that into the VBA part of your sheet:
 
 ```vb
 Private Sub ComboBox1_Change()

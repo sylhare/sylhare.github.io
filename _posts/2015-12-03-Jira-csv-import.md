@@ -2,7 +2,7 @@
 layout: post
 title: Rules to import issue to jira via csv files
 color: rgb(216,174,71)
-tags: [jira]
+tags: [agile]
 ---
 
 ## CSV External import

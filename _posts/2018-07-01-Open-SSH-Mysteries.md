@@ -2,7 +2,7 @@
 layout: post
 title: Open SSH Mysteries
 color: rgb(255, 111, 97)
-tags: [os]
+tags: [misc]
 ---
 
 # Configuring and controlling Open SSH Service
