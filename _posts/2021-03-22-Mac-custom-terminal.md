@@ -6,7 +6,7 @@ tags: [misc]
 ---
 
 [iTerm2](https://iterm2.com/) is a terminal replacement that works for newer version of macOS.
-Since *macOS X Catalina* (10.15) the default shell uses [Z shell](https://en.wikipedia.org/wiki/Z_shell) aka **zsh** as a default.
+Since *macOS X Catalina* (10.15) the default shell uses [Z shell](https://en.wikipedia.org/wiki/Z_shell) aka **zsh**.
 
 The zsh shell adds some cool functionalities compared to the traditional bash shell.
 One of them is the enhanced customization possible with [*Oh My Zsh*](https://ohmyz.sh/).

@@ -1,11 +1,12 @@
 ---
 layout: post
-title: Run Type on Strap 🧪 jekyll theme Locally
+title: Run a jekyll theme gem locally
 color: rgb(187, 10, 30)
 tags: [jekyll]
 ---
 
 Let's start from scratch on a macOS environment from the installation of ruby to actually running the theme.
+The jekyll theme that we will be running is [Type-on-Strap](https://github.com/sylhare/Type-on-Strap).
 If you are on a different operating system and have issues check out the [Jekyll docs](https://jekyllrb.com/docs/installation/).
 If you have an issue you can refer to [Installation issue #57](https://github.com/sylhare/Type-on-Strap/issues/57) or open a new [one](https://github.com/sylhare/Type-on-Strap/issues/new/choose).
 
@@ -38,7 +39,7 @@ ruby 2.6.3p62 (2019-04-16 revision 67580) [universal.x86_64-darwin19]
 ```
 
 However, we won't be using it to avoid any weird issues. We'll use `rbenv` to install our own ruby version. 
-This way we will be able to select which version we want to use and set as _default_ in our terminal.
+This way we will be able to select which ruby version by default we want to use in the terminal.
 
 ```bash
 # Install rbenv and ruby-build
