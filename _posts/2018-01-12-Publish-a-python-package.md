@@ -91,10 +91,10 @@ As for an example from my **gitlab_stats** package:
   - The [`setup.py`](https://github.com/sylhare/gitlab_stats/blob/master/setup.py)
   - How it looks online [gitlab-stats](https://pypi.org/project/gitlab-stats/) on pypi
 
-## Create the ` Readme.rst`
+## Create the Readme.rst
 
 In PyPI, you need to use the `.rst` format for your readme which is basically the front page of your package.
-So if you are more familiar with `.md`, you can always use pandoc to convert your file from `.md` to `.rst`:
+So if you are more familiar with `.md`, you can always use [pandoc](https://pandoc.org/) to convert your file from `.md` to `.rst`:
 
 ```bash
 pandoc --from=markdown --to=rst --output=README.rst docs/README.md

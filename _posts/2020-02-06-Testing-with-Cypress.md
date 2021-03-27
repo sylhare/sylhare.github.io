@@ -26,7 +26,7 @@ I have added few lines for features that was not necessary in my case (for a sma
 
 Let's talk about how cypress is structured:
 
-```bash
+```groovy
 .
 ├── fixtures                # Data for tests
 │   └── example.json

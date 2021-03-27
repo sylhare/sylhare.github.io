@@ -7,11 +7,11 @@ tags: ['open source']
 
 # Linux Foundation
 
-The [Linux Foundation](http://www.linuxfoundation.org/) is a large open source non profit organisation that promotes and foster collaborative development.
+The [Linux Foundation](http://www.linuxfoundation.org/) is a large open source non-profit organisation that promotes and foster collaborative development.
 
 ## Open Source
 
-Readings from [Daniel Shiffman - Open Source Course](https://github.com/shiffman/Open-Source-Course-ITP)
+Readings from [Daniel Shiffman - Open Source Course](https://github.com/shiffman/Open-Source-Course-ITP):
 
 * [What Does “Open Source” Even Mean?](https://medium.com/@kenjagan/what-does-open-source-even-mean-6bd47befe696) by Jen Kagan
 * [Inessential Weirdness's in Open Source Software ](https://www.harihareswara.net/sumana/2016/05/21/0) by Sumana Harihareswara
@@ -40,8 +40,8 @@ To contribute using you need to:
 
 - Go on the ONAP's Gerrit: [gerrit.onap.org](https://gerrit.onap.org/r/#/admin/projects/)
 - Create a linux foundation account (in `Account signup / management`)
--  Then you need to sign in (it's a tiny `sign in` link under the `search button`).
--  Configure a rsa public key on your side:
+- Then you need to sign in (it's a tiny `sign in` link under the `search button`).
+- Create a ssh public key (like you would do on [Github]({% post_url 2017-04-19-Get-started-with-Github %})):
 
 ```bash
 ssh-keygen -t rsa
@@ -75,10 +75,10 @@ chmod +x ./.git/hooks/commit-msg
 git add .
 ```
 
-- Sign off the commit and add the issue ID to the footer (it's case sensitive)
+- Sign off the commit and add the issue ID to the footer (it's case-sensitive)
 
 ```bash
-fixing stuff
+Fix important stuff
 
 Change-Id: I706ec04d541925be8f04c44254379523f2085eca
 Issue-ID: POLICY-389

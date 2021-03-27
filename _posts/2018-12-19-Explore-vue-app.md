@@ -17,7 +17,7 @@ But let's take a look at a full on Vue.js app.
 Here is what the very basic tree of a vue app look like.
 You can see that there are the main app `App.vue` and then two folders _components_ and views.
 
-```bash
+```groovy
 .
 ├── src
 │   ├── App.vue
