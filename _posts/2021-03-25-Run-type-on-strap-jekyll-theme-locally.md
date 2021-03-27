@@ -121,7 +121,7 @@ header_feature_image: assets/img/banner.jpeg
 post_navigation: true
 paginate: 10
 paginate_path: "blog/page:num"
-plugins: [jekyll-paginate, jekyll-seo-tag]
+plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
 ```
 
 With that you should have some basic configuration. 

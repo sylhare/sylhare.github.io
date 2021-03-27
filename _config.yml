@@ -41,7 +41,7 @@ collections:
     permalink: /:collection/:name
 
 # BUILD SETTINGS
-plugins: [jekyll-paginate, jekyll-seo-tag]
+plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
 exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", ".idea", ".github", "SECURITY.md",
           "LICENSE", "README.md", "screenshot.png", "assets/package.json", "assets/node_modules", "assets/gulpfile.js", "themes"]
 remote_theme: sylhare/Type-on-Strap
