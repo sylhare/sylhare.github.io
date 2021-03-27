@@ -6,13 +6,15 @@ tags: [misc]
 ---
 
 Certificates are everywhere ...
+
 Usually you don't see them, everything works fine until it does not. 
-The most common place with certificate errors will be on website not using them or with errors. 
+The most common place with certificate errors will be on a website not using them or with errors. 
 
 ![warning]({{ "assets/img/http_warning.png" | relative_url }})
+
 *Like your connection is not secure, you're going to die and all your data will be hacked*
 
-I might be exaggerating, it's not that complicated and you might not always getting hacked, but you surely gonna die.
+I might be exaggerating, it's not that complicated, and you might not always getting hacked, but you surely gonna die.
 Anyway, how does it work?
 
 ## Let's get started 😎
@@ -22,7 +24,7 @@ Anyway, how does it work?
 Here would be a lousy explanation of random typical workflow:
 
 Basically, when somebody (let's say _"Carl's app"_) tries to connect to you:
->  - What's up who are you, what do you offer?
+>  - **You:** What's up who are you, what do you offer?
 
 You can test it with this command to get the certificate manually:
 
@@ -30,28 +32,45 @@ You can test it with this command to get the certificate manually:
 openssl s_client -connect host:port
 ```
 
-Then "Carl's app" answer, _"hey it's me"_ giving you its public certificate (like an id to prove he's legit and all).
+Then _Carl's app_ answer, _"hey it's me"_ giving you its public certificate (like an id to prove he's legit and all).
 But you go:
->  - Don't know you, but it written that Carl's knows you, but who the heck is Carl? Like I don't have all day, already a millisecond!
-  
-Yeah because Carl created his app public key with his own key private key. That's call signing the public key.
- So here "Carl's app" public key looks like:
+>  - **You**: You say your name is _Carl's app_?, Never heard, but it's written that Carl 👨‍💻 knows you, but who the heck is Carl 👨‍💻 anyway?
+>  <br>_I don't have all day long, a millisecond already!_
 
-```
+Carl 👨‍💻 created his app public key with his own key private key. That's call signing the public key. <br>
+Here _Carl's app_ public key looks like:
+
+```bash
 -----BEGIN-----
 Hi,
 
- Server is legit 
+ Carl`s app is legit 
  
 Carl
 -----END-----
 ```
  
-So then Carl gives is public key, saying I'm cool bro, look even Google say so, he signed my key. 
-And then you check and see that his public is checked by Google (which is one of the root certificate provider used to sign other certificates).
-Once you get this certification, you know that server is indeed legit and you can start the encrypted and trusted connection.
+So then Carl 👨‍💻 gives his public key that has been sign with Google's private key saying:
 
->  - You are "secured"!
+```bash
+-----BEGIN-----
+Hello world,
+
+ Carl is legit too 
+ 
+Google
+-----END-----
+```
+
+You checked _Carl's app_ key that was approved by Carl 👨‍💻, then checked Carl's key that was approved by Google so final step is to ask Google
+(which is one of the root certificate provider used to sign other certificates like Facebook, Amazon, ...).
+
+Once you validated with Google, _did you really sign Carl's certificate?_️, you know it's secure because that's the last step of the verification chain.
+You trust Google's words because it's a certificate provider.
+
+You finally know that server is indeed _legit_, and you can start the encrypted and trusted connection.
+
+>  - **You**: Ok everything's clear, we are now _secured_! 🔒
 
 All this is called the PKI (Public key infrastructure).
 
@@ -93,7 +112,7 @@ Usually truststore are used for SSL handshakes. you can do that with `keytool` u
 keytool -noprompt -keystore client.truststore.jks -alias my-custom-cert-alias -import -file newcert.crt -storepass "changeit" -keypass "changeit"
 ```
 
-And to check the certificate in the truststore use:
+To check the certificate in the truststore use:
 
 ```bash
 keytool -list -v -keystore client.truststore.jks -storepass "changeit"
