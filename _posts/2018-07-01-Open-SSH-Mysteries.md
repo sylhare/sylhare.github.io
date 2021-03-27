@@ -64,15 +64,10 @@ ssh-add -k ~/.ssh/id_rsa
 You may need to reboot for the config to be loaded.
 
 ## Add a SSH key to a remote host
- 
-### With ssh-copy-id
-
-To add yourself to a host as an authorized remote user `ssh-copy-id root@desktopY`
-There is a daemon called `ssh-agent` that makes a copy of the private key to facilitate the ssh connection. 
 
 ### Using authorized_keys
 
-You can also go to the remote server and add the public key `my_key.pub` inside the `/home/user/.ssh/authorized_keys` folder.
+You can go to the remote server and add the public key `my_key.pub` inside the `/home/user/.ssh/authorized_keys` folder.
 So that the next time you connect to that server you won't be prompt for the password for that `user`. Using:
 
 ```bash
@@ -80,6 +75,19 @@ ssh -i my_key.pem user@server
 ```
 
 The `my _key.pem` and `my_key.pub` are a matching public and private key pair.
+ 
+### With ssh-copy-id
+
+Or there is a daemon called [ssh-copy-id](https://www.ssh.com/ssh/copy-id) which is part of the [OpenSSH](https://www.openssh.com/) tool,
+that will do all the necessary steps automatically to add yourself to a host as an authorized remote user.
+
+To do so use the command as follows:
+
+```bash
+ssh-copy-id -i ~/.ssh/id_rsa user@server
+```
+
+Like before, next time you try to ssh into that server with that ssh key, no password will be asked.
 
 ## SSH spoofing 
 
@@ -111,4 +119,4 @@ Host key verification failed.
 
 You can remove the host from your `known_hosts` and try connecting. You will be prompted with `unkwon_host` and you'll need to add the new `fingerprint` to your `known_hosts`. 
 
-However if you've seen that message above, you should think twice before doing that.
+However, if you've seen that message above, you should think twice before doing that.
