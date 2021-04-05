@@ -9,7 +9,7 @@ In some occasion you can't work with only the <strike>master</strike> _main_ bra
 For example when working with open source, the upstream repository is not owned by you.
 So in order to add your contribution you'd likely need to fork it and make a pull request.
 
-> As of the release of this article, most online git like [Github](](https://github.com/github/renaming)) renamed `master` into `main` for the default branch.
+> As of the release of this article, most online git like [Github](https://github.com/github/renaming#new-repositories-use-main-as-the-default-branch-name) renamed `master` into `main` for the default branch.
 
 ## Practice environment
 
