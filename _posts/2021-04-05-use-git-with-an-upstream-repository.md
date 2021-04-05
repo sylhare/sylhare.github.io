@@ -5,9 +5,11 @@ color: rgb(224, 181, 137)
 tags: [git]
 ---
 
-In some occasion you can't work with only the master branch. 
+In some occasion you can't work with only the <strike>master</strike> _main_ branch. 
 For example when working with open source, the upstream repository is not owned by you.
 So in order to add your contribution you'd likely need to fork it and make a pull request.
+
+> As of the release of this article, most online git like [Github](](https://github.com/github/renaming)) renamed `master` into `main` for the default branch.
 
 ## Practice environment
 
@@ -52,28 +54,28 @@ If you have cloned the wrong one you can always update the remote branches using
 git remote set-url origin git@github.com:<your username>/UpstreamRepo.git
 ```
 
-### Sync your fork with upstream/master
+### Sync your fork with _upstream/main_
 
 When you fork, you copy the upstream at a point in time.
 So since you create feature branch out of your fork, you need to keep your fork in sync.
-To do that, you should make no commits should be directly made in origin/master.
+To do that, you should make no commits should be directly made in _origin/main_.
 
-To your sync fork (origin/master) with upstream/master use:
+To your sync fork _origin/main_ with _upstream/main_ use:
 
 ```bash
-git checkout master
+git checkout main
 git fetch upstream
-git merge upstream/master # Or git rebase upstream/master
+git merge upstream/main # Or git rebase upstream/main
 git push origin
 ```
 
 If you've deleted the branch locally, you can use:
 
 ```bash
-git checkout --track origin/master
+git checkout --track origin/main
 ```
 
-That will track locally the remote origin/master branch.
+That will track locally the remote origin/main branch.
 
 ### Create a new feature branch
 
@@ -99,18 +101,21 @@ When pushing, it will update the branch your colleague's fork `Colleague/Upstrea
 git push colleague
 ```
 
-### Rebase your feature branch from upstream/master
+### Rebase your feature branch from upstream/main
 
-That's usually before merging your feature branch, you need to add all the changes from upstream/master.
+That's usually before merging your feature branch, you need to add all the changes from upstream/main.
 To do that go on your feature branch and do:
 
 ```bash
 git fetch upstream
-git rebase upstream/master
+git rebase upstream/main
 git push -f origin 
 ```
 
-You will see this error if you don't force push to rewrite the history of your fork with the changes that were merged into master.
+What it does is to fetch all the commits from _upstream/main_ and add them to your feature branch.
+That may produce merge conflicts that you will need to solve. Then you can force push to remote once your branch is up to date.
+
+You will see this error if you don't force push with `-f` to rewrite the history of your fork with the changes that were merged into main.
 
 ```bash
 error: failed to push some refs to 'git@github.com:user/repo.git'
@@ -124,7 +129,8 @@ Branches is asynchronous change by default so that's why you can have change mad
 
 ### Suppress your feature-branch
 
-When you're done with a `feature-branch` or when you've messed up, you can always delete it with:
+When you're done with a `feature-branch` or when you've messed up locally, you can always delete it with:
+
 ```bash
 git branch -D feature-branch # -D for force delete, otherwise -d 
 ```
@@ -137,9 +143,9 @@ So now that we have seen the workflow, let's add some alias in your `~/.gitconfi
 
 ```bash
 [alias]
-        sync = !git stash && git checkout master && git fetch upstream && git rebase upstream/master && git push origin
+        sync = !git stash && git checkout main && git fetch upstream && git rebase upstream/main && git push origin
         new = !git checkout -b $1 && git push -u origin $1 && :
-        fur = !git fetch upstream && git rebase upstream/master
+        fur = !git fetch upstream && git rebase upstream/main
         pull = pull --rebase
 ```
 
@@ -176,5 +182,5 @@ Using it while replacing with `<your username>` should be:
 clone UpstreamOrg git@github.com:<your username>/UpstreamRepo.git
 ```
 
-The auto checkout to another branch in the end is to avoid any mistaken commit to master,
+The auto checkout to another branch in the end is to avoid any mistaken commit to main,
 as previously stated we want to keep it clean to sync up with upstream.
