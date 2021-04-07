@@ -65,21 +65,21 @@ At the end of each sprint value is delivered, feedback is received and delivery 
 Kanban is a way to show work and if it is well done
 For example you can set a limit of things that can be in progress (WIP) inside the Kanban
 
-Value stream is a flow of activities and work units that introduce value for the cutomer
-Work unit is a specific measurable amount of work that can be cistomized and treated as a whole
+Value stream is a flow of activities and work units that introduce value for the customer
+Work unit is a specific measurable amount of work that can be customized and treated as a whole
 
 WIP: Work in progress
 work in progress should be short, and you should control cycle time (time to do WIP)
     
-work queue is the back log for example
+work queue is the backlog for example
 lead time is how much work is in progress divided by average completion rate
 
 ### XP Xtrem programming
 
-XP Xtrem programming invented by .Kent.Beck mid 1990's is a Lightweight, Efficient, Low-Risk, Flexible, "predictable", Scientific and Fun displine of software development. It leverage pair programming, pair negotiation. 
+XP Xtrem programming invented by .Kent.Beck mid 1990's is a Lightweight, Efficient, Low-Risk, Flexible, "predictable", Scientific and Fun discipline of software development. It leverages pair programming, pair negotiation. 
 
 With self organizing, team are empowered and motivated by trust to their own decisions and commitment.
-It's consensus driven with constant constructive desagreement driving the team development and success.
+It's consensus driven with constant constructive disagreement driving the team development and success.
 
 >Give faster results, right results, astonishing results
 
@@ -105,12 +105,12 @@ We can map some of them with SCRUM roles:
 - Refactoring clean solution and keep functionality
 - Simple Design
 - Test-Driven Development create an automated test case that defines a desired new or improved functionality 
-- Pair Programming real time pair review. live analysis, negotiation, collaboration, one is on the computer and the other one give you directions
+- Pair Programming real time pair review. live analysis, negotiation, collaboration, one is on the computer, and the other one give you directions
 
 #### Team practices:
 
 - Collective Ownership add value, no one is blamed, they care
-- Coding Standard Make sure everyone use the same language
+- Coding Standard Make sure everyone uses the same language
 - Sustainable Pace 40 hours week
 - Metaphor a guiding vision to build innovation and create vocabulary of something that doesn't exist'
 - Continuous integration All the developer are building and test coded software many times a day.
@@ -128,7 +128,7 @@ Lean says that activities that adds anything else but value for your "GOAL" are 
 - Improve process velocity
 - Shorten cycle times
 
-ADHOC - is a unique solution that can not be generalized. It lead to risks
+ADHOC - is a unique solution that can not be generalized. It leads to risks
 
 #### 7 Lean principles
 
@@ -155,18 +155,18 @@ The waste types are referred as D.O.W.N.T.I.M.E.
 
 ## Other frameworks
 
-These framework can easily be integrated with other.
+These frameworks can easily be integrated with other.
 
 ### TDD. Test driven development
 
-In Test Driven Development you create the test first for that will be passed or the features that you want.
+In Test Driven Development you create the test first for that will be passed, or the features that you want.
 
 First you write the test cases, the boundaries of your system.
 Then you write the tests that verify the expected results of the test cases. 
 
 It's mostly a development "framework" or rather a state of mind.
 Where you start simple by creating a failing test, then implement the easiest / fastest way you can.
-And finally you refactor so your code stays clean and maintainable.
+And finally you refactor, so your code stays clean and maintainable.
 
 ### FDD. Feature driven development
 
@@ -183,7 +183,7 @@ It is the art to have feature that add values (like pbi in the backlog)
             
 ### DSDM. Dynamic Systems Development Method
 
-It's the dynamic systems development method and it comes from RAD (rapid application development)
+It's the dynamic systems development method, and it comes from RAD (rapid application development)
 
 
 ## Other Agile Principles
@@ -194,14 +194,14 @@ The KISS principle stands for:
 
 - **K**eep **I**t **S**imple & **S**traightforward
 
-Instead of looking for an over complicated solution, you should look for the easiest most direct way. 
+Instead of looking for an overcomplicated solution, you should look for the easiest most direct way. 
 Thus avoiding unnecessary complexity if possible. 
 Have a simple version first, optimising it when every piece is working.
 
 ### Kaizen 
 
 Kaizen (改善) means "change good".
-It is a principle to continuously improve, and set up practices to allow that improvement to happen.
+It is a principle to continuously improve, and set up practices allowing that improvement to happen.
 
 All the process generated from Kaizen be sum up into these steps:
 

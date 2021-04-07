@@ -12,14 +12,14 @@ tags: [database]
 ### More about the Concepts
 
 [LDAP](https://ldap.com/) is the Lightweight Directory Access Protocol,also referred as [X.500](https://en.wikipedia.org/wiki/X.500) 
-(Which is a series of computer networking standards covering electronic directory services.)
+(Which is a series of computer networking standards covering electronic directory services.) 
 It is open source and uses standard mechanism for interacting with directory servers.
 
 [Directory servers](https://en.wikipedia.org/wiki/Directory_service) is used to store a wide variety of information 
 (network resources, users, groups and even access control).
 The most famous one would be [Microsoft's Active Directory](https://en.wikipedia.org/wiki/Active_Directory), 
-but you can also find some other like the [Oracle Internet Directory](https://en.wikipedia.org/wiki/Oracle_Internet_Directory),
-and even famous open source ones like [Apache Directory](https://en.wikipedia.org/wiki/Apache_Directory) or [OpenLDAP](https://en.wikipedia.org/wiki/OpenLDAP).
+but you can also find some others like the [Oracle Internet Directory](https://en.wikipedia.org/wiki/Oracle_Internet_Directory),
+and even famous open source one's like [Apache Directory](https://en.wikipedia.org/wiki/Apache_Directory) or [OpenLDAP](https://en.wikipedia.org/wiki/OpenLDAP).
 
 A directory service (server by extension) is a general term, for example the [DNS](https://www.ietf.org/rfc/rfc1034.txt) is the first directory service on the internet.
 So the directory servers we are interested in are the one that implements the LDAP protocol.
@@ -50,7 +50,7 @@ dc=org
 Since it a tree, you can see a main branch `dc=example,dc=spring,dc=org`. 
 This could be considered as the base branch of the LDAP structure.
 
-The leafs are the entry, for example _bob_:
+The leaves are the entry, for example _bob_:
   
   - The complete path which unambiguously identifies is called _distinguished name_ or DN and is `uid=bob,ou=people,dc=example,dc=spring,dc=org`.
   - A single node along the path to this entry is called _relative distinguished name_ or RDN (We can have RDN `uid=bob,ou=people` from base `dc=example,dc=spring,dc=org`)
@@ -79,7 +79,7 @@ An attribute is a map of `key: value` in the entry.
 
 ### Search with ldapsearch
 
-One of the best tool to explore your LDAP, is by using the tool __[ldapsearch](https://docs.ldap.com/ldap-sdk/docs/tool-usages/ldapsearch.html)__.
+One of the best tools to explore your LDAP, is by using the tool __[ldapsearch](https://docs.ldap.com/ldap-sdk/docs/tool-usages/ldapsearch.html)__.
 It is a commandline tool that should already be in most default distribution of Linux based OS.
 
 Here is an example:
@@ -98,7 +98,7 @@ The result are returned in the LDIF format.
 
 ### Example LDIF
 
-LDIF is the The LDAP Data Interchange Format from [rfc2849](https://tools.ietf.org/html/rfc2849).
+LDIF is the LDAP Data Interchange Format from [rfc2849](https://tools.ietf.org/html/rfc2849).
 It can be used to export and import ldap entries. The possibility are wides.
 
 Here is an example of our top branch with the dc; Domain Component:
@@ -161,8 +161,7 @@ But the syntax can be quite complicated, here would be an example for Microsoft'
 ```
 
 You can find more about the syntax in [rfc4516](https://tools.ietf.org/html/rfc4516) and hopefully make sense of it all for your own use case.
-LDAP is quite a widely use protocol so resources and help should not be too hard to get.
-
+LDAP is quite a widely used protocol so resources and help should not be too hard to get.
 
 ## Misc.
 
@@ -170,8 +169,8 @@ And finally some useful links if you want to implement it or better understand i
 
 Spring [Authenticating a User with LDAP](https://spring.io/guides/gs/authenticating-ldap/)
 LDAPv3 [Encodign reference](https://ldap.com/ldapv3-wire-protocol-reference-asn1-ber/)
-Basic Encoreding Rule [variable length](http://www.csc.villanova.edu/~cassel/netbook/ber/node4.html#SECTION00011200000000000000)
-LDAP packet and rfc [references](www.selfadsi.org/ldap.htm )
+Basic Encoding Rule [variable length](http://www.csc.villanova.edu/~cassel/netbook/ber/node4.html#SECTION00011200000000000000)
+LDAP packet and rfc [references](www.selfadsi.org/ldap.html)
 
 
 
