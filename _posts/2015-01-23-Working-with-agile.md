@@ -54,7 +54,7 @@ used in Waterfall project management.
 
 ### Scrum
 
-See the [Overview of the Scrum Framework]({{ relative_url }}{% link _posts/2015-11-10-Overview-Scrum-framework.md %}) article.
+See the [Overview of the Scrum Framework]({% post_url 2015-11-10-Overview-Scrum-framework %}) article.
 
 **tldr**: 
 A framework where your plan work iteratively that is committed to be done during a specified time called sprint.
@@ -170,7 +170,7 @@ And finally you refactor, so your code stays clean and maintainable.
 
 ### FDD. Feature driven development
 
-It is the art to have feature that add values (like pbi in the backlog)
+It is the art to have features that add values (like pbi in the backlog)
 
 - Domains
     - Subject areas
@@ -183,7 +183,7 @@ It is the art to have feature that add values (like pbi in the backlog)
             
 ### DSDM. Dynamic Systems Development Method
 
-It's the dynamic systems development method, and it comes from RAD (rapid application development)
+It's the dynamic system development method, and it comes from RAD (rapid application development)
 
 
 ## Other Agile Principles
@@ -217,7 +217,7 @@ Out of the kaizen you can find those famous frameworks:
 - Kaizen 5S (Sort, Straighten / Set in order, Shine, Standardize, Sustain)
        
 ### AM. Agile Modeling
-Also called Xtreme Modeling, it was made by. Scott. Ambler
+Also called Xtrem Modeling, it was made by. Scott. Ambler
 
 - Active Stakeholder to get feedback
 - Architecture Envisioning clear vision for the future

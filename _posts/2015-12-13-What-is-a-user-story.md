@@ -24,7 +24,7 @@ User stories can be built such as:
 
 > **As** ..who..**, I want** ..what.. **so that** ..why..
 
-User story are validated with acceptance test, test cases (+ non functional requirements)
+User story are validated with acceptance test, test cases (+ non-functional requirements)
 
 > **Given** ..condition.. **When** ..action.. **Then**..expected reaction
 
@@ -76,7 +76,7 @@ a PO, and two other people from the team will gather.
 
 - The PO represents the customer's view
 - One team member, usually a more senior one represents the development point of view, the technical aspect
-- Another team member represents the quality insurance and look at who we can test it.
+- Another team member represents the quality insurance and look at whom we can test it.
 
 Out of that meeting 3 things should come out:
 
@@ -86,7 +86,7 @@ Out of that meeting 3 things should come out:
 
 ##### Example
 
-Here is a short example so you get the idea.
+Here is a short example, so you get the idea.
 
 Story name: `As a customer I want to be able to buy a cookie with the app`
 
@@ -103,12 +103,12 @@ Story name: `As a customer I want to be able to buy a cookie with the app`
 Story Points is the abstract way to consider the size of a task. 
 It is not based on time because some resource can finish the same task at different speed.
 
-So we speak of size of work for a task using the a fibonacci distribution to assess the number of points:
+So we speak of size of work for a task using the fibonacci distribution to assess the number of points:
 > 0.5, 1, 3, 5, 8, 12, 20+, ?
 
 These numbers can change depending on the team. 
 Basically a task that take more than 12 points is too big and need to be breakdown. 
-A task at 20+ points need to be send back to the PO for refinement.
+A task at 20+ points need to be sent back to the PO for refinement.
 A task that is not estimable because there's too many unknown can be used as a spike (timed experimentation during a sprint)
 
 #### MoSCoW
@@ -120,14 +120,14 @@ The MoSCoW model is to set priorities on User stories
 - **C**ould nice to have
 - **W**on't do low priority will not be implemented
 
-Prioritization is done with other tasks so you have a reference.
+Prioritization is done with other tasks, so you have a reference.
 
 ### Working on the story
 
-The story can be decompose at any time in task if the need be.
+The story can be decomposed at any time in task if the need be.
 Depending on your workflow, you might want to review or pair program.
 
-But in any case, the story can only be done if it meets the DOD.
+In any case, the story can only be done if it meets the DOD.
 
 #### DoD - Definition of Done 
 

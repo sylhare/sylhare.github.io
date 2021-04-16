@@ -125,7 +125,7 @@ plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
 ```
 
 With that you should have some basic configuration. 
-The `jekyll-paginate` plugin is validated by Github and is used by many jekyll theme out there, you definitely need it for your blog.  
+The `jekyll-paginate` plugin is validated by GitHub and is used by many jekyll theme out there, you definitely need it for your blog.  
 
 ### index.html
 
@@ -198,12 +198,12 @@ If you had any issue during the process you can always create an [issue](https:/
 Even though we talked about this specific theme, most gem based jekyll theme should work fairly the same. This was the most default settings.
 Some theme might add some more folders or pages or extra customizable stuff, so make sure you check out the doc.
 
-Finally, if you want your theme to work the same locally and on Github-page, you can use the `remote-theme` attributes:
+Finally, if you want your theme to work the same locally and on GitHub-page, you can use the `remote-theme` attributes:
 
 ```bash
 remote_theme: sylhare/Type-on-Strap
 ```
 
-This way the theme will be built correctly on github-page as well, using directly the Type-on-Strap repository as a base like the gem would do with `theme`.
-You can have both too, but you may receive a warning from Github Page if you have `theme` saying that it's not recognized as Github by default refuse all external gems.
+This way the theme will be built correctly on GitHub-page as well, using directly the Type-on-Strap repository as a base like the gem would do with `theme`.
+You can have both too, but you may receive a warning from GitHub Page if you have `theme` saying that it's not recognized as GitHub by default refuse all external gems.
 That warning can be discarded.

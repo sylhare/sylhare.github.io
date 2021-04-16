@@ -61,7 +61,7 @@ I will put here the main characteristics:
 
 ### Board
 
-The board is a 8x8 checker wuth coordinates:
+The board is a 8x8 checker with coordinates:
 
 ```
       a  b  c  d  e  f  g  h

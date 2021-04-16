@@ -7,7 +7,7 @@ tags: [agile]
 
 ## CSV External import
 
-On the advance configuration (if you're admin press `gg` then type external import):
+On the advance configuration (if you're an admin press `gg` then type external import):
 
 - Usually Excel csv are with `;`
 - Use `ISO-8859-1` for french instead of `utf-8` to get the accents
@@ -30,7 +30,7 @@ Adding links to the issues can be mapped to the jira link field using:
 
 Basic representation on how to add an issue with the mandatory fields:
 
-- Issue id: from your excel sheet, must be unique at each import
+- Issue id: from your Excel sheet, must be unique at each import
 - Parent id: used for subtasks only
 - Issuetype: Must match the ones in Jira so that it maps automatically
 	
@@ -48,7 +48,7 @@ For epics and the linked issues under those epics you need:
 - Epic Name: Little name of the epic
 - Summary: lengthy name of the epic
 - Epic Link: To link the epic to the story
-    - The Epic Name `the car` define in excel
+    - The Epic Name `the car` define in Excel
     - The issue key `PLANE-7` of an existing epic in jira 
 - Issuetype: must be set as `Epic` to be an epic.
 	

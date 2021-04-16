@@ -1,21 +1,21 @@
 ## sylhare.github.io [![Build Status](https://travis-ci.org/Sylhare/sylhare.github.io.svg?branch=master)](https://travis-ci.org/Sylhare/sylhare.github.io) ![Licence](https://img.shields.io/badge/license-MIT-blue.svg)
-My own github page
+My own GitHub page
 
 You can try it here: [sylhare.github.io](https://sylhare.github.io/index.html)
 
-## Github Information 
-### Language on Github
+## GitHub Information 
+### Language on GitHub
 
 How the language bot recognise what is in your repository (the colored bar on top of it) : [github-linguist](https://github.com/github/linguist/blob/master/lib/linguist/languages.yml)
 
-Here is a cool website with all the languages used on github: [githut](http://githut.info/)
+Here is a cool website with all the languages used on GitHub: [githut](http://githut.info/)
 
-### Github API
+### GitHub API
 
-Github has an API that can be use to develop scripts  or create application linked on it (the integrations below for example).
+GitHub has an API that can be use to develop scripts  or create application linked on it (the integrations below for example).
 Here is the link to the API documentation : [github Developer](https://developer.github.com/v3/)
 
-### Github Badges
+### GitHub Badges
 
 A thing, I was looking for are the badges used to customise and give precious information on the `readme.md` file on each repository. Some are generated automatically (like the build badge from travis).
 
@@ -29,13 +29,13 @@ Others are available as `.svg` available here:
 
 	[![SensioLabs Insight](https://img.shields.io/sensiolabs/i/45afb680-d4e6-4e66-93ea-bcfa79eb8a87.svg)]()
 
-## Github Integration
+## GitHub Integration
 
 ### Documentation
 #### GitBook
-Available to write your own book on github: [https://www.gitbook.com/book/sylhare/manual/details](https://www.gitbook.com/book/sylhare/manual/details)
+Available to write your own book on GitHub: [https://www.gitbook.com/book/sylhare/manual/details](https://www.gitbook.com/book/sylhare/manual/details)
 
-The view version is linked to my github url: [https://sylhare.gitbooks.io/manual](https://sylhare.gitbooks.io/manual)
+The view version is linked to my GitHub url: [https://sylhare.gitbooks.io/manual](https://sylhare.gitbooks.io/manual)
 
 ### Code Reviews
 #### Code Climate

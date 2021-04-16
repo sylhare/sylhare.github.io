@@ -9,7 +9,7 @@ tags: [misc]
 
 ## Creating a SSH key
 
-You can check out [Github documentation](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for that.
+You can check out [GitHub documentation](https://help.github.com/en/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) for that.
 Creating a new ssh key with `ssh-keygen` you need to enter a passphrase if you went your ssh key to be encrypted:
 
 ```bash

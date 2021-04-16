@@ -10,7 +10,7 @@ tags: [linux]
 Intended for Centos or Redhat.
 
 ## Shell text editor nano
-nano is the basic text editor that should already be installed in your distribution, it is the most simple editor.
+nano is the basic text editor that should already be installed in your distribution, it is the simplest editor.
 
 Launch the editor
 
@@ -41,10 +41,10 @@ To open filename in this depository
 
 #### insert mode
 
-- <kbd>Insert</kbd> press insert key on the key board to start editing the file
+- <kbd>Insert</kbd> press insert key on the keyboard to start editing the file
 - <kbd>Esc.</kbd> pres the esc. key to quit the insert mode
 - `:help` for Help
-- `:%s/word/test/i` to replace `word` by `test`, `i` means that it is not case sensitive
+- `:%s/word/test/i` to replace `word` by `test`, `i` means that it is not case-sensitive
 - `:w /home/usr/filename` to write with `w` the newly created `filename` in `/home/usr`
 - `:wq` to write (save) the file and then quit
 - `:q` to exit
@@ -66,7 +66,7 @@ Install emacs text file editor, because it's not by default on all distribution
 
 - <kbd>ctrl</kbd> + <kbd>x</kbd> then <kbd>1</kbd> enlarges the editing window
 - <kbd>ctrl</kbd> + <kbd>x</kbd> then <kbd>ctrl</kbd> + <kbd>w</kbd> allows to write the content in a different file
-- <kbd>ctrl</kbd> + <kbd>k</kbd> then <kbd>y</kbd> allows to cut and past the line
+- <kbd>ctrl</kbd> + <kbd>k</kbd> then <kbd>y</kbd> allows cutting and past the line
 
  
 ## Stream Editor - sed

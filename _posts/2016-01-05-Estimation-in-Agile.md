@@ -25,17 +25,17 @@ When estimating with story points, be sure to consider each of these factors.
 
 ### Advantages
 
-- Estimates allows to predict when a substantial increment of value will be delivered
+- Estimate allows to predict when a substantial increment of value will be delivered
 - Estimates help our stakeholders plan ahead. It is part of the value we provide.
 - Estimates can de-risk scope of uncertain size and complexity
-- Estimated work can be traded in and out of scope for other work of similar size. Without estimates you can't trade.
+- Estimated work can be traded in and out of scope for other work of similar size. Without estimates, you can't trade.
 - Estimating a task brings value, because its process involves more details and understanding of the requirements.
 
 ### Drawbacks
 
 - Estimates can be inaccurate and set false expectations
 - Estimation can be seen as commitment which could be use against yourself
-- Estimation is time consuming
+- Estimation is time-consuming
 
 ## III. Techniques
 
@@ -44,13 +44,13 @@ When estimating with story points, be sure to consider each of these factors.
 A typical Planning Poker set has cards with the following numbers: � 1 2 3 5 8 13 20 40 100.
 
 - Everybody has the same amount of cards
-- They draw one of these card to measure a the backlog item first presented by the PO
+- They draw one of these card to measure the backlog item (previously presented by the PO)
 - The lower and higher numbers explain there reason
 - The process is repeated until the team agrees, then we pass on to the next card
 
-When the number on the card is 20 or higher, it either need to be broken down, or sent back to the Product owner for more explanation.
+When the number on the card is 20 or higher, it either needs to be broken down, or sent back to the Product owner for more explanation.
 
-Poker planning is fairly democratic but can be rather time consuming.
+Poker planning is fairly democratic but can be rather time-consuming.
 
 ### T-Shirt Size
 

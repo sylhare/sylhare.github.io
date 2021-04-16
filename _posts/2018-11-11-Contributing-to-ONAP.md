@@ -34,14 +34,14 @@ Readings from [Daniel Shiffman - Open Source Course](https://github.com/shiffman
 
 ONAP is composed of a big [list of projects](https://gerrit.onap.org/r/#/admin/projects/) on which you can contribute to.
 
-To have a preview of the projects you can check the mirrored repositories on [Github/onap](https://github.com/onap). As mirror you can't really contribute to them that way.
+To have a preview of the projects you can check the mirrored repositories on [GitHub/onap](https://github.com/onap). As mirror you can't really contribute to them that way.
 
 To contribute using you need to:
 
 - Go on the ONAP's Gerrit: [gerrit.onap.org](https://gerrit.onap.org/r/#/admin/projects/)
 - Create a linux foundation account (in `Account signup / management`)
 - Then you need to sign in (it's a tiny `sign in` link under the `search button`).
-- Create a ssh public key (like you would do on [Github]({% post_url 2017-04-19-Get-started-with-Github %})):
+- Create a ssh public key (like you would do on [GitHub]({% post_url 2017-04-19-Get-started-with-GitHub %})):
 
 ```bash
 ssh-keygen -t rsa

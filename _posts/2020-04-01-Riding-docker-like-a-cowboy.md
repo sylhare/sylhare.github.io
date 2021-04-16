@@ -29,8 +29,8 @@ If you run the docker you should get:
 ```bash
 docker --rm run --name mycontainer image
 Hello world
-docker --rm run github --name mycontainer image 
-Hello github
+docker --rm run GitHub --name mycontainer image 
+Hello GitHub
 ```
 
 Basically, you can use both or just one of them. When you run the docker they will behave like:

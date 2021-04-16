@@ -17,7 +17,7 @@ So here a bit of details:
 Kotlin dsl with gradle means to use the kotlin `build.gradle.kts` instead of the groovy `build.gradle`.
 Kotlin is so general that it reaches specific programming niche.
 
-> Everything is hosted on Github: [sylhare/kotlin](https://github.com/sylhare/Kotlin/tree/master/hello-kotlin) 
+> Everything is hosted on GitHub: [sylhare/kotlin](https://github.com/sylhare/Kotlin/tree/master/hello-kotlin) 
 
 ## Basic set up
 

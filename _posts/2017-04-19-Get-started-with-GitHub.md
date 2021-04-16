@@ -1,18 +1,18 @@
 ---
 layout: post
-title: Get started with Github
+title: Get started with GitHub
 color: rgb(107,91,149)
 tags: [git]
 ---
 
-# Get started with Github
+# Get started with GitHub
 
-The github site is really nice for easy commits, there are multiple tools provided to manage that on multiple platform. ([Github Desktop](https://desktop.github.com/), [Kraken](https://support.gitkraken.com/how-to-install)).
+The GitHub site is really nice for easy commits, there are multiple tools provided to manage that on multiple platform. ([GitHub Desktop](https://desktop.github.com/), [Kraken](https://support.gitkraken.com/how-to-install)).
 However, I wanted to document and explore the command line way of committing.
 
 ## Source
 
-My main source will be from gitlab plus some precision over certain steps that I've encountered while doing them at a beginner level. But there's also a very good documentation made by github.
+My main source will be from gitlab plus some precision over certain steps that I've encountered while doing them at a beginner level. But there's also a very good documentation made byGitHub.
 
 - [github help](https://help.github.com/)
 - [Full documentation links](https://docs.gitlab.com/ce/README.html)
@@ -77,7 +77,7 @@ Then find your rsa key in the repository (by default, from the command prompt on
 cat ~/.ssh/id_rsa.pub
 ```
 
-Copy the public key ending with `.pub` in the right place on [Github](https://github.com/settings/keys) or [Gitlab](https://gitlab.com/profile/keys).
+Copy the public key ending with `.pub` in the right place on [GitHub](https://github.com/settings/keys) or [Gitlab](https://gitlab.com/profile/keys).
 It should look like that (with maybe more characters).
 
 ```bash

@@ -21,7 +21,7 @@ List the file in the directory `-l` Give the file with information on rights, cr
 
     ls -l -R
 
-List the file in the directory that contain the word"
+List the file in the directory that contain the word
 
     ls *word*
 
@@ -42,7 +42,7 @@ Look for a file beginning with a letter between H to C, the second letter can be
     ls [HC][A-Z][0-9]???
 
 ### File Manipulation
-Allow to print on the command the content of a file
+Allows printing on the command the content of a file
 
     cat file.txt
 
@@ -55,7 +55,7 @@ Show and sort the file alphabetically the left column
 
 	cat file | sort
 
-The same as before however grep is used to find words and the "v" in grep suppress the line that contains "Word" or "last"
+The same as before however grep is used to find words, and the "v" in grep suppress the line that contains "Word" or "last"
 
 	cat file | sort | grep -v "Word" | grep -v "last"
 
@@ -90,7 +90,7 @@ Tell you where the file exist, it is stored in the `mlocate.db` that is updated 
 
 	locate file
 
-Search non case sensitive file name location, i for the non sensitive case, c to count the number of results
+Search non case-sensitive file name location, i for the non-sensitive case, c to count the number of results
 
 	locate -ic file
 
@@ -135,7 +135,7 @@ Change user to root, the password will be asked
 	
 	su root
 
-Open a new sub shell environment
+Open a new subshell environment
 	
 	bash
 
@@ -147,7 +147,7 @@ to quit the root session, or quit the terminal
 
 	exit
 
-Create a variable in the environment and export it to all sub shell
+Create a variable in the environment and export it to all subshell
 	
 	VARIABLE = "test"
 	export VARIABLE

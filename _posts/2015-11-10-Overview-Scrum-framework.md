@@ -7,7 +7,7 @@ tags: [agile]
 
 ## SCRUM framework
 
-Started in 1995, book released in 2001. Latest version was released in 2011.
+Started in 1995, book released in 2001. The Latest version was released in 2011.
 Author: Ken Schawner and Jeff Sutherland  
 
 ### Artifact
@@ -22,7 +22,7 @@ Product Owner (defines the priorities the value, represent all stakeholders of t
 
 Scrum Master (person who knows the scrum process inside out, make sure everybody knows how it works, and keep the team focused)
 
-Team (cross functional, self organizing group, have necessary skills to deliver the product)
+Team (cross-functional, self organizing group, have necessary skills to deliver the product)
 
 
 - **Product Owner**: the what and the when (not how much) 
@@ -63,7 +63,7 @@ Sync the team, the team is owner of this planning. Sprint tasks should look like
 
 if a task in the sprint takes more time than estimated, you have to decide if you keep it or if you move it to the next sprint depending if you are on target or not. 
 
-You make commitment to the team, problem solving and talk is done after the daily scrum
+You make commitment to the team, problem-solving and talk is done after the daily scrum
 
 #### Sprint Review
 
@@ -84,9 +84,9 @@ DEMO should not exceed a 2hours.
 
 - **Time:** 45min - 3hrs
 - **Players:** SM, TEAM
-- **Process focused** see what went well or bad and look for best practices, impact the way we work) 
+- **Process focused** see what went well or bad and look for best practices, impact the way we work 
 - Adapt: improvement list (priority improve process over deliver, need to ponder)
-- Inspect: Get a good understanding or the lesson learn
+- Inspect: Get a good understanding, or the lesson learn
 	- Impediment current issues
 	- Improvement things we want to be better in the future (more effort)
 	

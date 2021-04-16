@@ -9,15 +9,17 @@ In some occasion you can't work with only the <strike>master</strike> _main_ bra
 For example when working with open source, the upstream repository is not owned by you.
 So in order to add your contribution you'd likely need to fork it and make a pull request.
 
-> As of the release of this article, most online git like [Github](https://github.com/github/renaming#new-repositories-use-main-as-the-default-branch-name) renamed `master` into `main` for the default branch.
+> As of the release of this article, most online git like [GitHub](https://github.com/github/renaming#new-repositories-use-main-as-the-default-branch-name) renamed `master` into `main` for the default branch.
 
 ## Practice environment
 
 In order to practice all that without making pointless pull request to actual project.
-You can either do it on one your own repository, or use this demo **[Upstream Organization](https://github.com/UpstreamOrg)** on github.
+You can either do it on one your own repository, or use this demo **[Upstream Organization](https://github.com/UpstreamOrg)** on GitHub.
+
+_Make sure your GitHub account is set up. Or follow [Get Started With Github]({% post_url 2017-04-19-Get-started-with-GitHub %}).
 
 For the example, you can fork this **[Upstream Repository](https://github.com/UpstreamOrg/UpstreamRepo)** for this example.
-You should now have `<your username>/UpstreamRepo` in your github repositories.
+You should now have `<your username>/UpstreamRepo` in your GitHub repositories.
 Then clone your fork locally:
 
 ```bash
@@ -153,7 +155,7 @@ You got it, it should make your life easier.
 
 ### Bash script
 
-This one is mainly to automate the creation of an upstream repository's fork from Github.
+This one is mainly to automate the creation of an upstream repository's fork from GitHub.
 Basically it needs two inputs: 
     - Your fork repository's SSH address
     - The Upstream organisation name

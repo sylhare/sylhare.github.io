@@ -6,7 +6,7 @@ tags: [excel]
 ---
 
 
-In excel, you have to enable first the macro (and select the developer option). 
+In Excel, you have to enable first the macro (and select the developer option). 
 Then you can press <kbd>ALT</kbd> + <kbd>F11</kbd> to go into edit macro mode. 
 To learn you can start with "recording macro" to see what excel is recording, 
 but it's not the most efficient way.
@@ -14,8 +14,8 @@ but it's not the most efficient way.
 #### Comment / Uncomment bloc of code
 
 There's a Comment / Uncomment button that can be toggled. For that **right click** on the **menu bar** then click on **edit**, 
-the edit tool bar will appear (you can place it in your quick access bar). There should be a **comment** and **Uncomment** **icon**. 
-This commands will basically add or remove `'` at the beginning of every selected ligns. 
+the edit toolbar will appear (you can place it in your quick access bar). There should be a **comment** and **Uncomment** **icon**. 
+This commands will basically add or remove `'` at the beginning of every selected lines. 
 
 #### Calling a Sub
 
@@ -54,7 +54,7 @@ End Sub
 
 #### Hide "0" value of empty cells
 
-Sometime there are some 0 that pops up with the below formulas, 
+Sometimes there are some 0 that pops up with the below formulas, 
 so here is a trick to hide them through formatting.
 Available [here](https://support.office.com/en-us/article/Display-or-hide-zero-values-3ec7a433-46b8-4516-8085-a00e9e476b03):
 

@@ -30,7 +30,7 @@ gem install bundle
 bundle install
 ```
 
-> You can go into settings to make your master branch generate a Github Page automatically at *username*.github.io/*repository_name*
+> You can go into settings to make your master branch generate a GitHub Page automatically at *username*.github.io/*repository_name*
 
 
 ## Create your presentation

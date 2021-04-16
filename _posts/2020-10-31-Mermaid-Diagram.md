@@ -41,7 +41,7 @@ sequenceDiagram
 
 By default gitlab understand the markdown formatting `mermaid` so it's pretty straightforward in your markdown file.
 But elsewhere like in this blog I am putting the above syntax in a `<div class="mermaid">` so that it will get picked up and rendered. 
-(Kramdown which is the highlighting engine for jekyll and Github is not yet mermaid compatible).
+(Kramdown which is the highlighting engine for jekyll and GitHub is not yet mermaid compatible).
 
 And here it is the rendered diagram:
 
