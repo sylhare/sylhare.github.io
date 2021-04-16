@@ -24,7 +24,7 @@ My main source will be from gitlab plus some precision over certain steps that I
 
 Windows Os: Install [Git for Windows](https://git-for-windows.github.io) which is an emulated terminal with git.
 
-MacOs: Type `git` in the Terminal application. If it's not installed, it will prompt you to install it.
+macOS: Type `git` in the Terminal application. If it's not installed, it will prompt you to install it.
 
 Linux:
   - Debian: `sudo apt-get install git-all`
@@ -71,7 +71,7 @@ The key fingerprint is:
 39:fc:ce:94:f4:09:13:95:64:9a:65:c1:de:05:4d:01 you@computer-name
 ```    
 
-Then find your rsa key in the repository (by default, from the command prompt on windows):
+Then find your rsa key in the repository (by default, from the command prompt on Windows):
 
 ```bash
 cat ~/.ssh/id_rsa.pub

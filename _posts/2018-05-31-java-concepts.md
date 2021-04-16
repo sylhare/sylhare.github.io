@@ -10,8 +10,8 @@ that makes it a strongly typed language.
 
 > What's so special coding in Java?
 
-Basically you define a class (sort of an object blue print). 
-Then with that class you can create multiple similar object which can interact. Like creating multiple house from the same blue print.
+Basically you define a class (Like an "object blueprint"). 
+Then with that class you can create multiple similar object which can interact. Like creating multiple house from the same blueprint.
 
 The class defines the object's properties, and method; its behaviour. 
 And here is what Java allows you to do when creating classes.
@@ -89,7 +89,7 @@ public String hello(int number) {
 }
 ```
 
-Both have same name and same return type however they use different arguments.
+Both have the same name and same return type however they use different arguments.
 
 ### III. Inheritance
 
@@ -100,7 +100,7 @@ Inheritance refers to the process that enables one class to acquire the methods 
 
 Inheritance can be regulated thanks to the encapsulation keywords seen above (public, private, ...). 
 The parent constructor (which are called when the class is instanced) can't be inherited by the child class. 
-However it is automatically called in the constructor of the child class.
+However, it is automatically called in the constructor of the child class.
 
 The `super()` method can be used to call the parent constructor directly. 
 You can also use the `super` keyword to call directly methods or variables from the parent class (for example `super.method()` or `super.value`)
@@ -119,7 +119,7 @@ An abstract class is a class that have at least one abstract method marked with 
 An abstract method is only a definition, it does not have a body.  
 The abstract element are to be implemented in the child class when inherited, it used to give a default behaviour and common characteristics.
 
-For example you could have an abstract class like:
+For example, you could have an abstract class like:
 
 ```java
 public abstract class AbstractClass {
@@ -138,15 +138,15 @@ public class MyClass extends AbstractClass {
 ```
 
 _MyClass_ inherit the _bar()_ but has to implement the abstract _foo()_. 
-Because _foo()_ should be a callable from every child of the abstract class but the implementation is up to the child.
+Because _foo()_ should be a callable from every child of the abstract class, but the implementation is up to the child.
 
 #### Interfaces
 
-There's no constructors in an Interface, there's only abstract methods and variables. 
+There are no constructors in an Interface, there's only abstract methods and variables. 
 The interface is set thanks to the `implements` keyword at the definition of the class.
-If you wish to store instanced variables however it is best practice to use an Enum instead.
+If you wish to store instanced variables however it is best practice using an Enum instead.
 
-For example you could have an interface like this one:
+For example, you could have an interface like this one:
 
 ```java
 public interface MyInterface {
@@ -203,7 +203,7 @@ Maven can now be used to build the project:
 
 - `mvn compile` to run the test, compile the project, install the dependencies, create the library package.
 - `mvn package` to create the library package (such as a JAR file for example)
-- `mvn test` to use the maven to run unit test in the _src/test/jave_ folder with a matching _*Test_ name
+- `mvn test` to use the maven to run unit test in the _src/test/java_ folder with a matching _*Test_ name
 - `mvn install` to add your project's JAR file to your local repository (like a "compile" but making it ready as a dependency to be referenced by another project
 - `mvn clean install` to copy the libraries if the first one fails.
 
@@ -219,7 +219,7 @@ Here is a getting started from the Apache Maven website:
 
 [Gradle](https://gradle.org/) is an open source build automation system that builds upon the concepts of Apache Ant and Apache Maven 
 and introduces a Groovy-based domain-specific language (DSL) instead of the XML form used by Apache Maven for declaring the project configuration.
-Gradle use a `build.gradle` to manage the build configs and libraries
+Gradle uses a `build.gradle` to manage the build configs and libraries
 
 ##### Gradle commands
 

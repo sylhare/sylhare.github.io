@@ -22,14 +22,14 @@ To upload your project you will need:
 - Create an account on Pypi
 - Structure your code:
     
-```bash
-Repository            # Root repository folder
+```groovy
+Repository               # Root repository folder
 ├── package
 |   ├── __init__.py	     # To make a python directory, for imports                           
 |   └── module.py	     # Module of the package	  
 ├── tests
 |   ├── __init__.py	     
-|   └── test_module.py          # Tests of the module
+|   └── test_module.py   # Tests of the module
 ├── Readme.rst
 └── setup.py
 ```
