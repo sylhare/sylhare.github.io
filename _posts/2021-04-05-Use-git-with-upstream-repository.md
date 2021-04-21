@@ -16,7 +16,7 @@ So in order to add your contribution you'd likely need to fork it and make a pul
 In order to practice all that without making pointless pull request to actual project.
 You can either do it on one your own repository, or use this demo **[Upstream Organization](https://github.com/UpstreamOrg)** on GitHub.
 
-_Make sure your GitHub account is set up. Or follow [Get Started With Github]({% post_url 2017-04-19-Get-started-with-GitHub %})_.
+_Make sure your GitHub account is set up. Or follow [Get Started With GitHub]({% post_url 2017-04-19-Get-started-with-GitHub %})_.
 
 For the example, you can fork this **[Upstream Repository](https://github.com/UpstreamOrg/UpstreamRepo)** for this example.
 You should now have `<your username>/UpstreamRepo` in your GitHub repositories.
