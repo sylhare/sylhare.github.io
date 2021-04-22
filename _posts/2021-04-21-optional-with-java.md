@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Optional&lt;T&gt; with Java
+title: Optional〈T〉with Java
 color: rgb(249, 103, 20)
 tags: [java]
 ---
