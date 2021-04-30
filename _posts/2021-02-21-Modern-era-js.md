@@ -275,6 +275,21 @@ console.log(muscleCar)
 
 And you can just create complex objects with the possibility to nest or not the composing sub-objects.
 
+### Null check
+
+You can do null check with the operator `??` which can be useful when you want to set a default value
+if a variable end up being `null`, `undefined`.
+Let's demonstrate with this [string templating](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) example where:
+
+```js
+var a = null;
+var b = undefined;
+console.log(`${a ?? 'it'} ${b ?? 'works!'}`)
+// Prints out "it works!"
+```
+
+For a `NaN`, which is a Number property [`Number.NaN`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/NaN) meaning _Not A Number_, the `??` will have no effects.
+
 ## Conclusion
 
 This article ended up being far longer than expected, JavaScript is a rabbit hole full of weird syntax that just make you go _why??_ 🤯 <br>

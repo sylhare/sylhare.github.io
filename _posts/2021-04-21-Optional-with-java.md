@@ -23,7 +23,9 @@ Optional<String> value = Optional.of(externalDependency.supplyData());
 You may then do a check to make sure the Optional has a value, and then get it to do something with it like:
 
 ```java
-If (value.isPresent()) doSomething(value.get());
+If (value.isPresent()){
+    doSomething(value.get());
+}        
 ```
 
 I am having doubt where it can be actually used, maybe with you get an empty Optional instead of null in the code.
@@ -58,4 +60,4 @@ From this example:
  - The mapping will be applied only if the `Optional`'s value exists.
  - The `orElse()` is to return a default value when the Optional is empty.
 
-That's it for now!
+That's it for now! 🙆‍♀️
