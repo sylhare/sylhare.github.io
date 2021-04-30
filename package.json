@@ -21,9 +21,8 @@
   "homepage": "https://github.com/Sylhare/Type-on-Strap#readme",
   "devDependencies": {
     "gulp": "^4.0.2",
-    "gulp-imagemin": "^5.0.3",
+    "gulp-imagemin": "^7.1.0",
     "gulp-responsive": "^3.0.1",
-    "sharp": "^0.23.4"
-  },
-  "dependencies": {}
+    "sharp": "^0.28.1"
+  }
 }
