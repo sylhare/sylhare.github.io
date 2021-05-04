@@ -2,7 +2,7 @@
 layout: post
 title: Git me multiple repositories 🗂 and SSH keys 🔑
 color: rgb(50,50,50)
-tags: []
+tags: [git]
 ---
 
 ## Context
