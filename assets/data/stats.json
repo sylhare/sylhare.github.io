@@ -2,48 +2,35 @@
 ---
 {% assign totalWords = 0 %}
 {% assign dateOb = '' %}
-
-{% for post in site.posts %}
-{% assign postWords = post.content | number_of_words %}
-{% assign totalWords = totalWords | plus:  postWords %}
-{% assign pd = post.date | date: "%Y-%m-%d" %}
-{% unless forloop.first %}
-{% assign dateOb = dateOb | append: "," %}
-{% endunless %}
-{% assign dateOb = dateOb | append: pd %}
-{% endfor %}
-
-{% assign avgWords = totalWords | divided_by: site.posts.size %}
 {
-"totalPosts": {{ site.posts.size }},
-"totalCategories": {{ site.categories.size }},
-"totalTags": {{ site.tags.size }},
-"totalWords": {{ totalWords }},
-"averageWordsPerPost": {{ avgWords }},
-"firstPost": {
-"title":"{{ site.posts.last.title }}",
-"published":"{{ site.posts.last.date | date: "%Y-%m-%d" }}",
-"url":"{{site.posts.last.url}}"
-},
-"lastPost": {
-"title":"{{ site.posts.first.title }}",
-"published":"{{ site.posts.first.date | date: "%Y-%m-%d" }}",
-"url":"{{site.posts.first.url}}"
-},
-"postsPerCategory": [
-{% for category in site.categories %}
-{% assign cat = category[0] %}
-{% unless forloop.first %},{% endunless %}
-{ "name": "{{cat}}", "size":{{site.categories[cat].size}} }
-{% endfor %}
-],
-"postsPerTag": [
-{% for tag in site.tags %}
-{% assign tagName = tag[0] %}
-{% unless forloop.first %},{% endunless %}
-{ "name": "{{tagName}}", "size":{{site.tags[tagName].size}} }
-{% endfor %}
-],
-
-"dates":"{{ dateOb }}"
+  "posts": [
+  {% for post in site.posts %}
+    {% assign postWords = post.content | number_of_words %}
+    {% assign totalWords = totalWords | plus:  postWords %}
+    {% unless forloop.first %},{% endunless %}
+    {
+      "date": "{{ post.date | date: '%Y-%m-%d' }}",
+      "words": "{{ postWords }}"
+    }
+  {% endfor %}
+  ],
+  "totalPosts": {{ site.posts.size }},
+  "totalCategories": {{ site.categories.size }},
+  "totalTags": {{ site.tags.size }},
+  "totalWords": {{ totalWords }},
+  "averageWordsPerPost": {{ totalWords | divided_by: site.posts.size }},
+  "postsPerCategory": [
+  {% for category in site.categories %}
+    {% assign cat = category[0] %}
+    {% unless forloop.first %},{% endunless %}
+    { "name": "{{cat}}", "size":{{site.categories[cat].size}} }
+  {% endfor %}
+  ],
+  "postsPerTag": [
+  {% for tag in site.tags %}
+    {% assign tagName = tag[0] %}
+    {% unless forloop.first %},{% endunless %}
+    { "name": "{{tagName}}", "size":{{site.tags[tagName].size}} }
+  {% endfor %}
+  ]
 }
