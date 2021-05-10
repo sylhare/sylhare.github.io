@@ -240,7 +240,7 @@ Here the pvc claim the above `mysql-pv` one, using the label in order to select 
 
 ### Secrets
 
-Kubernetes secrets allow users to define sensitive information outside of containers and expose that information to containers through environment variables as well as files within Pods.
+Kubernetes' secrets allow users to define sensitive information outside of containers and expose that information to containers through environment variables as well as files within Pods.
 
 ```yaml
 apiVersion: v1
@@ -260,7 +260,7 @@ Secrets must be encoded first into base64, and put into `data`.
 
 ### Daemon Set
 
-Daemon Set ensure that a copy of the pod runs on a selected set of nodes. By default, all nodes in the cluster are selected. 
+Daemon Set ensures that a copy of the pod runs on a selected set of nodes. By default, all nodes in the cluster are selected. 
 A selection criteria may be specified to select a limited number of nodes.
 
 ```yaml
@@ -401,7 +401,7 @@ spec:
 
 ## Simple fanout
 
-This time we going to deploy Simple fanout type that exposing multiple services on same host, but via different paths. This type is very handy when you running in CloudProvider and want to cut cost on creating LoadBalancers for each of you application. 
+This time we're going to deploy Simple fanout type that exposing multiple services on same host, but via different paths. This type is very handy when you running in CloudProvider and want to cut cost on creating LoadBalancers for each of you application. 
 
 ```yaml
 apiVersion: extensions/v1beta1
