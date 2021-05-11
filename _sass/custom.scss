@@ -9,5 +9,14 @@
 .chart {
   margin: 0 auto;
   min-width: 50%;
+  max-width: 100%;
+  min-height: 70vh;
   padding-bottom: 1em;
+
+  @media screen and (max-width: 768px) {
+    min-height: 40vh;
+  }
+  @media screen and (max-width: 350px) {
+    min-height: 30vh;
+  }
 }

@@ -5,6 +5,7 @@ fetch('/assets/data/stats.json')
         fillInTable(out);
         printRadar(out['postsPerTag']);
         printStack(out);
+        printBubble(out);
         //printPie(out['postsPerTag']);
     })
     .catch(err => {
@@ -18,12 +19,62 @@ function fillInTable(data) {
     document.getElementById('AvgWords').append(data['averageWordsPerPost'])
 }
 
+function printBubble(out) {
+    new Chart(
+        document.getElementById('bubble').getContext('2d'),
+        bubbleConfig(bubbleData(out)));
+}
+
+function bubbleConfig(data) {
+    return {
+        type: 'bubble',
+        data: data,
+        options: {
+            plugins: {
+                legend: {
+                    position: 'bottom',
+                },
+            },
+            scale: {
+                responsive: true,
+                //maintainAspectRatio: false,
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 5
+                    }
+                },
+                x: {
+                    ticks: {
+                        stepSize: 1
+                    }
+                },
+
+            },
+        }
+    };
+}
+
+function bubbleData(out) {
+    let dataset = Object.entries(reduceDate(out['posts'], -6)).map((item) => {
+        return {
+            x: parseInt(item[0]),
+            y: item[1].length,
+            r: item[1].map(p => Math.floor(parseInt(p.words) / 500)).reduce((a, b) => a + b) }
+    });
+
+    console.log(dataset)
+
+    return {
+        datasets: [{
+            label: 'Posts number / year / size',
+            data: dataset,
+            backgroundColor: 'rgb(255, 99, 132)'
+        }]
+    };
+}
+
 function printStack(out) {
-    // let posts_month = reduceDate(out['posts'], -3)
-    // posts_month = Object.entries(posts_month).map((item) => {
-    //     return { date: item[0], posts: item[1].length }//.map(p => parseInt(p.words)).reduce((a, b) => a + b) }
-    // })
-    // console.log(posts_month)
     let posts_year = Object.entries(reduceDate(out['posts'], -6)).map((item) => {
         return { date: item[0], posts: item[1].length }
     })
