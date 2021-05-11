@@ -1,7 +1,7 @@
 fetch('/assets/data/stats.json')
     .then(res => res.json())
     .then((out) => {
-        console.log('Checkout this JSON! ', out);
+        //console.log('Checkout this JSON! ', out);
         fillInTable(out);
         printRadar(out['postsPerTag']);
         printStack(out);
@@ -18,40 +18,30 @@ function fillInTable(data) {
     document.getElementById('AvgWords').append(data['averageWordsPerPost'])
 }
 
-function reduceDate(data, amount) {
-    return data.reduce((groups, item) => ({
-        ...groups,
-        [item.date.slice(0, amount)]: [...(groups[item.date.slice(0, amount)] || []), item]
-    }), {});
-}
-
 function printStack(out) {
-    let posts_month = reduceDate(out['posts'], -3)
-    posts_month = Object.entries(posts_month).map((item) => {
-        return { date: item[0], posts: item[1].length }//.map(p => parseInt(p.words)).reduce((a, b) => a + b) }
-    })
-    console.log(posts_month)
-    let posts_year = reduceDate(out['posts'], -6)
-    posts_year = Object.entries(posts_year).map((item) => {
+    // let posts_month = reduceDate(out['posts'], -3)
+    // posts_month = Object.entries(posts_month).map((item) => {
+    //     return { date: item[0], posts: item[1].length }//.map(p => parseInt(p.words)).reduce((a, b) => a + b) }
+    // })
+    // console.log(posts_month)
+    let posts_year = Object.entries(reduceDate(out['posts'], -6)).map((item) => {
         return { date: item[0], posts: item[1].length }
     })
 
     new Chart(
         document.getElementById('stack').getContext('2d'),
-        stackConfig(stackData(
-            posts_month,
-            posts_year)
+        stackConfig(stackData(posts_year)
         )
     );
 }
 
-function stackData(dataLine, dataBar) {
+function stackData(dataBar) {
     let sum;
     return {
         labels: dataBar.map(d => d.date),
         datasets: [{
             type: 'line',
-            label: 'Articles per month',
+            label: 'Total Articles',
             data: dataBar.map(d => d.posts).map(elem => sum = (sum || 0) + elem),
             fill: false,
             borderColor: 'rgb(54, 162, 235)',
@@ -148,6 +138,13 @@ function pieConfig(data) {
         type: 'doughnut',
         data: data,
     };
+}
+
+function reduceDate(data, amount) {
+    return data.reduce((groups, item) => ({
+        ...groups,
+        [item.date.slice(0, amount)]: [...(groups[item.date.slice(0, amount)] || []), item]
+    }), {});
 }
 
 function getRandomColorHex() {
