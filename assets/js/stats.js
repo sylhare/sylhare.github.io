@@ -4,7 +4,7 @@ fetch('/assets/data/stats.json')
         //console.log('Checkout this JSON! ', out);
         fillInTable(out);
         printRadar(out['postsPerTag']);
-        printStack(out);
+        printMixed(out);
         printBubble(out);
         //printPie(out['postsPerTag']);
     })
@@ -21,8 +21,26 @@ function fillInTable(data) {
 
 function printBubble(out) {
     new Chart(
-        document.getElementById('bubble').getContext('2d'),
+        document.getElementById('bubble-js').getContext('2d'),
         bubbleConfig(bubbleData(out)));
+}
+
+function bubbleData(out) {
+    let dataset = years(out).map((item) => {
+        return {
+            x: parseInt(item[0]),
+            y: item[1].length,
+            r: item[1].map(p => Math.floor(parseInt(p.words) / 500)).reduce((a, b) => a + b)
+        }
+    });
+
+    return {
+        datasets: [{
+            label: 'Posts number / year / size',
+            data: dataset,
+            backgroundColor: 'rgb(255, 99, 132)'
+        }]
+    };
 }
 
 function bubbleConfig(data) {
@@ -36,64 +54,34 @@ function bubbleConfig(data) {
                 },
             },
             scale: {
-                responsive: true,
-                //maintainAspectRatio: false,
                 y: {
                     beginAtZero: true,
-                    ticks: {
-                        stepSize: 5
-                    }
                 },
-                x: {
-                    ticks: {
-                        stepSize: 1
-                    }
-                },
-
             },
         }
     };
 }
 
-function bubbleData(out) {
-    let dataset = Object.entries(reduceDate(out['posts'], -6)).map((item) => {
-        return {
-            x: parseInt(item[0]),
-            y: item[1].length,
-            r: item[1].map(p => Math.floor(parseInt(p.words) / 500)).reduce((a, b) => a + b) }
-    });
-
-    console.log(dataset)
-
-    return {
-        datasets: [{
-            label: 'Posts number / year / size',
-            data: dataset,
-            backgroundColor: 'rgb(255, 99, 132)'
-        }]
-    };
-}
-
-function printStack(out) {
-    let posts_year = Object.entries(reduceDate(out['posts'], -6)).map((item) => {
+function printMixed(out) {
+    let posts_year = years(out).map((item) => {
         return { date: item[0], posts: item[1].length }
     })
 
     new Chart(
-        document.getElementById('stack').getContext('2d'),
-        stackConfig(stackData(posts_year)
+        document.getElementById('mixed-js').getContext('2d'),
+        mixedConfig(mixedData(posts_year)
         )
     );
 }
 
-function stackData(dataBar) {
+function mixedData(dataBar) {
     let sum;
     return {
         labels: dataBar.map(d => d.date),
         datasets: [{
             type: 'line',
             label: 'Total Articles',
-            data: dataBar.map(d => d.posts).map(elem => sum = (sum || 0) + elem),
+            data: dataBar.map(elem => sum = (sum || 0) + elem.posts),
             fill: false,
             borderColor: 'rgb(54, 162, 235)',
             backgroundColor: 'rgba(54, 162, 235, 0.5)'
@@ -107,7 +95,7 @@ function stackData(dataBar) {
     };
 }
 
-function stackConfig(data) {
+function mixedConfig(data) {
     return {
         type: 'scatter',
         data: data,
@@ -119,6 +107,15 @@ function stackConfig(data) {
             }
         }
     };
+}
+
+function printRadar(postsPerTag) {
+    new Chart(
+        document.getElementById('radar-js').getContext('2d'),
+        radarConfig(radarData(
+            postsPerTag.map(o => o.name),
+            postsPerTag.map(o => o.size)))
+    );
 }
 
 function radarData(labels, data) {
@@ -136,15 +133,6 @@ function radarData(labels, data) {
             pointHoverBorderColor: 'rgb(54, 162, 235)'
         }]
     }
-}
-
-function printRadar(postsPerTag) {
-    new Chart(
-        document.getElementById('radar').getContext('2d'),
-        radarConfig(radarData(
-            postsPerTag.map(o => o.name),
-            postsPerTag.map(o => o.size)))
-    );
 }
 
 function radarConfig(data) {
@@ -166,41 +154,37 @@ function radarConfig(data) {
 
 function printPie(postsPerTag) {
     new Chart(
-        document.getElementById('pie').getContext('2d'),
-        pieConfig(pieData(
+        document.getElementById('pie-js').getContext('2d'),
+        pieData(
             postsPerTag.map(o => o.name),
-            postsPerTag.map(o => o.size)))
+            postsPerTag.map(o => o.size))
     );
 }
 
 function pieData(labels, data) {
     return {
-        labels: labels,
-        datasets: [{
-            label: 'Articles per tag',
-            data: data,
-            backgroundColor: labels.map(o => colors[o] ?? getRandomColorHex()),
-        }]
-    };
-}
-
-function pieConfig(data) {
-    return {
         type: 'doughnut',
-        data: data,
+        data: {
+            labels: labels,
+            datasets: [{
+                label: 'Articles per tag',
+                data: data,
+                backgroundColor: labels.map(o => colors[o] ?? getRandomColorHex()),
+            }]
+        }
     };
 }
 
-function reduceDate(data, amount) {
-    return data.reduce((groups, item) => ({
-        ...groups,
-        [item.date.slice(0, amount)]: [...(groups[item.date.slice(0, amount)] || []), item]
-    }), {});
-}
+const years = (out) => Object.entries(reduceDate(out['posts'], -6));
 
-function getRandomColorHex() {
-    let hex = "0123456789ABCDEF",
-        color = "#";
+const reduceDate = (data, amount) => data.reduce((groups, item) => ({
+    ...groups,
+    [item.date.slice(0, amount)]: [...(groups[item.date.slice(0, amount)] || []), item]
+}), {});
+
+const getRandomColorHex = () => {
+    let hex = '0123456789ABCDEF',
+        color = '#';
     for (let i = 1; i <= 6; i++) {
         color += hex[Math.floor(Math.random() * 16)];
     }
@@ -208,23 +192,23 @@ function getRandomColorHex() {
 }
 
 const colors = {
-    "agile": "rgb(107,91,149)",
-    "linux": "rgb(255, 99, 132)",
-    "excel": "rgb(0, 110, 81)",
-    "java": "rgb(249, 103, 20)",
-    "git": "rgb(216,174,71)",
-    "jekyll": "rgb(187, 10, 30)",
-    "math": "rgb(0,155,119)",
-    "ruby": "rgb(157, 50, 50)",
-    "python": "rgb(0, 83, 156)",
-    "ctf": "rgb(42,41,62)",
-    "database": "rgb(100, 100, 100)",
-    "misc": "rgb(50,50,50)",
-    "open source": "rgb(181,223,214)",
-    "js": "rgb(239, 192, 80)",
-    "docker": "rgb(63,105,170)",
-    "kubernetes": "rgb(13,183,237)",
-    "kotlin": "rgb(247, 120, 107)",
-    "kafka": "rgb(147, 85, 41)",
-    "css": "rgb(183, 107, 163)",
+    'agile': 'rgba(107, 91, 149, 0.5)',
+    'linux': 'rgba(255,  99,  132, 0.5)',
+    'excel': 'rgba(0,  110,  81, 0.5)',
+    'java': 'rgba(249,  103,  20, 0.5)',
+    'git': 'rgba(216, 174, 71, 0.5)',
+    'jekyll': 'rgba(187,  10,  30, 0.5)',
+    'math': 'rgba(0, 155, 119, 0.5)',
+    'ruby': 'rgba(157,  50,  50, 0.5)',
+    'python': 'rgba(0,  83,  156, 0.5)',
+    'ctf': 'rgba(42, 41, 62, 0.5)',
+    'database': 'rgba(100,  100,  100, 0.5)',
+    'misc': 'rgba(50, 50, 50, 0.5)',
+    'open source': 'rgba(181, 223, 214, 0.5)',
+    'js': 'rgba(239,  192,  80, 0.5)',
+    'docker': 'rgba(63, 105, 170, 0.5)',
+    'kubernetes': 'rgba(13, 183, 237, 0.5)',
+    'kotlin': 'rgba(247,  120,  107, 0.5)',
+    'kafka': 'rgba(147,  85,  41, 0.5)',
+    'css': 'rgba(183,  107,  163, 0.5)',
 }
