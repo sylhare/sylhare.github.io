@@ -10,7 +10,8 @@
     {% unless forloop.first %},{% endunless %}
     {
       "date": "{{ post.date | date: '%Y-%m-%d' }}",
-      "words": "{{ postWords }}"
+      "words": "{{ postWords }}",
+      "tags": "{{ post.tags }}"
     }
   {% endfor %}
   ],
