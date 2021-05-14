@@ -34,7 +34,7 @@ function printStackedBar(out) {
         }
     });
 
-    let tagPosts = tags(out['posts']);
+    let tagPosts = tags(out['posts']).sort();
     //console.log(tagPosts);
     //console.log(dates);
     //console.log(dates.map(item => item.data.forEach(t => t.tag === "agile" ? t.size : 0)))
@@ -45,7 +45,7 @@ function printStackedBar(out) {
             return {
                 label: item[0],//item[1].map(p => p.date.slice(0, -6)),
                 data: dates.map(date => date.data.reduce((sum, post) => sum + (post.tag === item[0] ? post.size : 0), 0)),
-                backgroundColor: colors[item[0]] ?? getRandomColorHex(),
+                backgroundColor: classic20[item[0]] ?? classic20['grey'],
             }
         });
     console.log(dataset)
@@ -71,7 +71,7 @@ function stackedBarConfig(dates, dataset) {
                 },
                 legend: {
                     display: true,
-                    position: 'bottom',
+                    position: 'right',
                 },
             },
             scales: {
@@ -285,3 +285,26 @@ const colors = {
     'kafka': 'rgba(147,  85,  41, 0.85)',
     'css': 'rgba(183,  107,  163, 0.85)',
 }
+
+const classic20 = {
+    'js': '#1f77b4',
+    'python': '#aec7e8',
+    'java': '#ff7f0e',
+    'agile': '#ffbb78',
+    'excel': '#2ca02c',          
+    'database': '#98df8a',
+    'jekyll': '#d62728',
+    'math': '#ff9896',
+    'linux': '#9467bd',
+    '-----': '#c5b0d5',
+    'misc': '#8c564b',
+    '---': '#c49c94',
+    'kotlin': '#e377c2',
+    'git': '#f7b6d2',
+    '-': '#7f7f7f',
+    'grey': '#c7c7c7',  // css, ruby, open source, docker
+    'ctf': '#bcbd22',
+    '----': '#dbdb8d',
+    'kubernetes': '#17becf',
+    '------':'#9edae5'
+};
