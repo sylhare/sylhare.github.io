@@ -2,7 +2,7 @@
 layout: post
 title: Logging with Java or Kotlin
 color: rgb(249, 103, 20)
-tags: [java, kotlin]
+tags: [kotlin]
 ---
 
 

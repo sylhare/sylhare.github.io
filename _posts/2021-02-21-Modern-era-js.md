@@ -9,7 +9,7 @@ tags: [js]
 [JavaScript](https://en.wikipedia.org/wiki/JavaScript) is a very permissive (some would say multi-paradigm) programmatic language and its syntax can be quite
 intriguing when you have never heard of the [EcmaScript](https://www.ecma-international.org/publications-and-standards/standards/) (ES) specification or certain programming style.
 
-So here I have compiled some of the basics that you should know about.
+So here I have compiled some basics that you should know about.
 
 ## Functions
 
@@ -58,7 +58,7 @@ sumButler(1, 3)(sum)(); // returns 4
 
 Let's decompose it, you have:
 
-  - `sumButler` method that ask for the first two parameters, then the function that will applied on them.
+  - `sumButler` method that ask for the first two parameters, then the function that will apply on them.
   - `sumButler(1, 3)(sum)` returns the arrow function from the two set of parameter
   - You need `()` to execute the return function in order to yield the final result.
 
@@ -66,7 +66,7 @@ And of course you can even nest these bad boys and go as crazy as you like. 😈
 
 ### Immediately Invoked Function Expression (IIFE)
 
-Those are like rare pokemon, you never see them. They execute right away!
+Those are like rare _Pokemon_, you never see them. They execute right away!
 Basically the trick is to use parenthesis _...everywhere_:
 
 ```js
@@ -110,8 +110,8 @@ We will be continuing with EcmaScript standards in this article.
 
 ### Export
  
-But for those to be _"importable"_ you first need to `export` them. Basically making them "public" and visible from outside their file.
-With some linter and to avoid interferences you'll be warn with any anonymous exports, and asked to use the `export default` on your class, function, object.
+For those modules to be _"importable"_ you first need to `export` them. Basically making them "public" and visible from outside their file.
+With some linter and to avoid interferences you'll be warned with any anonymous exports, and asked to use the `export default` on your class, function, object.
 
 > There can be only one `export default` that will get referenced as the file name.
 
@@ -140,7 +140,7 @@ Which brings us to namespacing!
 ### Namespacing
 
 [Namespacing](https://javascriptweblog.wordpress.com/2010/12/07/namespacing-in-javascript/) is a way to encapsulate functionality under one namespace to avoid naming collision when declaring variable.
-Because you should keep the global variable free of unnecessary declaration.
+Indeed, you should keep the global variable free of unnecessary declaration.
 
 There are multiple ways of doing it, but the preferred one would be following the _module pattern_ using an IIFE: 
 
@@ -155,21 +155,21 @@ var App = (function() {
 })();   
 ```
 
-The App will be assign to an object that has two methods and one value that can be called: 
+The App will be assigned to an object that has two methods and one value that can be called: 
 
   - `App.next()` Will increase the private value id.
   - `App.reset()` Will reset the private value id to 0.
   - `App.name` Will return `App` initially.
     
-Also if you try to update the values:
+Also, if you try to update the values:
 
 ```js
 App.name = "test";
 App.id = 5;
 ```
 
-Then the `App.name` will have changed. <br>
-However the private value id will remain the same, instead a new field will be created `{ id: 5 }` inside `App`.
+Then the `App.name` will change. <br>
+However the private value id will remain the same (meaning `App.next` won't return _6_), instead a new field will be created `{ id: 5 }` inside `App`.
 
 ## JS Objects
 
@@ -189,8 +189,8 @@ function foo() {
 }
 ````
 
-As in other language, a `var` declaration inside of a function is not accessible outside of it. 
-However without a `var` the declaration could be associated with the global objects and be visible from every scope.
+As in other language, a `var` declaration inside a function is not accessible outside that same function. 
+However, without a `var` the declaration could be associated with the global objects and be visible from every scope.
 
 So you could assign it then adding a `var` to declare the variable, thanks to _hoisting_, it won't pollute the global scope.
 Because JavaScript implicitly process the variable declaration before executing the code. You may have seen:
@@ -210,8 +210,9 @@ They are blocked in the same scope level unlike var, needs to be declared first 
 - Using [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) which could be considered as static values that are declared once and immutable.
 And like let they are also scope blocked.
 
- 
-## Prototyping
+## Other quirks
+
+### Prototyping
 
 To make it simple, [prototyping](https://attacomsian.com/blog/objects-prototypes-classes-javascript) consists of adding or modifying existing behaviour of an object.
 JavaScript is composed of objects that have properties, those properties are stored in a prototype which also has its own properties in a prototype, and so on...
@@ -238,7 +239,7 @@ Now let's add a `sortNumerically()` behaviour to an existing object like the `Ar
 Array.prototype.sort = function () { return this.sort((a, b) => a - b) } 
 ``` 
 
-Take that JavaScript, finally the sort I wanted! But what if somebody start messing around?! 😱 <br>
+Take that JavaScript, finally the sort I wanted! _But..._ what if somebody starts messing around?! 😱 <br>
 That could trigger unexpected behaviour, like modifying already existing prototypes.
 
 So to remedy, you can use `Object.freeze(obj)` where `obj` is the object you want to block from having its prototype modified.
@@ -249,7 +250,7 @@ Usually you don't modify objects that you don't own.
 The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
 
 Behind this name is hidden the `{ }` brackets notation and `...` three dot operator. 
-Basically you can cherry pick values from an array or properties from an object into variables. This is also called _unpacking_. 
+Basically you can cherry-pick values from an array or properties from an object into variables. This is also called _unpacking_. 
 
 Here some [examples](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) on how to use those operators:
 
