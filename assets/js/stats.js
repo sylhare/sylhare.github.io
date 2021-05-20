@@ -34,21 +34,47 @@ function printStackedBar(out) {
         }
     });
 
+    console.log(years(out));
+
+    let tagYear = years(out).map(i => i[0])
+
     let tagPosts = tags(out['posts']).sort();
-    //console.log(tagPosts);
+    // tagPosts.forEach(item => {
+    //     if (item[1].length <= 2) item[0] = "other"
+    // })
+    tagPosts = tagPosts.reduce((acc, current) => {
+        if (current[1].length <= 2 || current[0] === "misc") current[0] = "other"
+        const existingTag = acc.find(i => i[0] === current[0])
+        //current[1] = current[1].map(i => i.date.slice(0, -6))
+        current[1] = Object.entries(reduceDate(current[1], -6))
+        current[1] = tagYear.map(date =>
+            current[1].reduce((sum, post) => sum + (post[0] === date ? post[1].length : 0), 0)
+        )
+        //console.log(current[1])
+
+        if (existingTag) {
+            existingTag[1] = existingTag[1].map((val, i) => val + current[1][i]);
+        } else {
+            acc.push(current)
+        }
+        return acc;
+    }, []);
+
+    console.log(tagPosts);
     //console.log(dates);
     //console.log(dates.map(item => item.data.forEach(t => t.tag === "agile" ? t.size : 0)))
-    console.log(dates.map(item => item.data.reduce((sum, post) => sum + (post.tag === "agile" ? post.size : 0), 0)))
+    tagPosts.sort((a, b) => (b[0] === 'other') - (a[0] === 'other'))
+    //tagPosts.sort(function(x,y){ return x === 'other' ? -1 : y === 'other' ? 1 : 0; });
 
     let dataset = tagPosts
         .map(item => {
             return {
                 label: item[0],//item[1].map(p => p.date.slice(0, -6)),
-                data: dates.map(date => date.data.reduce((sum, post) => sum + (post.tag === item[0] ? post.size : 0), 0)),
+                data: item[1],
                 backgroundColor: classic20[item[0]] ?? classic20['grey'],
             }
         });
-    console.log(dataset)
+    //console.log(dataset)
 
     new Chart(
         document.getElementById('stacked-bar-js').getContext('2d'),
@@ -291,13 +317,13 @@ const classic20 = {
     'python': '#aec7e8',
     'java': '#ff7f0e',
     'agile': '#ffbb78',
-    'excel': '#2ca02c',          
+    'excel': '#2ca02c',
     'database': '#98df8a',
     'jekyll': '#d62728',
     'math': '#ff9896',
     'linux': '#9467bd',
-    '-----': '#c5b0d5',
-    'misc': '#8c564b',
+    'misc': '#c5b0d5',
+    '-----': '#8c564b',
     '---': '#c49c94',
     'kotlin': '#e377c2',
     'git': '#f7b6d2',
@@ -306,5 +332,5 @@ const classic20 = {
     'ctf': '#bcbd22',
     '----': '#dbdb8d',
     'kubernetes': '#17becf',
-    '------':'#9edae5'
+    '------': '#9edae5'
 };
