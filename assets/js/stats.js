@@ -22,20 +22,6 @@ function fillInTable(data) {
 }
 
 function printStackedBar(out) {
-    let dates = years(out).map(item => {
-        return {
-            dates: item[0],
-            data: tags(item[1]).map(item => {
-                return {
-                    tag: item[0],
-                    size: item[1].length
-                }
-            })
-        }
-    });
-
-    console.log(years(out));
-
     let tagYear = years(out).map(i => i[0])
 
     let tagPosts = tags(out['posts']).sort();
@@ -78,14 +64,14 @@ function printStackedBar(out) {
 
     new Chart(
         document.getElementById('stacked-bar-js').getContext('2d'),
-        stackedBarConfig(dates, dataset));
+        stackedBarConfig(tagYear, dataset));
 }
 
 function stackedBarConfig(dates, dataset) {
     return {
         type: 'bar',
         data: {
-            labels: dates.map(item => item.dates),
+            labels: dates,
             datasets: dataset
         },
         options: {
