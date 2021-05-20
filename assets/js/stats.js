@@ -1,7 +1,6 @@
 fetch('/assets/data/stats.json')
     .then(res => res.json())
     .then((out) => {
-        //console.log('Checkout this JSON! ', out);
         fillInTable(out);
         printRadar(out);
         printMixed(out);
@@ -22,50 +21,23 @@ function fillInTable(data) {
 }
 
 function printStackedBar(out) {
-    let tagYear = years(out).map(i => i[0])
-
-    let tagPosts = tags(out['posts']).sort();
-    // tagPosts.forEach(item => {
-    //     if (item[1].length <= 2) item[0] = "other"
-    // })
-    tagPosts = tagPosts.reduce((acc, current) => {
-        if (current[1].length <= 2 || current[0] === "misc") current[0] = "other"
-        const existingTag = acc.find(i => i[0] === current[0])
-        //current[1] = current[1].map(i => i.date.slice(0, -6))
-        current[1] = Object.entries(reduceDate(current[1], -6))
-        current[1] = tagYear.map(date =>
-            current[1].reduce((sum, post) => sum + (post[0] === date ? post[1].length : 0), 0)
-        )
-        //console.log(current[1])
-
-        if (existingTag) {
-            existingTag[1] = existingTag[1].map((val, i) => val + current[1][i]);
-        } else {
-            acc.push(current)
-        }
-        return acc;
-    }, []);
-
-    console.log(tagPosts);
-    //console.log(dates);
-    //console.log(dates.map(item => item.data.forEach(t => t.tag === "agile" ? t.size : 0)))
-    tagPosts.sort((a, b) => (b[0] === 'other') - (a[0] === 'other'))
-    //tagPosts.sort(function(x,y){ return x === 'other' ? -1 : y === 'other' ? 1 : 0; });
+    const tagYear = years(out).map(i => i[0])
+    const tagPosts = processTags(out, tagYear);
 
     let dataset = tagPosts
         .map(item => {
             return {
-                label: item[0],//item[1].map(p => p.date.slice(0, -6)),
+                label: item[0],
                 data: item[1],
                 backgroundColor: classic20[item[0]] ?? classic20['grey'],
             }
         });
-    //console.log(dataset)
 
     new Chart(
         document.getElementById('stacked-bar-js').getContext('2d'),
         stackedBarConfig(tagYear, dataset));
 }
+
 
 function stackedBarConfig(dates, dataset) {
     return {
@@ -160,7 +132,7 @@ function mixedData(yearPosts) {
         datasets: [{
             type: 'line',
             label: 'Total Articles',
-            data: yearPosts.map(elem => sum = (sum || 0) + elem.posts),
+            data: yearPosts.map(elem => sum = (sum || 0) + elem.posts), // cumulative sum of posts
             fill: false,
             borderColor: 'rgb(54, 162, 235)',
             backgroundColor: 'rgba(54, 162, 235, 0.5)'
@@ -248,7 +220,30 @@ function pieData(postsPerTag) {
     };
 }
 
-const years = (out) => Object.entries(reduceDate(out['posts'], -6));
+const processTags = (out, tagYear) => tags(out['posts']).sort().reduce((acc, current) => {
+    const tagName = processTagName(current)
+    const tagPosts = processTagPosts(current, tagYear);
+    const existingTag = acc.find(i => i[0] === tagName)
+
+    if (existingTag) {
+        existingTag[1] = existingTag[1].map((val, i) => val + tagPosts[i]);
+    } else {
+        acc.push([tagName, tagPosts])
+    }
+    return acc;
+}, []).sort((a, b) => (b[0] === 'other') - (a[0] === 'other'));
+
+const processTagName = (current) => {
+    if (current[1].length <= 2 || current[0] === "misc") current[0] = "other"
+    return current[0]
+}
+
+const processTagPosts = (current, tagYear) => {
+    current[1] = Object.entries(reduceDate(current[1], -6))
+    return tagYear.map(date =>
+        current[1].reduce((sum, post) => sum + (post[0] === date ? post[1].length : 0), 0)
+    )
+}
 
 const tagsPosts = (out) => {
     return {
@@ -257,19 +252,20 @@ const tagsPosts = (out) => {
     }
 }
 
-const reduceDate = (data, amount) => data.reduce((groups, item) => ({
-    ...groups,
-    [item.date.slice(0, amount)]: [...(groups[item.date.slice(0, amount)] || []), item]
-}), {});
-
 const tags = (data) => Object.entries(data.reduce((groups, item) => ({
     ...groups,
     [item.tags]: [...(groups[item.tags] || []), item]
 }), {}));
 
+const years = (out) => Object.entries(reduceDate(out['posts'], -6));
+
+const reduceDate = (data, amount) => data.reduce((groups, item) => ({
+    ...groups,
+    [item.date.slice(0, amount)]: [...(groups[item.date.slice(0, amount)] || []), item]
+}), {});
+
 const getRandomColorHex = () => {
-    let hex = '0123456789ABCDEF',
-        color = '#';
+    let hex = '0123456789ABCDEF', color = '#';
     for (let i = 1; i <= 6; i++) {
         color += hex[Math.floor(Math.random() * 16)];
     }
@@ -308,13 +304,13 @@ const classic20 = {
     'jekyll': '#d62728',
     'math': '#ff9896',
     'linux': '#9467bd',
-    'misc': '#c5b0d5',
+    '-------': '#c5b0d5',
     '-----': '#8c564b',
     '---': '#c49c94',
     'kotlin': '#e377c2',
     'git': '#f7b6d2',
     '-': '#7f7f7f',
-    'grey': '#c7c7c7',  // css, ruby, open source, docker
+    'grey': '#c7c7c7',  // css, ruby, open source, docker, misc
     'ctf': '#bcbd22',
     '----': '#dbdb8d',
     'kubernetes': '#17becf',
