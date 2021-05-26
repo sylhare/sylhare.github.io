@@ -8,9 +8,9 @@ fetch('/assets/data/stats.json')
         printStackedBar(out);
         //printPie(out);
     })
-    .then()
     .catch(err => {
-        throw err
+        document.getElementById('error-chart').append('⚠️ Charts could not be generated ' + err + ' ⚠️')
+        document.getElementById('error-chart').style.display = "block";
     });
 
 function fillInTable(data) {
@@ -258,16 +258,16 @@ const postsPerTag = (tags) => {
     }
 }
 
-const tags = (data) => Object.entries(data['posts'].reduce((groups, item) => ({
-    ...groups,
-    [item.tags]: [...(groups[item.tags] || []), item]
+const tags = (data) => Object.entries(data['posts'].reduce((result, item) => ({
+    ...result,
+    [item.tags]: [...(result[item.tags] || []), item]
 }), {}));
 
 const years = (out) => Object.entries(reduceDate(out['posts'], -6));
 
-const reduceDate = (data, amount) => data.reduce((groups, item) => ({
-    ...groups,
-    [item.date.slice(0, amount)]: [...(groups[item.date.slice(0, amount)] || []), item]
+const reduceDate = (data, amount) => data.reduce((result, item) => ({
+    ...result,
+    [item.date.slice(0, amount)]: [...(result[item.date.slice(0, amount)] || []), item]
 }), {});
 
 const getRandomColorHex = () => {

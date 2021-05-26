@@ -14,6 +14,8 @@ Here are the results, _enjoy!_
 
 ## General stats
 
+<div><blockquote id="error-chart" style="display: none"></blockquote></div>
+
 Here are the main statistic populated automatically from this blog.
 The stats are generated through some liquid queries in [assets/stats.json]({{ '/assets/data/stats.json' | relative_url }}) 
 based on all articles in the blog.
