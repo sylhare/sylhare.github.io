@@ -120,8 +120,7 @@ function printMixed(out) {
     })
     new Chart(
         document.getElementById('mixed-js').getContext('2d'),
-        mixedConfig(mixedData(yearPosts)
-        )
+        mixedConfig(mixedData(yearPosts))
     );
 }
 
@@ -133,12 +132,14 @@ function mixedData(yearPosts) {
             type: 'line',
             label: 'Total Articles',
             data: yearPosts.map(elem => sum = (sum || 0) + elem.posts), // cumulative sum of posts
+            yAxisID: 'total',
             fill: false,
             borderColor: 'rgb(54, 162, 235)',
             backgroundColor: 'rgba(54, 162, 235, 0.5)'
         }, {
             type: 'bar',
             label: 'Articles per year',
+            yAxisID: 'per-year',
             data: yearPosts.map(d => d.posts),
             borderColor: 'rgb(255, 205, 86)',
             backgroundColor: 'rgba(255, 205, 86, 0.5)'
@@ -153,17 +154,24 @@ function mixedConfig(data) {
         options: {
             aspectRatio: 1.30,
             scales: {
-                y: { beginAtZero: true }
+                'total': {
+                    type: 'linear',
+                    position: 'right',
+                    beginAtZero: true
+                },
+                'per-year': {
+                    type: 'linear',
+                    position: 'left',
+                }
             }
         }
     };
 }
 
 function printRadar(out) {
-    let postsPerTag = tagsPosts(out)
     new Chart(
         document.getElementById('radar-js').getContext('2d'),
-        radarConfig(radarData(postsPerTag))
+        radarConfig(radarData(postsPerTag(tags(out))))
     );
 }
 
@@ -191,9 +199,7 @@ function radarConfig(data) {
         options: {
             scale: { min: 0 },
             elements: {
-                line: {
-                    borderWidth: 3
-                }
+                line: { borderWidth: 3 }
             }
         },
     }
@@ -202,7 +208,7 @@ function radarConfig(data) {
 function printPie(out) {
     new Chart(
         document.getElementById('pie-js').getContext('2d'),
-        pieData(tagsPosts(out))
+        pieData(postsPerTag(tags(out)))
     );
 }
 
@@ -220,7 +226,7 @@ function pieData(postsPerTag) {
     };
 }
 
-const processTags = (out, tagYear) => tags(out['posts']).sort().reduce((acc, current) => {
+const processTags = (out, tagYear) => tags(out).sort().reduce((acc, current) => {
     const tagName = processTagName(current)
     const tagPosts = processTagPosts(current, tagYear);
     const existingTag = acc.find(i => i[0] === tagName)
@@ -245,14 +251,14 @@ const processTagPosts = (current, tagYear) => {
     )
 }
 
-const tagsPosts = (out) => {
+const postsPerTag = (tags) => {
     return {
-        labels: out['postsPerTag'].map(o => o.name),
-        size: out['postsPerTag'].map(o => o.size)
+        labels: tags.map(item => item[0]),
+        size: tags.map(item => item[1].length)
     }
 }
 
-const tags = (data) => Object.entries(data.reduce((groups, item) => ({
+const tags = (data) => Object.entries(data['posts'].reduce((groups, item) => ({
     ...groups,
     [item.tags]: [...(groups[item.tags] || []), item]
 }), {}));
@@ -296,11 +302,11 @@ const colors = {
 
 const classic20 = {
     'js': '#1f77b4',
-    'python': '#aec7e8',
+    'database': '#aec7e8',
     'java': '#ff7f0e',
     'agile': '#ffbb78',
     'excel': '#2ca02c',
-    'database': '#98df8a',
+    'python': '#98df8a',
     'jekyll': '#d62728',
     'math': '#ff9896',
     'linux': '#9467bd',
@@ -316,3 +322,27 @@ const classic20 = {
     'kubernetes': '#17becf',
     '------': '#9edae5'
 };
+
+
+/**
+ *
+ * Using js method to get postsPerCategory and postsPerTag
+ * instead of liquid way (takes more time at each build of the static site)
+ *
+
+ "postsPerCategory": [
+ {% for category in site.categories %}
+ {% assign cat = category[0] %}
+ {% unless forloop.first %},{% endunless %}
+ { "name": "{{cat}}", "size":{{site.categories[cat].size}} }
+ {% endfor %}
+ ],
+ "postsPerTag": [
+ {% for tag in site.tags %}
+ {% assign tagName = tag[0] %}
+ {% unless forloop.first %},{% endunless %}
+ { "name": "{{tagName}}", "size":{{site.tags[tagName].size}} }
+ {% endfor %}
+ ]
+
+ */

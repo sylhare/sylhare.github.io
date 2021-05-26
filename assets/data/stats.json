@@ -19,19 +19,5 @@
   "totalCategories": {{ site.categories.size }},
   "totalTags": {{ site.tags.size }},
   "totalWords": {{ totalWords }},
-  "averageWordsPerPost": {{ totalWords | divided_by: site.posts.size }},
-  "postsPerCategory": [
-  {% for category in site.categories %}
-    {% assign cat = category[0] %}
-    {% unless forloop.first %},{% endunless %}
-    { "name": "{{cat}}", "size":{{site.categories[cat].size}} }
-  {% endfor %}
-  ],
-  "postsPerTag": [
-  {% for tag in site.tags %}
-    {% assign tagName = tag[0] %}
-    {% unless forloop.first %},{% endunless %}
-    { "name": "{{tagName}}", "size":{{site.tags[tagName].size}} }
-  {% endfor %}
-  ]
+  "averageWordsPerPost": {{ totalWords | divided_by: site.posts.size }}
 }
