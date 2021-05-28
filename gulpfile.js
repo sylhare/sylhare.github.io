@@ -11,7 +11,7 @@ const fs = require('fs');
 const assetsPath = './assets/'
 const paths = {
     img: {
-        src: assetsPath + 'img/**/*.{png,svg,jpg,webp,jpeg,gif}',
+        src: assetsPath + 'img/**/*.{png,jpg,webp,jpeg,gif}',
         sharp: assetsPath + 'img/**/*.{png,jpg,webp,jpeg}',
         dest: assetsPath + 'img/',
         thumbnails: assetsPath + 'img/thumbnails/',

@@ -31,3 +31,4 @@ themes/*
 assets/package-lock.json
 type-on-strap-gem/*
 package-lock.json
+**/.ipynb_checkpoints/**
