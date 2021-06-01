@@ -43,6 +43,6 @@ collections:
 # BUILD SETTINGS
 plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
 exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", ".idea", ".github", "SECURITY.md",
-          "LICENSE", "README.md", "screenshot.png", "package.json", "node_modules/**", "gulpfile.js", "themes"]
+          "LICENSE", "README.md", "screenshot.png", "package.json", "node_modules/**", "gulpfile.js", "themes", "_draft"]
 remote_theme: sylhare/Type-on-Strap
 theme: type-on-strap # Sends warnings on github pages

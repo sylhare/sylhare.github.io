@@ -1,7 +1,6 @@
-## sylhare.github.io [![Build Status](https://travis-ci.org/Sylhare/sylhare.github.io.svg?branch=master)](https://travis-ci.org/Sylhare/sylhare.github.io) ![Licence](https://img.shields.io/badge/license-MIT-blue.svg)
-My own GitHub page
+## Draft for [sylhare.github.io](https://sylhare.github.io/index.html) [![Build Status](https://travis-ci.org/Sylhare/sylhare.github.io.svg?branch=master)](https://travis-ci.org/Sylhare/sylhare.github.io) ![Licence](https://img.shields.io/badge/license-MIT-blue.svg)
 
-You can try it here: [sylhare.github.io](https://sylhare.github.io/index.html)
+![img](tech_support_cheat_sheet.png)
 
 ## GitHub Information 
 ### Language on GitHub
@@ -58,10 +57,10 @@ The errors are categorized depending on the type and there's also some advices o
 
 ### Perfomrance
 #### Opbeat <a href="https://opbeat.com" title="Opbeat"><img src="http://opbeat-brand-assets.s3-website-us-east-1.amazonaws.com/svg/logo/logo.svg" align="right" height="25px"></a>
-Gives a mark based on code standard for your code, works for Javacript.
-JavaScript performance monitoring synch with deployment tool (heroku for example): [https://opbeat.com/](https://opbeat.com/)
+Gives a mark based on code standard for your code, works for Javascript.
+JavaScript's performance monitoring sync with deployment tool (heroku for example): [https://opbeat.com/](https://opbeat.com/)
 
-There's some extra steps that will be necessary to do when making it available. I don't have active webapp so I can only have a limited use of it.
+There's some extra steps that will be necessary to do when making it available. I don't have active webapp, so I can only have a limited use of it.
 
 
 ### Continuous Integration (CI)
@@ -86,7 +85,7 @@ Enables developers to build, run, and operate applications entirely in the cloud
 Heroku is a platform as a service (PaaS) that: https://www.heroku.com/
 Getting started: https://devcenter.heroku.com/start 
 
-Langauges: *Java, Ruby, nodeJS, Go, php, python, scala Clojure*
+Languages: *Java, Ruby, nodeJS, Go, php, python, scala Clojure*
 
 ### Code Coverage
 
@@ -126,4 +125,4 @@ Your Definition of Done for Code Quality: [https://github.com/integrations/bette
 Security and dependency updates for Python projects: [https://github.com/integrations/pyup-io](https://github.com/integrations/pyup-io)
 
 #### Everhour
-Time tracking and estimates inside of your GitHub issues: [https://github.com/integrations/everhour](https://github.com/integrations/everhour)
+Time tracking and estimates inside your GitHub issues: [https://github.com/integrations/everhour](https://github.com/integrations/everhour)
