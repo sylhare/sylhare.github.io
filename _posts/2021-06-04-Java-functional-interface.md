@@ -44,7 +44,6 @@ functional interface to actually define and use your lambda in methods.
 You can define one like:
 
 ```java
-
 @FunctionalInterface
 public interface GenericSupplier<T> {
     T doStuff();
@@ -64,9 +63,9 @@ public GenericSupplier<Boolean> supplier=()->true;
 Now you want to create a generic method that will take your generic functional interface:
 
 ```java
-public<T> T genericMethod(GenericSupplier<T> supplier){
-        return supplier.doStuff();
-        }
+public <T> T genericMethod(GenericSupplier<T> supplier) {
+    return supplier.doStuff();
+}
 ```
 
 Note that you have `<T> T` at the beginning of the method:
@@ -80,10 +79,10 @@ If you want to test it you can run it like (having the previous bits of code in 
 ```java
 @Test
 public void genericLambdaMethod(){
-private final GenericLambda genericLambda=new GenericLambda();
-        assertTrue(genericLambda.genericMethod(()->true));
-        assertTrue(genericLambda.genericMethod(genericLambda.supplier));
-        }
+    private final GenericLambda genericLambda=new GenericLambda();
+    assertTrue(genericLambda.genericMethod(()->true));
+    assertTrue(genericLambda.genericMethod(genericLambda.supplier));
+}
 ```
 
 See that you can pass the supplier as defined or directly the anonymous lambda within the method, and it will be
@@ -92,9 +91,9 @@ triggered automatically. You can also be creative like:
 ```java
 @Test
 public void genericLambdaMethodOptional(){
-        GenericLambda.GenericSupplier<Optional<String>>supplier=()->Optional.of("Hello");
-        Assertions.assertEquals("Hello",genericLambda.genericMethod(supplier).orElse("fail"));
-        }
+    GenericLambda.GenericSupplier<Optional<String>>supplier=()->Optional.of("Hello");
+    Assertions.assertEquals("Hello",genericLambda.genericMethod(supplier).orElse("fail"));
+}
 ```
 
 Where the lambda function returns an `Optional<String>` that we can leverage.
