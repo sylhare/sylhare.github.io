@@ -66,7 +66,9 @@ The reader requires a buffer, which it will use to copy the read bytes into it.
 
 ### Multi bind 
 
-When you have one server that needs to accept multiple clients.
+To create one server that will be able to have binds with multiple clients.
+A bind is the same as a socket connection.
+
 Oracle documentation about [TCP Client Server](https://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html)
 sum it up quite well:
 
@@ -76,6 +78,9 @@ while (true) {
     Thread{ handleClient(socket) }.start()  // create a thread to deal with the client
 }
 ```
+
+This infinite loop will be on stand by and wait for a socket connection at `server.accept()`.
+The handleClient will use the socket to exchange data with the client. 
 
 ### Put it all together
 
@@ -131,7 +136,9 @@ Client receiving [Hello back]
 ```
 
 The client receives its response from the server. 
-As you may see a server and a client are not very different 
+As you may see a server and a client are not very different.
+
+To make the server _multi bind_ you would just need to put everything, but the first line in an infinite loop.
 
 ### Testing
 
