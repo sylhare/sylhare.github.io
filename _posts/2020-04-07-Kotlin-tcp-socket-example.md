@@ -13,7 +13,7 @@ import java.net.ServerSocket
 import java.net.Socket
 ```
 
-If you already know it in Java then no suprise, but since you might be interested in Ktor or the kotlin syntax:
+If you already know it in Java then no surprise, but since you might be interested in Ktor or the kotlin syntax:
 
 > You can have access to the source code at [sylhare/tcp](https://github.com/sylhare/tcp).
 
@@ -37,13 +37,13 @@ val socket = server.accept()
 val socket = Socket("localhost", 9999)
 ```
   
-However once the connection is establish ie the client socket is created and connected to the server.
+However once the connection is established ie the client socket is created and connected to the server.
 Then bytes exchange can flow.
 
 ### Socket
 
 The Socket is that connection between the server and the client. A Socket has an input and a output. 
-Depending on where you look at it, it does not mean the same thing because it a bidirectional link.
+Depending on where you look at it, it does not mean the same thing because it is a bidirectional link.
   - A _Server's input_ is the _client's output_.
   - A _Server's output_ is the _client's input_.
   
@@ -61,7 +61,7 @@ PrintWriter(socket.outputStream, true).write("text")
 val text = BufferedReader(InputStreamReader(socket.inputStream)).readLine()
 ```
 
-The write is pretty straightforward, you can `flush` the outputStream meaning to forcefully send whatever is in the pipe at that moment.
+The _write_ is pretty straightforward, you can `flush` the outputStream meaning to forcefully send whatever is in the pipe at that moment.
 The reader requires a buffer, which it will use to copy the read bytes into it.
 
 ### Multi bind 
@@ -77,15 +77,70 @@ while (true) {
 }
 ```
 
+### Put it all together
+
+#### Client
+Let's create a simple client that will send a message to a server:
+
+```kotlin
+fun client() {
+    val client = Socket("127.0.0.1", 9999)
+    val output = PrintWriter(client.getOutputStream(), true)
+    val input = BufferedReader(InputStreamReader(client.inputStream))
+
+    println("Client sending [Hello]")
+    output.println("Hello")
+    println("Client receiving [${input.readLine()}]")
+    client.close()
+}
+```
+
+#### Server
+
+Now we create a server that will respond to the received message.
+This is usually call an echo server.
+
+```kotlin
+fun server() {
+    val server = ServerSocket(9999)
+    val client = server.accept()
+    val output = PrintWriter(client.getOutputStream(), true)
+    val input = BufferedReader(InputStreamReader(client.inputStream))
+
+    output.println("${input.readLine()} back")
+}
+```
+
+#### Output
+
+Let's run both at the same time to see the client's log:
+
+```kotlin
+fun main() {
+    Thread{ server() }.start()
+    client()
+}
+```
+
+We need to start the server in a Thread so that the client will run too.
+We send only one message then the program stops:
+
+```
+Client sending [Hello]
+Client receiving [Hello back]
+```
+
+The client receives its response from the server. 
+As you may see a server and a client are not very different 
+
 ### Testing
 
-For testing a connection, and your tcp server, client.
-You have a wide range of possibilities. 
-
+For testing a connection and your tcp server, client.
+You have a wide range of possibilities.
 
 #### With real traffic
 
-In order to test your client or server, you will need a server or a client in order to build a socket connexion, there's no magic.
+In order to test your client or server, you will need a server, or a client in order to build a socket connexion, there's no magic.
 In simple project you might think that your test code looks similar as your main code.
 But as you develop new features, the test client / server should remain simple.
 
@@ -113,13 +168,13 @@ You create your `Client` object that would look like what was shown above.
 Connect it to the server running in the thread, send something and assuming that `sendMessage` methods return the received response,
 you can assert on it.
 
-That's a very simple use case, you might not want to return the response from the send message and depending if you're testing 
-the client or the server you may go different ways to test the expected behaviour. 
+That's a very simple use case, you might not want to return the response from the _sendMessage_ and depending on if you're testing 
+the client, or the server you may go different ways to test the expected behaviour. 
 Like creating having a `TestServer` or a `testClient` that will have some special `assertReceived` method for what you need to test.
 
 #### With Mock
 
-You could mock the socket but it can quickly get tedious and you'd be better off with a real socket client / server for your tests.
+You could mock the socket, but it can quickly get tedious, and you'd be better off with a real socket client / server for your tests.
 But you may want to use mock for corner cases or to decouple your client tests from your business logic tests.
  
 Here if you'd like to simulate an Exception.
@@ -138,7 +193,7 @@ fun uncaughtExceptionDummyTest {
 }
 ```
 
-The relaxed mock is used so you don't have to manually specify and mock all of the internals. Mockk will do it for you.
+The relaxed mock is used, so you don't have to manually specify and mock all the internals. Mockk will do it for you.
 Obviously this test is just a dummy example, you don't want to let uncaught exceptions in your code.
 
 ## Using a framework: ktor
