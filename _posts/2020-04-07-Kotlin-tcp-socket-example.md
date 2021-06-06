@@ -203,16 +203,10 @@ fun uncaughtExceptionDummyTest {
 The relaxed mock is used, so you don't have to manually specify and mock all the internals. Mockk will do it for you.
 Obviously this test is just a dummy example, you don't want to let uncaught exceptions in your code.
 
-## Using a framework: ktor
+## Post Scriptum
 
-[Ktor](https://ktor.io/) is a framework for building asynchronous (coroutine) servers and clients in connected systems using Kotlin.
-Made by the same people that made Kotlin.
+I updated this article seeing someone had trouble following it and opened a question on [stackoverflow](https://stackoverflow.com/a/67845608/7747942).
+So I answer and updated this article 😃 
 
-Ktor in addition to HTTP handling, also supports client and server, TCP and UDP raw sockets.
-It exposes a suspending API that uses NIO under the hoods.
-
-You can check it out at [Raw Sockets Ktor example](https://ktor.io/servers/raw-sockets.html).
-
-My only concern was that implementing the example, I had the warning that those `raw sockets` are still under
-`@KtorExperimentalAPI` which means behaviour can still change in future release.
-Other than that, it works 👍 
+If you want to be a truly majestic person, you can always go ⬆ upvote [the answer](https://stackoverflow.com/a/67845608/7747942).
+You nice lovely papayas 🧡 
