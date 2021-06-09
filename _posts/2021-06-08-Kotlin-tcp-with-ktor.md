@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Implement a TCP connection in Kotlin with ktor 
+title: Implement TCP in Kotlin with ktor 
 color: rgb(169,123,255)
 tags: [kotlin]
 ---
