@@ -12,5 +12,13 @@
   max-width: 100%;
   min-height: 250px;
   padding-bottom: 1em;
+}
 
+.mermaid > svg {
+  margin: auto;
+  display: block;
+  height: auto; /* auto keyword */
+  padding-bottom: 2em;
+  padding-top: 2em;
+  max-width: 100%;
 }
