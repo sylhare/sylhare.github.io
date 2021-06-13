@@ -25,10 +25,13 @@ You can usually find a lot of information online, so let's add this one to the m
 class Endpoints {
 
   @GetMapping(value = ["/hello/{name}"], produces = ["application/json"])
-  fun checkBarring(@PathVariable(value = "name") name: String) = ResponseEntity(name), HttpStatus.OK)
+  fun hello(@PathVariable(value = "name") name: String) = ResponseEntity(name), HttpStatus.OK)
 
 }
 ```
+
+This is a simple hello endpoint that will return the `name` parameter that is sent in the url.
+The `@RequestMapping("/v1")` annotation will prepend _/v1_ to all endpoints define in the class.
 
 ### Bring in your test dependencies
 
@@ -87,10 +90,8 @@ internal class ApplicationTest {
 
   @TestConfiguration
   internal class ControllerTestConfig {
-
     @Bean
     fun foo(): Foo = mockk()
-    
   }
   
   private fun applicationUrl() = "http://localhost:$applicationPort"
@@ -103,6 +104,9 @@ You can see other annotations:
 - `@ActiveProfiles(value = ["test"])`: To use a different profile when spinning the spring application (you might not want a certain bean to be built for the test, or you have a test profile defined with different values.)
 - `@LocalServerPort`: In this case will represent the port on which your web springboot app will be hosted.
 - `@TestConfiguration`: This is to define the test configuration, you can mock or update beans there.
+
+The `ControllerTestConfig` is here if you have some configuration you want to mock or modify for the test.
+For example here we are mocking the bean `foo` meaning that any autowire of that bean will take this mock version.
 
 ### Write your first test
 
