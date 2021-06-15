@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Kotlin dsl with gradle
+title: Kotlin dsl with gradle 4.8
 color: rgb(214,102,133)
 tags: [kotlin]
 ---
@@ -41,10 +41,21 @@ You want to specify the kotlin version and plugin you wish to use:
 ```kotlin
 plugins {
     kotlin("jvm") version "1.3.21"
+    // instead of id("org.jetbrains.kotlin.jvm") version "1.3.21"
 }
 ```
 
-And add the basic dependencies:
+You don't need to apply the plugin just define it and you're good to go.
+Add the basic repositories for your dependencies:
+
+```kotlin
+repositories {
+    mavenCentral()
+    maven(url = "https://plugins.gradle.org/m2/")
+}    
+```
+
+Add dependencies like kotlin:
 
 ```kotlin
 dependencies {
@@ -52,6 +63,9 @@ dependencies {
     // Or compile("org.jetbrains.kotlin:kotlin-stdlib:1.3.21")
 }
 ```
+
+The `kotlin` key word replaces _org.jetbrains.kotlin_ you can also use it for plugins this way.
+> For higher version of gradle, compile has been deprecated to implementation  
 
 You can also add this for source compatibility:
 
@@ -73,6 +87,30 @@ dependencies {
     testCompile("junit:junit:4.12")
 }    
 ```
+
+Also you want to use the junit platform to run your tests with google using:
+
+```kotlin
+tasks.test {
+    useJUnitPlatform()
+}
+```
+
+Which will use the `junit-vintage-engine` incompatible with the newer Junit5 version 
+(you can recognize them by the _jupiter_ in the package name), you may encounter the `No tests found` issue
+if you mix them up.
+
+If you want to use _org.junit.jupiter:junit-jupiter:5.7.2_ with its _junit-jupiter-api_ and _junit-jupiter-engine_,
+you might need to exclude junit4 modules like in springboot:
+
+```kotlin
+testImplementation("org.springframework.boot:spring-boot-starter-test") {
+    exclude(module = "junit")
+    exclude(module = "junit-vintage-engine")
+}
+```
+
+With that the `useJunitPlatform()` will use the junit5 one.
 
 ### Jacoco
 
@@ -202,3 +240,4 @@ Then you'll be able to use `./gradlew` instead of gradle and your project should
 - [ilities kotlin gradle dsl](http://ilities.co/2017/07/19/kotlin-gradle-DSL/)
 - [gradle.org](https://docs.gradle.org/current/userguide/application_plugin.html#sec:application_usage)
 - [Hello Kotlin](https://github.com/sylhare/Kotlin/tree/master/hello-kotlin)
+- [Migrate from goovy to kotlin dsl](https://blog.outadoc.fr/2020/06/converting-gradle-to-gradle-kts/)
