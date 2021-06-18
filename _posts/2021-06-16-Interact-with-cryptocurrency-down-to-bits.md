@@ -24,15 +24,15 @@ it's decentralized, and the certifying authority's responsibility (which makes a
 
 Let's look at how the cryptocurrency generally [works](https://www.simplilearn.com/bitcoin-mining-explained-article).
 
-Let's say we have Alistair 🙋‍♂️ who wishes to send bitcoins to Belinda 🙆‍♀ in exchange for some Gucci goodies:
+Let's say we have Alistair 🙋‍♂️ who wishes to send bitcoins to Belinda 🙆‍♀️ in exchange for some Gucci goodies:
 
 <div class="mermaid">
 graph LR
-    A["&#128587;"] ---|Send bitcoins|B["&#128105;"]
+    A["&#128104;"] ---|Send bitcoins|B["&#128105;"]
 </div>
 
-Nice, now that we have that done, Belinda 🙆‍ is just going to wait for around 6 confirmation that Alistair 🙋‍♂ did really
-send the money and is not trying to scam her.
+Nice, now that we have that done, Belinda 🙆‍♀️‍ is just going to wait for confirmation (around 6 of them) that Alistair 🙋‍♂️ 
+did really send the money and is not trying to scam her.
 Let's look at how this [transaction](https://www.bitcoin.com/get-started/how-bitcoin-transactions-work/) gets processed:
 
 <div class="mermaid"> 
@@ -51,18 +51,23 @@ sequenceDiagram
   Note over M,P: The transaction is confirmed once and the mining process keeps on going to add more blocks <br> each blocks adding confirmation to the previous one
 </div>
 
-In the case of a fraudulent transaction is made, where there is _double spending_ (meaning two transactions are made)
-then the memory pool would have those two.
-Meaning a block could have Alistair 🙋‍♂️‍ Transaction to Belinda 🙆‍♀ ️but also _another_ transaction where the money goes
-to buy pizza 🍕!! 
+So each new block is a confirmation of payment. In the case of a fraudulent transaction is made, where there is _double
+spending_ (meaning two transactions are made)
+then the memory pool would have those two transactions! If mined into two blocks you could have:
 
-In order to avoid [that](https://learnmeabitcoin.com/beginners/mining), the latest transaction will be refused automatically, 
-or the one within the most accepted block by the community.
+- a block with Alistair 🙋‍♂️‍ Transaction to Belinda 🙆‍♀️
+- _another_ block where the transaction goes to buy pizza 🍕!!
 
-> In this case a transaction is validated by the peers
+In order to avoid [that](https://learnmeabitcoin.com/beginners/mining), and preserve the chain integrity two things can happen:
+
+- the latest transaction will be refused automatically, and not added to a block.
+    - In this case you'll see it right away if there was a fraud attempt
+- If both transaction are in a block, the transaction in the most accepted block by the community will remain in the chain 
+    - In this case a transaction is validated by the peers. It takes multiple other blocks on top to be sure that it's accepted.
 
 The older your transaction is in terms of block the more certain you are that it's _legit_. 
-Usually it takes 6 confirmations (6 blocks added to the blockchain) for a merchant to accept payment.
+Usually it takes 6 confirmations (6 blocks added to the blockchain) for a merchant to accept payment,
+it is deemed highly unlikely to be able to push a fraudulent transaction in the blockchain from 6 blocks ago.
 
 ### Bitcoin specificity
 
@@ -71,13 +76,16 @@ Mining requires high performance GPUs to solve mathematical problems and find bl
 
 Miners make the bitcoin works, and the reward for that is an amount of bitcoin (that get halved every _210'000_ blocks).
 However, there's a finite amount of **21 millions bitcoins** (and we've already mined more than _18_ millions). 
-Once all the bitcoin are available, mining may become less interesting and no more transactions might be made unless the protocol changes though [BIPs](https://github.com/bitcoin/bips)
+Once all the bitcoin are available, mining may become less interesting, the miners still get the transaction fees of the block.
+In the case the amount of mining decreases (hence the number of possible transactions) the protocol may change through [BIPs](https://github.com/bitcoin/bips)
 (Bitcoin Improvement Proposals). 🤷‍♀️
 
-Which leads to one downside of bitcoin, it's that if there's a majority pool of miners, they can decide which blocks go in the blockchain.
+Which leads to one downside of bitcoin (beside its awful ecological footprint 🌳), it's that if there's a majority pool of miners,
+they can decide which blocks go in the blockchain.
 
 This is well explained in [O'Reilly mastering bitcoin](https://www.oreilly.com/library/view/mastering-bitcoin/9781491902639/ch08.html) 
 and it's all about forks of blocks in the blockchain and convergence between the multiple pools of miners.
+If you have enough computational power to force the blocks you want in the blockchain, it might lose its integrity.
 
 ## Libraries
 
