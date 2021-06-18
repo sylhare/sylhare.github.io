@@ -9,11 +9,11 @@ tags: [ctf]
 
 A Dolphin attack is a term that has been given to the method of accessing a smartphone 
 without the users’ consent by executing ultrasonic commands.
-A [study](https://arxiv.org/abs/1708.09537) conducted at Zhejiang University in China has shown that such speech recognition systems
- are vulnerable to hidden commands that the researchers are calling “Dolphin Attacks”.
+A [study](https://arxiv.org/abs/1708.09537) conducted at Zhejiang University in China has shown that such speech recognition systems 
+are vulnerable to hidden commands that the researchers are calling “Dolphin Attacks”.
 How do you hide a voice command? Make it ultrasonic. Humans hear sounds between 20 Hz and 20kHz. 
-If you record a phrase, and shift it above 20 kHz, then play it back, you can’t hear it, but dogs, bats, dolphins and,
- unfortunately, phone and computer microphones can. [from fraud watch international](https://fraudwatchinternational.com/expert-explanations/what-is-a-dolphin-attack/)
+If you record a phrase, and shift it above 20 kHz, then play it back, you can’t hear it, but dogs, bats, dolphins and, 
+unfortunately, phone and computer microphones can. [from fraud watch international](https://fraudwatchinternational.com/expert-explanations/what-is-a-dolphin-attack/)
 
 “Dolphin Attacks” can be used to [from UW-Madison](https://it.wisc.edu/news/dolphin-attack-hacking-phones-via-ultrasound/):
 
@@ -28,7 +28,7 @@ If you record a phrase, and shift it above 20 kHz, then play it back, you can’
 In one of the challenges, you get access to this audio:
 
 <audio controls src="{{"/assets/sound/dolphin.wav" | relative_url}}">
-<p>Your browser doesn't support HTML5 audio. Here is a <a href="{{"/assets/sound/dolphin.wav" | relative_url}}">link to the audio</a> instead.</p></audio>
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="{{'/assets/sound/dolphin.wav' | relative_url}}">link to the audio</a> instead.</p></audio>
 
 Thankfully we had heard about the `dolphin attack` vector (and the obvious name of the challenge),
  we decided to find out if there was any hidden message in the audio.
@@ -53,7 +53,7 @@ Basically we filter everything under the high frequency and bring to audible lev
 ![image]({{"assets/img/dolphin-after.png" | relative_url }})
 
 <audio controls src="{{"/assets/sound/dolphin-after.wav" | relative_url}}">
-<p>Your browser doesn't support HTML5 audio. Here is a <a href="{{"/assets/sound/dolphin.wav" | relative_url}}">link to the audio</a> instead.</p></audio>
+<p>Your browser doesn't support HTML5 audio. Here is a <a href="{{'/assets/sound/dolphin.wav' | relative_url}}">link to the audio</a> instead.</p></audio>
 
 If you play the audio you should hear:
 
