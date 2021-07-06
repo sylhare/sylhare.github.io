@@ -6,17 +6,17 @@ tags: [python]
 ---
 
 Jupyter notebook is a tool to interactively develop with python. When working with datascience, it can through the use
-of different block of code, text or rich content make it all integrate smoothly while making it interactive.
+of different block of code, text or rich content make it all integrate smoothly in one place.
 
-> It's a called notebook a notebook because you can _run_ bits of code, _add_ any content,  _edit_ and _save_ it all as one document.
+> It's called notebook a notebook because you can _run_ bits of code, _add_ any content,  _edit_ and _save_ it all as one document.
 
 All cells or _blocks of code_ have access to the same python Kernel. Hence, what has been run in one cell can be used in
 another.
 
 ### Setup
 
-If you're not sure of your python environment, this [article]({% post_url 2021-05-19-Manage-your-python-environments %})
-will give you tips on how to manage it. Once python3 setup, install jupyter with:
+If you're not sure of your python environment, follow [how to manage your python environment]({% post_url 2021-05-19-Manage-your-python-environments %})
+article. Once python3 is set up, install jupyter with:
 
 ```bash
 pip install jupyter
@@ -32,7 +32,7 @@ This will run jupyter notebook which you can then access through your web browse
 a [new notebook](https://www.dataquest.io/blog/jupyter-notebook-tutorial) file ending with `.ipynb` which will contain
 all the necessary information of your notebook.
 
-You can ignore the `**/.ipynb_checkpoints/**` folder in your `.gitignore`.
+You can ignore the `.ipynb_checkpoints/**` folder in your `.gitignore`.
 
 ### Customization
 
