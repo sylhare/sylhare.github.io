@@ -42,6 +42,8 @@ collections:
     permalink: /:collection/:name
 
 # BUILD SETTINGS
+sass:
+  style: compressed
 plugins: [jekyll-paginate, jekyll-seo-tag, jekyll-feed]
 exclude: [".jekyll-cache", "Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", ".idea", ".github", "SECURITY.md",
           "LICENSE", "README.md", "screenshot.png", "package.json", "node_modules/**", "gulpfile.js", "themes", "_draft"]
