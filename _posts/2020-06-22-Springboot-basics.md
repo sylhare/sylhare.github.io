@@ -12,25 +12,27 @@ Kotlin as alternative language.
 
 ## Spring and Spring Boot
 
-Spring Framework was made to remove the boilerplate necessary to build an application, and have some
-nice features like dependency injection and templates that reduce the amount of lines of code necessary to get started.
+The Spring Framework was made to remove the boilerplate necessary to build an application, and have some nice features like
+dependency injection and templates that reduce the amount of lines of code necessary to get started.
 
-Spring Boot on the other hand is an extension of the spring framework which removes the configurations
-required for setting up a Spring application. Eliminating the boilerplate's configuration of a framework that was 
-eliminating the boilerplate's code require to get your application started.
+Spring Boot on the other hand is an extension of the spring framework which removes the configurations required for
+setting up a Spring application.
 
-### Boilerplate
+> Spring Boot : eliminating the boilerplate's configuration of a framework (Spring) that removes
+the boilerplate's code required for your application. 😅
+
+### What is Boilerplate?
 
 [Boilerplate code](https://en.wikipedia.org/wiki/Boilerplate_code) refers to code that needs to be added in multiple application with little to no alteration.
-"Verbose" language needs a lot of so called Boilerplate to add a minor functionality.
+"Verbose" language needs a lot of so-called boilerplate to add a minor functionality.
 
-It comes from the printing industry where boiler plates referred to sturdy printing plate that looked issued from the metal of a boiler.
+It comes from the printing industry where boilerplate referred to sturdy printing plate that looked issued from the metal of a boiler.
 
-On the side of the code, I see it in a kitchen where you want to make pasta.
-The boilerplate (spring in this case) would bring the stove to do so, but you would still need to add the pan, water and type of pasta.
-Springboot is this case would be spring (the stove) which comes with already prepared pans and water (the boot part of it, ready to start).
+On the side of the code, I see it in a kitchen where you want to make pasta. 🍜
+The boilerplate (spring in this case) would bring the stove to do so ♨️... but you would still need to add the pan 🍳, water 💧 and type of pasta 👩‍🍳.
+Springboot is this case would be spring (the stove) which comes with already prepared pans and water (the boot part of it → ready to start). 
 
-You only need to add the pasta which would be your feature in this comparison.
+You only need to add the pasta which would be your feature in this comparison. 😋
 
 ### Springboot features
 
@@ -79,7 +81,7 @@ The Beans in spring are what your application is based upon, it's backbone.
 They are managed by the Spring IoC (Inversion of Control) Container, the one that is doing all the dependency injection
 which is at the base of the "spring magic". 
 
-By magic, it's because you define the object dependencies without creating them and let the construction of those dependency
+By magic, it's because you define the object dependencies without creating them and let the construction of those dependencies
 be made by spring (ie the Spring IoC container) on start up. (You might have errors with Application Context, etc ...) 
 
 Basically a Bean is an object that is going to be instantiated, assembled and managed by spring.
@@ -116,9 +118,11 @@ From what I see the main differences between Bean and Component are:
    - Object instantiation is handled within the method and can be decoupled (one-to-many, one bean multiple possible objects)
    - Returns an explicit single object and marked as a Bean for Spring
    
-#### Example and @Autowired
+#### @Autowired
  
-So by adding a `@Component` to a class we create a Bean 
+By adding a `@Component` to a class we create a specialized Bean (slightly different from `@Bean`).
+To use a bean, or a component in another spring component we will need to use the `@Autowired` annotation.
+Let's take a look at this example with the `restTemplate` field:
 
 ```kotlin
 import org.springframework.beans.factory.annotation.Autowired
@@ -134,18 +138,17 @@ internal class MyComponent {
 }
 ```
 
-You can see the `@Autowired` annotation used there on our restTemplate field. 
 Basically at the component creation, spring which will look for a Bean for restTemplate, and then inject it into our Component.
 The `@Autowired` annotation marks a constructor, field, or setter method to be autowired by Spring dependency injection.
 
 It will use reflection in order to look for annotated field and then instantiate them at run time. 
-Thus the "lateinit var" in Kotlin, you might need in some case add `kotlin-reflect` to your gradle file, if you get reflection dependency exception.
+Thus, the `lateinit var` in Kotlin, you might need in some case add `kotlin-reflect` to your gradle file, if you get reflection dependency exception.
 
 #### Component specification @Service, @Controller
 
 To better separate and differentiate the Bean and parts of the code, you can use specified Component annotation.
 For example `@Service` which represents also a Component is one of them. 
-It describe an object that's holding the business logic and is used the same way as `@Component` is used.
+It describes an object that's holding the business logic and is used the same way as `@Component` is used.
 
 Then you have `@Controller` which indicates that the class is a "Controller". It's mostly known by its own specified version 
 the `@RestController` which is used to [simplify]((https://www.baeldung.com/spring-controller-vs-restcontroller)) the implementation Rest API applications.
@@ -170,6 +173,27 @@ internal class Endpoints {
 
 You can see that the `@RestController` can also `@Autowire` any Bean (from any Bean, Component, ... annotation).
 
+### @Value
+
+The `@Value` is a marvelous tool to populate dynamically properties from `.properties` or `.yml` file directly to your
+application.
+
+Usually used in `@Configuration` classes, you may define them as follows:
+
+```kotlin
+@Value("\${property.value:default}")
+lateinit var myValue: String
+```
+
+You can set a default value if it is not found using the `:` (e.g. _"default"_ is the default value here), otherwise it will take the property value.
+You can set up a yaml file looking like this in our case:
+
+```yml
+property:
+  value: "hello"
+```
+
+The value _"hello"_ will be picked up and placed into `myValue`.
 
 ### @SpringBootApplication
 
