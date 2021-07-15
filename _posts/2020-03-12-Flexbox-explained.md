@@ -2,7 +2,7 @@
 layout: post
 title: CSS Flexbox Explained
 color: rgb(183, 107, 163)
-tags: [css]
+tags: [misc]
 ---
 
 Flexbox (Flexible Box Module) was designed as a one-dimensional layout model, 

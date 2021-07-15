@@ -240,7 +240,7 @@ const processTags = (out, tagYear) => tags(out).sort().reduce((acc, current) => 
 }, []).sort((a, b) => (b[0] === 'other') - (a[0] === 'other'));
 
 const processTagName = (current) => {
-    if (current[1].length <= 2 || current[0] === "misc") current[0] = "other"
+    if (current[1].length <= 3 || current[0] === "misc") current[0] = "other"
     return current[0]
 }
 

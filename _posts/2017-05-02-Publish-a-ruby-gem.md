@@ -1,19 +1,22 @@
 ---
 layout: post
-title: Publish a Ruby Gem 💎
+title: Publish a jekyll themed Ruby Gem 💎
 color: rgb(187, 10, 30)
-tags: [ruby]
+tags: [jekyll]
 excerpt_separator: <!--more-->
 ---
 
 Let's see how to make a ruby gem using the right format and specs, 
-using the `type-on-strap` gem as an example.
+using the `type-on-strap` jekyll-theme gem as an example.
 
 <!--more-->
 
 ## Prepare the gemspec
 
-I make sure the gem encompass all the files that I want using this regex in my `gemspec`:
+Find an example of the [`type-on-strap.gempsec`](https://github.com/sylhare/Type-on-Strap/blob/master/type-on-strap.gemspec)
+It's all straightforward, the only tricky part is to make sure that your gem has everything you need.
+
+To do that I am using this regex:
 
 ```ruby
 spec.files = Dir.glob("**/{*,.*}").select do |f|
@@ -23,15 +26,20 @@ spec.files = Dir.glob("**/{*,.*}").select do |f|
 
 Here it uses a complex regex to select folder and files from all folder and sub folders.
 
-> I could have used a `.reject` to remove some files, or a `&` after `end` to add manually a directory/page with `Dir[file, directory/**]`.
+> I could have used a `.reject` to remove some files, or a `&` after `end` to add manually a directory/page with `Dir["file", "directory/**/*"]`.
 
 ## Check the gem
 
 First to test that the gem gets all the required documents:
+
 ```bash
-gem build type-on-strap.gemspec 
+# Build the gem
+gem build type-on-strap.gemspec
+# Unpack the built gem 
 gem unpack type-on-strap-x.x.gem 
 ```
+
+You can check in the unpacked gem folder all the files included in your gem.
 
 ## Run the gem locally
 
@@ -39,14 +47,14 @@ Here I had a jekyll gem, so I updated my Gemfile with the current gem version I 
 
 ```ruby
 source "https://rubygems.org"
-gem "type-on-strap", "1.x.x", path: "."
+gem "type-on-strap", "1.x.x", path: "." # or gemspec
 ```
 
-And then did the usual `bundle exec jekyll serve`.
+Then did the usual `bundle exec jekyll serve`.
 
 ## Deploy the gem
 
-No I want to push the gem online and test it from there. 
+Now I want to push the gem online and test it from there. 
 
 ```bash
 # Push the gem online
