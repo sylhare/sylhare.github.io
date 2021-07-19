@@ -23,7 +23,7 @@ Optional<String> value = Optional.of(externalDependency.supplyData());
 You may then do a check to make sure the Optional has a value, and then get it to do something with it like:
 
 ```java
-If (value.isPresent()){
+if (value.isPresent()){
     doSomething(value.get());
 }        
 ```
