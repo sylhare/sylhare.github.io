@@ -6,6 +6,7 @@ fetch('/assets/data/stats.json')
         printMixed(out);
         printBubble(out);
         printStackedBar(out);
+        printDateStacked(out);
         //printPie(out);
     })
     .catch(err => {
@@ -24,20 +25,36 @@ function printStackedBar(out) {
     const tagYear = years(out).map(i => i[0])
     const tagPosts = processTags(out, tagYear);
 
-    let dataset = tagPosts
-        .map(item => {
-            return {
-                label: item[0],
-                data: item[1],
-                backgroundColor: classic20[item[0]] ?? classic20['grey'],
-            }
-        });
+    console.log(tagPosts)
+    let dataset = tagPosts.map(item => {
+        return {
+            label: item[0],
+            data: item[1],
+            backgroundColor: classic20[item[0]] ?? classic20['grey'],
+        }
+    });
 
     new Chart(
         document.getElementById('stacked-bar-js').getContext('2d'),
         stackedBarConfig(tagYear, dataset));
 }
 
+function printDateStacked(out) {
+    let yearMonths = years(out).map((item) => {
+        return { year: item[0], months: groupByMonth(item[1]) }
+    })
+    let dataset = yearMonths.map(item => {
+        return {
+            label: item.year,
+            data: item.months.map(it => it.value),
+            backgroundColor: Blues8[parseInt(item.year) % 8]
+        }
+    })
+
+    new Chart(
+        document.getElementById('stacked-bar-date-js').getContext('2d'),
+        stackedBarConfig(MONTH_NUMBERS.map(it => monthToName(it)), dataset));
+}
 
 function stackedBarConfig(dates, dataset) {
     return {
@@ -118,6 +135,7 @@ function printMixed(out) {
     let yearPosts = years(out).map((item) => {
         return { date: item[0], posts: item[1].length }
     })
+
     new Chart(
         document.getElementById('mixed-js').getContext('2d'),
         mixedConfig(mixedData(yearPosts))
@@ -240,7 +258,7 @@ const processTags = (out, tagYear) => tags(out).sort().reduce((acc, current) => 
 }, []).sort((a, b) => (b[0] === 'other') - (a[0] === 'other'));
 
 const processTagName = (current) => {
-    if (current[1].length <= 3 || current[0] === "misc") current[0] = "other"
+    if (current[1].length <= 3 || current[0] === 'misc') current[0] = 'other'
     return current[0]
 }
 
@@ -277,6 +295,20 @@ const getRandomColorHex = () => {
     }
     return color;
 }
+
+const groupByMonth = (dates) => {
+    let months = dates.map(it => it.date.slice(5, 7))
+    return MONTH_NUMBERS.map(it => {
+        return {
+            month: it,
+            value: months.filter(m => m === it).length
+        }
+    })
+}
+
+const monthToName = (monthNumber) => new Date(2021, parseInt(monthNumber) - 1, 27).toLocaleString('default', { month: 'short' })
+
+const MONTH_NUMBERS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 
 const colors = {
     'agile': 'rgba(107, 91, 149, 0.85)',
@@ -322,6 +354,8 @@ const classic20 = {
     'kubernetes': '#17becf',
     '------': '#9edae5'
 };
+
+const Blues8 = ['#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#08519c', '#08306b'];
 
 
 /**
