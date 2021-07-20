@@ -36,7 +36,7 @@ function printStackedBar(out) {
 
     new Chart(
         document.getElementById('stacked-bar-js').getContext('2d'),
-        stackedBarConfig(tagYear, dataset));
+        stackedBarConfig(tagYear, dataset, 'Tags stacked'));
 }
 
 function printDateStacked(out) {
@@ -53,10 +53,10 @@ function printDateStacked(out) {
 
     new Chart(
         document.getElementById('stacked-bar-date-js').getContext('2d'),
-        stackedBarConfig(MONTH_NUMBERS.map(it => monthToName(it)), dataset));
+        stackedBarConfig(MONTH_NUMBERS.map(it => monthToName(it)), dataset, 'Posts stacked'));
 }
 
-function stackedBarConfig(dates, dataset) {
+function stackedBarConfig(dates, dataset, title) {
     return {
         type: 'bar',
         data: {
@@ -68,7 +68,7 @@ function stackedBarConfig(dates, dataset) {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Tags stacked'
+                    text: title
                 },
                 legend: {
                     display: true,
