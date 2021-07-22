@@ -47,7 +47,7 @@ Having it on a table is nice, but graphs are way more stylish!
 To make it visually clear, the data is also represented using [chart.js](https://www.chartjs.org/).
 Basically it fetches the json created by liquid with all the data then it transforms it to match the data format library.
 
-### Article per tags
+### Blog's tags overview
 
 To see what are the main topics in this blog, in my case I use tags are category 🤷‍♀️ one tag per article.
 Besides, bringing a use case for a radar type of graph, this one also display the editorial line of the blog.
@@ -78,7 +78,7 @@ Some topic may need fewer words than others, as long as you keep writing and mak
 Most of the articles are either a memory help for me, or an exercise to better understand the subject.
 It's never perfect, I often come back to old articles to fix typos and try to improve them.
 
-### Article per tags per year
+### Hot topics of the years
 
 To check the evolution of the topics happening over the years:
 
@@ -87,14 +87,14 @@ To check the evolution of the topics happening over the years:
 You can see, that Kotlin greatly started to inspire me in 2019, and that java, python and javascript have been some of my most recurring topics.
 I put in the `other` category all tags with less than 2 articles in it and the `misc` so that the graph doesn't get too cluttered.
 
-### Article per years stacked per month
+### Months' articles distribution
 
 Let's see which month of the year I am the most productive over the years:
 
 <canvas id='stacked-bar-date-js' class="chart"></canvas>
 
-It does have a curve of more active to less active, and the most busy months are not necessarily the months I would have expected.
-Can't always be writing stuff apparently. 😛 
+It does have a curve from the more to less active! The busiest months are not necessarily the ones I would have expected.
+Can't always be writing apparently. 😛
 
 I used some color schemes from [nagix/chartjs-plugin-colorschemes](https://nagix.github.io/chartjs-plugin-colorschemes/colorchart.html), check the css [here](https://github.com/nagix/chartjs-plugin-colorschemes/blob/master/src/colorschemes/colorschemes.tableau.js).
 As to why those graphs instead of other, well just for fun and to try out the [chart.js](https://www.chartjs.org/) possibilities. 🙃
