@@ -14,8 +14,8 @@ Server [getting started](https://www.apollographql.com/docs/apollo-server/gettin
 
 ### GraphQL Types
 
-Before making a Query, we need to create the objects' definitions we will return. You have some standard ones like _
-String_, _Int_ or _ID_, but you can also create your own:
+Before making a Query, we need to create the objects' definitions we will return. You have some standard ones like 
+_String_, _Int_ or _ID_, but you can also create your own:
 
 ```graphql
 type Book {
@@ -72,7 +72,7 @@ query OneBook($title: String!) {
 }
 ```
 
-This query takes a parameter and put it in our `book` query.
+This one takes a parameter and put it in our `book` query.
 
 ### Expected results
 
