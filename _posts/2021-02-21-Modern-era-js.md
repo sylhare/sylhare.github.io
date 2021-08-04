@@ -280,16 +280,36 @@ And you can just create complex objects with the possibility to nest or not the 
 
 You can do null check with the operator `??` which can be useful when you want to set a default value
 if a variable end up being `null`, `undefined`.
-Let's demonstrate with this [string templating](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals) example where:
+Let's have an example where:
 
 ```js
 var a = null;
 var b = undefined;
-console.log(`${a ?? 'it'} ${b ?? 'works!'}`)
+console.log((a ?? 'it') + " " + (b ?? 'works!'))
 // Prints out "it works!"
 ```
 
 For a `NaN`, which is a Number property [`Number.NaN`](https://developer.mozilla.org/fr/docs/Web/JavaScript/Reference/Global_Objects/NaN) meaning _Not A Number_, the `??` will have no effects.
+
+### String templating
+
+To facilitate printing logs or concatenating streams you can use a backtick (not the same as a single quote):
+- backtick: →{% raw %} ` {% endraw %}←
+- single quote: → ' ←. 
+  
+The backtick is slightly tilted.
+
+This is called [string templating](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals), 
+and it is wonderful! 🎉
+This will allow you to template your string, with `${}` and the variable you want to print within:
+
+```js
+var name = 'John'
+console.log('hello ' + name + '!')
+console.log(`hello ${name}!`)
+```
+
+Both will return _hello John!_, the backticks makes it much more readable and condensed.
 
 ## Conclusion
 
