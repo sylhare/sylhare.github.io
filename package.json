@@ -22,7 +22,6 @@
   "devDependencies": {
     "gulp": "^4.0.2",
     "gulp-imagemin": "^7.1.0",
-    "gulp-responsive": "^3.0.1",
-    "sharp": "^0.28.1"
+    "gulp-responsive": "^3.0.1"
   }
 }

@@ -23,7 +23,7 @@ const paths = {
 gulp.task('post', function(callback){
   let args = process.argv;
   let title = args[args.length -1];
-  let filename = new Date().toLocaleDateString('en-CA') + '-' + title.charAt(0).toUpperCase() + title.slice(1).toLowerCase().replaceAll(' ', '-') + '.md';
+  let filename = new Date().toLocaleDateString('en-CA') + '-' + title.charAt(0).toUpperCase() + title.slice(1).toLowerCase().replace(/ /g, '-') + '.md';
   let content = '---\n' +
     'layout: post\n' +
     'title: ' + title + '\n' +
@@ -46,7 +46,7 @@ gulp.task("img", function imging() {
     .pipe(gulp.dest(paths.img.dest))
 });
 
-// Alternative using "sharp" in case "imagemin" does not work
+//Alternative using "sharp" in case "imagemin" does not work
 gulp.task('sharp_img', function () {
   let settings = {
     quality: 80,
@@ -62,6 +62,7 @@ gulp.task('sharp_img', function () {
     .pipe(gulp.dest(paths.img.dest))
 });
 
+
 gulp.task('thumbnails', function () {
   let settings = {
     width: '50%',
@@ -72,6 +73,7 @@ gulp.task('thumbnails', function () {
     .pipe(responsive({
       '**/*.*': settings,
       '*.*': settings,
+      //  'assets/img/specific.jpg': { width: '12.5%'}
     }))
     .pipe(gulp.dest(paths.img.thumbnails))
 });
