@@ -168,7 +168,7 @@ Check the rubygem guide on [how to name your gem](https://guides.rubygems.org/na
         - Main class: _RubyParser_
 - The `-` are replaced by `/` in require and `::` in class name:
     - e.g. gem rdoc-data:
-        - `require 'require 'rdoc/data'`
+        - `require 'rdoc/data'`
         - Main class: _RDoc::Data_
 
 The name of the gem is specified by the _name_ attribute in the _gemspec_.
