@@ -227,10 +227,13 @@ Follow the documentation on [gradle](https://docs.gradle.org/current/userguide/w
 For your project to work almost anywhere, you can use the wrapper:
 
 ```
-gradle wrapper
+# To use the installed gradle version as wrapper
+gradle wrapper 
+# To specify the gradle version
+gradle wrapper --gradle-version 4.8 --distribution-type all
 ```
 
-Then you'll be able to use `./gradlew` instead of gradle and your project should run fine 👍
+Then you'll be able to use `./gradlew` instead of gradle, and your project should run fine 👍
 
 > Now if you have the opportunity to use a newer version of gradle, do it. 
 
