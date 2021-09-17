@@ -100,7 +100,7 @@ internal class ApplicationTest {
 
 You can see other annotations:
 
-- `@SpringBootTest`: Because it's a springboot test, you can pass spring properties in `properties` and define some variables.
+- `@SpringBootTest`: Because it's a springboot test, you can pass spring [properties](https://stackoverflow.com/a/69211792/7747942) in `properties` and define some variables.
 - `@ActiveProfiles(value = ["test"])`: To use a different profile when spinning the spring application (you might not want a certain bean to be built for the test, or you have a test profile defined with different values.)
 - `@LocalServerPort`: In this case will represent the port on which your web springboot app will be hosted.
 - `@TestConfiguration`: This is to define the test configuration, you can mock or update beans there.
