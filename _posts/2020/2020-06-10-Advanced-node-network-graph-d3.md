@@ -99,7 +99,7 @@ function updateNodes() {
 }
 ```
 
-We have a div with id _d3NodeUpdate_ and inside we select all of the circle,
+We have a div with id _d3NodeUpdate_ and inside we select all the circle,
 then we apply the change. We call _updateNodes()_ every 2sec to update them.
 
 ### Force update

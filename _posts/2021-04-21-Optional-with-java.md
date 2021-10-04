@@ -8,7 +8,7 @@ tags: [java]
 Optional is available since Java 8 in [`java.util`](https://docs.oracle.com/javase/8/docs/api/java/util/Optional.html).
 An optional is like a wrapper for an object with some extra methods to execute based on the existence of the value.
 
-It is close looking to the `?` elvis operator in [Kotlin]({% post_url 2019-12-02-Kotlin-101 %}) but in a more verbose way.
+It is close looking to the `?` elvis operator in [Kotlin]({% post_url 2019/2019-12-02-Kotlin-101 %}) but in a more verbose way.
 I have created simple code examples available in these [classes](https://github.com/sylhare/Java/blob/master/src/Example/src/main/java/option).
 
 ## Implementation

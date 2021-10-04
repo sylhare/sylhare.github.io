@@ -54,7 +54,7 @@ used in Waterfall project management.
 
 ### Scrum
 
-See the [Overview of the Scrum Framework]({% post_url 2015-11-10-Overview-Scrum-framework %}) article.
+See the [Overview of the Scrum Framework]({% post_url 2015/2015-11-10-Overview-Scrum-framework %}) article.
 
 **tldr**: 
 A framework where your plan work iteratively that is committed to be done during a specified time called sprint.

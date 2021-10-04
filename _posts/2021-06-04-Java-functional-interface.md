@@ -8,7 +8,7 @@ tags: [java]
 Java's [functional interface](https://docs.oracle.com/javase/8/docs/api/java/lang/FunctionalInterface.html) is available
 since v1.8. It allows you to leverage lambda function's possibilities.
 
-We already talked about [parametrized java function]({% post_url 2018-11-09-Parametrized-java-function %}) where we were
+We already talked about [parametrized java function]({% post_url 2018/2018-11-09-Parametrized-java-function %}) where we were
 also utilizing the lambdas. So to add a twist, we're going to add some generics into the mix.
 
 ## Generics

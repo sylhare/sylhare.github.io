@@ -6,7 +6,7 @@ tags: [kotlin]
 ---
 
 
-Since we had a look at spring and springboot in a previous [article]({% post_url 2020-06-22-Springboot-basics %}).
+Since we had a look at spring and springboot in a previous [article]({% post_url 2020/2020-06-22-Springboot-basics %}).
 Let review how we can test the beast! 
 Because like all good developer, you like writing good tested code with TDD aka Test Driven Development.
 Where you usually _start_ with test... 😅 

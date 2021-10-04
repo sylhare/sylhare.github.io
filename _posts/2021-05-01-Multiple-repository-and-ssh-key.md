@@ -21,7 +21,7 @@ So here is how you would do it.
 
 ### Generate the SSH keys
 
-If it's not done already, you can learn how to create and register the SSH key in [Get Started With GitHub]({% post_url 2017-04-19-Get-started-with-GitHub %})_.
+If it's not done already, you can learn how to create and register the SSH key in [Get Started With GitHub]({% post_url 2017/2017-04-19-Get-started-with-GitHub %}).
 The process should be similar for any other online service.
 
 Some caveat for it to work:

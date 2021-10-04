@@ -41,7 +41,7 @@ To contribute using you need to:
 - Go on the ONAP's Gerrit: [gerrit.onap.org](https://gerrit.onap.org/r/#/admin/projects/)
 - Create a linux foundation account (in `Account signup / management`)
 - Then you need to sign in (it's a tiny `sign in` link under the `search button`).
-- Create a ssh public key (like you would do on [GitHub]({% post_url 2017-04-19-Get-started-with-GitHub %})):
+- Create a ssh public key (like you would do on [GitHub]({% post_url 2017/2017-04-19-Get-started-with-GitHub %})):
 
 ```bash
 ssh-keygen -t rsa

@@ -8,7 +8,7 @@ tags: [kotlin]
 [Ktor](https://ktor.io/) is a framework for building asynchronous (with coroutine) servers and clients in Kotlin.
 It's made by the same people that made Kotlin.
 
-If you would rather not use a framework, you can check this article on [How to use Kotlin for TCP with java sockets]({% post_url 2020-04-07-Kotlin-tcp-socket-example %})
+If you would rather not use a framework, you can check this article on [How to use Kotlin for TCP with java sockets]({% post_url 2020/2020-04-07-Kotlin-tcp-socket-example %})
 
 ## Using Ktor framework
 
