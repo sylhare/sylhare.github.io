@@ -20,7 +20,7 @@ If you already know it in Java then no surprise, but since you might be interest
 ## Implementation
 
 So I will put only snippets of the most simple relevant parts here.
-You can always check the [source code]((https://github.com/sylhare/tcp)) later with much more example, tests and so on!
+You can always check the [source code](https://github.com/sylhare/tcp/tree/master/src/main/kotlin/tcp/examples) later with much more example, tests and so on!
 
 ### Server and Client
 
@@ -49,7 +49,7 @@ Depending on where you look at it, it does not mean the same thing because it is
   
 So basically you read from the input and write to the output. 
 You work with Bytes, which might not be the best for your use case. 
-For text you can use some wrapper:
+For text, you can use some wrapper:
   - To write and send text:
   
 ```kotlin
