@@ -80,15 +80,18 @@ It's better to use environment variables for that.
 
 Add access to your secret in your _action.yaml_ via:
 
+{% raw %}
 ```yaml
 env:
   USERNAME: ${{ secrets.USERNAME }}
   TOKEN: ${{ secrets.TOKEN }}
 ```
+{% endraw %}
 
 This will map the secret `TOKEN` to the `TOKEN` environment variable in the pipeline, same for the `USERNAME`.
 With GitHub action, you can also use already available values directly without setting a secret:
 
+{% raw %}
 ```yaml
 jobs:
   build:
@@ -108,6 +111,7 @@ jobs:
           USERNAME: ${{ github.actor }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+{% endraw %}
 
 With this, you are all set to start using any GPR hosted maven package 📦
 
