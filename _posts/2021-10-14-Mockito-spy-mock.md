@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: How to @Spy a mocking dep' ...
-color: rgb(50,50,50)
+color: rgb(86, 198, 169)
 tags: [java]
 ---
 
