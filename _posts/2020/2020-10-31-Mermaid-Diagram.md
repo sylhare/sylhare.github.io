@@ -8,8 +8,10 @@ tags: [open source]
 [Mermaid.js](https://mermaid-js.github.io/mermaid/) is a js library that transforms text into diagrams
 (sequence, Gantt or class diagrams, flow charts, ...).
 
-So far the ones that I am particularly keen on using are the sequence diagrams, you can find all of the documentation,
+So far the ones that I am particularly keen on using are the sequence diagrams, you can find all the documentation,
 on the mermaid [site](https://mermaid-js.github.io/mermaid/diagrams-and-syntax-and-examples/).
+
+Try the [online editor](https://mermaid-js.github.io/mermaid-live-editor/edit/) for a quick look at the possibilities.
 
 ## Sequence Diagram
 
@@ -99,7 +101,7 @@ Lines are basically the steps in your sequence diagram:
   ``` 
 - If the Participant is the same, the line will just kind of loop on itself (like with database step above).
 
-For the lines it always have `-`:
+For the lines it always has `-`:
 
 - Two dash `--` means dotted (like `-->`)
 - Two chevrons `>>` means arrow head (like `->>`)
