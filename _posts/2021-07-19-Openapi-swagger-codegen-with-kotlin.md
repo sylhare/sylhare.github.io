@@ -1,6 +1,6 @@
 ---
 layout: post 
-title: Openapi swagger codegen with kotlin 
+title: OpenAPI code generation with kotlin 
 color: rgb(52, 86, 139)
 tags: [kotlin]
 ---
@@ -18,9 +18,9 @@ to generate the code for our Kotlin application.
 
 ### Specification
 
-Swagger is based on the [OpenApi Specification](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md),
+Swagger is based on the [OpenAPI Specification](https://github.com/OAI/OpenAPI-Specification/blob/main/versions/2.0.md),
 that's why you can see the `openapi: <version>` at the top of the yaml file. When talking about swagger yaml file, it's
-basically this type of OpenApi specific yaml file.
+basically this type of OpenAPI specific yaml file.
 
 ### Create the Rest API with only the openapi file
 
@@ -138,7 +138,7 @@ java.sourceSets["main"].java.srcDir("$buildDir/generated/src/main/java")
 
 This way you can call it from your _src/main/kotlin_ code and start implementing it.
 
-#### Openapi yaml file
+#### OpenAPI yaml file
 
 Create a basic yaml file following the [swagger documentation](https://swagger.io/docs/specification/basic-structure/),
 or just modify an existing one to get this _"petshop"_ api:
@@ -174,7 +174,7 @@ paths:
 The `'#/components/requestBodies/Pet'` are defined in
 the [petstore.yml](https://raw.githubusercontent.com/openapitools/openapi-generator/master/modules/openapi-generator/src/test/resources/3_0/petstore.yaml)
 , you can either copy that yaml file inside the _petstore.yaml_ or use file referencing
-like `./petstore.yml#/components/requestBodies/Pet'`.
+like `'./petstore.yml#/components/requestBodies/Pet'` which will refer to the Pet component from the pestore.yml.
 (This is a case where you would use the template setting in the gradle task).
 
 #### Implementation
