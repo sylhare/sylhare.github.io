@@ -15,7 +15,7 @@ It is a boilerplate app creator, you can use it via:
 npx create-react-app <your app name>
 ```
 
-And here you go, a folder with your app name has been created and you can start running the default page!
+And here you go, a folder with your app name has been created, and you can start running the default page!
 
 # Concept
 
@@ -86,11 +86,11 @@ Now let's see how to write some components.
 
 ## Vocabulary
 
-Here is to layout some of the vocabulary around components that are peculiar to [javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) or React.
+Here is to layout some vocabulary around components that are peculiar to [javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript/A_re-introduction_to_JavaScript) or React.
 So let's just add some simple definition on those:
 
   - **props**: Props are like the parameters you pass down a function, or component. It stands for property.
-  In React they must be [read only](https://reactjs.org/docs/components-and-props.html#props-are-read-only), you don't modify the props directly.
+  In React, they must be [read only](https://reactjs.org/docs/components-and-props.html#props-are-read-only), you don't modify the props directly.
   - **state**: Talking about stateful and stateless, state represents the current value(s) of a component. The state is like a _"private member"_ and can't be updated [directly](https://reactjs.org/docs/state-and-lifecycle.html#using-state-correctly).
   You need to use something like `setState()` so each time you update the state, it will render your component with its new value.
   - **lifecycle**: This is handling of the React component that will go through different stage from before it appears in the DOM, to being updated until after it gets removed.

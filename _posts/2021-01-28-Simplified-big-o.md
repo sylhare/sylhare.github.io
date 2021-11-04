@@ -12,7 +12,7 @@ the behaviour of an algorithm. Usually either space (its memory footprint while 
 
 The Big O we'll be looking at is a simplified version, and how to quickly calculate it. 
 It is something you can enjoy [mastering](https://yourbasic.org/algorithms/big-o-notation-explained/), if you need to build particularly efficient algorithm. 
-But for most of people, we just need a general idea of how slow our algorithm. 
+But for most of the people, we just need a general idea of how slow our algorithm. 
 
 Big O notation is really useful when you know you'll have a tone of data to process,
 then you'll be interested to have am algorithm that performs well on average and not too bad at worst.
@@ -29,13 +29,13 @@ Basically:
 - $$O$$ for the worst case
 - $$\Theta$$ is basically of both $$\Omega$$ and $$O$$ notation
 
-Nowadays, Big O is mostly use to describe as tightly as possible the algorithm.
+Nowadays, Big O is mostly used to describe as tightly as possible the algorithm.
 
 There's an infinite number of Big O notation, and you need to understand the concept to grasp it fully. 
 However, there are some notation that you'll see more often than others. Here is what to consider:
  - $$1$$ usually means it's a constant time
  - $$N$$ in the notation usually mean the number of element (like in an array)
- - We consider the notation in term of "power" ($$2N$$ is considered equal as $$N$$ but is faster than $${N}^{2}$$ and slower than $${\mathrm{log}}\left(N\right)$$)
+ - We consider the notation in terms of "power" ($$2N$$ is considered equal as $$N$$ but is faster than $${N}^{2}$$ and slower than $${\mathrm{log}}\left(N\right)$$)
  - Any other letter, means there's two operation with different size (like on will be $$A$$, and the other $$B$$)
  
 So let's review the main ones in example.
