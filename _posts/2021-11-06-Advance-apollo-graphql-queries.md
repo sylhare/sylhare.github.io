@@ -102,7 +102,7 @@ Which means the `author` function will be called when querying the author of a b
 Let's see how the resolver function for `author` will look like:
 
 ```typescript
-export function author(parent: Book, _: any, context) {
+export function author(parent: Book, _: any, context: any) {
     return context.authorDataSource.find(author => author.books.includes(parent.title) );
 }
 ```
@@ -165,7 +165,7 @@ const Resolvers = {
 In this case the `name` resolver will look like:
 
 ```typescript
-export function author(_: any, { name }:{ name: string }, context) {
+export function author(_: any, { name }:{ name: string }, context: any) {
     return context.authorDataSource.find(author => author.name.includes(name) );
 }
 ```
