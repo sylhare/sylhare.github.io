@@ -14,8 +14,8 @@ function randRange(max) {
 // Behaviour when moved
 function ticked(node) {
   node
-    .attr("cx", function (d) {return d.x;})
-    .attr("cy", function (d) {return d.y;})
+    .attr("cx", (d) => (d.x))
+    .attr("cy", (d) => (d.y))
 }
 
 // Append an SVG canvas to the div.
@@ -33,5 +33,4 @@ function appendCircleTo(nodes) {
     .attr("r", 40)
     .attr("stroke", color)
     .style("fill", color);
-
 }
