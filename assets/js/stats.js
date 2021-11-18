@@ -1,4 +1,4 @@
-fetch('/assets/data/stats.json')
+fetch('/assets/data/stats.liquid')
     .then(res => res.json())
     .then((out) => {
         fillInTable(out);
@@ -27,7 +27,6 @@ function fillInTable(data) {
 function printStackedBar(out) {
     const tagYear = years(out).map(i => i.year)
     const tagPosts = processTags(out, tagYear);
-
     const dataset = tagPosts.map(item => ({
         label: item.name,
         data: item.posts,
@@ -182,7 +181,6 @@ function mixedConfig(data) {
 }
 
 function printRadar(out) {
-    console.log(out);
     new Chart(
         document.getElementById('radar-js').getContext('2d'),
         radarConfig(radarData(postsPerTag(tags(out))))
@@ -246,7 +244,7 @@ function pieData(postsPerTag) {
  * @param {[string]} tagYear - list of year
  * @return {[{ name: string, posts: Array }]} - tag and processed tagged posts per years
  */
-const processTags = (data, tagYear) => tags(out).sort()
+const processTags = (data, tagYear) => tags(data).sort()
     .reduce((acc, current) => reducePostsPerTagPerYear(current, tagYear, acc), [])
     .sort((a, b) => (b.name === 'other') - (a.name === 'other'));
 
