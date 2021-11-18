@@ -14,18 +14,21 @@ fetch('/assets/data/stats.json')
         document.getElementById('error-chart').style.display = "block";
     });
 
+/**
+ * @param {{totalPosts: string, totalTags: string, totalWords: string, averageWordsPerPost: string }} data - the posts
+ */
 function fillInTable(data) {
-    document.getElementById('TotalPosts').append(data['totalPosts'])
-    document.getElementById('TotalTags').append(data['totalTags'])
-    document.getElementById('TotalWords').append(data['totalWords'])
-    document.getElementById('AvgWords').append(data['averageWordsPerPost'])
+    document.getElementById('TotalPosts').append(data.totalPosts)
+    document.getElementById('TotalTags').append(data.totalTags)
+    document.getElementById('TotalWords').append(data.totalWords)
+    document.getElementById('AvgWords').append(data.averageWordsPerPost)
 }
 
 function printStackedBar(out) {
     const tagYear = years(out).map(i => i.year)
     const tagPosts = processTags(out, tagYear);
 
-    let dataset = tagPosts.map(item => ({
+    const dataset = tagPosts.map(item => ({
         label: item.name,
         data: item.posts,
         backgroundColor: classic20[item.name] ?? classic20['grey'],
@@ -179,6 +182,7 @@ function mixedConfig(data) {
 }
 
 function printRadar(out) {
+    console.log(out);
     new Chart(
         document.getElementById('radar-js').getContext('2d'),
         radarConfig(radarData(postsPerTag(tags(out))))
@@ -236,10 +240,26 @@ function pieData(postsPerTag) {
     };
 }
 
+/**
+ *
+ * @param {{ posts: [{date: string, words: string, tags: string}] }} data - the posts
+ * @param {[string]} tagYear - list of year
+ * @return {[{ name: string, posts: Array }]} - tag and processed tagged posts per years
+ */
+const processTags = (data, tagYear) => tags(out).sort()
+    .reduce((acc, current) => reducePostsPerTagPerYear(current, tagYear, acc), [])
+    .sort((a, b) => (b.name === 'other') - (a.name === 'other'));
+
+/**
+ * @param {{tag: string, posts: Array}} current - current tag and posts
+ * @param {[string]} tagYear - list of year
+ * @param {[{ name: string, posts: Array }]} acc - tag and tagged posts per years
+ * @return {*}
+ */
 function reducePostsPerTagPerYear(current, tagYear, acc) {
-    const tagName /* string */ = processTagName(current);
-    const tagPosts /*[index (of year) -> amount of TagPosts]*/ = processTagPosts(current, tagYear);
-    const existingTag /*{ name: tagName, posts: [accumulated tagPosts] }*/ = acc.find(i => i.name === tagName);
+    const tagName = processTagName(current);
+    const tagPosts = processTagPosts(current, tagYear);
+    const existingTag = acc.find(i => i.name === tagName);
 
     if (existingTag) {
         existingTag.posts = existingTag.posts.map((val, index) => (val + tagPosts[index]));
@@ -249,15 +269,20 @@ function reducePostsPerTagPerYear(current, tagYear, acc) {
     return acc;
 }
 
-const processTags = (out, tagYear) => tags(out).sort()
-    .reduce((acc, current) => reducePostsPerTagPerYear(current, tagYear, acc), [])
-    .sort((a, b) => (b.name === 'other') - (a.name === 'other'));
-
+/**
+ * @param {{tag: string, posts: Array}} current - current tag and posts
+ * @return {string}
+ */
 const processTagName = (current) => {
     if (current.posts.length <= 3 || current.tag === 'misc') current.tag = 'other';
     return current.tag
 }
 
+/**
+ * @param {{tag: string, posts: Array}} current - current tag and posts
+ * @param {[string]} tagYear - list of year
+ * @return {Array} - index (of year) -> amount of TagPosts
+ */
 const processTagPosts = (current, tagYear) => {
     current.posts = Object.entries(reduceDateToYear(current.posts))
         .map(post => ({ year: post[0], posts: post[1] }))
@@ -266,6 +291,10 @@ const processTagPosts = (current, tagYear) => {
     )
 }
 
+/**
+ * @param {[{ tag: string, posts: Array }]} tags
+ * @return {{size: Array, labels: Array}}
+ */
 const postsPerTag = (tags) => {
     return {
         labels: tags.map(item => item.tag),
@@ -273,24 +302,35 @@ const postsPerTag = (tags) => {
     }
 }
 
-const tags /*{ tag, posts: [{date, words, tags}] }*/ =
-    (data) => Object.entries(data['posts'].reduce((result, item) => ({
-        ...result,
-        [item.tags]: [...(result[item.tags] || []), item]
-    }), {})).map(tag => ({ tag: tag[0], posts: tag[1] }));
+/**
+ * @param {{ posts: [{date: string, words: string, tags: string}] }} data - the posts
+ * @return {[{ tag: string, posts: Array }]} - posts per tag
+ */
+const tags = (data) => Object.entries(data.posts.reduce((result, item) => ({
+    ...result,
+    [item.tags]: [...(result[item.tags] || []), item]
+}), {})).map(tag => ({ tag: tag[0], posts: tag[1] }));
 
-const years /*{ year, posts: [{date, words, tags}] }*/ =
-    (out) => Object.entries(reduceDateToYear(out['posts']))
-        .map(year => ({ year: year[0], posts: year[1] }));
+/**
+ * @param {{ posts: [{date: string, words: string, tags: string}] }} data - the posts
+ * @return {[{ year: string, posts: Array }]} - posts per year
+ */
+const years = (data) => Object.entries(reduceDateToYear(data.posts))
+    .map(year => ({ year: year[0], posts: year[1] }));
 
-const reduceDateToYear = (data) => data.reduce((result, item) => ({
+/**
+ * @param {[{date: string, words: string, tags: string}]} posts - the posts
+ */
+const reduceDateToYear = (posts) => posts.reduce((result, item) => ({
     ...result,
     [item.date.slice(0, -6)]: [...(result[item.date.slice(0, -6)] || []), item]
 }), {});
 
-const groupByMonth = (posts /*[{date, words, tags}]*/) => {
-    let months /*[month per posts]*/ = posts.map(post => post.date.slice(5, 7))
-    console.log(months)
+/**
+ * @param {[{date: string, words: string, tags: string}]} posts - the posts
+ */
+const groupByMonth = (posts ) => {
+    let months = posts.map(post => post.date.slice(5, 7))
     return MONTH_NUMBERS.map(currentMonth => ({
         month: currentMonth,
         value: months.filter(month => month === currentMonth).length
