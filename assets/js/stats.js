@@ -27,9 +27,9 @@ function printStackedBar(out) {
 
     let dataset = tagPosts.map(item => {
         return {
-            label: item[0],
-            data: item[1],
-            backgroundColor: classic20[item[0]] ?? classic20['grey'],
+            label: item.name,
+            data: item.posts,
+            backgroundColor: classic20[item.name] ?? classic20['grey'],
         }
     });
 
@@ -242,44 +242,45 @@ function pieData(postsPerTag) {
 
 const processTags = (out, tagYear) => tags(out).sort()
     .reduce((acc, current) => reducePostsPerTagPerYear(current, tagYear, acc), [])
-    .sort((a, b) => (b[0] === 'other') - (a[0] === 'other'));
+    .sort((a, b) => (b.name === 'other') - (a.name === 'other'));
 
 function reducePostsPerTagPerYear(current, tagYear, acc) {
-    const tagName = processTagName(current)
-    const tagPosts = processTagPosts(current, tagYear);
-    const existingTag = acc.find(i => i[0] === tagName)
+    const tagName /* string */ = processTagName(current);
+    const tagPosts /*[index (of year) -> amount of TagPosts]*/ = processTagPosts(current, tagYear);
+    const existingTag /*{ name: tagName, posts: [accumulated tagPosts] }*/ = acc.find(i => i.name === tagName);
 
     if (existingTag) {
-        existingTag[1] = existingTag[1].map((val, i) => val + tagPosts[i]);
+        existingTag.posts = existingTag.posts.map((val, index) => (val + tagPosts[index]));
     } else {
-        acc.push([tagName, tagPosts])
+        acc.push({ name: tagName, posts: tagPosts })
     }
     return acc;
 }
 
 const processTagName = (current) => {
-    if (current[1].length <= 3 || current[0] === 'misc') current[0] = 'other';
-    return current[0]
+    if (current.posts.length <= 3 || current.tag === 'misc') current.tag = 'other';
+    return current.tag
 }
 
 const processTagPosts = (current, tagYear) => {
-    current[1] = Object.entries(reduceDate(current[1], -6))
+    current.posts = Object.entries(reduceDate(current.posts, -6))
+        .map(post => ({ year: post[0], posts: post[1] }))
     return tagYear.map(date =>
-        current[1].reduce((sum, post) => sum + (post[0] === date ? post[1].length : 0), 0)
+        current.posts.reduce((sum, post) => sum + (post.year === date ? post.posts.length : 0), 0)
     )
 }
 
 const postsPerTag = (tags) => {
     return {
-        labels: tags.map(item => item[0]),
-        size: tags.map(item => item[1].length)
+        labels: tags.map(item => item.tag),
+        size: tags.map(item => item.posts.length)
     }
 }
 
 const tags = (data) => Object.entries(data['posts'].reduce((result, item) => ({
     ...result,
     [item.tags]: [...(result[item.tags] || []), item]
-}), {}));
+}), {})).map(tag => ({ tag: tag[0], posts: tag[1] }));
 
 const years = (out) => Object.entries(reduceDate(out['posts'], -6));
 
@@ -298,15 +299,14 @@ const getRandomColorHex = () => {
 
 const groupByMonth = (dates) => {
     let months = dates.map(it => it.date.slice(5, 7))
-    return MONTH_NUMBERS.map(it => {
-        return {
-            month: it,
-            value: months.filter(m => m === it).length
-        }
-    })
+    return MONTH_NUMBERS.map(it => ({
+        month: it,
+        value: months.filter(m => m === it).length
+    }));
 }
 
-const monthToName = (monthNumber) => new Date(2021, parseInt(monthNumber) - 1, 27).toLocaleString('default', { month: 'short' })
+const monthToName = (monthNumber) => new Date(2021, parseInt(monthNumber) - 1, 27)
+    .toLocaleString('default', { month: 'short' })
 
 const MONTH_NUMBERS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 
