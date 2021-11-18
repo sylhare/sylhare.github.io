@@ -25,7 +25,6 @@ function printStackedBar(out) {
     const tagYear = years(out).map(i => i[0])
     const tagPosts = processTags(out, tagYear);
 
-    console.log(tagPosts)
     let dataset = tagPosts.map(item => {
         return {
             label: item[0],
@@ -40,16 +39,14 @@ function printStackedBar(out) {
 }
 
 function printDateStacked(out) {
-    let yearMonths = years(out).map((item) => {
-        return { year: item[0], months: groupByMonth(item[1]) }
-    })
-    let dataset = yearMonths.map(item => {
+    const yearMonths = years(out).map((item) => ({ year: item[0], months: groupByMonth(item[1]) }));
+    const dataset = yearMonths.map(item => {
         return {
             label: item.year,
             data: item.months.map(it => it.value),
             backgroundColor: Blues8[parseInt(item.year) % 8]
         }
-    })
+    });
 
     new Chart(
         document.getElementById('stacked-bar-date-js').getContext('2d'),
@@ -89,7 +86,7 @@ function stackedBarConfig(dates, dataset, title) {
 }
 
 function printBubble(out) {
-    let dataset = years(out).map((item) => {
+    const dataset = years(out).map((item) => {
         return {
             x: item[0],
             y: item[1].length,
@@ -132,9 +129,7 @@ function bubbleConfig(data) {
 }
 
 function printMixed(out) {
-    let yearPosts = years(out).map((item) => {
-        return { date: item[0], posts: item[1].length }
-    })
+    const yearPosts = years(out).map((item) => ({ date: item[0], posts: item[1].length }));
 
     new Chart(
         document.getElementById('mixed-js').getContext('2d'),
@@ -244,7 +239,12 @@ function pieData(postsPerTag) {
     };
 }
 
-const processTags = (out, tagYear) => tags(out).sort().reduce((acc, current) => {
+
+const processTags = (out, tagYear) => tags(out).sort()
+    .reduce((acc, current) => reducePostsPerTagPerYear(current, tagYear, acc), [])
+    .sort((a, b) => (b[0] === 'other') - (a[0] === 'other'));
+
+function reducePostsPerTagPerYear(current, tagYear, acc) {
     const tagName = processTagName(current)
     const tagPosts = processTagPosts(current, tagYear);
     const existingTag = acc.find(i => i[0] === tagName)
@@ -255,10 +255,10 @@ const processTags = (out, tagYear) => tags(out).sort().reduce((acc, current) => 
         acc.push([tagName, tagPosts])
     }
     return acc;
-}, []).sort((a, b) => (b[0] === 'other') - (a[0] === 'other'));
+}
 
 const processTagName = (current) => {
-    if (current[1].length <= 3 || current[0] === 'misc') current[0] = 'other'
+    if (current[1].length <= 3 || current[0] === 'misc') current[0] = 'other';
     return current[0]
 }
 

@@ -86,7 +86,7 @@ It's a good indicator to see the actual blogging activity on the site.
 <canvas id='mixed-js' class="chart"></canvas>
 
 You can see the growth rate of article with the line compared to the year's productivity with the bar.
-For now, it is steadily growing, as long as I have topics that fuels my motivation 😁 hopefully I will keep it up.
+For now, it is steadily growing, as long as I have topics that fuels my motivation I will keep it up 😃.
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js" integrity="sha256-uVEHWRIr846/vAdLJeybWxjPNStREzOlqLMXjW/Saeo=" crossorigin="anonymous"></script>
