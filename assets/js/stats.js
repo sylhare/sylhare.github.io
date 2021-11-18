@@ -22,35 +22,33 @@ function fillInTable(data) {
 }
 
 function printStackedBar(out) {
-    const tagYear = years(out).map(i => i[0])
+    const tagYear = years(out).map(i => i.year)
     const tagPosts = processTags(out, tagYear);
 
-    let dataset = tagPosts.map(item => {
-        return {
-            label: item.name,
-            data: item.posts,
-            backgroundColor: classic20[item.name] ?? classic20['grey'],
-        }
-    });
+    let dataset = tagPosts.map(item => ({
+        label: item.name,
+        data: item.posts,
+        backgroundColor: classic20[item.name] ?? classic20['grey'],
+    }));
 
     new Chart(
         document.getElementById('stacked-bar-js').getContext('2d'),
-        stackedBarConfig(tagYear, dataset, 'Tags stacked'));
+        stackedBarConfig(tagYear, dataset, 'Tags stacked')
+    );
 }
 
 function printDateStacked(out) {
-    const yearMonths = years(out).map((item) => ({ year: item[0], months: groupByMonth(item[1]) }));
-    const dataset = yearMonths.map(item => {
-        return {
-            label: item.year,
-            data: item.months.map(it => it.value),
-            backgroundColor: Blues8[parseInt(item.year) % 8]
-        }
-    });
+    const yearMonths = years(out).map((item) => ({ year: item.year, months: groupByMonth(item.posts) }));
+    const dataset = yearMonths.map(item => ({
+        label: item.year,
+        data: item.months.map(it => it.value),
+        backgroundColor: Blues8[parseInt(item.year) % 8]
+    }));
 
     new Chart(
         document.getElementById('stacked-bar-date-js').getContext('2d'),
-        stackedBarConfig(MONTH_NUMBERS.map(it => monthToName(it)), dataset, 'Posts stacked'));
+        stackedBarConfig(MONTH_NUMBERS.map(it => monthToName(it)), dataset, 'Posts stacked')
+    );
 }
 
 function stackedBarConfig(dates, dataset, title) {
@@ -86,17 +84,16 @@ function stackedBarConfig(dates, dataset, title) {
 }
 
 function printBubble(out) {
-    const dataset = years(out).map((item) => {
-        return {
-            x: item[0],
-            y: item[1].length,
-            r: item[1].map(p => Math.floor(parseInt(p.words) / 500)).reduce((a, b) => a + b)
-        }
-    });
+    const dataset = years(out).map((item) => ({
+        x: item.year,
+        y: item.posts.length,
+        r: item.posts.map(p => Math.floor(parseInt(p.words) / 500)).reduce((a, b) => a + b)
+    }));
 
     new Chart(
         document.getElementById('bubble-js').getContext('2d'),
-        bubbleConfig(bubbleData(dataset)));
+        bubbleConfig(bubbleData(dataset))
+    );
 }
 
 function bubbleData(dataset) {
@@ -129,7 +126,7 @@ function bubbleConfig(data) {
 }
 
 function printMixed(out) {
-    const yearPosts = years(out).map((item) => ({ date: item[0], posts: item[1].length }));
+    const yearPosts = years(out).map((item) => ({ date: item.year, posts: item.posts.length }));
 
     new Chart(
         document.getElementById('mixed-js').getContext('2d'),
@@ -239,11 +236,6 @@ function pieData(postsPerTag) {
     };
 }
 
-
-const processTags = (out, tagYear) => tags(out).sort()
-    .reduce((acc, current) => reducePostsPerTagPerYear(current, tagYear, acc), [])
-    .sort((a, b) => (b.name === 'other') - (a.name === 'other'));
-
 function reducePostsPerTagPerYear(current, tagYear, acc) {
     const tagName /* string */ = processTagName(current);
     const tagPosts /*[index (of year) -> amount of TagPosts]*/ = processTagPosts(current, tagYear);
@@ -257,13 +249,17 @@ function reducePostsPerTagPerYear(current, tagYear, acc) {
     return acc;
 }
 
+const processTags = (out, tagYear) => tags(out).sort()
+    .reduce((acc, current) => reducePostsPerTagPerYear(current, tagYear, acc), [])
+    .sort((a, b) => (b.name === 'other') - (a.name === 'other'));
+
 const processTagName = (current) => {
     if (current.posts.length <= 3 || current.tag === 'misc') current.tag = 'other';
     return current.tag
 }
 
 const processTagPosts = (current, tagYear) => {
-    current.posts = Object.entries(reduceDate(current.posts, -6))
+    current.posts = Object.entries(reduceDateToYear(current.posts))
         .map(post => ({ year: post[0], posts: post[1] }))
     return tagYear.map(date =>
         current.posts.reduce((sum, post) => sum + (post.year === date ? post.posts.length : 0), 0)
@@ -277,17 +273,34 @@ const postsPerTag = (tags) => {
     }
 }
 
-const tags = (data) => Object.entries(data['posts'].reduce((result, item) => ({
-    ...result,
-    [item.tags]: [...(result[item.tags] || []), item]
-}), {})).map(tag => ({ tag: tag[0], posts: tag[1] }));
+const tags /*{ tag, posts: [{date, words, tags}] }*/ =
+    (data) => Object.entries(data['posts'].reduce((result, item) => ({
+        ...result,
+        [item.tags]: [...(result[item.tags] || []), item]
+    }), {})).map(tag => ({ tag: tag[0], posts: tag[1] }));
 
-const years = (out) => Object.entries(reduceDate(out['posts'], -6));
+const years /*{ year, posts: [{date, words, tags}] }*/ =
+    (out) => Object.entries(reduceDateToYear(out['posts']))
+        .map(year => ({ year: year[0], posts: year[1] }));
 
-const reduceDate = (data, amount) => data.reduce((result, item) => ({
+const reduceDateToYear = (data) => data.reduce((result, item) => ({
     ...result,
-    [item.date.slice(0, amount)]: [...(result[item.date.slice(0, amount)] || []), item]
+    [item.date.slice(0, -6)]: [...(result[item.date.slice(0, -6)] || []), item]
 }), {});
+
+const groupByMonth = (posts /*[{date, words, tags}]*/) => {
+    let months /*[month per posts]*/ = posts.map(post => post.date.slice(5, 7))
+    console.log(months)
+    return MONTH_NUMBERS.map(currentMonth => ({
+        month: currentMonth,
+        value: months.filter(month => month === currentMonth).length
+    }));
+}
+
+const monthToName = (monthNumber) => new Date(2021, parseInt(monthNumber) - 1, 27)
+    .toLocaleString('default', { month: 'short' })
+
+const MONTH_NUMBERS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 
 const getRandomColorHex = () => {
     let hex = '0123456789ABCDEF', color = '#';
@@ -296,19 +309,6 @@ const getRandomColorHex = () => {
     }
     return color;
 }
-
-const groupByMonth = (dates) => {
-    let months = dates.map(it => it.date.slice(5, 7))
-    return MONTH_NUMBERS.map(it => ({
-        month: it,
-        value: months.filter(m => m === it).length
-    }));
-}
-
-const monthToName = (monthNumber) => new Date(2021, parseInt(monthNumber) - 1, 27)
-    .toLocaleString('default', { month: 'short' })
-
-const MONTH_NUMBERS = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']
 
 const colors = {
     'agile': 'rgba(107, 91, 149, 0.85)',
