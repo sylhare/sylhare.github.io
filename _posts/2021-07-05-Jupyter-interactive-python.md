@@ -103,6 +103,6 @@ scripts.
 ### Conclusion
 
 There's so much you can do with jupyter notebook, and it makes temporary scripting with python so much easier!
-Also find a fully functional example in _/assets/notebook/_ which you can see the [exported HTML]({{ "/assets/notebook/Jupyter%20Notebook%20Example.html" | relative_url }}).
+Also find a fully functional example in [_/assets/notebook/_][1] where I used all the tricks in this article within 🎉 
 
-I used all the tricks in this article within [that notebook](https://github.com/sylhare/sylhare.github.io/blob/master/assets/notebook/Jupyter%20Notebook%20Example.ipynb), so its look may surprise you! 🎉 
+[1]: https://github.com/sylhare/sylhare.github.io/blob/master/assets/notebook/Jupyter%20Notebook%20Example.ipynb
