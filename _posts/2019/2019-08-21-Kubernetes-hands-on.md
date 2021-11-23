@@ -1,34 +1,36 @@
 ---
-layout: post
-title: Kubernetes hands on and examples
+layout: post 
+title: Kubernetes hands on and examples 
 color: rgb(13,183,237)
 tags: [kubernetes]
 ---
 
 ## Components Hands-on
 
-To get a better grasp of kubernetes components and commands.
-You can set up a kubernetes cluster on your own following: 
-    - [kubeadm installation script](https://github.com/sylhare/Linux/blob/master/Kubernetes/kubernetes.sh)
+To get a better grasp of kubernetes components and commands. You can set up a kubernetes cluster on your own following:
+- [kubeadm installation script](https://github.com/sylhare/Linux/blob/master/Kubernetes/kubernetes.sh)
 
 ### Kubectl main commands
 
-kubectl is a command line interface for running commands against Kubernetes clusters.
-In all of them, you can replace `<component>` with any of the kubernetes component (pods, node, deployments, services, ...)
+kubectl is a command line interface for running commands against Kubernetes clusters. In all of them, you can
+replace `<component>` with any of the kubernetes component (pods, node, deployments, services, ...)
 
 To get definition and information on the different kubernetes elements
-```
+
+```bash
 kubectl explain <component>
 ```
 
-To create a kubernetes component that is define inside the file.yaml.
-It uses the kubernetes API server to schedule the creation of the component based on the yaml file.
-```
+To create a kubernetes component that is define inside the file.yaml. It uses the kubernetes API server to schedule the
+creation of the component based on the yaml file.
+
+```bash
 kubectl create -f file.yaml
 ```
 
 Give the basic information of the components, (number, status, Age)
-```
+
+```bash
 kubectl get <component>
 
 # Get the logs for one application / component
@@ -36,16 +38,20 @@ kubectl logs -l app=my-component
 ```
 
 To remove a component.
+
 ```
 kubectl delete <component's name>
 ```
 
-Describe will give you the information of the scheduled component. If there is a name used for multiple component, you can specify witch one using `<component>/<component's name>`
+Describe will give you the information of the scheduled component. If there is a name used for multiple component, you
+can specify witch one using `<component>/<component's name>`
+
 ```
 kubectl describe <component's name>
 ```
 
 You can label components to organize your resources. It can then be used for network or access restrictions.
+
 ```
 kubectl label <component> <component's name> env=test
 ```
@@ -61,21 +67,21 @@ metadata:
   name: poddy
 spec:
   containers:
-  - name: poddy
-    image: gcr.io/google_containers/echoserver:1.4
-    ports:
-    - containerPort: 8080
+    - name: poddy
+      image: gcr.io/google_containers/echoserver:1.4
+      ports:
+        - containerPort: 8080
 ```
 
 Each created pods have its own ip, they also have labels that are used to identify and query them.
 
-> ImagePullPolicy, determines when to pull the image of the container(s) inside the pod. It is recommended to put "always" so it always pull the image (to avoid some trouble).
-
+> ImagePullPolicy, determines when to pull the image of the container(s) inside the pod. 
+> It is recommended to put "always" so it always pull the image (to avoid some trouble).
 
 ### Replication controller
 
-A ReplicationController ensures that a specified number of pod replicas are running at any one time. In other words, a ReplicationController makes sure that a pod or a homogeneous set of pods is always up and available.
-
+A ReplicationController ensures that a specified number of pod replicas are running at any one time. In other words, a
+ReplicationController makes sure that a pod or a homogeneous set of pods is always up and available.
 
 ```yaml
 kind: ReplicationController
@@ -94,14 +100,16 @@ spec:
       ... # Specs of the pod
 ```
 
-Here we have 2 replicas of the specified pods named `poddy-<random stuff>` that will be created. The replicationController finds the pods using their label here `poddy-app` - called a ReplicaSet.
+Here we have 2 replicas of the specified pods named `poddy-<random stuff>` that will be created. The
+replicationController finds the pods using their label here `poddy-app` - called a ReplicaSet.
 
-- If you add another similar pods with the same label the replicationController will associate it and terminates one pods since it will have 3.
-
+- If you add another similar pods with the same label the replicationController will associate it and terminates one
+  pods since it will have 3.
 
 ### Service
 
-A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them - sometimes called a micro-service. It is a group of pods acting as one, exposing the pods under one IP.
+A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them -
+sometimes called a micro-service. It is a group of pods acting as one, exposing the pods under one IP.
 
 > Since ReplicaSet can kill and recreate Pods, the pod ips can change meaning you never know how to reach them.
 
@@ -109,7 +117,7 @@ Basically a service has:
 
 - A static IP to reach the application
 - A Selector to select the pods part of the service
-  
+
 ```yaml
 apiVersion: v1
 kind: Service
@@ -127,14 +135,14 @@ spec:
 
 In service spec you can find the `type`, it can be either:
 
-- ClusterIP: Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from within the cluster using the <NodeIP>, it is the default.
-- NodePort: Exposes the service on each Node’s IP at a static port (the NodePort). You’ll be able to contact the NodePort service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
-
+- ClusterIP: Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from
+  within the cluster using the <NodeIP>, it is the default.
+- NodePort: Exposes the service on each Node’s IP at a static port (the NodePort). You’ll be able to contact the
+  NodePort service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
 
 ### Deployment
 
 A deployment combines pods and replicaSets to create a desired state of the cluster.
-
 
 ```yaml
 apiVersion: apps/v1
@@ -145,8 +153,8 @@ metadata:
     app: nginx
 spec:
   ... # Specs of the replicationController
-    spec:
-      ... # Specs of the pod(s)
+  spec:
+    ... # Specs of the pod(s)
 ```
 
 Scale the deployment of an application, here the nginx app:
@@ -155,13 +163,14 @@ Scale the deployment of an application, here the nginx app:
 kubectl scale deployment nginx --replicas=3
 ```
 
-
 ### Namespace
 
-A namespace is a way to separate your cluster or components. For example having a `prod` and a `test` namespace can help deploy new software in the appropriate place.
+A namespace is a way to separate your cluster or components. For example having a `prod` and a `test` namespace can help
+deploy new software in the appropriate place.
 
 Here is how we create a namespace
-```
+
+```bash
 kubectl create namespace test
 ```
 
@@ -175,26 +184,30 @@ metadata:
 ```
 
 To create components inside that newly created "test" namespace:
-```
+
+```bash
 kubectl create component-file.yaml -n test
 ```
 
-To set that new namespace as the default namespace (When not specified `default` will be used as a namespace and for every commands).:
-```
+To set that new namespace as the default namespace (When not specified `default` will be used as a namespace and for
+every command):
+
+```bash
 kubectl config use-context test
 ```
 
 To see which namespace you are in, you can use:
-```
+
+```bash
 kubectl config current-context
 ```
-
 
 ### Volumes
 
 #### Persistent Volume
 
-A PersistentVolume (PV) is a piece of storage in the cluster that has been provisioned by an administrator. It is a resource in the cluster just like a node is a cluster resource.
+A PersistentVolume (PV) is a piece of storage in the cluster that has been provisioned by an administrator. It is a
+resource in the cluster just like a node is a cluster resource.
 
 The information there stays even if the pod dies, it's independent.
 
@@ -209,14 +222,15 @@ spec:
   capacity:
     storage: 5Gi
   accessModes:
-  - ReadWriteOnce
+    - ReadWriteOnce
   hostPath:
     path: /data/mysql-poddy
 ```
 
 #### Persistent Volume Claim
 
-A PersistentVolumeClaim (PVC) is a request for storage by a user. It allows a user to consume abstract storage resources.
+A PersistentVolumeClaim (PVC) is a request for storage by a user. It allows a user to consume abstract storage
+resources.
 
 ```yaml
 kind: PersistentVolumeClaim
@@ -235,12 +249,13 @@ spec:
       vol: "mysql"
 ```
 
-Here the pvc claim the above `mysql-pv` one, using the label in order to select it, and the `accessModes` for how it is supposed to be accessed.
-
+Here the pvc claim the above `mysql-pv` one, using the label in order to select it, and the `accessModes` for how it is
+supposed to be accessed.
 
 ### Secrets
 
-Kubernetes' secrets allow users to define sensitive information outside of containers and expose that information to containers through environment variables as well as files within Pods.
+Kubernetes' secrets allow users to define sensitive information outside of containers and expose that information to
+containers through environment variables as well as files within Pods.
 
 ```yaml
 apiVersion: v1
@@ -257,11 +272,10 @@ data:
 
 Secrets must be encoded first into base64, and put into `data`.
 
-
 ### Daemon Set
 
-Daemon Set ensures that a copy of the pod runs on a selected set of nodes. By default, all nodes in the cluster are selected. 
-A selection criteria may be specified to select a limited number of nodes.
+Daemon Set ensures that a copy of the pod runs on a selected set of nodes. By default, all nodes in the cluster are
+selected. A selection criteria may be specified to select a limited number of nodes.
 
 ```yaml
 kind: DaemonSet
@@ -281,14 +295,13 @@ spec:
       ... # Specs of the pod(s)
 ```
 
-
 ### Jobs
 
-A Job creates one or more pods and ensures that a specified number of them successfully complete. 
-A job keeps track of successful completion of a pod. The job will start a new pod if the pod fails or is deleted due to hardware failure.
+A Job creates one or more pods and ensures that a specified number of them successfully complete. A job keeps track of
+successful completion of a pod. The job will start a new pod if the pod fails or is deleted due to hardware failure.
 
-Jobs are complementary to Replica Set. 
-A Replica Set manages pods which are not expected to terminate (e.g. web servers), and a Job manages pods that are expected to terminate (e.g. batch jobs).
+Jobs are complementary to Replica Set. A Replica Set manages pods which are not expected to terminate (e.g. web servers)
+, and a Job manages pods that are expected to terminate (e.g. batch jobs).
 
 #### Non Parallel Job
 
@@ -307,10 +320,11 @@ spec:
 
 #### Parallel Job
 
-The number of pods to complete is defined by `.spec.completions` attribute (here `6`) in the configuration file. 
-The number of pods to run in parallel is defined by `.spec.parallelism` attribute (here `2` pods at the same time) in the configuration file. 
+The number of pods to complete is defined by `.spec.completions` attribute (here `6`) in the configuration file. The
+number of pods to run in parallel is defined by `.spec.parallelism` attribute (here `2` pods at the same time) in the
+configuration file.
 
->The default value for both of these attributes is 1.
+> The default value for both of these attributes is 1.
 
 The job is complete when there is one successful pod for each value in the range in 1 to `.spec.completions`.
 
@@ -355,10 +369,12 @@ spec:
 
 ### Ingress
 
-An Ingress Controller - is an application that watches the Master Node's API Server for changes in the Ingress resources and updates the Layer 7 load balancer accordingly.
-Ingress-Controller is a mandatory prerequisite for Ingress rules to start working in Kubernetes.
+An Ingress Controller - is an application that watches the Master Node's API Server for changes in the Ingress resources
+and updates the Layer 7 load balancer accordingly. Ingress-Controller is a mandatory prerequisite for Ingress rules to
+start working in Kubernetes.
 
-Kubernetes has different options of Ingress Controllers, and, if needed, we can also build our own. Most popular Ingress Controllers implementations are `Haproxy`, `Traefic`, `Nginx`.
+Kubernetes has different options of Ingress Controllers, and, if needed, we can also build our own. Most popular Ingress
+Controllers implementations are `Haproxy`, `Traefic`, `Nginx`.
 
 #### NetworkPolicy
 
@@ -374,34 +390,37 @@ spec:
       run: nginx
   ingress:
     - from:
-      - podSelector:
-          matchLabels:
-            run: access
+        - podSelector:
+            matchLabels:
+              run: access
 ```
 
 ## Single service ingress
 
-The simple ingress usage is with one address, and one service associated to it. The service associated needs to have `CLusterIP` in the `spec.type`.
+The simple ingress usage is with one address, and one service associated to it. The service associated needs to
+have `CLusterIP` in the `spec.type`.
 
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
- name: poddy-ingress
+  name: poddy-ingress
 spec:
- rules:
- - http:
-     paths:
-     - path: /
-       backend:
-         serviceName: poddy-service
-         servicePort: 80
-   host: poddy.com
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: poddy-service
+              servicePort: 80
+      host: poddy.com
 ```
 
 ## Simple fanout
 
-This time we're going to deploy Simple fanout type that exposing multiple services on same host, but via different paths. This type is very handy when you running in CloudProvider and want to cut cost on creating LoadBalancers for each of you application. 
+This time we're going to deploy Simple fanout type that exposing multiple services on same host, but via different
+paths. This type is very handy when you running in CloudProvider and want to cut cost on creating LoadBalancers for each
+of you application.
 
 ```yaml
 apiVersion: extensions/v1beta1
@@ -410,15 +429,15 @@ metadata:
   name: simple-fanout-rules
 spec:
   rules:
-  - host: poddy.com
-    http:
-      paths:
-      - path: /hello                            # poddy.com/hello
-        backend:
-          serviceName: poddy-service-1
-          servicePort: 80
-      - path: /world                            # poddy.com/world
-        backend:      
-          serviceName: poddy-service-2
-          servicePort: 80
+    - host: poddy.com
+      http:
+        paths:
+          - path: /hello                            # poddy.com/hello
+            backend:
+              serviceName: poddy-service-1
+              servicePort: 80
+          - path: /world                            # poddy.com/world
+            backend:
+              serviceName: poddy-service-2
+              servicePort: 80
 ```
