@@ -5,23 +5,23 @@ color: rgb(214,102,133)
 tags: [kotlin]
 ---
 
-
 ## Introduction
 
 So here a bit of details:
 
-- Gradle is an open source build automation system.
-- Kotlin is a general purpose, open source, statically typed programming language for both functional and object oriented programming.
-- A DSL (domain-specific language) is a language specialized to a particular application domain. For example `Groovy` that was created for Gradle's build scripts.
+- [Gradle][3] is an open source build automation system.
+- Kotlin is a general purpose, open source, statically typed programming language for both functional and object-oriented programming.
+- A [DSL][1] (domain-specific language) is a language specialized to a particular application domain. 
+  For example `Groovy` that was created for [Gradle's build scripts][5].
 
 Kotlin dsl with gradle means to use the kotlin `build.gradle.kts` instead of the groovy `build.gradle`.
 Kotlin is so general that it reaches specific programming niche.
 
-> Everything is hosted on GitHub: [sylhare/kotlin](https://github.com/sylhare/Kotlin/tree/master/hello-kotlin) 
+> Everything is hosted on GitHub: [sylhare/kotlin][4] 
 
 ## Basic set up
 
-Basic set up for your kotlin project with Gradle > **4.8**:
+Basic set up for your kotlin project with Gradle > **4.8** (2018), may not apply to latest [gradle releases][7]:
 
 - group: the top level package(s) under `src.main`
 - version: the version of your application
@@ -45,7 +45,7 @@ plugins {
 }
 ```
 
-You don't need to apply the plugin just define it and you're good to go.
+You don't need to apply the plugin just define it, and you're good to go.
 Add the basic repositories for your dependencies:
 
 ```kotlin
@@ -65,6 +65,7 @@ dependencies {
 ```
 
 The `kotlin` key word replaces _org.jetbrains.kotlin_ you can also use it for plugins this way.
+
 > For higher version of gradle, compile has been deprecated to implementation  
 
 You can also add this for source compatibility:
@@ -171,7 +172,7 @@ plugins {
 
 Then set your application main file: 
 
-- It has to be outside of a class
+- It has to be outside a class
 - The `Kt` at the end is normal, Kotlin automatically generates it for backward compatibility with Java classes
 
 ```kotlin
@@ -191,7 +192,7 @@ gradle run
 
 ### Make the fat Jar
 
-So the basic Jar file generated [doesnt include all you need](https://stackoverflow.com/a/61373175/7747942) to run.
+So the basic Jar file generated [doesnt include all you need][6] to run.
 You need to include them manually by adding this (gradle 5+):
 
 
@@ -220,7 +221,7 @@ java -jar hello-kotlin-1.0.jar
 ```
 
 You can also create another task `fatJar` that would create the jar with all of your dependencies.
-Follow the documentation on [gradle](https://docs.gradle.org/current/userguide/working_with_files.html#sec:creating_uber_jar_example).
+Follow the documentation on [gradle][2].
 
 ### Make the wrapper
 
@@ -237,10 +238,10 @@ Then you'll be able to use `./gradlew` instead of gradle, and your project shoul
 
 > Now if you have the opportunity to use a newer version of gradle, do it. 
 
-## Sources
-
-- [Wikipedia DSL](https://en.wikipedia.org/wiki/Domain-specific_language)
-- [ilities kotlin gradle dsl](http://ilities.co/2017/07/19/kotlin-gradle-DSL/)
-- [gradle.org](https://docs.gradle.org/current/userguide/application_plugin.html#sec:application_usage)
-- [Hello Kotlin](https://github.com/sylhare/Kotlin/tree/master/hello-kotlin)
-- [Migrate from goovy to kotlin dsl](https://blog.outadoc.fr/2020/06/converting-gradle-to-gradle-kts/)
+[1]: https://en.wikipedia.org/wiki/Domain-specific_language "Wikipedia DSL"
+[2]: https://docs.gradle.org/current/userguide/working_with_files.html#sec:creating_uber_jar_example "uber jar"
+[3]: https://docs.gradle.org/current/userguide/application_plugin.html#sec:application_usage "gradle.org"
+[4]: https://github.com/sylhare/Kotlin/tree/master/hello-kotlin "Hello Kotlin"
+[5]: https://blog.outadoc.fr/2020/06/converting-gradle-to-gradle-kts/ "Migrate from groovy to kotlin dsl"
+[6]: https://stackoverflow.com/a/61373175/7747942 "mainfest Kotlin Jar"
+[7]: https://gradle.org/releases/ "gradle releases"
