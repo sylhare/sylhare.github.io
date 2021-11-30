@@ -14,12 +14,39 @@
   padding-bottom: 1em;
 }
 
-.actor, .labelBox {
+%mermaid-color {
   fill: lighten($actor, 25%) !important;
   stroke: $actor !important;
+}
+
+.mermaid {
+  text, tspan {
+    font-family: $font-family-main !important;
+  }
+}
+
+.actor, .labelBox, .label-container {
+  @extend %mermaid-color
+}
+
+.classGroup {
+  rect, line {
+    @extend %mermaid-color
+  }
 }
 
 .note {
   fill: lighten($note, 25%) !important;
   stroke: $note !important;
 }
+
+.cluster rect {
+  fill: lighten($note, 40%) !important;
+  stroke: $note !important;
+}
+
+.edgeLabel {
+  background-color: var(--background) !important;
+  color: var(--text) !important;
+}
+
