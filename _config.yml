@@ -24,6 +24,7 @@ google_analytics: "UA-142123817-1"
 katex: true # Enable if using math markup
 mermaid: true
 cusdis_app_id: "fb06ba3d-43ad-4e00-be04-0828fac06b89"
+color_theme: light  # auto, dark or light
 
 # Post navigation
 post_navigation: true

@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: Event sourcing 101 
-color: rgb(188, 176, 41)
+color: rgb(117, 81, 57)
 tags: [database]
 ---
 
