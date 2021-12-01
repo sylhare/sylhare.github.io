@@ -84,33 +84,6 @@ const tags = (data) => Object.entries(data.posts.reduce((result, item) => ({
 The result is a list of tag with their associated list of posts.
 Now let's have a look at the stats' graph.
 
-## General stats
-
-<div><blockquote id="error-chart" style="display: none"></blockquote></div>
-
-Here are the main statistic populated automatically from this blog.
-
-<table class="center">
-  <tr>
-    <th>Total of posts</th>
-    <td id="TotalPosts"></td>
-  </tr>
-  <tr>
-    <th>Total of tags</th>
-    <td id="TotalTags"></td>
-  </tr>
-  <tr>
-    <th>Total of words</th>
-    <td id="TotalWords"></td>
-  </tr>
-  <tr>
-    <th>Average of words</th>
-    <td id="AvgWords"></td>
-  </tr>
-</table>
-
-Having it on a table is nice, but graphs are way more stylish! 
-
 ## Pop the charts
 
 To make it visually clear, the data is also represented using [chart.js](https://www.chartjs.org/).
