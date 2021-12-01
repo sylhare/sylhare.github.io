@@ -10,16 +10,85 @@ I wanted to get some stats 📊 out of this blog.
 Inspired by [Raymond Camden](https://www.raymondcamden.com/2018/07/21/building-a-stats-page-for-jekyll-blogs), 
 I decided to give it a try and build my own stat page.
 
-Here are the results, _enjoy!_
+## Implementation
+
+This stat article has been transformed into a stat page, let's add some more information on the stats' generation.
+The stats are generated through some liquid queries in [assets/stats.liquid]({{ '/assets/data/stats.liquid' | relative_url }}) 
+based on all articles in the blog.
+There's then a tiny js script that do the rendering.
+
+### Liquid
+
+Jekyll provides a lot of data readily available that I can just use and populate into a json file. However, for some
+metrics, I would need to add some logic to generate the data I want.
+
+For example let's find the value for:
+
+- `postsPerCategory` which is the amount of posts per category
+- `postsPerTag` which is the amount of posts per tag
+
+One way would be to use some liquid annotations within the json file:
+
+{% raw %}
+```liquid
+{
+ "postsPerCategory": [
+   {% for category in site.categories %}
+     {% assign cat = category[0] %}
+     {% unless forloop.first %},{% endunless %}
+       { "name": "{{cat}}", "size":{{site.categories[cat].size}} }
+   {% endfor %}
+ ],
+ "postsPerTag": [
+   {% for tag in site.tags %}
+     {% assign tagName = tag[0] %}
+     {% unless forloop.first %},{% endunless %}
+     { "name": "{{tagName}}", "size":{{site.tags[tagName].size}} }
+ {% endfor %}
+ ]
+}
+```
+{% endraw %}
+
+Now all those liquid calculation do take time, it increases proportionally to the size of the blog. 
+In the case of this blog, the category is the not used, we only use tags.
+On the plus side, you don't need any javascript to get the data you want meaning less chance for it to break on run time.
+
+### Javascript
+
+Instead, I went with javascript because the building time for local development was pretty annoying, and it didn't feel
+like the load was too big on the UI side.
+Also using javascript gave an advantage to be more flexible with the data handling.
+
+From the payload you can clean get the data that looks like:
+
+```json
+{
+  "posts": [
+    { "date": "2021-05-26", "tags": "jekyll" },
+    ...
+  ]
+}
+```
+
+There are more information like the post's title and amount of words, but they are not used here.
+Then you process it to extract the tags such as:
+
+```js
+const tags = (data) => Object.entries(data.posts.reduce((result, item) => ({
+    ...result,
+    [item.tags]: [...(result[item.tags] || []), item]
+}), {})).map(tag => ({ tag: tag[0], posts: tag[1] }));
+```
+
+The result is a list of tag with their associated list of posts.
+Now let's have a look at the stats' graph.
 
 ## General stats
 
 <div><blockquote id="error-chart" style="display: none"></blockquote></div>
 
 Here are the main statistic populated automatically from this blog.
-The stats are generated through some liquid queries in [assets/stats.json]({{ '/assets/data/stats.liquid' | relative_url }}) 
-based on all articles in the blog.
-There's then a tiny js script that do the rendering.
 
 <table class="center">
   <tr>

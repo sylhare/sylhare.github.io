@@ -394,27 +394,3 @@ const classic20 = {
 };
 
 const Blues8 = ['#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#08519c', '#08306b'];
-
-
-/**
- *
- * Using js method to get postsPerCategory and postsPerTag
- * instead of liquid way (takes more time at each build of the static site)
- *
-
- "postsPerCategory": [
- {% for category in site.categories %}
- {% assign cat = category[0] %}
- {% unless forloop.first %},{% endunless %}
- { "name": "{{cat}}", "size":{{site.categories[cat].size}} }
- {% endfor %}
- ],
- "postsPerTag": [
- {% for tag in site.tags %}
- {% assign tagName = tag[0] %}
- {% unless forloop.first %},{% endunless %}
- { "name": "{{tagName}}", "size":{{site.tags[tagName].size}} }
- {% endfor %}
- ]
-
- */
