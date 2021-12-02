@@ -13,7 +13,7 @@ I decided to give it a try and build my own stat page.
 ## Implementation
 
 This stat article has been transformed into a stat page, let's add some more information on the stats' generation.
-The stats are generated through some liquid queries in [assets/stats.liquid]({{ '/assets/data/stats.liquid' | relative_url }}) 
+The stats are generated through some liquid queries in [assets/stats.json]({{ '/assets/data/stats.json' | relative_url }}) 
 based on all articles in the blog.
 There's then a tiny js script that do the rendering.
 
@@ -88,6 +88,8 @@ Now let's have a look at the stats' graph.
 
 To make it visually clear, the data is also represented using [chart.js](https://www.chartjs.org/).
 Basically it fetches the json created by liquid with all the data then it transforms it to match the data format library.
+
+<div><blockquote id="error-chart" style="display: none"></blockquote></div>
 
 ### Blog's tags overview
 

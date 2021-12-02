@@ -1,18 +1,19 @@
-fetch('/assets/data/stats.liquid')
+fetch('/assets/data/stats.json')
     .then(res => res.json())
     .then((out) => {
-        fillInTable(out);
         printRadar(out);
         printMixed(out);
         printBubble(out);
         printStackedBar(out);
         printDateStacked(out);
         //printPie(out);
+        return out;
     })
     .catch(err => {
         document.getElementById('error-chart').append('⚠️ Charts could not be generated ' + err + ' ⚠️')
         document.getElementById('error-chart').style.display = "block";
-    });
+    })
+    .then(out => (document.getElementById('TotalPosts') ? fillInTable(out) : undefined));
 
 /**
  * @param {{totalPosts: string, totalTags: string, totalWords: string, averageWordsPerPost: string }} data - the posts
