@@ -238,7 +238,9 @@ private inline fun <reified T> createArrayOfGeneric(): Array<T> {
 ```
 
 The other Kotlin alternatives that I tried throw _ClassCastException_ when trying to cast a _[Ljava.lang.Object;_ to a _[Ljava.lang.String;_
-like in the example.
+as shown in the example.
+If you liked it, 🎉 throw an upvote on the answer on [stackoverflow][14] 🙃
+
 
 [1]: https://kotlinlang.org/docs/inline-functions.html#reified-type-parameters "Kotlin reified"
 [2]: https://github.com/JetBrains/kotlin/blob/master/core/builtins/native/kotlin/Array.kt "Kotlin Array"
@@ -253,3 +255,4 @@ like in the example.
 [11]: https://docs.oracle.com/javase/specs/jls/se7/html/jls-10.html "JLS Arrays"
 [12]: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-type/ "Kotlin KType"
 [13]: https://kotlinlang.org/api/latest/jvm/stdlib/kotlin.reflect/-k-classifier.html "Kotlin KCassifier"
+[14]: https://stackoverflow.com/a/69667249/7747942
