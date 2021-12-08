@@ -2,7 +2,7 @@
 layout: post 
 title: Apollo GraphQL 👩‍🚀 mutations 
 color: rgb(214, 156, 47)
-tags: [js]
+tags: [graphQL]
 ---
 
 Let's have a look at mutations! 🔭

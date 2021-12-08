@@ -2,7 +2,7 @@
 layout: post 
 title: Apollo 🚀 and GraphQL 
 color: rgb(210, 56, 108)
-tags: [js]
+tags: [graphQL]
 ---
 
 Let's talk about [Graph QL](https://graphql.org/) which is a query language for an API. Meaning that contrary to normal

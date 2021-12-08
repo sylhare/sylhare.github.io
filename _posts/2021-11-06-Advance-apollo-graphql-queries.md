@@ -2,7 +2,7 @@
 layout: post
 title: Advanced 🛰 Apollo Graphql queries
 color: rgb(0, 114, 181)
-tags: [js]
+tags: [graphQL]
 ---
 
 In this article, we'll dive in some more advanced concepts for query types and resolvers.
