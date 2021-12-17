@@ -44,10 +44,8 @@ Let's go back to the basics so that we understand what we're doing.
 
 ### Create a _personal access token_
 
-Let's generate a token, because the `secrets.GITHUB_TOKEN` accessible from the GitHub action by default **does not** hold
-enough rights by default to update the project.
-
-That's because the project is considered a _team_ feature, so you will need `admin:org` rights for your personal token.
+Let's generate a token, with `admin:org` rights for your personal token.
+If it's for your own usage only, the default `GITHUB_TOKEN` accessible in the workflow might be just enough.
 
 Go to _Settings > Developer settings > Personal access tokens_ and select this option:
 
