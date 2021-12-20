@@ -46,6 +46,7 @@ Let's go back to the basics so that we understand what we're doing.
 
 Let's generate a token, with `admin:org` rights for your personal token.
 If it's for your own usage only, the default `GITHUB_TOKEN` accessible in the workflow might be just enough.
+To automate the new [beta project feature][12] you might need more rights.
 
 Go to _Settings > Developer settings > Personal access tokens_ and select this option:
 
@@ -262,3 +263,4 @@ Javascript comments are usually `//`, so parsing the `#` made it error out.
 [9]: https://docs.github.com/en/actions/security-guides/security-hardening-for-github-actions#understanding-the-risk-of-script-injections
 [10]: https://github.com/UpstreamOrg/UpstreamRepo/projects/1
 [11]: https://docs.github.com/en/actions/learn-github-actions/events-that-trigger-workflows#pull_request_target
+[12]: https://docs.github.com/en/issues/trying-out-the-new-projects-experience/automating-projects#example-workflow
