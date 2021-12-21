@@ -133,7 +133,6 @@ implementation does not really matter, let's have a look at a simplified version
 First the main class:
 
 ```ruby
-
 class Vermelinho
   def self.hi(language = "english")
     translator = Translator.new(language)

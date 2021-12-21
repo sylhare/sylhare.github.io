@@ -45,7 +45,7 @@ Let's go back to the basics so that we understand what we're doing.
 ### Create a _personal access token_
 
 Let's generate a token, with `admin:org` rights for your personal token.
-If it's for your own usage only, the default `GITHUB_TOKEN` accessible in the workflow might be just enough.
+If it's for your own usage only, the default `secrets.GITHUB_TOKEN` accessible in the workflow might be just enough.
 To automate the new [beta project feature][12] you might need more rights.
 
 Go to _Settings > Developer settings > Personal access tokens_ and select this option:
