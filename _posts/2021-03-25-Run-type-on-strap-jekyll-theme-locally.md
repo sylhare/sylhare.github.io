@@ -191,6 +191,32 @@ The theme should be available and running at [localhost:4000](http://localhost:4
 The theme is built in a `_site` folder that is generated automatically. 
 You can also ignore the `.jekyll-cache` folder which is used by jekyll.
 
+## Troubleshoot
+
+When running locally you may encounter this error:
+
+```groovy
+`bind': Address already in use - bind(2) for 127.0.0.1:4000 (Errno::EADDRINUSE)
+```
+
+That means you may have run another application on port 4000 already, or the blog may be already running from another 
+terminal, and you can't re-run it because the port 4000 is already taken.
+
+In this case you can kill whatever is running on port `4000` (on MacOS) with:
+
+```bash
+lsof -t -i tcp:4000 | xargs kill -9
+```
+
+or you can specify another port using:
+
+```bash
+bundle exec jekyll serve --port 2000
+```
+
+So your application will run on `127.0.0.1:2000`, you could also change the host with `--host 0.0.0.0` when running 
+inside a docker for example.
+
 ## Conclusion
 
 If you had any issue during the process you can always create an [issue](https://github.com/sylhare/Type-on-Strap/issues/new/choose) on the [Type-on-Strap](https://github.com/sylhare/Type-on-Strap) repository.
