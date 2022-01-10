@@ -119,4 +119,4 @@ By modifying the host with the _-private_ you are telling the SSH agent which ke
 Keep in mind that if you see an error it might be because you are trying to clone a private repository with an account that does not have access to it.
 
 You should be now all set up! If you are working with upstream repositories check this article<br>
-[→ _How to use git with an upstream repository_]({% post_url 2021-04-05-Use-git-with-upstream-repository %})
+[→ _How to use git with an upstream repository_]({% post_url 2021/2021-04-05-Use-git-with-upstream-repository %})

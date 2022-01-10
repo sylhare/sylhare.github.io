@@ -23,7 +23,7 @@ But when it comes to tree, the chainsaw's far more useful.
 
 ## The simplified version
 
-Or basically how to read it. You may have seen $$\Omega$$, $$O$$ and $$\Theta$$ in term of algorithm time complexity.
+Or basically how to read it. You may have seen $$\Omega$$, $$O$$ and $$\Theta$$ in terms of algorithm time complexity.
 Basically: 
 - $$\Omega$$ is the time for best case, 
 - $$O$$ for the worst case

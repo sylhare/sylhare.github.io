@@ -7,7 +7,7 @@ tags: [graphQL]
 
 In this article, we'll dive in some more advanced concepts for query types and resolvers.
 If you are still new, or would like to review the basics, 
-check out the [Apollo 🚀 and GraphQL]({% post_url 2021-07-26-Apollo-and-graphql %}) article.
+check out the [Apollo 🚀 and GraphQL]({% post_url 2021/2021-07-26-Apollo-and-graphql %}) article.
 
 ## Query Resolvers
 

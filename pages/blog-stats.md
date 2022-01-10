@@ -11,7 +11,7 @@ icon: "fas fa-chart-pie"
 
 <div><blockquote id="error-chart" style="display: none"></blockquote></div>
 
-Those graphs were made for test in the article [Generating my own jekyll blog stats]({% post_url 2021-05-26-Generate-jekyll-blog-stats %}).
+Those graphs were made for test in the article [Generating my own jekyll blog stats]({% post_url 2021/2021-05-26-Generate-jekyll-blog-stats %}).
 I decided it would be delightful to have them handy so here they are in their own private page!
 
 ### General stats

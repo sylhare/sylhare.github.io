@@ -15,7 +15,7 @@ another.
 
 ### Setup
 
-If you're not sure of your python environment, follow [how to manage your python environment]({% post_url 2021-05-19-Manage-your-python-environments %})
+If you're not sure of your python environment, follow [how to manage your python environment]({% post_url 2021/2021-05-19-Manage-your-python-environments %})
 article. Once python3 is set up, install jupyter with:
 
 ```bash

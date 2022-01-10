@@ -28,7 +28,7 @@ public class Box<T> {
 Where **T** stands for type and can be anything for example `new Box<String>()` is a Box object of a String (meaning all
 T inside box will be considered as String).
 
-You may also have seen it in the [Option〈T〉]({% post_url 2021-04-21-Optional-with-java%})article,
+You may also have seen it in the [Option〈T〉]({% post_url 2021/2021-04-21-Optional-with-java%})article,
 it's the same **T**! ... Mind blown 🤯 ? Not really, it's just java.
 
 [Generics](https://en.wikipedia.org/wiki/Generics_in_Java) adds a bit of abstraction on the types allowing to make (

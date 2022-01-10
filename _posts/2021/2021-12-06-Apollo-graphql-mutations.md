@@ -8,8 +8,8 @@ tags: [graphQL]
 Let's have a look at mutations! 🔭
 
 The type `Mutation` is where you stack all of your [mutations][1] in GraphQL. The basic mechanism stay the same as
-queries, so if you have read the [Apollo 🚀 and GraphQL]({% post_url 2021-07-26-Apollo-and-graphql %})
-and the [Advanced 🛰 Apollo Graphql queries]({% post_url 2021-11-06-Advance-apollo-graphql-queries %}) article, you
+queries, so if you have read the [Apollo 🚀 and GraphQL]({% post_url 2021/2021-07-26-Apollo-and-graphql %})
+and the [Advanced 🛰 Apollo Graphql queries]({% post_url 2021/2021-11-06-Advance-apollo-graphql-queries %}) article, you
 should be all set!
 
 ## Definitions
@@ -206,7 +206,7 @@ But it does read nicely for each defined case.
 
 ### Resolver field
 
-As explained in the [previous article]({% post_url 2021-11-06-Advance-apollo-graphql-queries %}), 
+As explained in the [previous article]({% post_url 2021/2021-11-06-Advance-apollo-graphql-queries %}), 
 to implement the mutation, we need to add a resolver function corresponding to the new Mutation field.
 So we will now have:
 
