@@ -115,7 +115,7 @@ fun logTime(n: Int) {
 }
 ```
 
-So this one is logarithmic, because each time you do an iteration n is decreasing twice.
+So this one is logarithmic, because each time you do an iteration n is divided by two.
 It is logarithmic on [base 2](https://courses.lumenlearning.com/waymakercollegealgebra/chapter/convert-between-logarithmic-and-exponential-form/), for example:
    - If $$n = 8$$, then there will be $$3$$ iteration.
    - And we have $${\mathrm{log}}_{2}\left(8\right)=3$$ because $${2}^{3}=8$$
