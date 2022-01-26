@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Find out the possible permutations or combinations
-color: rgb(161,107,27)
+title: Possible permutations or combinations
+color: rgb(161,27,107)
 tags: [math]
 ---
 
@@ -130,7 +130,10 @@ $$
 \underbrace{(\textcolor{#ea008e}{A}, \textcolor{#007cdb}{B}, \textcolor{#00d9c2}{C}) (\textcolor{#007cdb}{B}, \textcolor{#00d9c2}{C}, \textcolor{#ea008e}{A}), (\textcolor{#00d9c2}{C}, \textcolor{#ea008e}{A}, \textcolor{#007cdb}{B}), (\textcolor{#ea008e}{A}, \textcolor{#00d9c2}{C}, \textcolor{#007cdb}{B}), (\textcolor{#00d9c2}{C}, \textcolor{#007cdb}{B}, \textcolor{#ea008e}{A}), (\textcolor{#007cdb}{B}, \textcolor{#ea008e}{A}, \textcolor{#00d9c2}{C})}_{\text{6 permutations}}
 $$
 
-The combination is usually [noted][10] $$\binom{n}{k}$$ or $$C_k^n$$, to remember the formula, there's a little trick.
+The combination is usually [noted][10] $$\binom{n}{k}$$ or $$C_k^n$$.
+
+#### Calculation
+To remember the formula, there's a little trick.
 In our example for $$k=n$$ there are 6 times more permutations than combination.
 This corresponds to the number of possible arrangement, i.e. the factorial of the number of selection. 
 
@@ -156,19 +159,22 @@ To find the amount of combination possible with repetition, there are multiple t
 Meaning it's like doing the combination for $$\binom{k+n-1}{k}=\frac{(k+n-1)!}{k!(n-1)!}$$.
 
 ### Multiplication
-
+#### Introduction
 Let's figure out the possibilities from these three sets:
 
 $$\overbrace{(A1, A2)}^{\text{\textcolor{#ea008e}{A}}}, \overbrace{(B1, B2, B3)}^{\text{\textcolor{#007cdb}{B}}}, \overbrace{(C1, C2, C3)}^{\text{\textcolor{#00d9c2}{C}}}$$
 
 The number of element of one set is also called [cardinalilty][6] noted as $$|A|$$ or $$card(A)$$, 
 they differ between each set.
-Meaning we have 3 choice and each one have respectively 2, 3, 3 possible options such as one possibility should
-be noted as:
+Meaning we have 3 choice and each one have respectively 2, 3, 3 possible options such as each possibility can
+be noted as a set of one element from $$\textcolor{#ea008e}{A}$$, $$\textcolor{#007cdb}{B}$$ and $$\textcolor{#00d9c2}{C}$$
+such as:
 
-$$\underbrace{(A1, B2, C3)}_{\text{one possibility}}$$
+$$\underbrace{(A2, B1, C3)}_{\text{one possible arrangement}}$$
 
 In this case there's no need to try to apply the previous permutation or combination formula.
+
+#### Calculation
 The simplest way to calculate the possibility between asymmetric subsets is called the [rule of product][4].
 I like the [Cartesian product][5] notation:
 
