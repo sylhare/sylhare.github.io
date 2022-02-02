@@ -171,9 +171,7 @@ App.id = 5;
 Then the `App.name` will change. <br>
 However the private value id will remain the same (meaning `App.next` won't return _6_), instead a new field will be created `{ id: 5 }` inside `App`.
 
-## JS Objects
-
-### Declaration: var, let, const
+### Scope and variable declaration: var, let, const
 
 When declaring a variable you can access its value based on its scope. 
 The scope, is where the declared variable is accessible. Usually top level declarations used in JS modules are
@@ -209,8 +207,96 @@ There are three keywords to declare variables:
 They are blocked in the same scope level unlike var, needs to be declared first even without strict mode.
 - Using [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const) which could be considered as static values that are declared once and immutable.
 And like let they are also scope blocked.
+  
+## JS Objects 
 
-## Other quirks
+### Property shorthand notation
+
+Since ES6, defining properties to an object can be simplified if the variable's name is the same as the object's
+property key:
+
+```js
+const name = 'José', lastname = 'Martinez';
+const person = { name, lastname };
+// Same as { name: name, lastname: lastname } 
+// Same as { name: 'José', lastname: 'Martinez' }
+```
+
+This can make your notation less redundant,
+trying to use this feature will push you into using adequate variable 👌.
+
+> _Note_: Shorthand can be used in Javascript to refer to the fact of using [**smaller**](https://www.sitepoint.com/shorthand-javascript-techniques/) notations.<br>
+> Like we've seen for the functions.
+
+### Destructuring
+
+The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, 
+or properties from objects, into distinct variables.
+
+Behind this name is hidden the `{ }` brackets notation and `...` three dot operator.
+Basically you can cherry-pick values from an array or properties from an object into variables. This is also called _unpacking_.
+
+#### On Arrays
+
+You can use the destructing operator using the `...`, here is an example with an array:
+
+```js
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // [30, 40, 50]
+```
+
+The three dots is an accessor unpacks the array and take the remaining values.
+So you could also reuse the `rest` defined before to create a new array:
+
+```js
+const myArray = [...rest, 1, 2];
+console.log(myArray); // [30, 40, 50, 1, 2]
+```
+
+You can find also some more [examples](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
+online, or try it out directly in your browser through the console in the developer tool! 🤓
+
+#### On Objects
+
+The same applies for objects, you can select the remaining properties of an object using
+the destructuring operator:
+
+{% raw %}
+```js
+let car = { brand: 'Car', size: 'Big' };
+let motor = { type: 'Powerful', consumption: 'expensive' };
+let muscleCar = { ...car , motor };
+console.log(muscleCar)
+// returns { brand: "Car", size: "Big", motor: { type: "Powerful", consumption: "expensive" } }
+```
+{% endraw %}
+
+And you can just create complex objects with the possibility to nest or not the composing sub-objects.
+This also work reversed when assigning constants from an object.
+
+Using the `{ }` bracket notation that you have already seen just before with the ES6 import:
+
+```js
+import { selectedModule } from 'package';
+```
+
+This will only import the module named `selectedModule` from the package (which may contain more than one).
+You can do the same for assigning constants from an object:
+
+```js
+const fruitBasket = {
+  apple: '🍎',
+  banana: '🍌',
+  kiwi: '🥝',
+}
+let { apple, banana:banoony } = fruitBasket
+// same as: let apple = '🍎', banoony = '🍌'
+```
+
+The other elements will remain unassigned, and you can either use the shorthanded property side like for _apple_
+or use your own variable name using `:` for _banoony_ instead of _banana_ if you feel special.
 
 ### Prototyping
 
@@ -245,36 +331,7 @@ That could trigger unexpected behaviour, like modifying already existing prototy
 So to remedy, you can use `Object.freeze(obj)` where `obj` is the object you want to block from having its prototype modified.
 Usually you don't modify objects that you don't own.
 
-### Destructuring Arrays
-
-The destructuring assignment syntax is a JavaScript expression that makes it possible to unpack values from arrays, or properties from objects, into distinct variables.
-
-Behind this name is hidden the `{ }` brackets notation and `...` three dot operator. 
-Basically you can cherry-pick values from an array or properties from an object into variables. This is also called _unpacking_. 
-
-Here some [examples](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment) on how to use those operators:
-
-```js
-[a, b, ...rest] = [10, 20, 30, 40, 50];
-console.log(a); // 10
-console.log(b); // 20
-console.log(rest); // [30, 40, 50]
-```
-
-The three dots is an accessor to an array or object that will unpack and take the remaining values.
-You can even go further with object using:
-
-{% raw %}
-```js
-let car = { brand: 'Car', size: 'Big' };
-let motor = { type: 'Powerful', consumption: 'expensive' };
-let muscleCar = { ...car , motor };
-console.log(muscleCar)
-// returns { brand: "Car", size: "Big", motor: { type: "Powerful", consumption: "expensive" } }
-```
-{% endraw %}
-
-And you can just create complex objects with the possibility to nest or not the composing sub-objects.
+## Other quirks
 
 ### Null check
 
