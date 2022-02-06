@@ -5,7 +5,8 @@
 
 ### Blog's content
 
-If you find a mistake, typo or want to comment on the blog let me know via an issue or pull request.
+If you find a mistake, typo on the blog let me know via an issue or pull request.
+If you want to comment, you can use the new comment feature or [open an issue](https://github.com/sylhare/sylhare.github.io/issues/new/choose) 👍
 
 ### [Profile's](https://rahuldkjain.github.io/gh-profile-readme-generator/) stats
 
