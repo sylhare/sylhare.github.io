@@ -24,3 +24,15 @@ jobs:
 
     - name: Build
       run: npm install
+
+    - name: Gulp default
+      run: gulp
+      continue-on-error: true
+      
+    - name: Gulp create post
+      run: gulp post -n 'Create a test post'
+      continue-on-error: true
+      
+    - name: Gulp thumbnails
+      run: gulp thumbnails
+      continue-on-error: true
