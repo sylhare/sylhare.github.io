@@ -25,28 +25,30 @@
   }
 }
 
-.actor, .labelBox, .label-container {
-  @extend %mermaid-color
-}
+g {
+  .classGroup {
+    rect, line {
+      @extend %mermaid-color
+    }
+  }
 
-.classGroup {
-  rect, line {
+  .cluster rect {
+    fill: lighten($note, 40%) !important;
+    stroke: $note !important;
+  }
+
+  .note {
+    fill: lighten($note, 25%) !important;
+    stroke: $note !important;
+  }
+
+  .actor, .labelBox, .label-container, .title-state, .divider {
     @extend %mermaid-color
   }
-}
 
-.note {
-  fill: lighten($note, 25%) !important;
-  stroke: $note !important;
-}
-
-.cluster rect {
-  fill: lighten($note, 40%) !important;
-  stroke: $note !important;
-}
-
-.edgeLabel {
-  background-color: var(--background) !important;
-  color: var(--text) !important;
+  .edgeLabel {
+    background-color: var(--background) !important;
+    color: var(--text) !important;
+  }
 }
 
