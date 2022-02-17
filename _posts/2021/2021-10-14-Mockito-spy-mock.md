@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: How to @Spy a mocking dependency
-color: rgb(86, 198, 169)
+color: rgb(93, 114, 137)
 tags: [java]
 ---
 
