@@ -22,6 +22,7 @@ There a multiple logging levels, here some you would encounter with logging fram
 ## SLF4J for logging facade
 
 SLF4J is the Simple Logging Facade for Java ([SLF4J](http://www.slf4j.org/manual.html)) serves as a simple facade or abstraction for various logging frameworks (e.g. java.util.logging, logback, log4j) allowing the end user to plug in the desired logging framework.
+
 As name suggest it is a [facade library](https://medium.com/@krishankantsinghal/logback-slf4j-log4j2-understanding-them-and-learn-how-to-use-d33deedd0c46) which provide abstraction for logging libraries like 
 `log4j`, `logback` , `java.util.logger` and don't do actual logging.
 It acts as an interface so you switch easily for any logging library.
