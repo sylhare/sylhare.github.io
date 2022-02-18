@@ -60,7 +60,7 @@ let's do our best to make it simple. (cf. [cyclomatic complexity][7])
 Because as good as you are, you may not remember in 3 months from now what the code was doing, and that will become
 harder, as time passes, to maintain it.
 
-### 🧪 Tests
+### 🏗 Tests
 
 Testing is an important part of programming, and poorly written tests are useless and harmful to the system, as it
 provides a false sense of security when implementing new features. To avoid that, make sure to take a bit of time to
