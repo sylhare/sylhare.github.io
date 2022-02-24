@@ -227,6 +227,34 @@ trying to use this feature will push you into using adequate variable 👌.
 
 > _Note_: Shorthand can be used in Javascript to refer to the fact of using [**smaller**](https://www.sitepoint.com/shorthand-javascript-techniques/) notations.<br>
 > Like we've seen for the functions.
+ 
+### Computed property name
+
+Since ECMAScript 2015, you can pass a variable as key in your object. This is called the
+[computed property name](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer#computed_property_names),
+because it will be computed. 
+
+It uses the square bracket notation, so let's define some keys:
+
+```js
+var myKey = () => 'key'
+var myOtherKey = 'other'
+```
+
+Now, use them in an object:
+
+```js
+var myObject = {
+  normalKey: 'normalValue',
+  [myKey()]: 'value',
+  [myOtherKey]: 'otherValue'
+}
+// returns { normalKey: 'normalValue', key: 'value', other: 'otherValue' }
+```
+
+As you can see both function and variable gets computed into a string key.
+If you forget the parenthesis, and put just `[myKey]`, it will be the function itself, which would work...
+But not as intended `myObject['() => \'key\'']` to return the value.
 
 ### Destructuring
 
