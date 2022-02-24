@@ -128,7 +128,7 @@ How to implement (TDD):
 
 - Start slow, make a unit test first for a tiny bit of it
 - Add more use case as you add features
-- Keep the pipeline green (`npm test` should pass at each commit pushed)
+- Keep the pipeline green, _it should pass at each push_
 - Refactor your code to make it better
 - Think about corner cases
 - Create an e2e test that will validate your implementation
@@ -183,8 +183,10 @@ available, leverage the tools you are using like [GitHub][6], GitLab or with Ger
 Then you can find your own pace, like an hour each day, each couple days, or after each time you put a PR for review.
 Anything as long as it works for you.
 
-And remember, asking a question about a functionality or a point in the implementation is as valid as any other review,
+Remember, asking a question about a functionality or a point in the implementation is as valid as any other review,
 because ultimately you gain knowledge and might even inadvertently spot some gap in the design, so keep at it! 💪
+
+What about you, what is your code review style?
 
 [1]: https://google.github.io/eng-practices/review/reviewer/standard.html
 [2]: https://eslint.org/
