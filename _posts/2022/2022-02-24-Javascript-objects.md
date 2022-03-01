@@ -6,27 +6,29 @@ tags: [js]
 ---
 
 To follow up on the [modern javascript notation][1], let's have a deep look at the `Object`, the
-[javascript data type][7]. Most javascript objects are instances of `Object`, you'd better get acquainted with it, so
-you can get the most out of them.
+[javascript data type][7]. 
 
-### Objects must-known methods
+Most javascript objects are instances of `Object`, like in java where most class inherit from the Object class.
+You'd better get acquainted with it, so let's make the most out of it with this article!
+
+### Object's must-known
 
 #### Copy with `Object.assin()`
 
 To copy properties from one or more object to another one you can use the [assign][8] method on object:
 
 ```js
-var person = { name: { first: 'John', middle: 'Wayne' }, lastname: 'Rodriguez' }
+var person = { name: { first: 'John', middle: 'Wayne' }, picture: '😎' }
 var languages = { code: ['js', 'ts'] }
 
 var dev = Object.assign(person, languages);
 // returns { name: { first: 'John', middle: 'Wayne' }, lastname: 'Rodriguez', code: ['js', 'ts'] }
 ```
 
-However the `assign` only copies value which can be a reference of another object. For example the _lastname_'s
-value _'Rodriguez'_ is copied in the dev object, but it's _name_'s reference to the object that is copied. so that if
-you change _person_'s name with _person.name.first_ then the change will reverberate on the
-_dev.name_ property as well.
+However the `assign` only copies value which can be a reference of another object. For example the _picture_'s
+value '😎' is copied in the dev object, but it's _name_'s reference to the object that is copied. so that if
+you change _person_'s name with `person.name.first='Joe'` then the change will reverberate on the
+`dev.name.first` property as well.
 
 So the [deep copy][9] (where properties don't share the same reference) is not possible. One pretty slow workaround
 is to serialize to string and deserialize to a JSON object with `JSON.parse(JSON.stringify(object))`. But keep in mind
@@ -34,7 +36,7 @@ that if the value is a method, it will be lost in the serialization, so it's not
 
 #### To key, value array with `Object.entries()`
 
-Another tip with handling objects, is the [entries][10] method which transforms an Object into an array of key values.
+Another tip with handling objects, is the [entries][10] method which transforms an Object into an array of key values.<br>
 For example:
 
 ```js
@@ -53,7 +55,9 @@ It will take any key, value pair array and transform it into an object.
 ### Property shorthand notation
 
 Since ES6, defining properties to an object can be simplified if the variable's name is the same as the object's
-property key:
+property key which makes for a _shorter_ notation.
+
+Here is how it would look:
 
 ```js
 const name = 'José', lastname = 'Martinez';
@@ -64,15 +68,17 @@ const person = { name, lastname };
 
 This can make your notation less redundant, trying to use this feature will push you into using adequate variable 👌.
 
-> _Note_: Shorthand can be used in Javascript to refer to the fact of using [smaller][2] notations.<br>
+> _Note_: Shorthand can be used in Javascript to refer to the fact of using [shorter][2] notations.<br>
 > Like we've seen for the functions.
 
 ### Computed property name
 
 Since ECMAScript 2015, you can pass a variable as key in your object. This is called the
-[computed property name][3], because it will be computed.
+[computed property name][3], because it will be computed at run time. It uses the square bracket notation that was
+already used for accessing properties where `object.key` returns the same value as `object['key']` as mentioned
+in the [property accessors][12] documentation.
 
-It uses the square bracket notation, so let's define some keys:
+So let's define some keys a variable and a method:
 
 ```js
 var myKey = () => 'key'
@@ -91,8 +97,9 @@ var myObject = {
 ```
 
 As you can see both function and variable gets computed into a string key. If you forget the parenthesis, and put
-just `[myKey]`, it will be the function itself, which would work... but not as intended, showing up using 
-`myObject['() => \'key\'']` to return the value.
+just `[myKey]`, it will be the function itself, which would work...
+
+But not as intended, showing up as `myObject['() => \'key\'']` to return the value. 
 
 ### Destructuring
 
@@ -231,3 +238,4 @@ a function to alter the comparison without overriding the sort algorithm itself.
 [9]: https://developer.mozilla.org/en-US/docs/Glossary/Deep_copy
 [10]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/entries
 [11]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/fromEntries
+[12]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Property_Accessors
