@@ -1,7 +1,7 @@
 ---
 layout: post 
 title: How to write Japanese 日本語 on Mac
-color: rgb(82, 177, 190)
+color: rgb(113, 188, 120)
 tags: [misc]
 ---
 
