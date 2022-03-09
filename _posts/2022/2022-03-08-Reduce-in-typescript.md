@@ -210,7 +210,7 @@ Now we should have something similar to the previous `groupedCreatures` with the
 of the name 👌
 
 Reduce is not that easy at first, but once you get the fundamentals, it can become a really
-powerful tools to achieve your goals. 😎
+powerful tool to achieve your goals. 😎
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
