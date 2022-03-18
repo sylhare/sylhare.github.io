@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Use reduce() in typescript
+title: Use .reduce() in typescript
 color: rgb(0, 117, 143)
 tags: [js]
 ---
