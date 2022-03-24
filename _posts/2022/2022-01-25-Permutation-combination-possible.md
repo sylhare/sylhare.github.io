@@ -178,7 +178,7 @@ In this case there's no need to try to apply the previous permutation or combina
 The simplest way to calculate the possibility between asymmetric subsets is called the [rule of product][4].
 I like the [Cartesian product][5] notation:
 
-$$ \{ A\times B = \{ (a,b) | a \in A, b \in B \}$$
+$$ \{ A\times B = \{ (a,b)~|~a \in A, b \in B \}$$
 
 The product of two set $$A$$ and $$B$$ is another set composed of pairs $$(a, b)$$ where $$a$$ is an element of $$A$$ 
 and $$b$$ one of $$B$$.
