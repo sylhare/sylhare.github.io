@@ -2,7 +2,7 @@
 layout: post
 title: Customize 🎨 your terminal with <i>iTerm2</i> and <i>Oh My ZSH</i>
 color: rgb(63,105,170)
-tags: [misc]
+tags: [open source]
 ---
 
 [iTerm2](https://iterm2.com/) is a terminal replacement that works for newer version of macOS.
