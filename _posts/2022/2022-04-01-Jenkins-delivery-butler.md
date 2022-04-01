@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Jenkins, 🤵🏻 the delivery butler
+title: Jenkins 🤵🏻 the delivery butler
 color: rgb(212, 153, 94)
 tags: [open source]
 ---
