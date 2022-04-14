@@ -2,7 +2,7 @@
 layout: post
 title: Build, run and ride your docker like a cowboy 🤠
 color: rgb(13,183,237)
-tags: [docker]
+tags: [kubernetes]
 ---
 
 There are some information, that I feel are pertinent while messing around with a docker 🐳.

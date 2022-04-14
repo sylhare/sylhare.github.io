@@ -2,7 +2,7 @@
 layout: post 
 title: How to write Japanese 日本語 on Mac
 color: rgb(113, 188, 120)
-tags: [misc]
+tags: [tips]
 ---
 
 Have you ever wanted to start writing Japanese 🇯🇵 without investing in a some special hardware?

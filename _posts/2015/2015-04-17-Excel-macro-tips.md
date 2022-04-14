@@ -2,7 +2,7 @@
 layout: post
 title: Excel 👔 Macro tips
 color: rgb(0, 110, 81)
-tags: [excel]
+tags: [tips]
 ---
 
 
