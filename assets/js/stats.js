@@ -380,16 +380,16 @@ const classic20 = {
     'python': '#98df8a',
     'jekyll': '#d62728',
     'math': '#ff9896',
-    'linux': '#9467bd',
-    '-------': '#c5b0d5',
-    '-----': '#8c564b',
-    '---': '#c49c94',
-    'kotlin': '#e377c2',
+    'kotlin': '#9467bd',
+    '---': '#c5b0d5',
+    'linux': '#8c564b',
+    'tips': '#c49c94',
+    'graphQL': '#e377c2',
     'git': '#f7b6d2',
     '-': '#7f7f7f',
     'grey': '#c7c7c7',  // css, ruby, open source, docker, misc
     'ctf': '#bcbd22',
-    '----': '#dbdb8d',
+    '--': '#dbdb8d',
     'kubernetes': '#17becf',
     'open source': '#9edae5'
 };
