@@ -16,7 +16,7 @@ So we’re going to focus on git flows for software's [version control][2].
 ### What is version control?
 
 We’re talking about code, but version control can be applied to any kind of documents we want to “version”, 
-like a presentation, a text document, an image and so on.
+like a presentation 📊, a text document 🗒, an image 🖼 and so on.
 
 Version control is the practice of tracking changes, each change is basically a version of the original work.
 In software development, it encompasses the practice as well as the tool that manages changes of the code over time.
@@ -26,12 +26,12 @@ easy to navigate and modify through the revision to revert to a previous version
 
 ### Don’t use version management
 
-Print out your code like in the 60's or better yet, send it over by mail like in the 80's. 
-But the one true best option is to just use one computer so everyone should be either mob programming or keeping track of 
-the latest news on the next trending social media buzz.
+Print out your code 🖨 like in the **60**'s or better yet, send it over by mail 📨 like in the **80**'s. 
+But the one true best option is to just use one computer so everyone should be either mob programming 👩‍👩‍👦‍👦 or keeping track 
+of the latest news on the next trending social media buzz. 📲
 
 Not using version control is an option technically... but let's be real, until we invent the next best thing that’ll
-make it obsolete, you have to have it.
+make it obsolete, you _have_ to have it.
 
 ### Ok, use version control
 
@@ -46,13 +46,13 @@ It's not the only open source option, but it has a broad adoption from the commu
 Now let’s assume that your tool is in place, on your coding device locally and set up with a remote server for collaboration.
 You now have multiple options to get you development process started. You can either go:
 
-- Trunk based (no branches everybody pushes to main)
-- Feature based (all new code is added via pull request that are reviewed and merge into main)
-- Stage based (a composite, often where you have a dev branch that gets merged into master at each release)
+- **Trunk based**: Usually no branches everybody pushes to main
+- **Feature based**: All new code is added via pull requests that are reviewed and merge into main
+- **Stage based**: Working with multiple branch representing the state of the code, develop, main, release.
 - A mix of the above.
 
-Let’s review those "git flows" in details, they all have their benefits, so we’ll see in which development environment 
-they could thrive more.
+Let’s review those "git flows" in details, their benefits and inconveniences and in which environment they'd be at their
+best.
 
 ## Git branching strategy
 
@@ -70,7 +70,7 @@ Fail fast, learn fast, gotta apply that agile methodology 👌
 ### Trunk based
 
 The trunk based strategy is also the simplest, the golden rule is simple, everyone should commit to master at least once
-a day. It's not a 0 branch strategy as you can have some as well, but it's usually without since the goal is to always
+a day. It's not a __zero__ branch strategy as you can have some as well, but it's usually without since the goal is to always
 push to the main branch.
 
 <div class="mermaid">
@@ -233,9 +233,10 @@ Having [branches][11] is a must to entice collaboration, no wonder the feature b
 And as project grows and mature stage based strategy while cumbersome might ease out some complexity of the release cycle,
 when maintaining released products for a long time (like OS version, or computing language).
 
-There's advantage in all of them, it all depends on your project complexity, team size and preference. Regardless of 
-your branch strategy, your development process be backed with a good [CI/CD pipeline][10] and automated tests to ensure the 
-best quality.
+There are advantages in all of them, but it all depends on your project complexity, team size and preference. 
+Regardless of your branch strategy, your development process be backed with a good [CI/CD pipeline][10] and automated
+tests to ensure the best quality.
+
 Do you have a strong opinion about your development flow, or have been using a custom one that I haven't mentioned, 
 then please share it with me in the comment! 💛
 
