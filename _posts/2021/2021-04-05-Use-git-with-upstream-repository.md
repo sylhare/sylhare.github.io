@@ -16,7 +16,8 @@ So in order to add your contribution you'd likely need to fork it and make a pul
 In order to practice all that without making pointless pull request to actual project.
 You can either do it on one your own repository, or use this demo **[Upstream Organization](https://github.com/UpstreamOrg)** on GitHub.
 
-_Make sure your GitHub account is set up. Or follow [Get Started With GitHub]({% post_url 2017/2017-04-19-Get-started-with-GitHub %}).
+Make sure your GitHub account is set up. Or follow "[Get started With GitHub]({% post_url 2017/2017-04-19-Get-started-with-GitHub %})" 
+for a quick ramp up.
 
 For the example, you can fork this **[Upstream Repository](https://github.com/UpstreamOrg/UpstreamRepo)** for this example.
 You should now have `<your username>/UpstreamRepo` in your GitHub repositories.
@@ -49,6 +50,18 @@ upstream   git@github.com:UpstreamOrg/UpstreamRepo.git (fetch)
 upstream   nope (push)
 ```
 
+<div class="mermaid">
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
+      gitGraph
+        commit
+        commit
+        branch origin/main
+        checkout upstream/main
+        commit
+        commit
+        commit
+</div>
+
 You should have `origin` as the forked repository and `upstream` as the upstream repository.
 If you have cloned the wrong one you can always update the remote branches using:
 
@@ -71,6 +84,21 @@ git merge upstream/main # Or git rebase upstream/main
 git push origin
 ```
 
+<div class="mermaid">
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
+      gitGraph
+        commit
+        commit
+        branch origin/main
+        checkout upstream/main
+        commit
+        commit
+        commit
+        checkout origin/main
+        merge upstream/main
+</div>
+
+This way you can keep your main branch as a mirror of upstream's main.
 If you've deleted the branch locally, you can use:
 
 ```bash
@@ -81,12 +109,36 @@ That will track locally the remote origin/main branch.
 
 ### Create a new feature branch
 
-Once your fork is up to date, you can create a feature branch using:
+Once your fork is up-to-date, you can create a feature branch using:
 
 ```bash
 git checkout -b feature-branch # Create and go on branch
 git push -u origin feature-branch # To push branch remotely
 ```
+
+<div class="mermaid">
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
+      gitGraph
+        commit
+        commit
+        branch origin/main
+        checkout upstream/main
+        commit
+        commit
+        commit
+        checkout origin/main
+        merge upstream/main
+        branch origin/feature-1
+        commit
+        commit
+        checkout upstream/main
+        merge origin/feature-1
+        checkout origin/main
+        merge upstream/main
+</div>
+
+Don't forget to sync your fork's origin with upstream/main once your PR gets merged, so that you won't be creating your 
+next feature branch on an old version of the code.
 
 #### Work on someone else's fork
 
@@ -103,6 +155,34 @@ When pushing, it will update the branch your colleague's fork `Colleague/Upstrea
 git push colleague
 ```
 
+<div class="mermaid">
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
+      gitGraph
+        commit
+        commit
+        branch origin/main order: 1
+        checkout origin/main
+        checkout upstream/main
+        commit
+        branch colleague/feature-2 order: 3
+        commit
+        checkout upstream/main
+        commit
+        checkout origin/main
+        merge upstream/main
+        branch origin/feature-1 order: 2
+        commit
+        commit
+        checkout upstream/main
+        merge origin/feature-1
+        checkout colleague/feature-2
+        commit
+        checkout upstream/main
+        merge colleague/feature-2
+</div>
+
+When pushing on "colleague", you are not pushing to your fork, but to your colleague's branch on his fork.
+
 ### Rebase your feature branch from upstream/main
 
 That's usually before merging your feature branch, you need to add all the changes from upstream/main.
@@ -116,6 +196,30 @@ git push -f origin
 
 What it does is to fetch all the commits from _upstream/main_ and add them to your feature branch.
 That may produce merge conflicts that you will need to solve. Then you can force push to remote once your branch is up to date.
+
+<div class="mermaid">
+%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
+      gitGraph
+        commit
+        commit
+        branch origin/main
+        checkout origin/main
+        checkout upstream/main
+        commit
+        commit
+        checkout origin/main
+        merge upstream/main
+        branch origin/feature-3
+        commit
+        checkout upstream/main
+        commit
+        commit
+        checkout origin/feature-3
+        merge upstream/main
+        commit
+        checkout upstream/main
+        merge origin/feature-3
+</div>
 
 You will see this error if you don't force push with `-f` to rewrite the history of your fork with the changes that were merged into main.
 

@@ -21,7 +21,7 @@ So here is how you would do it.
 
 ### Generate the SSH keys
 
-If it's not done already, you can learn how to create and register the SSH key in [Get Started With GitHub]({% post_url 2017/2017-04-19-Get-started-with-GitHub %}).
+If it's not done already, you can learn how to create and register the SSH key in [→ _Get started with GitHub_][1]. <br>
 The process should be similar for any other online service.
 
 Some caveat for it to work:
@@ -119,4 +119,7 @@ By modifying the host with the _-private_ you are telling the SSH agent which ke
 Keep in mind that if you see an error it might be because you are trying to clone a private repository with an account that does not have access to it.
 
 You should be now all set up! If you are working with upstream repositories check this article<br>
-[→ _How to use git with an upstream repository_]({% post_url 2021/2021-04-05-Use-git-with-upstream-repository %})
+[→ _How to use git with an upstream repository_][2]
+
+[1]: {% post_url 2017/2017-04-19-Get-started-with-GitHub %}
+[2]: {% post_url 2021/2021-04-05-Use-git-with-upstream-repository %}
