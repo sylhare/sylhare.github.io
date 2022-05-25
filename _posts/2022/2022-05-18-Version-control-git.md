@@ -24,7 +24,7 @@ In software development, it encompasses the practice as well as the tool that ma
 For software, all changes are stored in a special kind of database (ex: In the `.git` folder with `git`) so that it's
 easy to navigate and modify through the revision to revert to a previous version or apply modifications.
 
-### Don’t use version management
+### Don’t use version control
 
 Print out your code 🖨 like in the **60**'s or better yet, send it over by mail 📨 like in the **80**'s. 
 But the one true best option is to just use one computer so everyone should be either mob programming 👩‍👩‍👦‍👦 or keeping track 
@@ -33,7 +33,7 @@ of the latest news on the next trending social media buzz. 📲
 Not using version control is an option technically... but let's be real, until we invent the next best thing that’ll
 make it obsolete, you _have_ to have it.
 
-### Ok, use version control
+### Ok, use it 🙆‍♀️
 
 Let's not be provocative, and use version control for its obvious benefits. By the nature of the incremental work of
 software management, versioning is a must.
