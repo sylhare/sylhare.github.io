@@ -21,6 +21,7 @@ excerpt: truncate
 
 # Scripts / Features
 google_analytics: "UA-142123817-1"
+google_analytics_ga4: "G-YPX3TXS4S4"
 katex: true # Enable if using math markup
 mermaid: true
 cusdis_app_id: "fb06ba3d-43ad-4e00-be04-0828fac06b89"
