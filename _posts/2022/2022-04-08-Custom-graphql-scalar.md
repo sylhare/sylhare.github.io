@@ -2,7 +2,7 @@
 layout: post
 title: GraphQL custom scalar 🔭  
 color: rgb(205, 33, 42)
-tags: [graphQL]
+tags: [GraphQL]
 ---
 
 Continuing this GraphQL series, after [Apollo 🚀 and GraphQL][10] for the basics, then the [Advanced 🛰 Apollo Graphql queries][11]
@@ -114,7 +114,7 @@ Now when the server advertising this query will be receiving it, it will use:
 For the previous example to work, don't forget to add the scalar implementation to your resolver.
 
 Iit works a bit like the other types,
-you need to add the scalar name `Date` and map it to your custom graphQL scalar type `DateScalar`.
+you need to add the scalar name `Date` and map it to your custom GraphQL scalar type `DateScalar`.
 
 ```ts
 const resolvers = {
@@ -130,7 +130,7 @@ Now you can fully integrate it in your app.
 GraphQL has been fairly established, so in most case the scalars that you need outside from those out of the box might
 already be existing in the language of your choice.
 
-Don't bother reinventing the wheel and go check for graphQL scalar on [GitHub][4] or other platforms for open-source 
+Don't bother reinventing the wheel and go check for GraphQL scalar on [GitHub][4] or other platforms for open-source 
 implementations of the scalars you need.
 
 [1]: https://www.apollographql.com/docs/apollo-server/schema/custom-scalars/

@@ -2,7 +2,7 @@
 layout: post 
 title: How to use GraphQL mutation in bulk 
 color: rgb(220, 121, 62)
-tags: [graphQL]
+tags: [GraphQL]
 ---
 
 In this article we will talk about bulk mutation, the desire to update multiple entity with a single input. Some common

@@ -2,7 +2,7 @@
 layout: post
 title: GraphQL 🪐 Advanced resolver
 color: rgb(46, 74, 98)
-tags: [graphQL]
+tags: [GraphQL]
 ---
 
 As you start exploring more and more the world of [GraphQL APIs][12], you may want to get more out of your resolvers.
@@ -163,7 +163,7 @@ queries. [Experiment][7] online or [check][6] other use cases.
 
 #### Fragments
 
-[Fragments][8] in graphQL are parts of a query. When dealing with [complex schema][9] it allows to simplify the query
+[Fragments][8] in GraphQL are parts of a query. When dealing with [complex schema][9] it allows to simplify the query
 notation.
 Let's create a fragment for a `User` in a dedicated "_fragments.ts_" file with the adequate field:
 

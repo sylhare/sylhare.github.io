@@ -2,7 +2,7 @@
 layout: post 
 title: Apollo 🚀 and GraphQL 
 color: rgb(210, 56, 108)
-tags: [graphQL]
+tags: [GraphQL]
 ---
 
 Let's talk about [Graph QL](https://graphql.org/) which is a query language for an API. Meaning that contrary to normal
@@ -46,7 +46,7 @@ title. The _title_ is passed as a parameter of type _String!_.
 
 ### Make a query
 
-Check the [how to query](https://graphql.org/learn/queries/) from the official graphQL website for more examples. Before
+Check the [how to query](https://graphql.org/learn/queries/) from the official GraphQL website for more examples. Before
 we start implementing anything, let's look at how to use our defined queries:
 
 - To get all the books but only their title:
@@ -120,7 +120,7 @@ ApolloServer:
 ```ts
 const server = new ApolloServer({
     schema: makeExecutableSchema({
-        typeDefs: TypeDefs,     // Where your put your graphQL schema
+        typeDefs: TypeDefs,     // Where your put your GraphQL schema
         resolvers: Resolvers,   // Where you link your queries to your logic
     });
 });
@@ -151,7 +151,7 @@ This one that only returns _The lord of the rings_!! 🧙
 ### My precious... test
 
 Without a nice test, it means nothing. To do an end-to-end test, you would need a test client to make sure that 
-the graphQL query works all the way. At the unit size we'll check the handling logic instead. 
+the GraphQL query works all the way. At the unit size we'll check the handling logic instead. 
 
 Let's see how to unit test our resolver:
 
