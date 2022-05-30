@@ -384,7 +384,7 @@ const classic20 = {
     '---': '#c5b0d5',
     'linux': '#8c564b',
     'tips': '#c49c94',
-    'graphQL': '#e377c2',
+    'graphql': '#e377c2',
     'git': '#f7b6d2',
     '-': '#7f7f7f',
     'grey': '#c7c7c7',  // css, ruby, open source, docker, misc

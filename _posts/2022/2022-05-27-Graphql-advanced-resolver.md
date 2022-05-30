@@ -2,7 +2,7 @@
 layout: post
 title: GraphQL 🪐 Advanced resolver
 color: rgb(46, 74, 98)
-tags: [GraphQL]
+tags: [graphql]
 ---
 
 As you start exploring more and more the world of [GraphQL APIs][12], you may want to get more out of your resolvers.

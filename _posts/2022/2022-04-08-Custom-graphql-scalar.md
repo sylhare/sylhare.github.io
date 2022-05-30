@@ -2,7 +2,7 @@
 layout: post
 title: GraphQL custom scalar 🔭  
 color: rgb(205, 33, 42)
-tags: [GraphQL]
+tags: [graphql]
 ---
 
 Continuing this GraphQL series, after [Apollo 🚀 and GraphQL][10] for the basics, then the [Advanced 🛰 Apollo Graphql queries][11]
