@@ -33,3 +33,4 @@ type-on-strap-gem/*
 package-lock.json
 **/.ipynb_checkpoints/**
 *-ignore.jpg
+.jekyll-metadata
