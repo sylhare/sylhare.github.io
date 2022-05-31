@@ -59,7 +59,7 @@ I put in the `other` category all tags with less than 2 articles in it and the `
 
 ### Blog's tags overview
 
-To see what are the main topics in this blog, in my case I use tags are category 🤷‍♀️ one tag per article.
+To see what are the main topics in this blog, in my case I use tags as category 🤷‍♀️ with one tag per article.
 Besides, bringing a use case for a radar type of graph, this one also display the editorial line of the blog.
 
 <canvas id='radar-js' class='chart'></canvas>
