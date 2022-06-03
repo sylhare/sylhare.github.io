@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Advanced Jekyll tips
+title: Enhance your Jekyll theme!
 color: rgb(154, 139, 79)
 tags: [jekyll]
 ---
@@ -172,7 +172,7 @@ website on GitHub page.
 
 ## 6. Use extra tools 🛠
 
-As mentioned before, I use [`gulp`][10] to automate some blogging tasks, like minimizing images, thumbnails or do some
+As mentioned before, I use [gulp][10] to automate some blogging tasks, like minimizing images, thumbnails or do some
 computation on css or js files.
 
 You can also pre-build your jekyll site locally and push the `_site` folder, on which you may have applied some
