@@ -9,7 +9,7 @@ Now that we've seen how to create a GraphQL API from [Apollo Server][10], [Advan
 [Bulk Mutations][13], [custom Scalars][14] and [advanced Resolvers][15], you should have the hang of it by now.
 So let's start using it in our front-end.
 The technology of choice here is React to display the info, but that's just a personal choice since my 
-[journey in React ⚛ territory][10], but you could use Angular, VueJS as well.
+[journey in React ⚛ territory][16], but you could use Angular, VueJS as well.
 
 ## 📦 Key libraries
 
@@ -123,8 +123,8 @@ Consider this one more as a contract test. I kept it simple here.
 
 For some really basic e2e tests, you can use `nock` which is a library providing some simple tools to mock your 
 backend apis.
-This is an alternative to mocking the whole hook with jest, at least here you can test the basic functionality of your
-hook.
+This is an alternative to mocking the whole hook with [jest][8], at least here you can test the basic functionality of 
+your hook.
 
 ### Create a simple mock server 
 
@@ -293,10 +293,11 @@ Give it a like on [stackoverflow][2] though if that helped you 🍪 It's always 
 [6]: https://github.com/nock/nock
 [7]: https://react-query.tanstack.com/guides/mutations
 [8]: https://jestjs.io/docs
-[10]: https://testing-library.com/docs
+[9]: https://testing-library.com/docs
 [10]: {% post_url 2021/2021-07-26-Apollo-and-graphql %}
 [11]: {% post_url 2021/2021-11-06-Advance-apollo-graphql-queries %}
 [12]: {% post_url 2021/2021-12-06-Apollo-graphql-mutations %}
 [13]: {% post_url 2022/2022-04-26-How-to-bulk-mutate-in-graphql %}
 [14]: {% post_url 2022/2022-04-08-Custom-graphql-scalar %}
 [15]: {% post_url 2022/2022-05-27-Graphql-advanced-resolver %}
+[16]: {% post_url 2021/2021-02-12-React-venture %}
