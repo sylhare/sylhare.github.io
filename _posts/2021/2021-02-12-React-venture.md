@@ -19,24 +19,31 @@ And here you go, a folder with your app name has been created, and you can start
 
 # Concept
 
+If you want to know a bit more about the history of React, like it is coming from the idea behind XHP (XML with PHP) 
+since Facebook was written in PHP at the time. Then I suggest you check this talk from Lee Byron: 
+[Let's program like it's 1999](https://www.youtube.com/watch?v=vG8WpLr6y_U) from React Conference 2019.
+
 ## React, JSX and Components
 
-Basically like many other libraries, framework out there, _components_ are abstracted part containing their own logic using javascript and viw using HTML markups. 
+Like other libraries or framework out there, _UI components_ are abstracted part of the UI encapsulating their own logic
+(in javascript) and view (HTML markups). They make designing UI easier with flexible re-usable parts.
 
-React goes further with **JSX** (Javascript XML), because even inside of the component markup and logic are intertwined.
+React uses something called **JSX** (Javascript XML), to intertwine logic and HTML markup which
 The example given is:
 
-```js
+```jsx
 const element = <h1>Hello, world!</h1>;
 ```
 
-It is a perfectly valid React component, there's no real logic into it. However it's mixing javascript notation with HTML markups.
-When used in browser this kind of _"new era javascript"_ is not always understood by the browser. Heck even the color highlighting is bugging here!
+It is a perfectly valid React component, there's no real logic into it. 
+However, it's mixing javascript notation with HTML markups, so some people hate it, others love it.
+When used in browser with some _"new javascript"_, React components may not always be understood by the browser.
 
 > That's why there are some "compiler" like [babel](https://babeljs.io/) that transforms it into a more "vanilla javascript"
 
 To bring it back to our point.
-The concept is fairly simple, React will compute the DOM (Document Object model, the web page) based on the component logic and markup and rewrite the updated parts.
+The concept is fairly simple, React will compute the DOM (Document Object model, the web page) based on the component 
+logic and markup and rewrite the updated parts.
 
 ## Render with ReactDOM
 
@@ -44,7 +51,7 @@ Here would be another example of how to render something with React if you haven
 other ones on the [React doc](https://reactjs.org/docs/rendering-elements.html)
 First we'll define another tiny component that takes a parameter:
 
-```js
+```jsx
 const Greeting = ({ greeting }) => <h1>{greeting.text}</h1>;
 ```
 
@@ -52,7 +59,7 @@ Great, it will render the text into what's commonly known as a title with the `<
 To render it we would do:
 
 {% raw %}
-```js
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 
@@ -109,14 +116,14 @@ Usually those components are pretty straightforward and doesn't require much log
 They leverage the abstraction / encapsulation permitted by react to reduce the size of bigger component by breaking them down into small pieces.
 With dumb components that bare no logic like:
 
-```js
+```jsx
 const HelloWorld = () => <p> Hello World! </p>
 ```
 
-Or if you rememberin the first part; the `Greeting` above was another example of a very simple functional component.
+Or if you remember in the first part; the `Greeting` above was another example of a very simple functional component.
 Using React [hooks](https://reactjs.org/docs/hooks-rules.html#gatsby-focus-wrapper) you can make your component more intelligent:
 
-```js
+```jsx
 import React, { useEffect, useState } from 'react';
 
 export default function FunctionalComponent() {
@@ -147,7 +154,7 @@ The class component makes up for more controlled (handle props, state and lifecy
 Here is an example component with it's most used capabilities:
 
 
-```js
+```jsx
 export default class ClassComponent extends React.Component {
   constructor(props) {
     super(props); 
@@ -174,7 +181,7 @@ are called automatically. A component is said to be mounted when it's in the DOM
 
 You can use this component easily passing down some props name value using:
 
-```html
+```jsx
 <ClassComponent value={'props value'}/>
 ```
 
@@ -182,7 +189,7 @@ Let's follow how the props gets handled:
 
   1. You can see that `value={'props value'}` is being passed to the component when using it.
   2. The `props` that get passed to the constructor then looks like that: 
-  ```json
+  ```js
 { props: { value: 'props value' } }
   ``` 
   3. And the `super(props)` will copy this props to `this.props` so we can access it in our component.
