@@ -1,6 +1,6 @@
 /*
  * Here are all of the gulp tasks you can use to help manage your blog
- * Use `npm install` to install all the dependencies located in package.json 
+ * Use `npm install` to install all the dependencies located in package.json
  * Then `gulp default` to minimize css and images.
  */
 const gulp = require('gulp');
@@ -69,7 +69,7 @@ gulp.task('thumbnails', function () {
     //format: 'jpeg', // convert to jpeg format
   };
 
-  return gulp.src(paths.img.featured)
+  return gulp.src(paths.img.src)
     .pipe(responsive({
       '**/*.*': settings,
       '*.*': settings,
