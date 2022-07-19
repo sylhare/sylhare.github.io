@@ -26,6 +26,23 @@ All the example will be shown using the latest version **v6** of React router.
 
 ## Implementation
 
+If you have any trouble with webpack and the router while running the dev server with webpack.
+For example if you noticed that the links were leading to 404, components were not rendering or
+find some cryptic _Cannot GET /home_, then add the following to your webpack config:
+
+```js
+module.exports = {
+  // other configs
+  devServer: {
+    historyApiFallback: true,
+  }
+}
+```
+
+You can compare with [mine][3], if it's not a configuration problem, then check your dependencies and
+make sure you have the correct version of react-router (v6 in this case) as the syntax from previous
+version won't work.
+
 ### Web Browser
 
 Since it's a web app for a web browser, it's best to use the [BrowserRouter] which is tailored for the job.
