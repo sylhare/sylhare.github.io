@@ -45,9 +45,9 @@ Switch via at the top under _All accounts > website name_ to see the data gather
 #### With Firebase
 
 [**Firebase**][12] is an open source product by Google labelled as an app development platform. A bunch of SDKs to make
-an App (Games, website, ...), available in multiple language such as Javascript for a web app.
+an App (Games, website, ...), available in multiple languages such as Javascript for a web app.
 It uses a [**SDK**][13] (Software Development Kit) to get you started with a bunch of tools such as the Google Analytics one
-to gather data on your user.
+to gather data on your users.
 
 ```js
 import { getAnalytics, logEvent } from "firebase/analytics";
@@ -57,7 +57,7 @@ logEvent(analytics, 'notification_received');
 ```
 
 It's embedded directly within your app, the `GA4` here is called `measurementId` in your firebase config. 
-For static site generator like Jekyll, you usually won;t have to deal with that, instead you'll use code snippets to
+For static site generator like Jekyll, you usually won't have to deal with that, instead you'll use code snippets to
 load the necessary analytics code to gather the data.
 
 #### With Analytics.js
@@ -100,7 +100,7 @@ To install it on your website, you can use this snippet:
 </script>
 ```
 
-As per Google, the property ID may represent measurement for different Google products (Universal Analytics "_UA-XXXXXXXX_", 
+As per Google, the property ID may represent a measurement for different Google products (Universal Analytics "_UA-XXXXXXXX_", 
 Google Analytics 4 property "_G-XXXXXXXX_", Google Ads "_AW-XXXXXXXX_" and more).
 To collect for [**both**][9] GA4 and UA properties, can be done via adding a config tag `gtag('config', 'XXXXXXXX');` 
 per property.
@@ -113,7 +113,7 @@ The `gtag` that you may have been adding for your UA property should work with t
 
 GA4? Well it means that before there 3 more; first Urchin (1), then Google Analytics (2), followed by 
 Universal Analytics (3). And now we are at Google Analytics 4 (4), which is the first numerated one. They were a mean to
-assert that a website was successful, knowing that it's visited and people are interacting with it.
+assert that a website was successful, knowing that it was visited and people were interacting with it.
 
 Introduced in 2012, Universal analytics categorized user events and with labels and actions providing more detail on the
 user's behaviour.
@@ -133,7 +133,7 @@ of Google Analytics. Let's have a brief description of the most common ones now 
 
 - **Event**: Any action performed by a user (login, downloading, clicking, playing a video) that is either collected
   automatically or via custom logging. It was previously called a _hit_ in UA as an interaction with your site.
-- **Page Views**: How many pages were looked at by users, it's more generic now and correspond to the total amount. A user 
+- **Page Views**: How many pages were looked at by users, it's more generic now and corresponds to the total amount. A user 
   may load the same page multiple time or go to different ones. So it is not the same as the number of users.
 - **Session**: This is one a user is "actively" using your app either it being open in the foreground in a browser. 
 - **Conversion**: A success metric to refer to an action that a user do which is valued by you (as an organization), 
@@ -144,7 +144,7 @@ of Google Analytics. Let's have a brief description of the most common ones now 
 
 There's some real science between those behavioural analytics, it's to no surprise that we are using AI 
 (artificial intelligence) to make sense of all the data gathered and digest them.
-On another note, if you are using ads to increase your conversion rate over a certain population of user, 
+On another note, if you are using ads to increase your conversion rate over a certain population of userS, 
 then ads broker to determine which ads was successful will use an _attribution_ model to say which click(s) first or 
 last was the one that lead to the conversion.
 
@@ -185,7 +185,7 @@ Still I wanted to share here, the view that I have over this content.
 
 {% include aligner.html images="ga-what-users.png,ga-when-users.png,ga-where-users.png" column=3 %}
 
-I have not dug into complex reporting so here were just some out of the box reporting. 
+I have not dug into complex reporting so here is just some out of the box reporting. 
 Those are the top one in the dashboard, and you can check the amount of page viewed, the "bounce rate" when a user comes
 back to a page, or how long they stay on it.
 
@@ -197,16 +197,16 @@ fact that it's written in english, we can see people from all over the world are
 [**Google Analytics**][2] is far more complicated and scary than I thought, the degree of information gathered out of the box is 
 pretty staggering! Events like "scrolling", "clicking" or time passed on the page is sent for analysis and can be then
 manipulated and interpreted through dashboards, reports and more. There are so much information that it's easy to get 
-lost, hopefully I left enough [**links**][11] to get you started if you're interested in experimenting it.
+lost, hopefully I left enough [**links**][11] to get you started if you're interested in experimenting with it.
 
-The most fascinating is the amount of customization that can be done on the website/app side, I would have assumed that 
+The most fascinating thing is the amount of customization that can be done on the website/app side, I would have assumed that 
 with all the information that the `pageview` event is giving, it should be enough, but apparently I was wrong!
 For example [**Firebase**][12] gives you the possibility to be even more granular as to when and what to log directly from 
 within your application. And the Google Tag Manager provides way more customization than I dared to talk about with a 
 wide variety of events.
 
-Thankfully, if you are mindful of your online presence, you can find tools that will block, trackers, cookie and other
-means to follow you online.
+Thankfully, if you are mindful of your online presence, you can find tools that will block, trackers, cookies and other
+means of following you online.
 
 [1]: https://support.google.com/analytics/answer/10089681
 [2]: https://marketingplatform.google.com/about/analytics/
