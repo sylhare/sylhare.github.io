@@ -43,6 +43,13 @@ collections:
     output: true
     permalink: /:collection/:name
 
+# RSS
+feed:
+  disable_in_development: true
+  excerpt_only: true
+  tags: true
+  posts_limit: 20
+
 # BUILD SETTINGS
 sass:
   style: compressed
