@@ -47,8 +47,7 @@ collections:
 feed:
   disable_in_development: true
   excerpt_only: true
-  tags: true
-  posts_limit: 20
+  posts_limit: 100
 
 # BUILD SETTINGS
 sass:
