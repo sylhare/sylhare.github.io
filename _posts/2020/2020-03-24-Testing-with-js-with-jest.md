@@ -10,19 +10,22 @@ tags: [js]
 [Jest](https://jestjs.io/) is an Open source test framework developed by Facebook and compatible
 with a lot of framework.
 
-Jest is fast, and already pre configured to get started with it. So it simply works.
-it adapts to run your test in parallel to reduce the total amount it takes to run them.
+Jest is fast, and already pre-configured to get started with it. So it simply works for javascript. For typescript, you 
+may need to add some types and update your tsconfig.json, but nothing too rough.
 
-## Basic test
+It adapts to run your test in parallel to reduce the total amount it takes to run them.
 
-The syntax is pretty standard based on [jasmine](https://jasmine.github.io/) test framework.
+### Basic test
+
+The syntax is pretty standard if you are accustomed to the [jasmine](https://jasmine.github.io/) test framework, since
+it was based on it.
+
 Jest by default will consider as test files anything in a `test/` folder or ending with `.spec.js` or `.test.js`.
 You can restrict that by overriding the basic configurations.
 
 ```js
 describe("Jest tests", function () {
-  // Adds todo on what needs to be tested
-  test.todo('Well this is not exactly how it should be tested'); 
+  test.todo('Add todo on what needs to be tested next'); 
   
   it('is a simple test', () => {
     test('adds 1 + 2 to equal 3', () => {
@@ -33,12 +36,15 @@ describe("Jest tests", function () {
 });
 ```
 
-## With snapshot
+### With snapshot
 
 You can also test using snapshots. Very useful with legacy code with no tests.
-It basically keep in memory what the output was. 
-When failing, it will ask you either to update the snapshot or not. 
-Testing only with snapshot is not recommended because you can let bug pass in tests by mistake.
+It basically keeps in a file what the output was, be sure to commit the snapshot files for your integrated tests on your
+CI/CD to run properly.
+When failing, it will ask you either to update the snapshot or not.
+
+Testing only with snapshot is not recommended because you can let bug pass in tests by mistake, like updating with an 
+error the snapshot when the test was actually failing for real.
 
 ```js
 it('will fail every time', () => {
@@ -56,28 +62,34 @@ it('will fail every time', () => {
 });
 ```
 
-## Jest Tips and tricks
+### Jest Tips and tricks
 
 Here are some commands you can add in your package.json to work with jest:
 
 ```json
+{
   "scripts": {
     "test": "jest",
     "debug": "jest --watch",
     "coverage": "jest --coverage",
     "clear_jest": "jest --clearCache"
-  },
+  }
+}
 ```
 
 Just `jest` runs the test, but you might want to use:
-  - `--watch` to run the tests automatically at each modifications.  
-You can also specify in the watch which tests to re-run in case you have a lot.
-  - `--coverage` to get the coverage right from the testing tool
-  - `--clearCache`when jest get jammed (happened to me with Vue.js Framework), 
-  last resort when tests are failing for no reasons 
+  - `--watch` to run the tests automatically at each modification. 
+    You can also specify in the watch which tests to re-run in case you have a lot.
+  - `--coverage` to get the coverage right from the testing tool.
+  - `--clearCache` when jest gets jammed, a bit of last resort when tests are failing for no reasons. 
 
 
-One last, that was useful when linting the project was this one to easy fix trailing spaces and other noise errors using:
+One last tip. Add some linting to your project's scripts to easy fix trailing spaces and other noise errors. 
+Install `eslint` first so that it runs properly:
+
 ```json
 "lint": "eslint --fix . --ext .js src test/unit test/e2e/specs"
 ```
+
+That should keep some obvious typo out of the reason why your tests are failing, so you can concentrate on debugging
+the real problem.
