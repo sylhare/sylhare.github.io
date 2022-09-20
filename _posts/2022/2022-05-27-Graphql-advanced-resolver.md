@@ -120,8 +120,7 @@ const info = {
 ```
 
 If you need to "read" the information you might want to check out one of those
-libraries; [Mikhus/graphql-fields-list][2]
-or [robrichard/graphql-fields][3].
+libraries; [Mikhus/graphql-fields-list][2], [robrichard/graphql-fields][3] or [graphql-parse-resolve-info][13]
 
 ### GraphQL functionalities
 
@@ -214,4 +213,5 @@ The [apollo client][9] reads and interprets the fragments thanks to its [cache][
 [10]: https://www.apollographql.com/docs/react/caching/cache-configuration/
 [11]: https://www.prisma.io/blog/graphql-server-basics-demystifying-the-info-argument-in-graphql-resolvers-6f26249f613a
 [12]: https://graphql.org/
+[13]: https://www.npmjs.com/package/graphql-parse-resolve-info
 [20]: {% post_url 2021/2021-12-06-Apollo-graphql-mutations %}
