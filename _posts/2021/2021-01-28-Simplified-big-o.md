@@ -5,13 +5,13 @@ color: rgb(0, 114, 181)
 tags: [math]
 ---
 
-[Big O](https://en.wikipedia.org/wiki/Big_O_notation), is a mathematical notation use in computer science to describe 
+[Big O][1], is a mathematical notation use in computer science to describe 
 the behaviour of an algorithm. Usually either space (its memory footprint while running) or time complexity.
 
 ## Why Big O notation
 
 The Big O we'll be looking at is a simplified version, and how to quickly calculate it. 
-It is something you can enjoy [mastering](https://yourbasic.org/algorithms/big-o-notation-explained/), if you need to build particularly efficient algorithm. 
+It is something you can enjoy [mastering][2], if you need to build particularly efficient algorithm. 
 But for most of the people, we just need a general idea of how slow our algorithm. 
 
 Big O notation is really useful when you know you'll have a tone of data to process,
@@ -42,7 +42,7 @@ So let's review the main ones in example.
 
 ## Examples
 
-Looking at the main [time complexity](https://en.wikipedia.org/wiki/Time_complexity) in those examples.
+Looking at the main [time complexity][3] in those examples.
 
 ### Constant Time
 
@@ -116,7 +116,7 @@ fun logTime(n: Int) {
 ```
 
 So this one is logarithmic, because each time you do an iteration n is divided by two.
-It is logarithmic on [base 2](https://courses.lumenlearning.com/waymakercollegealgebra/chapter/convert-between-logarithmic-and-exponential-form/), for example:
+It is logarithmic on [base 2][4], for example:
    - If $$n = 8$$, then there will be $$3$$ iteration.
    - And we have $${\mathrm{log}}_{2}\left(8\right)=3$$ because $${2}^{3}=8$$
 
@@ -129,5 +129,13 @@ Basically, to find the good $$O$$ notation, you need to pay attention to three t
   - The size of the data (is it one size n, multiple size a, b, ..)
   - How you go through the data (is it fixed amount of loop, or does it change like for the logarithmic time example)
   
-This will help you improve your algorithm, and if you want to know even more, there lots of [examples](https://stackoverflow.com/a/36877205/7747942)
+This will help you improve your algorithm, and if you want to know even more, there lots of [examples][5]
 out there and tones of good explanations.
+Also find the bigO [cheat sheet][10] online for an easy reminder when choosing your data structure.
+
+[1]: https://en.wikipedia.org/wiki/Big_O_notation
+[2]: https://yourbasic.org/algorithms/big-o-notation-explained/
+[3]: https://en.wikipedia.org/wiki/Time_complexity
+[4]: https://courses.lumenlearning.com/waymakercollegealgebra/chapter/convert-between-logarithmic-and-exponential-form/
+[5]: https://stackoverflow.com/a/36877205/7747942
+[6]: https://www.bigocheatsheet.com/
