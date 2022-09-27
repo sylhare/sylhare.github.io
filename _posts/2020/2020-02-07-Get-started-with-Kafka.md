@@ -26,7 +26,7 @@ Messages can be read multiple times depending on your retention policy.
 ### with Broker
 
 `Topics` are more efficient when they are on multiple `partitions`. 
-Those `partitions` are on one or multiple `brokers`, which are used for resilience, because if one `broker` goes done the messages
+Those `partitions` are on one or multiple `brokers`, which are used for resiliency, because if one `broker` goes done the messages
 written / read on the `Topic` will still be able to be processed by other `brokers`.
 
 With no keys the messages or record will be sent to the partition using round-robin. 
@@ -59,8 +59,7 @@ ACK -> Acknowledge. There are three settings :
 The `retries` for the amount of time it will retry (Until `MAX_INT`).
 You can set a `retry.backoff.ms` to pause in between retries. (default to 100ms)    
 
-The `delivery.timeout.ms` puts a limit to report the result or failure from a producer:
-send() - batching - awaits send - retry - back off 
+The `delivery.timeout.ms` puts a limit to report the result or failure from a producer.
 
 The offset is a simple integer number that is used by Kafka to maintain the current position of a consumer.
 The `auto-offset-reset` can be set to:
@@ -73,6 +72,38 @@ There are usually two types of applications interacting with it:
 - Producers that writes data
 - Customers that read those data and react / transform them
 
+Here is a simple diagram of the major components which you may interact with while using Kafka:
+
+<div class="mermaid">
+graph TD
+    style Topic fill:#dbb498,stroke:#d98142
+    PR(Producer)
+    PR -->|Send| PA
+    subgraph Broker
+    PA(Partionner)
+    subgraph Topic
+     P0(Partition 0)
+     P1(Partition 1)
+     P2(Partition 2)
+    end
+    end
+    PA -->|Map| P0
+    PA -->|Map| P1
+    PA -->|Map| P2
+    subgraph Consumer Group 1
+     P0 --> C0(Consumer 1.0)
+     P1 --> C1(Consumer 1.1)
+     P2 --> C2(Consumer 1.2)
+    end
+    subgraph Consumer Group 2
+     P0 --> CC0(Consumer 2.0)
+     P1 --> CC0
+     P2 --> CC0
+    end
+</div>
+
+With a Kafka Cluster, you can have multiple broker et replicate your topics.
+
 ### Producers 
 
 `Producers` publish data (records) to the topics of their choice. 
@@ -81,15 +112,16 @@ This can be done in a round-robin fashion simply to balance load or it can be do
 
 ### Consumers
 
-Consumers label themselves with a consumer group name.
+Consumers label themselves with a consumer group name/id using `group.id`.
 Consumer instances can be in separate processes or on separate machines. 
 
 Consumers get the data in the partitions that was published by the producer.
-Depending on the consumer that reads on the partition the record will be either: 
- - broadcast to all consumer groups that have the consumer in it
- - load balanced between consumers within the same consumer group
-
 Everything will be handled by Kafka and can be configurable.
+
+Depending on the configuration the record will be either:
+ - One consumer group: load balance between consumers within the group
+ - Multiple different groups: broadcast to all groups then load balance to all consumer in each group
+
 
 ### Stream API
 
