@@ -117,7 +117,8 @@ define a field simply with:
 
 #### Decimal fields
 
-For decimal fields use the type `bytes`.
+For integers and long you have access to `int` and `long`. For number, you can also use `float` or `double`.
+For more flexibility and precision for your custom decimal fields, you can use the type `bytes`.
 
 ```json
 {
