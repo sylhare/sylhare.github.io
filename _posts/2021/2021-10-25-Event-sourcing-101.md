@@ -126,13 +126,15 @@ which hold the logic for the event creation.
 > In this context, one event is created and there is no retro-action
 
 The current state is updated when you request the entity. The update is basically replaying the events, the corresponding
-handlers will pick them up and apply the modification to the state.
-The refreshed state could then be sent back to the User.
+handlers will pick the events based on an id to match it to the entity and then apply the modification to the state.
+
+The refreshed state can then be sent back to the User.
 
 ### Domain Driven Development
 
 To put it simply, DDD ([Domain Driven Development][8]) is the separation of the code per domain instead of 
 doing it per type of components.
+
 Usually event sourcing works well with DDD because you apply events to an entity and
 usually follow this pattern:
 
@@ -141,9 +143,11 @@ usually follow this pattern:
 # e.g. UserAddedEvent, InvoicePaidEvent, ProductUpdatedEvent
 ```
 
-That entity can easily be matched to your business domain (Invoice, User, Product). Regrouping for one entity its corresponding
-events, handlers, models, data sources adapters (for the current state), and other logic components will make a lot of sense
-in a context where you need to deal with multiple entities from multiple domains.
+That entity can easily be matched to your business domain (Invoice, User, Product). 
+
+Regrouping for one entity its corresponding events, handlers, models, data sources adapters (for the current state), 
+and other logic components will make a lot of sense in a context where you need to deal with multiple 
+entities from multiple domains.
 
 ### Command and Query Responsibility Segregation (CQRS)
 
