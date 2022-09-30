@@ -125,8 +125,8 @@ libraries; [Mikhus/graphql-fields-list][2], [robrichard/graphql-fields][3] or [g
 ### GraphQL functionalities
 
 Out of the box, [GraphQL][4] provides [directives][5] which are annotations that can be used in the schema
-like `@deprecated` or
-on a query like `@skip` and `@include`.
+like `@deprecated` or on a query like `@skip` and `@include`.
+
 They're usually for the client side where depending on your use case you may not want to query unnecessary
 information dynamically.
 
@@ -163,7 +163,7 @@ queries. [Experiment][7] online or [check][6] other use cases.
 #### Fragments
 
 [Fragments][8] in GraphQL are parts of a query. When dealing with [complex schema][9] it allows to simplify the query
-notation.
+notation.</br>
 Let's create a fragment for a `User` in a dedicated "_fragments.ts_" file with the adequate field:
 
 ```ts
@@ -176,7 +176,7 @@ export const user = gql`
 `
 ```
 
-In our case `User` is an actual GraphQL type and the field `name` is defined on it.
+In our case `User` is an actual GraphQL type and the field `name` is defined on it. </br>
 Perfect, now when querying, instead of writing all the fields, we can just import and use our schema such as:
 
 ```ts
@@ -195,9 +195,11 @@ const example: Example = await client.query({
 ```
 
 This way we're querying the `name` of the `User` that is passed through the fragment.
+
 A [fragment][8] can also be made out of other fragments, making nested queries much more digest,
 on more recent version parameters within fragment becomes compatible as well, as the variables gets propagated within
 them.
+
 The [apollo client][9] reads and interprets the fragments thanks to its [cache][10].
 
 
