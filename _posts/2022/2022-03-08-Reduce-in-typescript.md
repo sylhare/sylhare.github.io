@@ -48,14 +48,14 @@ Let's set `deadliestCreature` as the initial value:
 
 ```ts
 sea.reduce((result, _) => result, deadliestCreature)
-// returns deadliestCreature
+// returns the deadliestCreature -> '🦐'
 ```
 
-If you only return the result, there's no computation the `current` value is not used hence the `_` name.
+In this example, if you only return the result, there's no computation the `current` value is not used hence the `_` name.
 (not to be confused with [lodash][4] or [underscore][5] libraries).
 In the end nothing happens and the result is the initial value: `deadliestCreature`.
 
-If you don't set the initial value, result will be the first element of the array.
+If you don't set the initial value, result will be the **first** element of the array.
 
 ### Reduce array to a value
 
@@ -65,7 +65,7 @@ if there are any deadly animal in the sea:
 
 ```ts
 const isDangerous = sea.reduce((a, b) => a || b.deadly, false);
-// returns true because the deadly 🦐 is in the "sea" 
+// returns true because there is a deadly 🦐 is in the "sea" 
 ```
 
 The `b` is the current creature and the `a` can be viewed as:
@@ -97,10 +97,12 @@ Something that can't be done with a [map][6] function
 
 ```ts
 const reducedCreatures = sea.reduce((result, creature) => {
-  return creature.deadly ?
-    { ...result, deadly: [...result.deadly, creature] } :
-    { ...result, safe: [...result.safe, creature] }
-}, { deadly: [] as SeaCreature[], safe: [] as SeaCreature[] });
+    return creature.deadly ?
+      { ...result, deadly: [...result.deadly, creature] } :
+      { ...result, safe: [...result.safe, creature] }
+  },
+  { deadly: [] as SeaCreature[], safe: [] as SeaCreature[] }
+);
 ```
 
 In this case we transform an array based on the attribute of its values (that are `SeaCreature` objects).
@@ -111,9 +113,10 @@ declare the type of the result and create the reducer function such as:
 
 ```ts
 type DeadlySafe = { deadly: SeaCreature[], safe: SeaCreature[] };
+
 const creatureReducer = (result: DeadlySafe, creature: SeaCreature) => creature.deadly ?
-  { ...result, deadly: [...result.deadly, creature] } :
-  { ...result, safe: [...result.safe, creature] };
+  { ...result, deadly: [...result.deadly, creature] } 
+  : { ...result, safe: [...result.safe, creature] };
 ```
 
 Now it will be much simpler to read:
@@ -164,9 +167,9 @@ Find out more about the notation used in a previous article about [javascript ES
 Or you can achieve the same result with a map instead:
 
 ```ts
-const groupedCreatures = sea.reduce((typedCreatures, creature) =>
-    typedCreatures.set(creature.type, [...typedCreatures.get(creature.type) || [], creature]),
-  new Map());
+const groupedCreatures = sea.reduce((typedCreatures, creature) => {
+    typedCreatures.set(creature.type, [...typedCreatures.get(creature.type) || [], creature])
+  }, new Map());
 ```
 
 Where you will be able to get the fish by doing `groupedCreatures.get('fish')`. 
