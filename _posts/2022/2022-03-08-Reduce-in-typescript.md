@@ -18,7 +18,7 @@ For our examples let's create a small array with some objects:
 
 ```ts
 export const sea: SeaCreature[] = [
-  { emoji: '🦐', deadly: true, type: 'crustacean' }
+  { emoji: '🦐', deadly: true, type: 'crustacean' },
   { emoji: '🐡', deadly: false, type: 'fish' },
   { emoji: '🐠', deadly: false, type: 'fish' },
   { emoji: '🦈', deadly: false, type: 'shark' },
@@ -74,7 +74,7 @@ The `b` is the current creature and the `a` can be viewed as:
 const isDangerous = sea[0].isDeadly || sea[1].isDeadly || ... || sea[sea.length - 1].isDeadly 
 ```
 
-If there is nothing in the see, it will return false, but as soon as one element is deadly `b.deadly`,
+If there is nothing in the sea, it will return false, but as soon as one element is deadly `b.deadly`,
 then it will return true.
 
 #### Sum of elements in an array
