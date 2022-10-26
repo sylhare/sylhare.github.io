@@ -133,24 +133,21 @@ Since JWT is mostly an application token; the client and App could be both API's
 <div class="mermaid">
 sequenceDiagram
   participant C as Client
-  participant A as App
   participant S as Authorization <br> Service
+  participant A as App
 
-  C ->> S: Use Client credentials `/oauth2/token`
+  C ->> S: Use Client credentials /oauth2/token
   Note right of S: Validates Client ID and Secret
   S ->> C: Send access token valid 24hrs
   loop Refresh JWT
-    C ->> S: Request JWT using<br> access token in header `/authorize`
+    C ->> S: Request JWT using<br> access token in header /authorize
     S ->> C: Send JWT valid 5min
-    activate S
-    A ->> C: Returns JWT 
   end 
-  C -->> A: Access API using JWT via `/api/v1/endpoint`
+  C -->> A: Access API using JWT via /api/v1/endpoint
   A -->> S: Check JWT (validity, permissions)
   S -->> A: JWT is valid
   Note right of S: After expiration the JWT <br> needs to be refreshed
   A -->> C: Returns API results
-  deactivate S
 </div>
 
 So the JWT obtained here is used for both authentication following [OpenID]'s protocol, as you don't need to log
