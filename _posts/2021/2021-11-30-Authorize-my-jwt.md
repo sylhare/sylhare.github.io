@@ -12,14 +12,18 @@ tags: [misc]
 [OAuth][5] stands for _Open Authorization_, it's a protocol that uses token instead of password to securely exchange information
 on the internet.
 When you log in to a website using your Google, Facebook, Microsoft or Apple account, you are not sharing your password,
-yet you can connect to the website and share some of your profile information. It's all thanks to OAuth.
+yet you can connect to the website and share some of your profile information. It's all thanks to [OpenID] for the
+authentication part and [OAuth][6] protocol for the authorization.
+
+_Authentication_ is to check who you say you are and _Authorization_ is to check what you have access to. Usually 
+unauthenticated users have limited access to resources and APIs. That's why both concepts are pretty mixed within OAuth.
 
 There was a bit of [controversy][5] between OAuth 1.0 and [OAuth 2.0][4] (more complex than OAuth 1.0 for simple use case),
 but now that the newest version is the enterprise standard, that's the one we'll be focusing on.
 
-### The token
+### The token(s)
 
-So OAuth is the protocol that defines how [tokens][6] should be transferred.
+So OAuth is the protocol that defines how [tokens][6] should be transferred for the authorization.
 Obviously they need to be kept secret, encrypted and sent over HTTPS.
 The tricky part is to make sure you can verify that token, so that you maintain interaction with your API and resources
 secured. So you'll need special [tokens][1] for that.
@@ -32,9 +36,9 @@ Then you have the [ID token][1], which is application specific which pass along 
 allow the API to perform certain action on the user's behalf. It's confusing.
 Those are usually [JSON Web Token][10] (JWT) standard defined in [RFC 7519][9].
 
-### ID Token: WT
+### ID Token: JWT
 
-A [JWT][2] also pronounced <code class='unknown'>"jowt"</code>, is composed of three parts divided by dots.
+A [JWT][2] also pronounced <code class='unknown'>"jot"</code>, is composed of three parts divided by dots.
 It holds all the information necessary for its verification, a _header_, a _payload_ and it's self-signed signature:
 
 ```shell
@@ -119,35 +123,40 @@ On verification, you check that the signature and the content are matching.
 
 ### Call flow
 
-After all the theory, let's have a look in the call flow. This is an [example][7] where you first get an access token,
-as defined earlier, then you get a JWT ID token to access the API function subsequently.
+After all the theory, let's have a look in the call flow. This is an [example][7] where you first get an access token, 
+then you get a JWT ID token to access the API function subsequently.
+In this example the access token is obtained via client credentials (different from the authentication credential), this
+is mainly used for machine-to-machine communication.
 
 Since JWT is mostly an application token; the client and App could be both API's, one calling the other.
 
 <div class="mermaid">
 sequenceDiagram
-  participant C as client
+  participant C as Client
   participant A as App
   participant S as Authorization <br> Service
 
-  C ->> A: Authenticated request
-  A ->> S: Use credential to get access token <br> for user specific permission
-  Note right of S: Validates credentials
-  S ->> A: Send access token valid 12hrs
+  C ->> S: Use Client credentials `/oauth2/token`
+  Note right of S: Validates Client ID and Secret
+  S ->> C: Send access token valid 24hrs
   loop Refresh JWT
-    C ->> A: Request JWT
-    A ->> S: Request a JWT using access token
-    S ->> A: Send JWT valid 5min
+    C ->> S: Request JWT using<br> access token in header `/authorize`
+    S ->> C: Send JWT valid 5min
     activate S
     A ->> C: Returns JWT 
   end 
-  C -->> A: Access API using JWT
+  C -->> A: Access API using JWT via `/api/v1/endpoint`
   A -->> S: Check JWT (validity, permissions)
   S -->> A: JWT is valid
   Note right of S: After expiration the JWT <br> needs to be refreshed
   A -->> C: Returns API results
   deactivate S
 </div>
+
+So the JWT obtained here is used for both authentication following [OpenID]'s protocol, as you don't need to log
+in again to interact with the App.
+But also [OAuth][4] which is tied to the authentication process, because the JWT also holds some authorization 
+information from the access token.
 
 ### Explanation
 
@@ -156,46 +165,41 @@ Those are simplified examples for this context.
 
 #### Access token call flow
 
-To get he _access token_, you would need to request it to the authorization server at `POST /oauth2/token?`, which is
+To get the _access_token_, you would need to request it to the authorization server at `POST /oauth2/token`, which is
 a standard looking [OAuth][4] compliant endpoint:
 
 ```json
 {
-  "headers": {
-    "Authorization": "Basic bXktY2xpZW50LWlkOm15LWNsaWVudC1zZWNyZXQ="
-  },
   "body": {
+    "client_id": "my-client-id",
+    "client_secret": "my-client-secret",
     "grant_type": "client_credentials",
-    "scopes": "application.resources.read",
+    "scope": "application.resources.read"
   }
 }
 ```
 
 Let's look at the body, we directly see [grant_type][12] which correspond to the way you'll get the access token 
 (there are multiple grant types).
-Here it's set to `client_credentials`, meaning you'll use your client id and secret to get it.
-
-There's also the [scopes][13], which we talked about previously which define the permission you're requesting with this
-access token. You usually want your token(s) with only the strict limited amount of right for what is needed.
-
-Now if we look at the headers, we see the `Authorization` one. The little `basic` means that it's an encoded Base64
-authentication id and secret also called as [basic access authentication][14] (Basic auth).
-In our case the encoded message is the `client_id` and `client_secret` such as:
-
-```json
-{
-  "client_id": "my-client-id",
-  "client_secret": "my-client-secret"
-}
-```
+Here it's set to `client_credentials`, meaning you'll use your client id and secret to get it. This is the `client_id`
+and `client_secret` specified there.
+We can also use another flow and pass the client credentials encoded in Base64 in the Header (Also called via
+BasicAuth aka [basic access authentication][14]).
 
 The [client id and secret][15] belongs to the client / application, they were probably generated on account creation, or
-through a setting to create an OAuth client in the App. They are used to authenticating into the App.
+through a setting to create an OAuth client in the App. They are used to authenticating into the App and get the 
+authorization JWT token.
+
+There's also the [scope][13], which we talked about previously which define the permission you're requesting with this
+access token.
 
 Once processed, you should retrieve an [access token][7] response such as:
 
 ```json
-{ "accessToken": "MTQ0NjJkZmQ5OTM2NDE1ZTZjNGZmZjI3" }
+{
+  "token_type": "Bearer",
+  "access_token": "MTQ0NjJkZmQ5OTM2NDE1ZTZjNGZmZjI3"
+}
 ```
 
 There could be more field, depending on the type of access token, or how it has been implemented.
@@ -206,7 +210,7 @@ Now that you have your access token, you want to get an ID token such as a JWT t
 
 ### Request
 
-To get a [JWT][10] you would make a request to a standard looking [OAuth][4] compliant `/api/v1/authorize` endpoint with 
+To get a [JWT][10] you would make a request to a standard looking [OAuth][4] compliant `/authorize` endpoint with 
 your access token that you have just received.
 The authorization server will compare that access token with the one on memory and if it matches send you back your JWT.
 In this system, the "_authorize_" endpoint would act as both to give and [refresh][15] the JWT using the same access token.
@@ -222,7 +226,7 @@ In this system, the "_authorize_" endpoint would act as both to give and [refres
 {% endraw %}
 
 Once processed you should receive a JWT, the same way you received the previous _access token_. But this time you can 
-use your JWT to directly call the APP!
+use your JWT to directly call the App!
 Let's send a request `GET /api/v1/endpoint` of the APP to get some resources:
 
 {% raw %}
@@ -238,8 +242,9 @@ Let's send a request `GET /api/v1/endpoint` of the APP to get some resources:
 ```
 {% endraw %}
 
-As before the JWT is a `Bearer` token as defined in [OAuth RFC 6750][8], the request got authenticated successfully.
-We are now able to interact securely with the App.
+As before the JWT is a `Bearer` token as defined in [OAuth RFC 6750][8], the request got authorized successfully.
+We are now able to interact securely with the App. This is because our JWT is both authenticating and authorizing us
+to access the API and its resources in this context.
 
 
 [1]: https://auth0.com/docs/security/tokens
@@ -257,3 +262,6 @@ We are now able to interact securely with the App.
 [13]: https://auth0.com/docs/configure/apis/scopes
 [14]: https://en.wikipedia.org/wiki/Basic_access_authentication
 [15]: https://auth0.com/docs/security/tokens/refresh-tokens/use-refresh-tokens
+[16]: https://auth0.com/docs/authenticate/protocols/oauth
+[17]: https://auth0.com/docs/secure/tokens/json-web-tokens/validate-json-web-tokens
+[OpenID]: https://openid.net/connect/
