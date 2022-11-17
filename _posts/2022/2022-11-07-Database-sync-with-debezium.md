@@ -122,14 +122,16 @@ mysql -h 127.0.0.1 -P 3306 -u root -p
 ```
 
 And here are the commands to run, first to enable password-based authentication for the debezium user, then to grant the
-necessary permissions to manage the db's data.
+[necessary permissions] to manage the db's data.
 ```sql
 ALTER USER debezium IDENTIFIED WITH mysql_native_password BY 'password';
 
-GRANT SHOW DATABASES ON *.* TO debezium;
+GRANT RELOAD, SHOW DATABASES, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO debezium;
 GRANT SELECT, INSERT, UPDATE, DELETE ON company.* TO debezium;
 ```
 
+For the writes requested most of them are to perform a snapshot of the DB and the `REPLICATION` ones are to be able to 
+read the binlog.
 let's create the database and table:
 
 ```sql
@@ -194,6 +196,14 @@ curl --location --request POST 'http://localhost:8083/connectors' \
 --data @source.json
 ```
 
+Once correctly added, you chan check the status of the connector using its name:
+
+```bash
+curl http://localhost:8083/connectors/{connector name}/status
+```
+
+The connector's name is defined in the json file with the configuration, they need to be unique. The endpoint will let
+you know if the connector is _running_, _paused_ or _degraded_ with some information about its status.
 If you need to remove it, use the connector's name from the configuration file and send a DELETE request such as:
 
 ```bash
@@ -244,7 +254,8 @@ important ones:
 - `topic.prefix`: Will be put at the beginning of the topic for each sync events such as:
   - Topic by default **{prefix}.{db name}.{db column}**
 
-There's also a part where you can define more information about the Kafka connection, but we don't need it in this example.
+There's also a part where you can define more information about the Kafka connection, 
+but we don't need it in this example, but you can have a look in the well-made [confluent documentation].
 
 #### Connector Sink
 
@@ -306,4 +317,6 @@ kafka events on data change that could be done automatically.
 [debezium/connect]: https://hub.docker.com/r/debezium/connect
 [Mongo sink connector]: https://www.mongodb.com/docs/kafka-connector/current/sink-connector/
 [change data capture]: https://en.wikipedia.org/wiki/Change_data_capture
-[Kubernetes KafkaCOnnector]: https://debezium.io/documentation/reference/stable/operations/kubernetes.html#_creating_a_debezium_connectoo
+[Kubernetes KafkaConnector]: https://debezium.io/documentation/reference/stable/operations/kubernetes.html#_creating_a_debezium_connectoo
+[necessary permissions]: https://debezium.io/documentation/reference/0.10/connectors/mysql.html#create-a-mysql-user-for-the-connector
+[confluent documentation]: https://docs.confluent.io/kafka-connectors/debezium-mysql-source/current/mysql_source_connector_config.html#debezium-mysql-source-connector-configuration-properties
