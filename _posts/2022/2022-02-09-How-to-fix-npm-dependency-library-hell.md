@@ -8,7 +8,7 @@ tags: [js]
 ### Some context
 
 NodeJS ecosystem is built on top of countless packages that sometime feels all dependent on each other. Usually you
-start up a project with all up to date dependencies everything works well.
+start up a project with all up-to-date dependencies everything works well.
 
 Then you get security alerts, vulnerability issues and all sort of incentive making you update the packages whenever you
 get prompted to do so by some [dependabot][1] 🤖. Until a point where the newer version introduce a breaking change, or
@@ -21,9 +21,19 @@ you've just end up in the dependency hell.
 ### Audit
 
 Npm has an audit functionality that can be used to identify which packages are responsible for the vulnerabilities. The
-easy fix is to use the `npm audit --fix` which will look for updates that can be updated to fix those automatically.
+easy fix is to use the `npm audit fix` which will look for updates that can be updated to fix those automatically.
 
-But those are usually already fixed or not the real problem.
+You don't have to blindly update everything at once just to realize that everything is now broken, take is step by step
+one vulnerability at a time using:
+
+```shell
+npm update {dependency}
+```
+
+This way you'll be able to update the dependency to the latest version that is not a breaking change, run the tests, 
+build and compile if you are using typescript and make sure everything is still ok.
+
+But that's to avoid the problems 😈 so let's see how to identify the problems when things start breaking.
 
 ### Check your package.json and package-lock.json
 
@@ -78,7 +88,10 @@ changes.
 To see what's directly installed use the [listing command][3] of npm:
 
 ```bash
+# List all packages
 npm list
+# Check one package
+npm view {package}
 ```
 
 This will show you precisely what has been installed. It will also warn you if something is missing or invalid.
@@ -93,6 +106,9 @@ Meaning your project won't build or some tests will fail In those case you shoul
   - Update dependencies breaking to a version where their dependency matches the installed package's version  
 - _What are the breaking changes coming with it?_
   - Implement the recommended update from the package's documentation
+
+When using yarn, the `npm update` equivalent is `yarn upgrade`, different name, same behaviour. But don't mix yarn and
+npm when updating your packages, stick with one.
 
 Also, if you have two dependencies using two different major versions, you might be able to resolve on a version, but
 your project may not behave like expected.
@@ -110,7 +126,7 @@ with re-installing the node modules.
 
 For that use the [--package-lock-only][5] arguments when installing:
 
-```js
+```shell
 npm i --package-lock-only
 ```
 
@@ -122,8 +138,15 @@ You are cursed!! Don't go into desperation _Why only me!?_, let's try something.
 Now that the project have been updated, and it works for everybody but you 🥲. You might just have messed up
 everything on your PC, don't worry though, it won't stay like that forever.
 
-Copy over the matching `package.json` and `package-lock.json` from a trusted friend from whom it is working
-and run:
+Using git, if you have modified the package* files on your local machine, just discard the changes and fetch the 
+latest working version:
+```
+git checkout package-lock.json
+git checkout package.json
+```
+
+Without git 💀 ...ahem, here copy over the matching `package.json` and `package-lock.json` from a trusted friend 🌞
+from whom it is working and run:
 
 ```
 npm ci
@@ -170,3 +193,4 @@ with npm v7+ the peer dependencies are installed automatically.
 [4]: https://docs.npmjs.com/cli/v8/commands/npm-ci
 [5]: https://docs.npmjs.com/cli/v8/commands/npm-install#description
 [6]: https://nodejs.org/en/blog/npm/peer-dependencies/
+[7]: {% post_url 2022/2022-05-18-Version-control-git %}
