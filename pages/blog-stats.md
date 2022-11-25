@@ -46,7 +46,7 @@ Let's see which month of the year I am the most productive over the years:
 <canvas id='stacked-bar-date-js' class='chart'></canvas>
 
 It does have a curve from the more to less active! The busiest months are not necessarily the ones I would have expected.
-Can't always be writing apparently. 😛
+Can't always be writing, apparently. 😛
 
 ### Hot topics of the years
 
@@ -70,7 +70,8 @@ As I write randomly about things that I come across, the content is a bit divers
 
 ### Content growth
 
-Another view of the activity of the blog, this time accounting the amount of words.
+Another view of the activity of the blog, this time accounting the average amount of words (the number of word is
+divided, so it would fit in the chart).
 
 <canvas id='bubble-js' class='chart'></canvas>
 

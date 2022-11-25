@@ -72,7 +72,7 @@ From the payload you can clean get the data that looks like:
 ```
 
 There are more information like the post's title and amount of words, but they are not used here.
-Then you process it to extract the tags such as:
+Then you can process it to extract the tags such as:
 
 ```js
 const tags = (data) => Object.entries(data.posts.reduce((result, item) => ({
@@ -82,12 +82,53 @@ const tags = (data) => Object.entries(data.posts.reduce((result, item) => ({
 ```
 
 The result is a list of tag with their associated list of posts.
-Now let's have a look at the stats' graph.
+This makes it much easier to use when wanting to create some charts around it.
 
-## Pop the charts
+### Pop the charts
 
-To make it visually clear, the data is also represented using [chart.js](https://www.chartjs.org/).
+To make it visually clear, the data is also represented using [chart.js].
 Basically it fetches the json created by liquid with all the data then it transforms it to match the data format library.
+
+I am not going to expand too much on how to create charts with [chart.js], I used some methods to abstract the 
+transformation into the library dataset format:
+
+```js
+function printRadar(out) {
+    new Chart(
+        document.getElementById('radar-js').getContext('2d'),
+        radarConfig(radarData(postsPerTag(tags(out))))
+    );
+}
+```
+
+This method is called when loading the page via a script, we also have the library imported in the page using:
+
+```html
+{% raw %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js" integrity="sha256-uVEHWRIr846/vAdLJeybWxjPNStREzOlqLMXjW/Saeo=" crossorigin="anonymous"></script>
+<script src="{{ 'assets/js/stats.js' | relative_url }}"></script>
+{% endraw %}
+```
+
+As you can see the script called "stats.js" is located in my jekyll assets folder, so I can access it and pass it 
+in the source attribute to be loaded. 
+
+To display the charts within my own articles I use Jekyll, I use a HTML snippet with the same class name as the one I 
+defined in the chart function: 
+
+```html
+<canvas id='radar-js' class='chart'></canvas>
+```
+
+And voilà! The charts are now alive and visible in the page. There's also a bit of handling in the script in case the 
+library doesn't work in the browser or something fail to display an error message on the page with javascript.
+
+## Final result
+
+At first there was no dedicated page, but then since it's so fun to look at I create one on the menu bar for easy access,
+you can find here some information on the graph and how they were creating still.
+
+Find them all as well in the [**stats**]({{ "/stats" | relative_url }}) page.
 
 <div><blockquote id="error-chart" style="display: none"></blockquote></div>
 
@@ -109,8 +150,9 @@ It's a good indicator to see the actual blogging activity on the site.
 
 <canvas id='mixed-js' class='chart'></canvas>
 
-You can see the growth rate of article with the line compared to the year's productivity with the bar.
-For now, it is steadily growing, as long as I have topics that fuels my motivation 😁 hopefully I will keep it up.
+This graph is composed of two datasets one for a bar graph for the amount of article per year and the other one is a
+line graph for the cumulative amount of articles throughout the years.
+Mixed graph is easy and does provide some insight like in here for the trend of new articles.
 
 ### Content growth 
 
@@ -118,9 +160,18 @@ Another view of the activity of the blog, this time accounting the amount of wor
 
 <canvas id='bubble-js' class='chart'></canvas>
 
-Some topic may need fewer words than others, as long as you keep writing and make article it's worth it! 📝
-Most of the articles are either a memory help for me, or an exercise to better understand the subject.
-It's never perfect, I often come back to old articles to fix typos and try to improve them.
+For this one here is the dataset:
+
+```js
+const dataset = years(out).map((item) => ({
+    x: item.year,
+    y: item.posts.length,
+    r: Math.floor(item.posts.map(p => parseInt(p.words) / 50).reduce((a, b) => a + b) / item.posts.length)
+}));
+```
+
+Dividing the amount of words per 50 so that it doesn't become too ginormous in the page. The average is close to 1k for 
+all article as of now which is relatively big in terms of the bubble's pixel radius.
 
 ### Hot topics of the years
 
@@ -128,8 +179,10 @@ To check the evolution of the topics happening over the years:
 
 <canvas id='stacked-bar-js' class='chart'></canvas>
 
-You can see, that Kotlin greatly started to inspire me in 2019, and that java, python and javascript have been some of my most recurring topics.
-I put in the `other` category all tags with less than 2 articles in it and the `misc` so that the graph doesn't get too cluttered.
+I put in the `other` category all tags with less than 2 articles in it and any article that were tagged with `misc` 
+(which is for miscellaneous, for a collection of different kind of article) so that the graph doesn't get too cluttered.
+On this stacked bar, I used one color per tag using an array so that I can personally choose which color to assign to each
+tag.
 
 ### Months' articles distribution
 
@@ -137,12 +190,14 @@ Let's see which month of the year I am the most productive over the years:
 
 <canvas id='stacked-bar-date-js' class='chart'></canvas>
 
-It does have a curve from the more to less active! The busiest months are not necessarily the ones I would have expected.
-Can't always be writing apparently. 😛
+I used a stacked bar diagram with a color grade for each year, as the years pass the color loop will restart.
+Each stack is the added value of number of article in that month per year.
 
-I used some color schemes from [nagix/chartjs-plugin-colorschemes](https://nagix.github.io/chartjs-plugin-colorschemes/colorchart.html), check the css [here](https://github.com/nagix/chartjs-plugin-colorschemes/blob/master/src/colorschemes/colorschemes.tableau.js).
-As to why those graphs instead of other, well just for fun and to try out the [chart.js](https://www.chartjs.org/) possibilities. 🙃
+I used some color schemes from [nagix/chartjs-plugin-colorschemes](https://nagix.github.io/chartjs-plugin-colorschemes/colorchart.html), 
+check the css [here](https://github.com/nagix/chartjs-plugin-colorschemes/blob/master/src/colorschemes/colorschemes.tableau.js).
+As to why those graphs instead of other, well just for fun and to try out the [chart.js] possibilities. 🙃
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@3.2.1/dist/chart.min.js" integrity="sha256-uVEHWRIr846/vAdLJeybWxjPNStREzOlqLMXjW/Saeo=" crossorigin="anonymous"></script>
 <script src="{{ 'assets/js/stats.js' | relative_url }}"></script>
 
+[chart.js]: https://www.chartjs.org/

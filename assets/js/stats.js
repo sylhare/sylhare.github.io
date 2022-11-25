@@ -90,7 +90,7 @@ function printBubble(out) {
     const dataset = years(out).map((item) => ({
         x: item.year,
         y: item.posts.length,
-        r: item.posts.map(p => Math.floor(parseInt(p.words) / 500)).reduce((a, b) => a + b)
+        r: Math.floor(item.posts.map(p => parseInt(p.words) / 50).reduce((a, b) => a + b) / item.posts.length)
     }));
 
     new Chart(
