@@ -11,6 +11,26 @@ up within your project.
 Let's dive a bit further with some interesting cases and advanced features that jest has to offer. If I didn't talk 
 about your favourite jest feature, let me know in the comment 🧡
 
+### Timeout and retries
+
+When testing asynchronous connection or with weird setup you may encounter flaky tests which will fail in the pipeline
+due to timeout issues (jest's default timeout is 5seconds) or because the test is flaky by design.
+
+The ideal solution would be to spend the required amount of time and fix the codebase and its tests, but that's not 
+always possible or realistic. In those occasion you can use:
+
+```js
+jest.retryTimes(3);
+jest.setTimeout(10000);
+describe('', () => {
+  // your tests
+})
+```
+
+A bit like annotation to add above a `describe` like in the example to extend the timeout from 5seconds to 10 and 
+retry up to 3 times in case there's a test failing in the suit.
+That's some ducktape 🦆 but it does the job when you need to patch stuff quickly.
+
 ### `toBe` vs `toEqual`
 
 This one, is not really an advanced feature, but can give you a hard time debugging when you don't know about it.

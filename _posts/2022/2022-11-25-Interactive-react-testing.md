@@ -5,7 +5,7 @@ color: rgb(2, 94, 115)
 tags: [js]
 ---
 
-Welcome into the React Testing part 2! If you miss out part 1, that because it is obnoxiously but simply named:
+Welcome into the React Testing part 2! If you've missed out part 1, that's because it is obnoxiously but simply named:
 "[Static React Testing][1]".
 In the previous article we talked about the library used, the setup and some basic API offered by the [testing library].
 So if you don't remember or want to check it out real quick, it's just [one click][1] away.
