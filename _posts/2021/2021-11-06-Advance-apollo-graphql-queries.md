@@ -7,7 +7,7 @@ tags: [graphql]
 
 In this article, we'll dive in some more advanced concepts for query types and resolvers.
 If you are still new, or would like to review the basics, 
-check out the [Apollo 🚀 and GraphQL]({% post_url 2021/2021-07-26-Apollo-and-graphql %}) article.
+check out the [Apollo 🚀 and GraphQL] article.
 
 ## Query Resolvers
 
@@ -206,3 +206,4 @@ documentation. For this particular problem, you can use the [_graphql-depth-limi
 [1]: https://www.apollographql.com/docs/apollo-server/data/resolvers/ "resolver"
 [2]: https://www.apollographql.com/docs/federation/enterprise-guide/graph-security/#limit-query-depth "Apollo doc pbs"
 [3]: https://www.npmjs.com/package/graphql-depth-limit "graphql-depth-limit"
+[Apollo 🚀 and GraphQL]: {% post_url 2021/2021-07-26-Apollo-and-graphql %}

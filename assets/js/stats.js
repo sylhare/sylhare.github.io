@@ -102,7 +102,7 @@ function printBubble(out) {
 function bubbleData(dataset) {
     return {
         datasets: [{
-            label: 'Posts number / year / size',
+            label: 'Posts year / number / average size',
             data: dataset,
             backgroundColor: 'rgb(255, 99, 132)'
         }]
