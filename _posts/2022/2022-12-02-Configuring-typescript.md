@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Configuring Typescript
-color: rgb(39, 64, 59)
+color: rgb(18, 89, 71)
 tags: [js]
 ---
 
