@@ -139,7 +139,7 @@ extend type Query {
 }
 ```
 
-The `eepresentations` is the type name and the fields from the key directive, which can be anything hence the internal
+The `representations` is the type name and the fields from the key directive, which can be anything hence the internal
 `_Any` type. The `_Entity` type is a union of all the types in the Gateway. This definition is pretty generic and allow
 for multiple APIs implementation, so you can implement it for multiple types in multiple APIs.
 
