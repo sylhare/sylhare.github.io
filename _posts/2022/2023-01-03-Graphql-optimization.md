@@ -2,7 +2,7 @@
 layout: post
 title: GraphQL Optimization
 color: rgb(217, 7, 122)
-tags: [graphQL]
+tags: [graphql]
 ---
 
 You should already be familiar with [GraphQL][10] by now, but if you are still unsure about [queries][11] 
