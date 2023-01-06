@@ -13,9 +13,9 @@ jobs:
     strategy:
       matrix:
         node-version: [14.x]
-    
+
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -28,11 +28,11 @@ jobs:
     - name: Gulp default
       run: gulp
       continue-on-error: true
-      
+
     - name: Gulp create post
       run: gulp post -n 'Create a test post'
       continue-on-error: true
-      
+
     - name: Gulp thumbnails
       run: gulp thumbnails
       continue-on-error: true
