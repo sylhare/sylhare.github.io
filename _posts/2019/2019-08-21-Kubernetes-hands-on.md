@@ -136,9 +136,9 @@ spec:
 In service spec you can find the `type`, it can be either:
 
 - ClusterIP: Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from
-  within the cluster using the <NodeIP>, it is the default.
+  within the cluster using the `{NodeIP}`, it is the default.
 - NodePort: Exposes the service on each Node’s IP at a static port (the NodePort). You’ll be able to contact the
-  NodePort service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
+  NodePort service, from outside the cluster, by requesting `{NodeIP}:{NodePort}`.
 
 ### Deployment
 
