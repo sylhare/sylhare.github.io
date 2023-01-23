@@ -74,14 +74,15 @@ work in progress should be short, and you should control cycle time (time to do 
 work queue is the backlog for example
 lead time is how much work is in progress divided by average completion rate
 
-### XP Xtrem programming
+### XP Extreme programming
 
-XP Xtrem programming invented by .Kent.Beck mid 1990's is a Lightweight, Efficient, Low-Risk, Flexible, "predictable", Scientific and Fun discipline of software development. It leverages pair programming, pair negotiation. 
+XP (or _Xtrem programming_) invented by Kent Beck mid 1990's is a Lightweight, Efficient, Low-Risk, Flexible, "predictable", Scientific and Fun discipline of software development. 
+It leverages pair programming, pair negotiation. 
+
+> "Give faster results, right results, astonishing results"
 
 With self organizing, team are empowered and motivated by trust to their own decisions and commitment.
 It's consensus driven with constant constructive disagreement driving the team development and success.
-
->Give faster results, right results, astonishing results
 
 #### 5 core Values:
 
