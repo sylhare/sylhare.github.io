@@ -110,6 +110,8 @@ _"Simplicity is the ultimate sophistication."_
 
 ### KISS
 
+KISS: _"Keep it simple stupid"_
+
 A "backronym" for "keep it simple", meaning the acronym was created after the phrase was coined.
 For `KISS` to actually work, they suffixed _stupid_ to make it "_keep it simple, stupid!_".
 
