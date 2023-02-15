@@ -233,10 +233,12 @@ Let's examine have a look at the configuration for our MySQL source:
     "database.password": "password",
     "database.server.id": "101010",
     "database.server.name": "mysql",
+    "database.connectionTimeZone": "UTC",
     "database.allowPublicKeyRetrieval":"true",
     "topic.prefix": "db.sync",
     "schema.history.internal.kafka.bootstrap.servers": "broker:9092",
-    "schema.history.internal.kafka.topic": "db.sync._schema-history",
+    "schema.history.internal.skip.unparseable.ddl": "true",
+    "schema.history.internal.kafka.topic": "db.sync._schema_history",
     "database.include.list": "company",
     "table.include.list": "company.user",
     "column.include.list": "company.user.id, company.user.first_name, company.user.last_name"
