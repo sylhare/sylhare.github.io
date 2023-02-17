@@ -9,7 +9,7 @@ With Apollo Server, you can create an Apollo Federation for your GraphQL APIs.
 The pre-requisite for [federation] would be to have at least two different GraphQL APIs that you want to advertise under
 the same url. Or if you want to break down a big GraphQL schema into multiple small microservices.
 
-This feature is for scaling up your APIs, let's review how it works.
+This feature from Apollo GraphQL federation v1 is for scaling up your APIs, let's review how it works.
 
 ## Callflow
 
