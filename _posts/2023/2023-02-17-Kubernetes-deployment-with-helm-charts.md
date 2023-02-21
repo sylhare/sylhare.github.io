@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Kubernetes deployment ⎈ with Helm charts
-color: rgb(9, 28, 132)
+color: rgb(52, 102, 201)
 tags: [kubernetes]
 ---
 
