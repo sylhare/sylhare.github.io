@@ -9,6 +9,8 @@
 
 If you find a mistake, typo or want to comment on the blog let me know via an issue or pull request.
 
+You can also leave a comment on the article, I checked them from time to time.
+
 ### [Profile's](https://rahuldkjain.github.io/gh-profile-readme-generator/) stats
 
 <div>
