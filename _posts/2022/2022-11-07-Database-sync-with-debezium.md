@@ -2,7 +2,7 @@
 layout: post
 title: Database sync with Debezium
 color: rgb(110,201,152)
-tags: [database]
+tags: [open source]
 ---
 
 [Debezium] is an open source project. Once deployed and started it will capture change in data within a database
@@ -17,7 +17,7 @@ With Debezium, you can react on db changes and propagate those as events via kaf
 You could have application listening to those messages, but in our case we'll use it to synchronize two
 databases.
 
-### Connect
+### Kafka Connect
 
 Debezium is built on top of [Kafka Connect] which is a system for moving data with Kafka 
 using connectors.
@@ -55,11 +55,11 @@ data capture handler (cdc handler).
 Let's use a MySQL database as the source and a MongoDB as a destination for our example:
 
 <div class="mermaid">
-graph LR
-    MySQL -->|Debezium <br>detects changes| DC(MySQL <br>Connector Source)
-    DC -->|send changes on<br>topic: db.table| K(Kafka)
+flowchart LR
+    MySQL[(MySQL)] -->|Debezium <br>detects changes| DC(MySQL <br>Connector Source)
+    DC -->|send changes on<br>topic: db.table| K[Kafka]
     K -->|read on <br>topic: db.table| MS(Mongo <br>Connector sink)
-    MS -->|write <br>changes on| Mongo
+    MS -->|write <br>changes on| M[(Mongo)]
 </div>
 
 ## Implementation
