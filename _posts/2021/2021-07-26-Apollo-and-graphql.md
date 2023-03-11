@@ -8,7 +8,7 @@ tags: [graphql]
 Let's talk about [Graph QL](https://graphql.org/) which is a query language for an API. Meaning that contrary to normal
 REST APIS, with GraphQL APIs you can discover and query only the data you need form a single call.
 
-To implement a GraphQL API, let's use [Apollo server](https://www.apollographql.com/docs/apollo-server/) which is an
+To implement a GraphQL API, let's use [Apollo server](https://www.apollographql.com/docs/apollo-server/) (v2) which is an
 open source, spec-compliant GraphQL server. We'll have a look at the Apollo
 Server [getting started](https://www.apollographql.com/docs/apollo-server/getting-started/).
 
@@ -114,7 +114,7 @@ when building the response classes for typed languages like Kotlin or Java.
 
 Let's implement this `book` query in Typescript, for a javascript approach, check Apollo's docs
 on [resolvers](https://www.apollographql.com/docs/apollo-server/data/resolvers/). For the main steps to create
-the [application](https://github.com/sylhare/Apollo/blob/main/typescript/src/server.ts), first we will need to create an
+the [application](https://github.com/sylhare/Apollo/blob/main/typescript/), first we will need to create an
 ApolloServer:
 
 ```ts
