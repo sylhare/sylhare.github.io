@@ -5,7 +5,7 @@ color: rgb(190, 107, 191)
 tags: [graphql]
 ---
 
-If you are unfamiliar with GraphQL or Federation, click on the links and there should be enough content to get you up
+If you are unfamiliar with [GraphQL][10] or [Federation][11], click on the links and there should be enough content to get you up
 to speed for this topic.
 In this context we're working in a multi-services complex GraphQL environment with multiple subgraph using some
 new directives from Apollo Federation v2 (it's [backward compatible with v1][2] but the syntax has been updated). Let's have a 
@@ -181,3 +181,5 @@ on working. Try [Apollo Studio][5] or the [rover CLI][4].
 [3]: https://www.apollographql.com/docs/federation/entities/#referencing-an-entity-without-contributing-fields
 [4]: https://www.apollographql.com/docs/graphos/delivery/schema-checks/
 [5]: https://studio.apollographql.com/login?from=%2F
+[10]: {% post_url 2021/2021-07-26-Apollo-and-graphql %}
+[11]: {% post_url 2022/2022-10-11-Graphql-and-federation %}

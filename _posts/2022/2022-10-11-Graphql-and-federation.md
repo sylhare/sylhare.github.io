@@ -5,7 +5,7 @@ color: rgb(63,32,186)
 tags: [graphql]
 ---
 
-With Apollo Server, you can create an Apollo Federation for your GraphQL APIs. 
+With [Apollo Server], you can create an Apollo Federation for your GraphQL APIs. 
 The pre-requisite for [federation] would be to have at least two different GraphQL APIs that you want to advertise under
 the same url. Or if you want to break down a big GraphQL schema into multiple small microservices.
 
@@ -202,3 +202,4 @@ recommended [best practices] to deploy and mange your federated schema.
 [Apollo Router]: https://www.apollographql.com/docs/router/
 [rover]: https://www.apollographql.com/docs/federation/managed-federation/federated-schema-checks
 [best practices]: https://www.apollographql.com/docs/federation/managed-federation/deployment
+[Apollo Server]: {% post_url 2021/2021-07-26-Apollo-and-graphql %}
