@@ -7,6 +7,8 @@
 
 ### Blog's content
 
+Checkit out!
+
 If you find a mistake, typo or want to comment on the blog let me know via an issue or pull request.
 
 You can also leave a comment on the article, I checked them from time to time.
@@ -19,3 +21,6 @@ You can also leave a comment on the article, I checked them from time to time.
 </div>
 
 [![trophy](https://github-profile-trophy.vercel.app/?username=sylhare&row=1&column=8)](https://github.com/ryo-ma/github-profile-trophy)
+
+
+
