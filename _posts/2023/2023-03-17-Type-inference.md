@@ -74,7 +74,7 @@ Why? Because the `contains` method on `Set` accept any `Object` and a `String` i
 A simple test would help find the problem, and in most case the IDE would highlight the code with a warning message
 such as:
 
-- From IntelliJ: _Set<Long>' may not contain objects of type 'String'_
+- From IntelliJ: _'Set&lt;Long&gt;' may not contain objects of type 'String'_
 
 So in all fairness even if the code compiles, the problems does not seem to be the inferrable type. Let's try it out in
 Kotlin by converting the code, here is what we have:
@@ -94,8 +94,8 @@ fun getId(): String {
 I am using Kotlin **1.4** and so far it seems to work and compile, however contrary to Java there's a warning by the 
 compiler:
 
-> Type inference failed. 
-> The value of the type parameter T should be mentioned in input types (argument types, receiver type or expected type). 
+> Type inference failed.<br> 
+> The value of the type parameter T should be mentioned in input types (argument types, receiver type or expected type).<br>
 > Try to specify it explicitly..
 
 Which is the same message as the warning my IDE gives, plus the special mention _This will become an error in Kotlin 1.5_,
@@ -136,11 +136,11 @@ const furby = {
 In this case _elmo_ will be considered as a `Toy` and if the interface change, then the object needs to change as well.
 Otherwise, you will get a typescript error such as:
 
-- TS2741: Property '...' is missing in type '{ ... }' but required in type 'Toy'
+- **TS2741**: _Property '...' is missing in type '{ ... }' but required in type 'Toy'_
   - When you add a new property on `Toy` but not on the object `elmo`
-- TS2345: Argument of type '{ ... }' is not assignable to parameter of type 'Toy'
+- **TS2345**: _Argument of type '{ ... }' is not assignable to parameter of type 'Toy'_
   - When you try to pass an untyped object literal that looks like a `Toy` but is not to a function that accept `Toy`.
-- TS2322: Type '{ ... }' is not assignable to type 'Toy'. Object literal may only specify known properties, and '...' does not exist in type 'Toy'.
+- **TS2322**: _Type '{ ... }' is not assignable to type 'Toy'. Object literal may only specify known properties, and '...' does not exist in type 'Toy'._
   - When you try to add a new property in a `Toy` typed object literal that is not on `Toy`.
  
 Even though it can be inferred, without types on object literal, it can quickly lead to error or compile-time errors.
@@ -206,7 +206,7 @@ bad design or bad usage from the user and not the feature or the language itself
 
 Depending on the language, there's no black and white answer, regarding type inference. It's a feature that do remove
 some redundancy and clutter in the code. However, there are some opposite views regarding those benefits, such as
-[Austin Henley][12] who argue the opposite and vouch for explicitness.
+Austin Henley who argue the opposite and vouch for [explicitness][12].
 However, I have to admit that without the IDE while reviewing PR on GitHub it can be harder to get the inferred type.
 I hope that at least to a degree when can agree that on a poor quality piece of code, type inference or not, fixing the
 design, the bad naming, bad whatever is the main factor to reduce cognitive load. 
