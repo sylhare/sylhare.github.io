@@ -125,6 +125,16 @@ Host key verification failed.
 ```
 
 You can remove the host from your `known_hosts` and try connecting. You will be prompted with `unkwon_host` and you'll
-need to add the new `fingerprint` to your `known_hosts`.
+need to add the new `fingerprint` to your `known_hosts`. However, you shouldn't do that if you don't know why this has
+happened.
 
-However, if you've seen that message above, you should think twice before doing that.
+For example, if the `remote host` is GitHub, they do [change their RSA SSH][1] from time to time for security reason.
+If that's the case you update your `known_hosts` by running this command:
+
+```bash
+ssh-keygen -R github.com
+```
+
+So scary messages like that do happen for legitimate reasons!
+
+[1]: https://github.blog/2023-03-23-we-updated-our-rsa-ssh-host-key/
