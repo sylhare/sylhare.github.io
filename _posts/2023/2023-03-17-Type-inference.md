@@ -177,7 +177,7 @@ find several rules in favour of type inference such as:
 - DON’T annotate inferred parameter types on function expressions.
   - _Anonymous functions are almost always immediately passed to a method taking a callback of some type. Dart infers the function’s parameter types based on the expected type_
 - DON’T write type arguments on generic invocations that are inferred.
-  - _ If an invocation’s type argument list is correctly inferred with the types you want_
+  - _If an invocation’s type argument list is correctly inferred with the types you want_
 
 There are more rules, but it goes really into the language details which might go beyond the point. However, I would like
 to nuance, type inference is recommended in places where it is known to help reduce visual clutter, it doesn't mean it
