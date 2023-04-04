@@ -164,7 +164,9 @@ inferable types makes it:
 
 Dan Vanderkam in his book [effective TypeScript][9] on how to use typescript _well_ goes even further by stating that 
 inferable types should be removed from your code to avoid cluttering. However, there are still some nuance where the
-type should still be specified even when it can be inferred (ex: For object literal).
+type should still be specified even when it can be inferred (ex: For object literal). In the Google Typescript 
+[style guide][13], type inference is left up to the author's choice and would be necessary only if it benefits readability
+on complex method calls.
 
 ### Dart
 
@@ -230,3 +232,4 @@ The [Dart guideline][7] is on that sense very complete, and while not all exampl
 [10]: https://kotlinlang.org/docs/faq.html#what-advantages-does-kotlin-give-me-over-the-java-programming-language
 [11]: https://kotlinlang.org/docs/basic-syntax.html
 [12]: https://austinhenley.com/blog/typeinference.html
+[13]: https://google.github.io/styleguide/tsguide.html#type-inference
