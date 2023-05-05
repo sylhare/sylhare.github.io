@@ -88,9 +88,10 @@ changes.
 To see what's directly installed use the [listing command][3] of npm:
 
 ```bash
-# List all packages
+# List all packages locally installed
 npm list
-# Check one package
+npm list {package} 
+# Show latest registry version
 npm view {package}
 ```
 
