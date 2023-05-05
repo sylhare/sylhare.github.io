@@ -26,7 +26,7 @@ export const sea: SeaCreature[] = [
 ];
 ```
 
-As you all know, the deadliest creature `deadliestCreature` is the 🦐 !
+As you all know, the deadliest creature `deadliestCreature` is the shrimp 🦐 !
 Now that you have that set up, you can start playing with reduce.
 
 ## Reduce examples
@@ -59,16 +59,18 @@ If you don't set the initial value, result will be the **first** element of the 
 
 ### Reduce array to a value
 
+#### From an array of objects
+
 Another usage, is when you want to reduce an array to one value.
 For example, if your program wants to know if it's safe to swim, it will want to know
-if there are any deadly animal in the sea:
+if there are any deadly animal in the sea (the name of our dataset):
 
 ```ts
 const isDangerous = sea.reduce((a, b) => a || b.deadly, false);
-// returns true because there is a deadly 🦐 is in the "sea" 
+// returns true because there is a deadly animal (🦐) in the "sea" 
 ```
 
-The `b` is the current creature and the `a` can be viewed as:
+The `b` is the current creature and the `a` is the result, `a` can be viewed as:
 
 ```ts
 const isDangerous = sea[0].isDeadly || sea[1].isDeadly || ... || sea[sea.length - 1].isDeadly 
@@ -90,10 +92,13 @@ array.reduce((a, b) => a + b); // 4
 Putting a default value `0` will make it go through another iteration.
 In here, `a` represents the sum and `b` the current element of the array.
 
-### Reduce array to an object
+### Reduce an array to an object
+
+When you have `[{ a: 'a1', b: 'b1' }, { a: 'a2', b: 'b2' }]` and you want `{ a: ['a1', 'a2'], b: ['b1', 'b2'] }`.
 
 The same way you can reduce an array to a value, you can do it to an object as well.
-Something that can't be done with a [map][6] function
+Something that can't be done with a [map][6] function. Let's use our sea data and convert that list of
+`SeaCreatures` into an object containing an array of the safe ones and an array of the deadly ones.
 
 ```ts
 const reducedCreatures = sea.reduce((result, creature) => {
@@ -214,6 +219,8 @@ of the name 👌
 
 Reduce is not that easy at first, but once you get the fundamentals, it can become a really
 powerful tool to achieve your goals. 😎
+Don't hesitate to leave a comment if you have other nice reduce example, one liner or any typescript
+syntax tricks that could be used!
 
 [1]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
 [2]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
