@@ -156,5 +156,5 @@ You don't want to build up too much inventory in terms of work item as the team 
 it when it comes to it, but you need to find a balance so there's always something to do.
 
 [10]: {% post_url 2015/2015-01-23-Working-with-agile %}
-[11]: {% post_url 2015/2015-11-10-Overview-Scrum-framework.md %}
+[11]: {% post_url 2015/2015-11-10-Overview-Scrum-framework %}
 [12]: {% post_url 2015/2015-12-13-What-is-a-user-story %}
