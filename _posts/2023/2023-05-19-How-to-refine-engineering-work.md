@@ -121,8 +121,8 @@ solution and make sure that:
 
 Pre-analysis on each step of the way makes it easy to create stories, have base information in the ticket which will
 help speed up the actual refinement process where the team reunites to decide on the work at hand for the next iteration.
-If you are still a bit puzzled, find out more about the [definition of ready][13] (to work on) 
-and [definition of done][13] to better prep your stories.
+If you are still a bit puzzled, find out more about the [definition of ready][12] (to work on) 
+and [definition of done][12] to better prep your stories.
 
 #### Iterative backlog refinement
 
