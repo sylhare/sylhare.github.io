@@ -131,7 +131,12 @@ For that use the [--package-lock-only][5] arguments when installing:
 npm i --package-lock-only
 ```
 
-Bear in mind that it is not synced with the already installed node modules.
+Bear in mind that it is not synced with the already installed node modules. You can also use [dedupe][7] command which 
+attempts to simplify the package structure by moving dependencies further up the tree when possible:
+
+```shell
+npm dedupe
+```
 
 ### Working for everyone but you
 
@@ -139,8 +144,9 @@ You are cursed!! Don't go into desperation _Why only me!?_, let's try something.
 Now that the project have been updated, and it works for everybody but you 🥲. You might just have messed up
 everything on your PC, don't worry though, it won't stay like that forever.
 
-Using git, if you have modified the package* files on your local machine, just discard the changes and fetch the 
+Using [git][10], if you have modified the package* files on your local machine, just discard the changes and fetch the 
 latest working version:
+
 ```
 git checkout package-lock.json
 git checkout package.json
@@ -194,4 +200,5 @@ with npm v7+ the peer dependencies are installed automatically.
 [4]: https://docs.npmjs.com/cli/v8/commands/npm-ci
 [5]: https://docs.npmjs.com/cli/v8/commands/npm-install#description
 [6]: https://nodejs.org/en/blog/npm/peer-dependencies/
-[7]: {% post_url 2022/2022-05-18-Version-control-git %}
+[7]: https://docs.npmjs.com/cli/v8/commands/npm-dedupe
+[10]: {% post_url 2022/2022-05-18-Version-control-git %}
