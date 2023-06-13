@@ -54,7 +54,12 @@ The inside your **package.json** you will need to specify the right dependencies
 ```
 
 The [typescript] package can be set as a dev dependencies since once built as javascript you won't need it to run your
-code. To build use the [tsc] command as is (or check the possible flags to fit your needs).
+code. To build use the [tsc] command as is, you can also use some flags to make it verbose with:
+
+```shell
+tsc -b -v 
+```
+
 Now you have the base pretty much set.
 
 ### Run typescript locally
