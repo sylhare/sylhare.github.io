@@ -5,7 +5,7 @@ color: rgb(214,58,255)
 tags: [js]
 ---
 
-We've been talking about authorization with [Jason Web Token][1] (JWT) [previously][10] so if you are not familiar with
+We've been talking about authorization with [Jason Web Token][1] (JWT) [previously][11] so if you are not familiar with
 the whole OAuth protocol, and the authorization process, it would be nice to get a refresher first.
 
 Not sure if you know enough, then let's test your knowledge and see if you know the answer to that question:
@@ -160,7 +160,7 @@ app.use(userValidator().unless(unlessOptions));
 
 In order to apply those middlewares to all routes, you need to use the `app.use` function before any path function like
 `app.get`. In our example the `/` path is not affected by the middlewares because it was created before the `app.use`.
-Now to test it, you can use some mock servers like [nock][10] for the jwks-rsa certificates and [supertest][12] to test the express
+Now to test it, you can use some mock servers like [nock][10] for the jwks-rsa certificates and [supertest][9] to test the express
 app endpoints.
 
 That's it, now you have your middleware in your application, with the `unless` function properly setup. This 
