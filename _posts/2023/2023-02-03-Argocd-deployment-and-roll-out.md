@@ -97,7 +97,7 @@ spec:
 
 In this example we have a custom smoke test docker image which will do the analysis for our guestbook app.
 You can also pass [args][6] in the metrics part that will be resolved when the analysis run. 
-Use `{{ args.name }}` for your args placeholder.
+Use `{% raw %}{{ args.name }}{% endraw %}` for your args placeholder.
 
 ### Sync hook
 
