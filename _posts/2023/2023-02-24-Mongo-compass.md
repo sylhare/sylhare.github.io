@@ -6,7 +6,7 @@ tags: [database]
 ---
 
 Let's talk about MongoDB queries, but first if you are not familiar with this Database, you can check this article which
-should answer your question [What is Mongo DB ⁉️][10]
+should answer your question [What is Mongo DB ⁉️][11]
 
 Now that you know the concept, you want to dig into your new database and explore its content. And for that we are going
 to use [MongoDB Compass][1] which is a free interactive tool for MongoDB by MongoDB.
@@ -40,6 +40,11 @@ your goal, you may want chose different queries. This is just an overview.
 When querying your data, you may be looking for ways to restrict the amount of result you get from a simple `find` 
 operation. And for that you have some useful filters that I like to use:
 
+- Looking for an exact value:
+  - Example: looking for the document having the field `year` to _1993_
+```shell
+{ year: { $eq: 1993 } }
+```
 - Looking for values that are not null:
   - Example: looking for the document having the field `place` not null
 ```shell
@@ -61,8 +66,8 @@ operation. And for that you have some useful filters that I like to use:
 { genres: { $in: ['Comedy', 'Animation'] } }
 ```
 
-Obviously there are more than those, but you should be able to cover the basics with [$ne][5], [$exists][6], [$regex][7] 
-and [$in][8] in your mongo query toolbox. 🧰
+Obviously there are more than those, but you should be able to cover the basics with [$eq][9], [$ne][5], [$exists][6], 
+[$regex][7] and [$in][8] in your mongo query toolbox. 🧰
 
 ## Aggregation
 
@@ -128,7 +133,7 @@ instruction I have the python code almost ready to use. You would still have to 
 That's a pretty cool feature, which gets even more interesting for typed languages like Java where you can't just
 straight up copy the aggregation json like function into your code for it to work.
 
-If you are having any performance issues, check the [how to optimize your query][9], it's most likely that you are 
+If you are having any performance issues, check the [how to optimize your query][11], it's most likely that you are 
 missing an index or using the wrong one.
 
 
@@ -140,5 +145,6 @@ missing an index or using the wrong one.
 [6]: https://www.mongodb.com/docs/v6.0/reference/operator/query/exists/
 [7]: https://www.mongodb.com/docs/v6.0/reference/operator/query/regex/
 [8]: https://www.mongodb.com/docs/v6.0/reference/operator/query/in/
-[9]: https://www.mongodb.com/docs/manual/tutorial/optimize-query-performance-with-indexes-and-projections/
-[10]: {% post_url 2018/2018-06-13-MongoDB %}
+[9]: https://www.mongodb.com/docs/manual/reference/operator/query/eq/
+[10]: https://www.mongodb.com/docs/manual/tutorial/optimize-query-performance-with-indexes-and-projections/
+[11]: {% post_url 2018/2018-06-13-MongoDB %}
