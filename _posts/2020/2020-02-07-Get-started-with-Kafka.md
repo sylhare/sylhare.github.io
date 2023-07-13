@@ -5,13 +5,13 @@ color: rgb(147, 85, 41)
 tags: [database]
 ---
 
-[Kafka ®](https://kafka.apache.org/) is part of the apache foundation and is described as a distributed streaming platform that
+[Kafka ®][1] is part of the apache foundation and is described as a distributed streaming platform that
 is used for building real-time data pipelines and streaming apps. 
 It is horizontally scalable, fault-tolerant, wicked fast, and runs in production in thousands of companies.
 
-![kafka logo](https://raw.githubusercontent.com/sylhare/kafka/master/logo.png)
+![kafka logo][2]
 
-> Check the Kotlin Kafka examples for developers at [sylhare/kafka](https://github.com/sylhare/kafka)
+> Check the Kotlin Kafka examples for developers at [sylhare/kafka][3]
 
 
 ## Introduction to Kafka Platform
@@ -31,6 +31,7 @@ written / read on the `Topic` will still be able to be processed by other `broke
 
 With no keys the messages or record will be sent to the partition using round-robin. 
 If there is a key, it will use this key to define the partition example:
+
 ```
 5 partition, message with key = 7 -> <key> mod( <partition> ) = 2 
 > Which mean message of key 7 will go to partition 2 in this case.
@@ -126,7 +127,8 @@ Depending on the configuration the record will be either:
 ### Stream API
 
 Kafka allows you to read all the records as stream and perform operation on them.
-That Stream API allows making even more performing consumers.
+That Stream API allows making even more performing consumers. You may not need the extra features in some cases.
+Unlike the consumer, you will need to set the `application.id` to identify your stream application.
 
 If you are familiar with java `stream()` or functional programming, then you know how
 powerful streams can be. 
@@ -135,7 +137,14 @@ powerful streams can be.
 
 Kafka don't do well with big files `message.max.bytes` is recommended to 1mb.
 Plain text is not very efficient, everything needs to be converted to text.
-We want to use a schema to structure the data.
+We may want to use a schema to structure the data that is stored in a registry and can be shared across the applications.
 
-Avro (another apache open source project) used for serialization of the data.
+There are multiple format available, but Avro (another apache open source project) is one of the most popular due to [confluent][4]
+who's selling registry solutions. Learn more about [Avro schema][5].
 It's like an optimized json, faster to process and more robust to change.
+
+[1]: https://kafka.apache.org/
+[2]: https://raw.githubusercontent.com/sylhare/kafka/master/logo.png
+[3]: https://github.com/sylhare/kafka
+[4]: https://docs.confluent.io/platform/current/schema-registry/fundamentals/serdes-develop/serdes-avro.html
+[5]: {% post_url 2021/2021-09-21-How-to-avro %}
