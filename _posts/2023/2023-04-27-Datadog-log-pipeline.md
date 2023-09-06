@@ -87,8 +87,15 @@ The rule can be modified for example, you can explicitly specify which separator
 We're still using `data`, but you can refer to the [documentation][5] for more specific data types like numbers, date, host...
 
 ```bash
+# Using this rule will transform the message
 rule %{data:user:keyvalue("=")}
-# Will transform
+```
+
+As an example for the message seen in the image that is `=` separated, using the above rule will transform
+it into a json object:
+
+```bash
+# into this json object
 {
   "user": {
     "user": "john",

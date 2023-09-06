@@ -118,6 +118,17 @@ you the ability to search through the files in the repo which can be handy to fi
 This functionality is referenced as the _File Finder_ received some [makeover][7], you can [customize][7] from which
 folder to look for using the `linguist` in the `.gitattributes`.
 
+By default, it ignores everything from the `vendor/` and `build/` folder, because it's usually external or generated code,
+not pertinent to search from.
+To mark the file `search/example.json` as a generated file to be ignored, add this line to `.gitattributes`:
+
+```bash
+search/example.json linguist-generated=true
+```
+
+And it won't show up in the search results. There's also a `linguist-vendored` you can use, checkout the [documentation][13].
+
+
 ### For Pull Requests
 
 #### Template
@@ -180,3 +191,4 @@ context on bigger file where it can become tedious to repeatedly click on the ex
 [10]: https://github.blog/2022-02-14-include-diagrams-markdown-files-mermaid/
 [11]: https://github.com/mermaid-js/mermaid#readme
 [12]: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/details
+[13]: https://docs.github.com/en/repositories/working-with-files/managing-files/customizing-how-changed-files-appear-on-github
