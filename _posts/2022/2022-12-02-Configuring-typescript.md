@@ -186,6 +186,28 @@ as types in the compiler options:
 
 Now by running `npm test`, you will be able to use jest and run your tests.
 
+#### Fix source mapping with ts-jest
+
+Since typescript is transpiled, on a failing test the line of code that jest is directing you to does
+not match the actual typescript line (because it is using the js line).
+To fix that and help you troubleshoot your test with more ease add this to your `jest.config.json` file:
+
+```json
+{
+  "preset": "ts-jest",
+  "globals": {
+    "ts-jest": {
+      "babelConfig": {
+        "sourceMaps": true
+      }
+    }
+  }
+}
+```
+
+I left the `preset` config in the above example, so you see at which level to put the `globals` one with the
+fix.
+
 #### With jest-extended
 
 If you have jest setup for typescript as described above, and you want to use [jest-extended] for additional jest matchers
