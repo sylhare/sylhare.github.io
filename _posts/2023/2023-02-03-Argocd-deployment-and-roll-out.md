@@ -6,10 +6,10 @@ tags: [open source]
 ---
 
 [ArgoCD][1] describes itself as a declarative tool for Kubernetes, the CD refers to the continuous delivery. It falls
-inside our devops toolbelt. 🛠
+inside our devops tool-belt. 🛠
 
 By [declarative][2], it means that ArgoCD will show you the expected state of your deployment without telling you what it
-did to make it happen. However, it's not black magic 🧙‍♂️ it will just be applying deployments, creating pods, 
+did to make it happen. However, it's not black magic 🧙‍♂️ it will just be applying deployments, creating pods,
 updating deployment, and so on to achieve the desired state.
 
 You may be familiar with its [dashboard][1]:
@@ -36,7 +36,7 @@ If you are not familiar with the terms:
 - **Canary Deployment**: Update one pod at a time, usually you direct a small percentage of the traffic to the pod with
   the new version and make sure the system is still health before proceeding.
   - Less cost impacting, less infrastructure to monitor and maintain, may cause downtime.
-- **Blue/Green Deployment**: Have a full replicat of the deployment and switch the traffic to the new one once fully tested. 
+- **Blue/Green Deployment**: Have a full replicat of the deployment and switch the traffic to the new one once fully tested.
   - Easy rollback, use as disaster recovery, more costly since you need both infra to run at the same time and can increase complexity
   to manage both.
 
@@ -61,12 +61,12 @@ spec:
 Here it's using a `prePromotionAnalysis` analysis that will check that the service is healthy before switching the traffic
 to it. If the service is degraded or do not meet the analysis run, the rollout is aborted.
 
-The [preview service][7] references the service that the analysis will be run against. The preview is at the latest version 
-of the service. The preview allows to have an endpoint to test the newest version of an application. 
+The [preview service][7] references the service that the analysis will be run against. The preview is at the latest version
+of the service. The preview allows to have an endpoint to test the newest version of an application.
 
 #### AnalysisTemplate and AnalysisRun
 
-An `AnlysisTemplate` is a custom argo cd resource that define how to perform the system's health analysis before a 
+An `AnlysisTemplate` is a custom argo cd resource that define how to perform the system's health analysis before a
 deployment. An `AnalysisRun` is an instantiation of the template, they are like a job that is run complete with a
 status "Successful", "Failed" or "Inconclusive".
 
@@ -96,7 +96,7 @@ spec:
 ```
 
 In this example we have a custom smoke test docker image which will do the analysis for our guestbook app.
-You can also pass [args][6] in the metrics part that will be resolved when the analysis run. 
+You can also pass [args][6] in the metrics part that will be resolved when the analysis run.
 Use `{% raw %}{{ args.name }}{% endraw %}` for your args placeholder.
 
 ### Sync hook
@@ -111,7 +111,7 @@ metadata:
     argocd.argoproj.io/sync-wave: "5"
 ```
 
-Lower values of wave are run first. But if we're talking about hook, you can set up a `PreSync` or `PostSync` hook which 
+Lower values of wave are run first. But if we're talking about hook, you can set up a `PreSync` or `PostSync` hook which
 will be run first or last. For example:
 
 ```yaml
