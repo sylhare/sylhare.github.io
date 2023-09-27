@@ -7,8 +7,6 @@ feature-img: "assets/img/pexels/wave.png"
 icon: "fas fa-chart-pie"
 ---
 
-
-
 <div><blockquote id="error-chart" style="display: none"></blockquote></div>
 
 Those graphs were made for test in the article [Generating my own jekyll blog stats]({% post_url 2021/2021-05-26-Generate-jekyll-blog-stats %}).
@@ -41,11 +39,11 @@ Having it on a table is nice, but graphs are way more stylish!
 
 ### Months' articles distribution
 
-Let's see which month of the year I am the most productive over the years:
+Let's see which month of the year I'm the most productive over the years:
 
 <canvas id='stacked-bar-date-js' class='chart'></canvas>
 
-It does have a curve from the more to less active! The busiest months are not necessarily the ones I would have expected.
+It does have a curve from the more to less active! The busiest months aren't necessarily the ones I would have expected.
 Can't always be writing, apparently. 😛
 
 ### Hot topics of the years
@@ -54,13 +52,14 @@ To check the evolution of the topics happening over the years:
 
 <canvas id='stacked-bar-js' class='chart'></canvas>
 
-You can see, that Kotlin greatly started to inspire me in 2019, and that java, python and javascript have been some of my most recurring topics.
+You can see, that Kotlin greatly started to inspire me in 2019, and that java, python and javascript have been some of 
+my most recurring topics.
 I put in the `other` category all tags with less than 2 articles in it and the `misc` so that the graph doesn't get too cluttered.
 
 ### Blog's tags overview
 
 To see what are the main topics in this blog, in my case I use tags as category 🤷‍♀️ with one tag per article.
-Besides, bringing a use case for a radar type of graph, this one also display the editorial line of the blog.
+Besides, bringing a use case for a radar type of graph, this one also displays the editorial line of the blog.
 
 <canvas id='radar-js' class='chart'></canvas>
 <!-- <canvas id='pie-js' class='chart'></canvas> -->
@@ -70,7 +69,7 @@ As I write randomly about things that I come across, the content is a bit divers
 
 ### Content growth
 
-Another view of the activity of the blog, this time accounting the average amount of words (the number of word is
+Another view of the blog's activity, this time accounting for the average number of words (the number of word is
 divided, so it would fit in the chart).
 
 <canvas id='bubble-js' class='chart'></canvas>
@@ -81,7 +80,7 @@ It's never perfect, I often come back to old articles to fix typos and try to im
 
 ### Publishing history
 
-Let's dive with this chart at the amount of article published over the years.
+Let's dive with this chart at the number of articles published over the years.
 It's a good indicator to see the actual blogging activity on the site.
 
 <canvas id='mixed-js' class='chart'></canvas>
