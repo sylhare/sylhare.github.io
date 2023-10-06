@@ -144,7 +144,7 @@ const d3Color = d3.scaleOrdinal(d3.schemeCategory20);
 d3Color(Math.random())
 ```            
 
-It uses _scaleOrdinal_ that creates a color scale using a color scheme (that I'm just using randomly for demo).
+It uses _scaleOrdinal_ that creates a colour scale using a colour scheme (that I'm just using randomly for demo).
 
 ### Other examples
 

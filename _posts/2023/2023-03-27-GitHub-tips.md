@@ -96,7 +96,7 @@ could use `[click here][#Links]` to get to the links title on the same page.
 
 ### Colors
 
-Use the backticks on color hex to display them with a color square next to it:
+Use the backticks on hex colours to display them with a coloured square next to it:
 
 ```markdown
 Look at these colors `#0087d5`, `#FF66dd`, `#5BCD98`

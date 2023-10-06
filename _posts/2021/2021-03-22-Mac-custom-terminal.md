@@ -38,7 +38,7 @@ Go to iTerm2 preferences with <kbd>⌘</kbd> + <kbd>,</kbd> then go into profile
 
 {% include aligner.html images="iterm2-powerglyphs.png" column=1 %}
 
-Then, if you don't like the default color, and prefer something similar to the above, you can update the color scheme.
+Then, if you don't like the default color, and prefer something similar to the above, you can update the colour scheme.
 There's the *Solarized Dark* theme which is popular, but I went *Tango Dark*.
 
 To update it, go back to preferences > profiles where you were before and go to *Colors* to update on the bottom right

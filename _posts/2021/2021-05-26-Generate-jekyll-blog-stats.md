@@ -181,7 +181,7 @@ To check the evolution of the topics happening over the years:
 
 I put in the `other` category all tags with less than 2 articles in it and any article that were tagged with `misc` 
 (which is for miscellaneous, for a collection of different kind of article) so that the graph doesn't get too cluttered.
-On this stacked bar, I used one color per tag using an array so that I can personally choose which color to assign to each
+On this stacked bar, I used one colour per tag using an array so that I can personally choose which colour to assign to each
 tag.
 
 ### Months' articles distribution
@@ -190,10 +190,10 @@ Let's see which month of the year I am the most productive over the years:
 
 <canvas id='stacked-bar-date-js' class='chart'></canvas>
 
-I used a stacked bar diagram with a color grade for each year, as the years pass the color loop will restart.
+I used a stacked bar diagram with a colour grade for each year, as the years pass the colour loop will restart.
 Each stack is the added value of number of article in that month per year.
 
-I used some color schemes from [nagix/chartjs-plugin-colorschemes](https://nagix.github.io/chartjs-plugin-colorschemes/colorchart.html), 
+I used some colour schemes from [nagix/chartjs-plugin-colorschemes](https://nagix.github.io/chartjs-plugin-colorschemes/colorchart.html), 
 check the css [here](https://github.com/nagix/chartjs-plugin-colorschemes/blob/master/src/colorschemes/colorschemes.tableau.js).
 As to why those graphs instead of other, well just for fun and to try out the [chart.js] possibilities. 🙃
 

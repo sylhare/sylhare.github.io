@@ -19,7 +19,7 @@ Some generic rules that you can find on [wikipedia](https://en.wikipedia.org/wik
 
 ### Pawn Specification
 
-- Castling: This is when King ♚ goes to the available case of its color before an untouched Rook ♜. 
+- Castling: This is when King ♚ goes to the available case of its colourbefore an untouched Rook ♜. 
 When castling, the Rook ♜ jumping over the King ♚ next to it.
 - Pawn ♟ promotion: A Pawn ♟ becomes Queen ♛ if they reach the other hand of the board.
 - "En passant": Pawn ♟ can advance two cases when first move.
