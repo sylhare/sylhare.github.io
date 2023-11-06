@@ -31,23 +31,22 @@ some [types](https://docs.confluent.io/platform/current/schema-registry/avro.htm
 
 ### Subject Name Strategy
 
-When in use with a schema registry you can set your schema to follow a certain strategy:
+When in use with a schema registry, you can set your schema to follow a certain strategy:
 
 - [TopicNameStrategy](https://docs.confluent.io/current/schema-registry/serdes-develop/index.html#overview): To set one
   schema to one topic (default)
 - [RecordNameStrategy](https://docs.confluent.io/current/schema-registry/serdes-develop/index.html#overview): To put
-  multiple schema on one topic based on the record name
+  multiple schemas on one topic based on the record name
 
-To set it you may use those variables with `TopicNameStrategy` or `RecordNameStrategy`:
+To set it, you may use those variables with `TopicNameStrategy` or `RecordNameStrategy`:
 
 ```properties
 confluent.value.subject.name.strategy=io.confluent.kafka.serializers.subject.RecordNameStrategy
-confluent.key.subject.name.strategy=io.confluent.kafka.serializers.subject.RecordNameStrategy
 ```
 
 #### Union
 
-You can also join your schemas in a `com.github.event.PostEvents.avsc` which contains other schema.
+You can also join your schemas in a `com.github.event.PostEvents.avsc` which contains other schemas.
 
 ```json
 [
