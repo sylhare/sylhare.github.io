@@ -5,25 +5,33 @@ color: rgb(255, 111, 97)
 tags: [js]
 ---
 
-### Some context
+## Some context
 
-NodeJS ecosystem is built on top of countless packages that sometime feels all dependent on each other. Usually you
+NodeJS ecosystem is built on top of countless packages that sometimes feel all dependent on each other. Usually you
 start up a project with all up-to-date dependencies everything works well.
 
-Then you get security alerts, vulnerability issues and all sort of incentive making you update the packages whenever you
-get prompted to do so by some [dependabot][1] 🤖. Until a point where the newer version introduce a breaking change, or
+Then you get security alerts, vulnerability issues and all sorts of incentive making you update the packages whenever you
+get prompted to do so by some [dependabot][1] 🤖. Until a point where the newer version introduces a breaking change, or
 it is incompatible with another package you were using.
 
-Then starts the decay! 💩 Soon most of your dependencies starts to get outdated, and npm starts to sprawl endless
-warnings at each install. You are at the back of the wall and now is time to up your sleeves and start digging, because
-you've just end up in the dependency hell.
+Then starts the decay! 💩 Soon most of your dependencies start to get outdated, and npm starts to sprawl endless
+warnings at each installation. You are at the back of the wall, and now is time to up your sleeves and start digging, 
+because you've end up... in the dependency hell.
 
-### Audit
+## Path to resolution
+
+This _dependency_ situation can happen for any reason, so don't mind me and skip ahead to the section that is most the 
+appropriate.
+And as always feel free to share any tips that I haven't mentioned along the way.
+
+### 1. The Audit trap
 
 Npm has an audit functionality that can be used to identify which packages are responsible for the vulnerabilities. The
 easy fix is to use the `npm audit fix` which will look for updates that can be updated to fix those automatically.
+But it only changes dependencies in the `package-lock.json` and you might be better off updating the parent dependency
+in the `package.json` instead to keep it consistent.
 
-You don't have to blindly update everything at once just to realize that everything is now broken, take is step by step
+You don't have to blindly update everything at once just to realize that everything is now broken, take it step-by-step
 one vulnerability at a time using:
 
 ```shell
@@ -31,14 +39,15 @@ npm update {dependency}
 ```
 
 This way you'll be able to update the dependency to the latest version that is not a breaking change, run the tests, 
-build and compile if you are using typescript and make sure everything is still ok.
+build and compile if you are using typescript, to make sure everything is still ok.
 
 But that's to avoid the problems 😈 so let's see how to identify the problems when things start breaking.
 
-### Check your package.json and package-lock.json
+### 2. Check your package.json and package-lock.json
 
 The `package.json` is used to add the direct dependencies of your project. Then the [package-lock.json][2] is used to
-mark the dependencies of your dependencies, usually called the _dependency tree_.
+mark the dependencies of your dependencies, usually called the _dependency tree_. This tree is used for the dependency
+resolution.
 
 Here is a schema to describe it:
 
@@ -79,7 +88,7 @@ flowchart LR
 
 You can see that the sub dependency got resolved to a specific version which is then saved in the `package-lock.json`.
 
-### Check what's installed
+### 3. Check what's installed
 
 Sometimes the `package-lock.json` doesn't reflect what's actually installed in the `node_modules/.`. That can happen
 when installing some packages, and discarding the changes on the lock files. Or any other reason after some manual
@@ -97,7 +106,7 @@ npm view {package}
 
 This will show you precisely what has been installed. It will also warn you if something is missing or invalid.
 
-### Update a package
+### 4. Update a package
 
 Usually between major versions of a package (like from v3.x.x to v4.x.x), they may very likely be some breaking change.
 Meaning your project won't build or some tests will fail In those case you should check:
@@ -119,9 +128,9 @@ your project may not behave like expected.
 Then try to update the version of your dependencies, so they depend on the same sub dependencies' version. You can check
 directly in the `node_modules/*` or using `npm list package`.
 
-### Refresh your package-lock.json
+### 5. Refresh your package-lock.json
 
-After updating your dependencies, installing and removing some modules you may realize that your package-lock did not
+After updating your dependencies, installing and removing some modules, you may realize that your package-lock did not
 necessarily follow everything. It may still contain unused packages, and you would like to refresh it without bothering
 with re-installing the node modules.
 
@@ -138,7 +147,10 @@ attempts to simplify the package structure by moving dependencies further up the
 npm dedupe
 ```
 
-### Working for everyone but you
+Keep in mind that when you delete and re-install the package-lock, it may change as dependencies are resolved differently 
+if it has been some time since you last updated, which leads us to the next section.
+
+### 6. Working for everyone but you
 
 You are cursed!! Don't go into desperation _Why only me!?_, let's try something.
 Now that the project have been updated, and it works for everybody but you 🥲. You might just have messed up
@@ -162,7 +174,7 @@ npm ci
 This will do a [clean installation][4] of the modules, removing the previous node modules and won't try to update the
 dependencies (which can happen with `npm install`).
 
-### Make a plugin? Add its peer
+### 7. Make a plugin? Add its peer
 
 Another thing you can do for the future to avoid dependency problems when you work with your own packages and plugins.
 Make sure you start using the `peerDependencies`. You can use the [peer dependency][6] in your `package.json` such as:
@@ -181,7 +193,7 @@ Make sure you start using the `peerDependencies`. You can use the [peer dependen
 }
 ```
 
-Peer dependency is use for examples by plugins, it's a bit like for DLC in games, you can't install the DLC if you don't
+Peer dependency is used, for example, by plugins, it's a bit like for DLC in games, you can't install the DLC if you don't
 have the game. Well you can't install the plugin (_plugin for depC_) if you don't have its peerDependency; the
 library (_depC_).
 
@@ -192,6 +204,27 @@ plugin and its _host_ library.
 
 In our case we use a flexible version (`"1.4.x"`)for the pear dependency to avoid unnecessary conflicts Now by default
 with npm v7+ the peer dependencies are installed automatically.
+
+### 8. Hanlde multiple common dependencies
+
+When multiple of your dependencies relies on different versions of the same package, there could be some interferences.
+To force a version on certain package, you can use the `overrides` which will force a specific version.
+
+```json
+{
+  "overrides": {
+    "mongoose": {
+      "mongodb": "^5.7.0",
+      "bson": "^5.4.0"
+    }
+  }
+}
+```
+
+Here I'm forcing the mongoose package to use those versions of `mongodb` and `bson` so it matches other dependencies 
+defined in my package.json.
+You will need to run `npm i` once again, and if it doesn't work (as it may), delete the _package-lock.json_ and *node_nodules*,
+before installing it again.
 
 
 [1]: https://github.com/dependabot
