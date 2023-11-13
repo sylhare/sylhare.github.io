@@ -299,4 +299,5 @@ They have a [google group][11], and that's where you'll find the best insights f
 [8]: https://dev.mysql.com/doc/refman/8.0/en/binary-log-setting.html
 [9]: https://debezium.io/documentation/faq/
 [11]: https://groups.google.com/g/debezium/
+[12]: https://levelup.gitconnected.com/fixing-debezium-connectors-when-they-break-on-production-49fb52d6ac4e
 [10]: {% post_url 2022/2022-11-07-Database-sync-with-debezium %}
