@@ -5,9 +5,9 @@ color: rgb(147, 103, 26)
 tags: [tips]
 ---
 
-Let's have a look at some acronyms used in the IT vocabulary that does not refer to an actual technology 
-like SQL but the one that may be more abstract referring to a code pattern or principles to apply while approaching
-software development.
+Let's have a look at some acronyms used in the IT vocabulary that does not refer to an actual technology
+(like SQL). Let's look at the one that may be more abstract, referring to a code pattern or principles to apply
+while approaching software development.
 
 It's not exhaustive, feel free to point out any obvious missing ones, so that it can be added to this cheat sheet 🤓 
 
@@ -23,7 +23,7 @@ OOP: _Object-oriented programming_
 This is a [vision of programming][1] where the code is structured around objects which can contain both logic and data.
 Usually it's done via the usage of classes which are blueprints to create objects.
 
-There are other paradigm for programming which are not using objects, for example _Functional programming_ which is based
+There are other paradigms for programming which are not using objects, for example _Functional programming_ which is based
 on the usage of functions.
 
 ### SOLID
@@ -41,7 +41,7 @@ They were coined via multiple articles at the time for C++, which are worth read
   - Closed to modification: You should not and would not need to modify previous implementation.
 3. **L**: _Liskov substitution principle._
   - An objects of a superclass (type T) should be replaceable with objects of its subclasses (subtype S) without breaking the application. 
-  - So that a method ($$\phi$$) using an object (t) of the superclass will still the same when using an object (s) of the subclass.
+  - So that a method ($$\phi$$) using an object (t) of the superclass will still be the same when using an object (s) of the subclass.
   - As a [Theorem][5], let $$\phi (t)$$ be a property provable about objects of $$t$$ of type $$T$$. Then $$\phi (s)$$ should be provable for objects $$s$$ of type $$S$$ where $$S$$ is a subtype of $$T$$.
 4. **I**: _Interface segregation principle._ 
   - This is to create smaller, more specific interface for each usage so that you don't have one class doing everything inherited everywhere.
@@ -51,8 +51,8 @@ They were coined via multiple articles at the time for C++, which are worth read
   - Both higher and lower level modules are independent as they both rely on abstraction, making them more interchangeable.
 
 This acronym is actually 5 in one, pretty packed with content. Some of those patterns have been created at a time when
-you would write code in vim and didn't have powerful IDE like nowadays. 🤔 To be critical about the abstraction based 
-principle, those can sometime hinder visibility on smaller project or microservices where you don't intend to build a
+you would write code in vim and didn't have powerful IDE like nowadays. 🤔 To be critical about the abstraction-based 
+principle, those sometime hinder visibility on smaller projects or microservices where you don't intend to build a
 monolithic software structure upon it.
 
 ### ACID
@@ -65,7 +65,7 @@ that guarantees the data integrity despite any problem that could occur (power f
 
 1. **A**: _Atomicity_
   - It ensures all-or-none rule for database modifications. 
-  - Treating each transaction as one unit which either succeed or fail and leave the database unchanged. 
+  - Treating each transaction as one unit which either succeeds or fails and leaves the database unchanged. 
 2. **C**: _consistency_
   - Data values are consistent across the database.
   - Meaning that you can only change the data according to the rules of the database (A non-null field can't be updated as null).
@@ -74,9 +74,9 @@ that guarantees the data integrity despite any problem that could occur (power f
   - This is for concurrency so that any transaction can be executed independently.
 4. **D**: _durability_
   - Data is not lost even at the time of server failure.
-  - Once a transaction is committed, its effect is stored in a [non-volatile memory][8] which retain information even after a power failure.
+  - Once a transaction is committed, its effect is stored in a [non-volatile memory][8] which retains information even after a power failure.
 
-While ACID properties seems like a must-have and is seen everywhere, it doesn't mean that none-ACID can't exist. By 
+While ACID properties seem like a must-have and are seen everywhere, it doesn't mean that none-ACID can't exist. By 
 opposition, we have [BASE][9] (Basically available, Soft-Sate, Eventually consistent) which is named more for the 
 chemistry reference than its actual property names.
 
@@ -84,7 +84,7 @@ chemistry reference than its actual property names.
 
 CAP: _Consistency, Availability, Partition_
 
-The CAP Theorem for distributed computing system was published by [Eric Brewer][10]. 
+The CAP Theorem for a distributed computing system was published by [Eric Brewer][10]. 
 This [theorem][11] is used as deciding tool for most modern distributed computing systems with high volume of traffic
 over the world. 
 
@@ -93,18 +93,19 @@ simultaneously:
 
 - Consistency: Ever request will receive the most up-to-date response or an error.
 - Availability: Every request receives a "non-error" response even when it failed (the response might not be the most up-to-date).
-- Partition tolerance: The distributed system continues to work besides arbitrary packet lost and partial system failures.
+- Partition tolerance: The distributed system continues to work beside arbitrary packet lost and partial system failures.
 
 You can't have all three, so choose wisely for your system the ones that will be the most predominant in order
 to orient your architecture in the right direction.
 
 In most cases you don't have [network partition][12] so your system can be both consistent and available. Partition 
-tolerance and this theorem is only relevant if you have truly distributed system over multiple subnets talking to each other.
+tolerance, this is only relevant if you have a truly distributed system over multiple subnets talking to each other. So
+the choice is usually easy: Consistency and Availability out of the three.
 
 ## Principles
 
 Those acronyms are linked to writing code, but they are more focused on the process of
-writing it. Those principles could be applied to more domain than IT. 
+writing it. Those principles could be applied to more domains than IT. 
 
 _"Simplicity is the ultimate sophistication."_
 
@@ -121,7 +122,7 @@ For `KISS` to actually work, they suffixed _stupid_ to make it "_keep it simple,
 >
 > from [wikipedia][6].
 
-This obviously also applies in software development where you want to keep your system simple so it's easier to 
+This obviously also applies in software development where you want to keep your system simple, so it's easier to 
 maintain and requires less cognitive energy to follow.
 
 ### DRY
@@ -132,10 +133,10 @@ This one is also referred as Duplication is Evil (DIE) is another software devel
 of refactoring, keeping your code clean by avoiding duplication.
 
 The principle as [formulated][14] is actually "Every piece of knowledge must have a single, unambiguous, 
-authoritative representation within a system" and as stated a single representation leaves no room for duplication.
+authoritative representation within a system" and as stated, a single representation leaves no room for duplication.
 
-From this principle, some patterns and library have emerged, like those code generators which by an annotation will 
-automatically create code for you. Beware that while useful in some case, it might create more code than you need, which 
+From this principle, some patterns and libraries have emerged, like those code generators which by an annotation will 
+automatically create code for you. Beware that while useful in some cases, it might create more code than you need, which 
 is an excellent transition for the next acronym!
 
 ### YAGNI
@@ -145,10 +146,10 @@ YAGNI: _You aren't gonna need it._
 This one has been coined by [Martin Fowler][13] and is used in [Extreme Programming][15] (XP) which is an agile software
 development framework using pair programming at its core.
 
-This one is a corollary to _KISS_, to keep it simple, don't add what you are not going to need. Now that it's written
-that way, how complex must we be for both principle to imply not to do too much. 🌞
+This one is a corollary to _KISS_, to keep it simple, don't add what you are not going to need it. Now that it's written
+that way, how complex must we be for both principles to imply not to do too much. 🌞
 
-This one balances out parts of the _SOLID_ principles which can be useful but might not be required in some cases.
+This one balances out parts of the _SOLID_ principle which can be useful but might not be required in some cases.
 
 
 [1]: https://en.wikipedia.org/wiki/Object-oriented_programming
