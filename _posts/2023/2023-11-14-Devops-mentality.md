@@ -25,8 +25,8 @@ it is evolving.
 In a company, the developer is the one working on any application or developing new code features for the customer.
 As if code itself is enough to provide the service that the customer's willing to pay for.
 
-We talk about developer's best practices and how to write clean code, give good code reviews, how they can work 
-efficiently with an agile methodology/framework/process.
+We talk about developer's [best practices][10] and how to [write clean code][11], give [good code reviews][12], how they can work 
+efficiently with an agile [methodology/framework/process][13].
 
 Without being DevOps, developers are more and more expected to expand their knowledge outside their secure locale
 environment setup to take accountability in the service provided to the customer. Which is the _operations_ side.
@@ -196,3 +196,7 @@ Because once again, it's about putting the customer first ❤️
 [2]: https://uptime.is/
 [3]: https://www.atlassian.com/incident-management/kpis/sla-vs-slo-vs-sli
 [4]: https://www.nytimes.com/2011/01/09/business/09digi.html
+[10]: {% post_url 2023/2023-01-23-Code-acronyms %}
+[11]: {% post_url 2022/2022-09-14-Software-engineering-refactor-tips %}
+[12]: {% post_url 2022/2022-02-17-Tips-and-tricks-for-code-reviews %}
+[13]: {% post_url 2015/2015-01-23-Working-with-agile %}
