@@ -180,19 +180,21 @@ The registered schema id is used for the avro serialization and deserialization.
 
 ### Schemas in the registry
 
-The registry saves the schema resource, which consists of the schema itself, a subject 
-(the [Schema Registry][2] defines a scope in which schemas can evolve, and that scope is the subject) and
-a version (which is used to check compatibility). The [REST endpoint][9] for the registry is pretty
-straightforward and can be used to validate the registered resources.
+The registry saves the schema resource, which consists of the schema itself, a subject and a version.
+The subject is defined by the [Schema Registry][2] as scope in which schemas can evolve, and the version is used to check compatibility.
+The [REST endpoint][9] for the registry is pretty straightforward and can be used to validate the registered resources.
 
 The schema saved in the registry may evolve depending on your [compatibility configuration][13], that why we talked 
 about versions. 
-For example, setting it to `BACKWARD` means that on your schema, you can:
-- add new _optional_ fields
-- delete old fields 
-The opposite is `FORWARD` which allows you to:
-- add new fields
-- delete _optional_ fields
+
+For example, setting the compatibility to:
+
+- `BACKWARD` allows you to:
+  - add new _optional_ fields
+  - delete old fields 
+- `FORWARD` allows you to:
+  - add new fields
+  - delete _optional_ fields
 
 An optional field means that it does need to be present and will fall back to a default value like `null`, 
 while a not optional field must be present and have a value which can be `null`.
@@ -211,18 +213,20 @@ value.subject.name.strategy=io.confluent.kafka.serializers.subject.RecordNameStr
 
 The main [confluent strategies][15] are:
 
-**TopicNameStrategy**
-- To allow on one single type of message to be published on the topic (all schemas must be compatible with each other)
-- The subject for the schema resource will be built as `{topic name}-value` for the payload.
-- Default strategy
-**RecordNameStrategy**
-- To [allow multiple types of event in one topic][6] and order needs to be maintained
-- Compatibility is checked on the type level regardless of the topic
-- The subject for the schema will be `{namespace}.{name}` (e.g.: `com.github.avro.PositionValue` known as record's name too)
-**TopicRecordNameStrategy**
-- To allow multiple types of messages in one topic
-- Compatibility on the current topic only, so if the schema has changed on another topic, it won't impact this topic's compatibility. 
-- The subject for the schema resource will be `{topic name}-{namespace}.{name}`.
+- **TopicNameStrategy**
+  - To allow on one single type of message to be published on the topic (all schemas must be compatible with each other)
+  - The subject for the schema resource will be built as `{topic name}-value` for the payload.
+  - Default strategy
+
+- **RecordNameStrategy**
+  - To [allow multiple types of event in one topic][6] and order needs to be maintained
+  - Compatibility is checked on the type level regardless of the topic
+  - The subject for the schema will be `{namespace}.{name}` (e.g.: `com.github.avro.PositionValue` known as record's name too)
+
+- **TopicRecordNameStrategy**
+  - To allow multiple types of messages in one topic
+  - Compatibility on the current topic only, so if the schema has changed on another topic, it won't impact this topic's compatibility. 
+  - The subject for the schema resource will be `{topic name}-{namespace}.{name}`.
 
 If you encounter a `SerializationException`, then it might be due to an issue with your schema, and you might either 
 revise it or re-think your name strategy for that topic. In case of mistake, you could use the `DELETE` API, or go with
