@@ -11,7 +11,7 @@ color_image: assets/img/lineart.png # In post when you set color
 favicon: assets/favicon.ico
 
 # Header and footer text
-header_text: Well here it is.
+header_text: Well, here it is.
 header_feature_image: assets/img/pexels/circuit.jpeg
 footer_text: >
   Powered by <a href="https://jekyllrb.com/">Jekyll</a> with <a href="https://github.com/sylhare/Type-on-Strap">Type on Strap</a></br>copyright <a href="https://github.com/sylhare">sylhare</a> © <a href="https://github.com/sylhare/sylhare.github.io">👨‍💻</a>
