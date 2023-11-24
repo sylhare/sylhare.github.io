@@ -89,7 +89,7 @@ that can match your enthusiasm.
 
 #### Retry, timeout, input
 
-There are some other pre-defined functions, let's see and example of the [most common ones][12].
+There are some other pre-defined functions, let's see an example of the [most common ones][12].
 
 ```groovy
 steps {
