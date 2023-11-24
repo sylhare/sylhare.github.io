@@ -138,10 +138,10 @@ the server:
 
 ```graphql
 query {
-    example {
-        id
-        user @skip(if: true) { name }
-    }
+  example {
+    id
+    user @skip(if: true) { name }
+  }
 }
 ```
 
@@ -150,10 +150,10 @@ If you prefer the other way around, you can decide to include or not parts of th
 
 ```graphql
 query {
-    example {
-        id
-        user @include(if: false) { name }
-    }
+  example {
+    id
+    user @include(if: false) { name }
+  }
 }
 ```
 
@@ -170,9 +170,9 @@ Let's create a fragment for a `User` in a dedicated "_fragments.ts_" file with t
 import { gql } from 'graphql-tag'
 
 export const user = gql`
-    fragment user on User {
-        name
-    }
+  fragment user on User {
+    name
+  }
 `
 ```
 
@@ -184,13 +184,13 @@ import { user } from "../fragments";
 
 const example: Example = await client.query({
   query: gql`
-             ${user}
-             query {
-                 example {
-                     id
-                     user { ...user }
-                 }
-             }`
+    ${user}
+    query {
+      example {
+        id
+        user { ...user }
+      }
+    }`
 }).then(result => result.data.example)
 ```
 

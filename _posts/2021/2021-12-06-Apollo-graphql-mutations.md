@@ -38,12 +38,12 @@ used for example by [GitHub][5] or [Shopify][7] on their public GraphQL API.
 
 ```graphql
 type Mutation {
-    addBook(input: AddBookInput)
+  addBook(input: AddBookInput)
 }
 
 input AddBookInput {
-    title: String!
-    authorName: String!
+  title: String!
+  authorName: String!
 }
 ```
 
@@ -59,8 +59,8 @@ like [GitHub][5] or [Shopify][7] are talking about the `Payload` pattern:
 
 ```graphql
 extend type Mutation {
-    addBook(input: AddBookInput): AddBookPayload
-    addAuthor(input: AddAuthorInput): AddAuthorResult
+  addBook(input: AddBookInput): AddBookPayload
+  addAuthor(input: AddAuthorInput): AddAuthorResult
 }
 ```
 
@@ -75,8 +75,8 @@ differently depending on the naming.
     - Malformed requests, e.g. wrong types or syntax.
     - Error thrown in the resolver, e.g. bad authentication, resource not found.
     - Any kind of network error.
-- Business errors, that breaks the software business rules:
-    - e.g. Purchase a book that is not released yet
+- Business errors (that break the software business rules):
+    - e.g. Purchase a book not released yet
     - e.g. Set a book title with a title that goes over the max size limit.
 
 On the first version, all mutation would return [HTTP 200 OK][10] (now we can set up some other http codes if need). But
@@ -89,10 +89,10 @@ cases. They will all implement the [UserError][8] interface.
 
 ```graphql
 interface UserError {
-    "The error message."
-    message: String!
-    "The path to the input field that caused the error, sometime named path"
-    field: [String!]
+  "The error message."
+  message: String!
+  "The path to the input field that caused the error, sometime named path"
+  field: [String!]
 }
 ```
 
@@ -101,11 +101,11 @@ there was something wrong with the title field for `AddBookInput`, the path woul
 
 ```graphql
 type AddBookPayload {
-    book: Book
-    userError: [AddBookError]
+  book: Book
+  userError: [AddBookError]
 }
 
-union AddBookError =  InvalidBookTitle | InvalidAuthorName | DuplicatedBookError
+union AddBookError = InvalidBookTitle | InvalidAuthorName | DuplicatedBookError
 ```
 
 The example payload have its own set of error. The `AddBookError` is a union meaning it regroups all the types
@@ -113,8 +113,8 @@ between `|` which in this case implements, the previously defined interface:
 
 ```graphql
 type InvalidBookTitle implements UserError {
-    message: String!
-    field: [String!]
+  message: String!
+  field: [String!]
 }
 ```
 
@@ -130,12 +130,12 @@ the mutation can return, be it entity, error or a mix.
 union AddAuthorResult = AuthorCreated | InvalidAuthorName | InvalidAuthorBooks
 
 type AuthorCreated {
-    author: Author!
+  author: Author!
 }
 
 type InvalidAuthorBooks implements UserError {
-    message: String!
-    field: [String!]
+  message: String!
+  field: [String!]
 }
 ```
 
@@ -156,16 +156,16 @@ Using the Payload pattern:
 
 ```graphql
 mutation($input: AddBookInput) {
-    addBook(input: $input) {
-        book { title }
-        userErrors {
-            # Interface contract
-            ... on UserError {
-                message
-                field
-            }
-        }
+  addBook(input: $input) {
+    book { title }
+    userErrors {
+      # Interface contract
+      ... on UserError {
+        message
+        field
+      }
     }
+  }
 }
 ```
 
@@ -189,11 +189,11 @@ Using the Result pattern:
 
 ```graphql
 mutation {
-    addAuthor(input: { name: "Mary Shelley", bookTitles: ["Frankenstein"] }) {
-        ... on AuthorCreated { author { name } }
-        ... on InvalidAuthorName { message }
-        ... on InvalidAuthorBooks { message }
-    }
+  addAuthor(input: { name: "Mary Shelley", bookTitles: ["Frankenstein"] }) {
+    ... on AuthorCreated { author { name } }
+    ... on InvalidAuthorName { message }
+    ... on InvalidAuthorBooks { message }
+  }
 }
 ```
 
@@ -215,10 +215,10 @@ import { addBook } from './resolvers/Mutation/addBook';
 import { addAuthor } from './resolvers/Mutation/addAuthor';
 
 const Resolvers = {
-    Mutation: {
-        addBook,
-        addAuthor
-    }
+  Mutation: {
+    addBook,
+    addAuthor
+  }
 }
 ```
 
@@ -234,14 +234,14 @@ Let's focus on `addBook`:
 
 ```typescript
 export async function addBook(
-    parent: null,
-    { input }: { input: AddBookInput },
-    { dataSources }: AppContext
+  parent: null,
+  { input }: { input: AddBookInput },
+  { dataSources }: AppContext
 ): Promise<AddBookPayload> {
-    const errors: AddBookError[] = validateInput(input);
-    const addedBook = errors.length ? undefined : await dataSources.books.createBook(input.title, input.authorName);
+  const errors: AddBookError[] = validateInput(input);
+  const addedBook = errors.length ? undefined : await dataSources.books.createBook(input.title, input.authorName);
 
-    return { book: addedBook, userError: errors };
+  return { book: addedBook, userError: errors };
 }
 ```
 

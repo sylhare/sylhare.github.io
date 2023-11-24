@@ -13,7 +13,7 @@ case, but hopefully it should give you some leads.
 
 ### GraphQL Schema
 
-For the example we're going to use this schema:
+For the purpose of an example, we're going to use this schema:
 
 ```graphql
 type Movie @key(fields: "id") {
@@ -63,6 +63,7 @@ sequenceDiagram
     DB -->> API: Return each resolved actors
     end
     API ->> U: Return resolved<br>movie and actors
+
 </div>
 
 The movie resolver will resolve the information and will contain the actors' ids.
@@ -80,7 +81,7 @@ what is happening in the backend.
 SELECT * FROM movies WHERE id = 7
 ```
 
-2. Then for each actor we have an independent call to db each time the resolver is called with the actor's id: 
+2. Then for each actor we have an independent call to db each time the resolver is called with the actor's id:
 
 ```sql
 SELECT * FROM movies WHERE id = 1
@@ -117,26 +118,28 @@ How can we optimize the resolving process? It will depend on how often it's quer
 queries that are not critical as you may make it worse.
 Here are some leads that may or may not fit depending on your problem.
 
-### More resolvers? 
+### More resolvers?
 
 One optimization which may not always be possible would be to have a `actors` resolver which would resolve all of them
 at once.
-This way instead of resolving the actor one by one, we would make a call to the db for all of them at once.
+This way, instead of resolving the actors one by one, we would make a call to the db for all of them at once.
 
-Unfortunately in this use case the `Actor` type is federated which means it might be resolved by an entirely other
+Unfortunately in this use case the `Actor` type is federated, which means it might be resolved by an entirely other
 application within a different domain and team ownership.
 
 > For [federated][16] entities, the `__resolveReference` is always called.
 
 In the case where we add the `actors` field is federated but within the app, we should also take into account that
-the `__resolveReference` on the _Actor_ type will be called next, and might trigger another database call. 
+the `__resolveReference` on the _Actor_ type will be called next, and might trigger another database call.
 
 The resolver is called with its parent, so if it already contains the fetched entity there should be some logic within
-the resolve reference, so it does not call the database again. 
+the resolve reference, so it does not call the database again.
 Because it would mean that it has been resolved by its parent resolver.
 
-In those case, **you will have to make a choice** depending on how the users use your query, which fields should always 
-be returned and which should be fetched on demand, so you gain maximum performance on your GraphQL query.
+In those case, **you will have to make a choice** depending on how the users use your query:
+- which fields should always be returned?
+- which should be fetched on demand?
+So you gain maximum performance on your GraphQL query.
 (If you've turned to GraphQL that means fetching everything at once all the time is not necessary in most cases).
 
 ### Check the info?
@@ -165,8 +168,8 @@ But when you actually need information from the database, this solution won't re
 
 ### Use a DataLoader?
 
-The last solution we can leverage is the [Dataloader][1] which as its name says will solve the problem of calling the 
-database for each individual actor. The `dataloader` will gather the calls to the actors database and use a 
+The last solution we can leverage is the [Dataloader][1] which as its name says will solve the problem of calling the
+database for each individual actor. The `dataloader` will gather the calls to the actors database and use a
 bulk load function to get them all at once.
 
 ```sql
@@ -179,7 +182,7 @@ SELECT * FROM actors WHERE id IN (1, 2, 3)
 ```
 
 This will reduce the amount of calls to the database for a resolved entity in this case. Why? 🥲 Because we are making
-$$n$$ amount of calls depending on the amount of actors that starred in the movie. With the dataloader [pattern][13], 
+$$n$$ amount of calls depending on the amount of actors that starred in the movie. With the dataloader [pattern][13],
 those calls will be caught and transformed into one call.
 
 Here is how you would [instantiate][14] the Dataloader from [graphql/dataloader][1], you can have it defined in your
@@ -195,13 +198,13 @@ function bacthFindFromIds(ids: readonly string[]): Promise<(Actor | undefined)[]
 }
 ```
 
-In order to simplify things a bit, we're using `actorsDB` which would be our database, and it would have a batch 
+To simplify things a bit, we're using `actorsDB` which would be our database, and it would have a batch
 function to find all ids.
 Note that:
 
 - The key for the batch function should be `readonly` (or you will have compilation errors with typescript).
-- The results order match should match the key order (or the dataloader won't return the right information).
-- The number of results should match number of key (or it will crash).
+- The result's order match should match the key order (or the dataloader won't return the right information).
+- The number of results should match the number of keys (or it will crash).
 
 Now instead of calling the database directly in your resolver, you can simply do:
 
@@ -213,7 +216,7 @@ export async function __resolveReference(
 }
 ```
 
-In this case we're using the loader from the [context][11] of your Application to load the actor. 
+In this case, we're using the loader from the [context][11] of your Application to load the actor.
 
 For more use case on how to use the [dataloader][1] checkout the repository, there are a lot of explanation, examples
 and a video made by the creator himself that explains the inner mechanism of it.

@@ -5,13 +5,13 @@ color: rgb(63,32,186)
 tags: [graphql]
 ---
 
-With [Apollo Server], you can create an Apollo Federation for your GraphQL APIs. 
+With [Apollo Server], you can create an Apollo Federation for your GraphQL APIs.
 The pre-requisite for [federation] would be to have at least two different GraphQL APIs that you want to advertise under
 the same url. Or if you want to break down a big GraphQL schema into multiple small microservices.
 
 This feature from Apollo GraphQL federation v1 is for scaling up your APIs, let's review how it works.
 
-## Callflow
+## Call-flow
 
 Here is a brief flow chart where we have 3 APIs each having part of the graph defined and exposed.
 
@@ -29,7 +29,7 @@ graph TB
     AG -->|Complete graph| Client
 </div>
 
-Using the Apollo Gateway (or Graph Router) we can use only one URL. The client does not need additional set up to 
+Using the Apollo Gateway (or Graph Router) we can use only one URL. The client does not need additional set up to
 connect to each microservice, talking to the Gateway is enough to have access to the complete graph.
 
 Find in the documentation [how to get started], you can try it one API at a time.
@@ -102,7 +102,7 @@ You may have seen some directive like `@Key` in the previous examples, those are
 _@apollo/federation_ package.
 They are part of the [subgraph specification] that are injected in the subgraph schema for federation purpose.
 
-First let's look at the directive we used and how they are defined:
+First let's look at the directives we used and how they are defined:
 
 ```graphql
 scalar FieldSet
@@ -114,12 +114,12 @@ directive @extends on OBJECT | INTERFACE
 There are three of them:
 
 - `@key`: which define the key of the object, so that the gateway knows which object to retrieve when queried.
-  - For example for User, you need to have the `id` key in order to resolve the correct one
+    - For example for User, you need to have the `id` key in order to resolve the correct one
 - `@external`: to mean that the field is not defined within this API.
-  - For example for Vehicle API the field `User.id` is only defined in the User API, it's an external field
-- `@extends`: So that the Gateway understand you are not re-defining the type but extending it. 
+    - For example for Vehicle API the field `User.id` is only defined in the User API, it's an external field
+- `@extends`: So that the Gateway understand you are not re-defining the type but extending it.
   You can either use `@extend` or the preferred built-in `extend` key word.
-  - For example, by adding `driver` on the type `Vehicle` on the User API is extending the type.
+    - For example, by adding `driver` on the type `Vehicle` on the User API is extending the type.
 
 The `extend` is not necessarily federation specific, since you can use it within a non-federated API where you want to
 break down your schema into multiple files (like one per query), that way you can extend the `Query` type in each file.
@@ -127,7 +127,7 @@ break down your schema into multiple files (like one per query), that way you ca
 #### Entity Query
 
 After defining the previous directive, you might think that there's still something obscure or magic with the key.
-How does the federation know how to fetch the correct entity with the defined key? 
+How does the federation know how to fetch the correct entity with the defined key?
 
 That's when the entity query comes into play! This query is part of the [subgraph specification] and defined through
 the _@apollo/federation_ package as well:
@@ -159,7 +159,7 @@ export function __resolveReference(
 }
 ```
 
-Defining the `__resolveReference` resolver under `Vehicle` will allow you to resolve the `Vehicle` type from its id. 
+Defining the `__resolveReference` resolver under `Vehicle` will allow you to resolve the `Vehicle` type from its id.
 This query is internal to the Gateway, but you can still test it. Assuming you have a test app working with your
 API, you can make this GraphQL query:
 
@@ -167,14 +167,14 @@ API, you can make this GraphQL query:
 it('resolves entity by federation', async () => {
   const vehicle: Vehicle = await client.query({
     query: gql`
-        query {
-            _entities(representations: [{
-                __typename: "Vehicle"
-                id: "3"
-            }]) {
-                ... on Vehicle { registration }
-            }
+      query {
+        _entities(representations: [{
+           __typename: "Vehicle"
+           id: "3"
+        }]) {
+          ... on Vehicle { registration }
         }
+      }
     `
   }).then(result => result.data._entities[0]);
   expect(vehicle).toMatchObject({ registration: 'train' });
@@ -187,13 +187,13 @@ Once defined, the `__resolveReference` will always be called by the gateway when
 ## Conclusion
 
 You should have a better understanding of the concept of federation within a GraphQL APIs ecosystem. It becomes
-increasingly interesting to use federation with distributed team working on their own microservices.
-Using the Gateway you can scale effectively your company API as a whole.
+increasingly interesting to use federation with distributed teams working on their own microservices.
+Using the Gateway you can effectively scale your company API as a whole.
 
 You can create your own gateway implementing `@apollo/gateway` or use the pre-compiled [Apollo Router] in Rust
 by the Apollo team.
 
-And for advanced usage you can add checks of your schema with [rover] to make sure they are valid and apply some
+And for advanced usage, you can add checks of your schema with [rover] to make sure they are valid and apply some
 recommended [best practices] to deploy and mange your federated schema.
 
 [federation]: https://www.apollographql.com/docs/federation/

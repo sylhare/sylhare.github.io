@@ -5,11 +5,11 @@ color: rgb(210, 56, 108)
 tags: [graphql]
 ---
 
-Let's talk about [Graph QL](https://graphql.org/) which is a query language for an API. Meaning that contrary to normal
+Let's talk about [GraphQL](https://graphql.org/) which is a query language for an API. Meaning that contrary to normal
 REST APIS, with GraphQL APIs you can discover and query only the data you need form a single call.
 
 To implement a GraphQL API, let's use [Apollo server](https://www.apollographql.com/docs/apollo-server/) (v2) which is an
-open source, spec-compliant GraphQL server. We'll have a look at the Apollo
+open-source, spec-compliant GraphQL server. We'll have a look at the Apollo
 Server [getting started](https://www.apollographql.com/docs/apollo-server/getting-started/).
 
 ### GraphQL Types
@@ -19,12 +19,12 @@ _String_, _Int_ or _ID_, but you can also create your own:
 
 ```graphql
 type Book {
-    title: String!
-    author: Author
+  title: String!
+  author: Author
 }
 
 type Author {
-    name: String
+  name: String
 }
 ```
 
@@ -36,8 +36,8 @@ Now you will need to create the queries that will return your books and authors:
 
 ```graphql
 type Query {
-    allBooks: [Book]
-    book(title: String!): Book
+  allBooks: [Book]
+  book(title: String!): Book
 }
 ```
 
@@ -53,9 +53,9 @@ we start implementing anything, let's look at how to use our defined queries:
 
 ```graphql
 query AllBooks {
-    allBooks {
-        title
-    }
+  allBooks {
+    title
+  }
 }
 ```
 
@@ -63,12 +63,12 @@ query AllBooks {
 
 ```graphql
 query OneBook($title: String!) {
-    book(title: $title) {
-        title
-        author {
-            name
-        }
+  book(title: $title) {
+    title
+    author {
+      name
     }
+  }
 }
 ```
 
@@ -80,12 +80,12 @@ Let's use this OneBook query to call our api:
 
 ```graphql
 query OneBook($title: String! = "Lord of the rings") {
-    book(title: $title) {
-        title
-        author {
-            name
-        }
+  book(title: $title) {
+    title
+    author {
+      name
     }
+  }
 }
 ```
 
@@ -117,32 +117,32 @@ on [resolvers](https://www.apollographql.com/docs/apollo-server/data/resolvers/)
 the [application](https://github.com/sylhare/Apollo/blob/main/typescript/), first we will need to create an
 ApolloServer:
 
-```ts
+```typescript
 const server = new ApolloServer({
-    schema: makeExecutableSchema({
-        typeDefs: TypeDefs,     // Where your put your GraphQL schema
-        resolvers: Resolvers,   // Where you link your queries to your logic
-    });
+  schema: makeExecutableSchema({
+    typeDefs: TypeDefs,     // Where your put your GraphQL schema
+    resolvers: Resolvers,   // Where you link your queries to your logic
+  })
 });
 ```
 
 What we showed in the GraphQL Types and Query will go in a _schema.graphql_ which will be used to feed the `TypeDefs`.
 The remaining part is to do the book's resolver:
 
-```ts
+```typescript
 const Resolvers = {
-    Query: {
-        book: async (parent: any, { title }: { title: string }) => getBook(title)
-    }
+  Query: {
+    book: async (parent: any, { title }: { title: string }) => getBook(title)
+  }
 }
 ```
 
 It's an asynchronous function that takes the title of type `{ title: string }` (because typescript). In return, we have
 getBook that will fetch the book and return the correct book from a database or, let's say:
 
-```ts
+```typescript
 function getBook(title: string): Promise<Book> {
-    return Promise.resolve({ title: "The lord of the rings", author: { name: "J.R.R. Tolkien" } })
+  return Promise.resolve({ title: "The lord of the rings", author: { name: "J.R.R. Tolkien" } })
 }
 ```
 
@@ -159,12 +159,12 @@ Let's see how to unit test our resolver:
 test('Query one book', async () => {
     const query = `
             query OneBook {
-                book(title: "The lord of the rings") {
-                    title
-                    author {
-                        name
-                    }
+              book(title: "The lord of the rings") {
+                title
+                author {
+                  name
                 }
+              }
             }
         `;
     return graphql(schema, query).then((result: any) => {
@@ -178,4 +178,4 @@ The `schema` is the schema attribute used in our application to build our Apollo
 We can pass our parameters directly in the variable with `query OneBook($title: String! = "Atlanta")` which is a bit
 silly for only one string. This will test that the resolver returns your expected value.
 
-As usual find some working example in [sylhare/Apollo](https://github.com/sylhare/Apollo) 🛰 and see you in Space!
+As usual, find some working example in [sylhare/Apollo](https://github.com/sylhare/Apollo) 🛰 and see you in Space!

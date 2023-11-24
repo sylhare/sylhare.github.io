@@ -33,9 +33,9 @@ So nothing new, the resolver for `books` will be an imported method for simplici
 import { books } from './resolvers/Query/books';
 
 const Resolvers = {
-    Query: {
-        books
-    }
+  Query: {
+    books
+  }
 }
 ```
 
@@ -62,14 +62,15 @@ type Author {
 Now we can also add a resolver on `Book` so that the `author` field when queried will be called.
 
 For example with a query:
+
 ```graphql
 query {
-    books {
-        title 
-        author {
-            name
-        }
+  books {
+    title
+    author {
+      name
     }
+  }
 }
 ```
 
@@ -89,10 +90,10 @@ The new resolver would look like:
 import { author } from './resolvers/Book/author';
 
 const Resolvers = {
-    Query: { books },
-    Book: {
-        author
-    }
+  Query: { books },
+  Book: {
+    author
+  }
 }
 ```
 
@@ -103,7 +104,7 @@ Let's see how the resolver function for `author` will look like:
 
 ```typescript
 export function author(parent: Book, _: any, context: any) {
-    return context.authorDataSource.find(author => author.books.includes(parent.title) );
+  return context.authorDataSource.find(author => author.books.includes(parent.title));
 }
 ```
 
@@ -135,9 +136,9 @@ Meaning we can filter for author's name (or part of the name like firstname/last
 
 ```graphql
 query {
-    authors {
-        name(name: "Edgar")
-    }
+  authors {
+    name(name: "Edgar")
+  }
 }
 ```
 
@@ -154,19 +155,19 @@ import { authors } from './resolvers/Query/authors';
 import { name } from './resolvers/Author/name';
 
 const Resolvers = {
-    Query: { books, authors },
-    Book: { author },
-    Author: {
-        name
-    }
+  Query: { books, authors },
+  Book: { author },
+  Author: {
+    name
+  }
 }
 ```
 
 In this case the `name` resolver will look like:
 
 ```typescript
-export function author(_: any, { name }:{ name: string }, context: any) {
-    return context.authorDataSource.find(author => author.name.includes(name) );
+export function author(_: any, { name }: { name: string }, context: any) {
+  return context.authorDataSource.find(author => author.name.includes(name));
 }
 ```
 
@@ -179,20 +180,20 @@ Adding the `books` field to the `Author` type we created a _circular resolver_ i
 Circular dependency is not recommended, because it can break your app with infinite query loop.
 You could query it ever and ever:
 
-```graphql
+```
 query {
-    books {
+  books {
+    title
+    author {
+      title
+      books {
         title
         author {
-            title
-            books {
-                title
-                author {
-                    ...
-                }
-            }
+          ...
         }
+      }
     }
+  }
 }
 ```
 
