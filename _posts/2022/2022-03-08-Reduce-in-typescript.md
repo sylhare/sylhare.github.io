@@ -21,6 +21,8 @@ that's what we are working with:
 export type SeaCreature = { emoji: string, deadly: boolean, type: string };
 ```
 
+We are defining a type, but it would work with an Interface or a class too.
+
 And here is an array with some objects that will be useful for most of the examples, as you may already know `.reduce()`
 is short for `Array.prototype.reduce()` which as the name states best used with arrays.
 
@@ -51,6 +53,9 @@ I have added the data to give some context, hopefully it will help you understan
 If you feel unfamiliar with the notation, this article about [javascript ES6 notation][9] may 
 help you. 👍
 
+The expected value can be set from the `initialValue` type or added next to the `result` parameter using `:` followed by
+the expected typescript type.
+
 ### 2.2. With initial value
 
 Let's set `deadliestCreature` as the initial value:
@@ -64,7 +69,7 @@ In this example, if you only return the result, there's no computation the `curr
 (not to be confused with [lodash][4] or [underscore][5] libraries).
 In the end nothing happens and the result is the initial value: `deadliestCreature`.
 
-If you don't set the initial value, result will be the **first** element of the array.
+If you don't set the initial value, the result of the reduction will be the **first** element of the array.
 
 ### 2.3. Sum of elements in an array
 

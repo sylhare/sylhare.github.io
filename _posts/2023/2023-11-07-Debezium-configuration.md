@@ -169,8 +169,7 @@ with the same configuration but a new name like `myConnectorV2`.
 ### 6. Binlog processing error
 
 When the connector stops working as `UNASSIGNED` or gets stuck not producing any records while still marked as `RUNNING`.
-If the connector wasn't idling like in the previous example, the error might be due to a change of database or host,
-something that might have happened during a Blue/Green deployment of the database.:
+If the connector wasn't idling like in the previous example, the error might be due to a change of database or host:
 
 ```
 [ERROR] Error during binlog processing. Last offset stored = null, binlog reader near position = mysql-bin.000356/15296051
@@ -190,7 +189,9 @@ the last event read from '/rdsdbdata/log/binlog/mysql-bin-changelog.001675' at 1
 Error code: 1236; SQLSTATE: HY000.
 ```
 
-You can also leverage the `snapshot.select.overrides`:
+If you have direct access to kafka you could try to manually update the offset following the [Debezium documentation][13]
+from the `offset.storage.topic` which has the binlog offset in it (this is usually created by default).
+You can also try the `snapshot.select.overrides`, to create a new snapshot:
 
 ```json
 {
@@ -203,7 +204,10 @@ You can also leverage the `snapshot.select.overrides`:
 
 The snapshot override lets you control the size of the snapshot. In the above example, we'll be creating debezium
 events for all rows whose creation date is after Halloween 🎃 during the snapshot (instead of all rows).
-If that doesn't work, you can create a new connector with the same config but a different name and delete the previous one.
+
+Debezium doesn't seem to be built for blue/green deployment, I didn't see a viable solution to avoid the problem
+automatically via configuration (like an _autoskip_ for binlog offset?). So if none of the above works, 
+you can create a new connector with the same config but a different name and delete the previous one.
 
 ### 7. Broken Schema
 
@@ -300,4 +304,5 @@ They have a [google group][11], and that's where you'll find the best insights f
 [9]: https://debezium.io/documentation/faq/
 [11]: https://groups.google.com/g/debezium/
 [12]: https://levelup.gitconnected.com/fixing-debezium-connectors-when-they-break-on-production-49fb52d6ac4e
+[13]: https://debezium.io/documentation/faq/#how_to_change_the_offsets_of_the_source_database
 [10]: {% post_url 2022/2022-11-07-Database-sync-with-debezium %}
