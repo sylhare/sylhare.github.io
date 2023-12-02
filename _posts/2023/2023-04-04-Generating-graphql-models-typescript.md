@@ -9,24 +9,32 @@ Having used [GraphQL][10] with typescript and [Apollo][1], you might have found 
 resolvers. That becomes quickly tedious and even possibly chaotic if those data representations are used for more than
 what they're supposed to be. 
 
-Talking about tedious, Apollo is releasing breaking-change-major version each year while deprecating the previous one.
-They also dropped support on a bunch of web server frameworks. Which makes you wonder if the library is ever going to
-be stabilized.
+Talking about tedious, Apollo is releasing a _breaking-change-major_ version each year while deprecating the previous one.
+They also dropped support for a bunch of web server frameworks. Which makes you wonder if the library is ever going to
+be stabilized. But enough with frustration for now!
 
-Anyway, code generation is actually very useful to reduce that boilerplate code for GraphQL and makes the types 
+Because code generation is actually very useful to reduce that boilerplate code necessary for GraphQL and makes the types 
 directly driven by the schemas, so they're always in sync. 
 
 ## Codegen
 
-The [codegen][2] tool that we are here using is featured on [the-guild.dev][3] which is curated list of GraphQL tools 
+The [codegen][2] tool that we are here using is featured on [the-guild.dev][3] which is a curated list of GraphQL tools 
 and solutions.
 It is even mentioned on the Apollo Server v4 [official documentation][4], and that's what we are going to use as base.
 
 ```bash
-npm install -D @graphql-codegen/cli @graphql-codegen/typescript @graphql-codegen/typescript-resolvers
+npm install -D \
+    @graphql-codegen/cli \
+    @graphql-codegen/typescript \
+    @graphql-codegen/typescript-resolvers \
+    @graphql-codegen/typescript-operations
 ```
 
-To install the necessary dependencies for the examples.
+To install the necessary dependencies for the examples:
+- We have the CLI to run the codegen commands.
+- The [typescript][6] plugin for typescript compatible objects
+- The [typescript resolver][7] plugin for resolver objects
+- The [typescript operation][8] plugin for query/mutation objects
 
 ### Config
 
@@ -42,6 +50,7 @@ generates:
     plugins:
       - "typescript"
       - "typescript-resolvers"
+      - "typescript-operations"
     config:
       # Adds the ResolversObject type
       useIndexSignature: true
@@ -58,22 +67,28 @@ generates:
       contextType: "../index#MyContext"
 ```
 
-Now if you need more flexibility on the generated types, like if your resolver partially resolve a type (in the case of
-federation), or if you've using specific generated graphQL objects then you have access to more configuration option
+Now if you need more flexibility on the generated types, like if your resolver partially resolves a type (in the case of
+federation). Or if you've used specific generated graphQL objects, then you have access to more configuration options  
 within this plugin.
 
-You can separate them from your domain objects. However, if you have existing
-model that you would like to keep, you can use a mapper to map those and not generate extra ones using:
+### Using existing models
+
+You can separate them from your domain objects. However, if you have existing models that you would like to keep,
+you can use a mapper to map those and not generate extra ones using:
 
 ```yaml
     config:
       defaultMapper: Partial<{T}>
-      mappers:
+      mappers: # for resolvers
         User: ./models#UserModel
         Profile: ./models#UserProfile
+        MyEnum: ./models#MyEnum
+      enumValues: # for mutations
+        MyEnum: ./models#MyEnum
 ```
 
-Follow the [better type safety article][5] for more configuration examples.
+Follow the [better type safety article][5] for more configuration examples, or directly from the plugins documentation
+([typescript][6], [typescript-resovlers][7], [typescript-operations][8]).
 All those configurations are optional, but that lets you see the potential of the tool, having defined types is going
 to be helpful while typechecking your resolvers and the object they return automatically.
 
@@ -143,7 +158,7 @@ const mutations: GraphQLMutationResolvers = {
 export default mutations
 ```
 
-With the context passed you can destructure to get the dataSources immediately without specifying the type.
+With the context passed, you can destructure to get the dataSources immediately without specifying the type.
 
 The notation is slimmer, but you may still want to have explicit types such as the `GraphQLMutationAddBookArgs` for the
 argument or the `GraphQLAddBookMutationResponse` for the response available for you to use, especially if the mutation
@@ -155,5 +170,8 @@ is defined in another file.
 [3]: https://the-guild.dev/
 [4]: https://www.apollographql.com/docs/apollo-server/workflow/generate-types/
 [5]: https://the-guild.dev/blog/better-type-safety-for-resolvers-with-graphql-codegen
+[6]: https://the-guild.dev/graphql/codegen/plugins/typescript/typescript
+[7]: https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-resolvers
+[8]: https://the-guild.dev/graphql/codegen/plugins/typescript/typescript-operations
 [10]: {% post_url 2021/2021-07-26-Apollo-and-graphql %}
 [11]: {% post_url 2022/2022-10-11-Graphql-and-federation %}
