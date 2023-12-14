@@ -1,3 +1,4 @@
+//custom
 .site-header .site-title {
   line-height: 1em;
 }
@@ -6,6 +7,7 @@
   font-family: $font-family-logo;
 }
 
+//chartjs
 .chart {
   margin: 0 auto;
   min-width: 50%;
@@ -14,6 +16,7 @@
   padding-bottom: 1em;
 }
 
+//mermaidjs
 %mermaid-color {
   fill: lighten($actor, 25%) !important;
   stroke: $actor !important;
