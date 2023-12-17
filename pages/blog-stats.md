@@ -5,6 +5,7 @@ subtitle: "Where all the graphs wash ashore"
 permalink: /stats/
 feature-img: "assets/img/pexels/wave.png"
 icon: "fas fa-chart-pie"
+excluded: true
 ---
 
 <div><blockquote id="error-chart" style="display: none"></blockquote></div>
