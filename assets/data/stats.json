@@ -1,5 +1,6 @@
 ---
 ---
+{% capture _stats %}
 {% assign totalWords = 0 %}
 {% assign dateOb = '' %}
 {
@@ -21,3 +22,5 @@
   "totalWords": {{ totalWords }},
   "averageWordsPerPost": {{ totalWords | divided_by: site.posts.size }}
 }
+{% endcapture %}
+{{ _stats | split: " " | join: "" }}
