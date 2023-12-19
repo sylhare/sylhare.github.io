@@ -44,5 +44,5 @@ jobs:
           gem install jekyll-theme-type-on-strap
       - name: GPR
         run: |
-          gem install type-on-strap --version "2.4.4" --source "https://rubygems.pkg.github.com/sylhare"
+          gem install type-on-strap --version "2.4.8" --source "https://rubygems.pkg.github.com/sylhare"
 
