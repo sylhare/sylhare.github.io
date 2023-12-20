@@ -161,6 +161,8 @@ function mixedData(yearPosts) {
 }
 
 function mixedConfig(data) {
+    const max = Math.max(...data.datasets[1].data);
+    const count = 1 + Math.floor((max + 4) / 5);
     return {
         type: 'scatter',
         data: data,
@@ -170,11 +172,18 @@ function mixedConfig(data) {
                 'total': {
                     type: 'linear',
                     position: 'right',
-                    beginAtZero: true
+                    beginAtZero: true,
+                    ticks: {
+                        count,
+                        precision: 0,
+                    }
                 },
                 'per-year': {
                     type: 'linear',
                     position: 'left',
+                    ticks: {
+                        count,
+                    }
                 }
             }
         }
