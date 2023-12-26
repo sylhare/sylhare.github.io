@@ -5,19 +5,19 @@ color: rgb(242,176,53)
 tags: [kubernetes]
 ---
 
-## Keep an eye on costs!
+## Keep an eye on costs! 💰
 
 If you are leveraging one of the major cloud providers: [Microsoft's Azure][8], [Google Cloud][9] or [Amazon Web Service][7] (AWS).
 
 There are several tools available within those providers that can help you manage your cloud costs.
-(AWS Cost Explorer, Google Cloud's Cost Management, and Azure Cost Management)
+(AWS Cost Explorer, Google Cloud's Cost Management, and Azure Cost Management) 🛠️
 These tools provide visibility into your cloud costs and can help you identify areas where you can save money.
 
 Now that will help you to manage your cloud configuration. However, if it comes down to the nitty-gritty, you may also have to
 look into your system, its databases and what are the services doing with the resources you are paying for.
 With those tips, you will be able to teach the developer who created those services how to save on costs. 
 
-## Cloud tailored?
+## Cloud tailored? ☁️
 
 Your infrastructure on prem was expensive and a burden for your team, so you decided to move it all to the cloud.
 But now... your cloud infrastructure bill is skyrocketing? 
@@ -37,10 +37,10 @@ architecture.
 Saving images on the cloud or saving them on your own server on the scale of twitter, a couple of cents of difference per
 image can add up to a lot of savings!
 
-## Cloud cost reduction tips
+## K8s Cloud cost reduction tips
 
 I do not have some magic recipe, but some insight to help identify and reduce the cost of your infrastructure.
-They mostly apply to a Kubernetes environment.
+They mostly apply to a Kubernetes (K8s) environment.
 
 ### Delete unused resources
 
@@ -119,7 +119,7 @@ spec:
 ```
 
 Here is an example, where the health probe is called every 20 seconds, but it will wait 30 seconds before the first call.
-If the check takes more than 3 seconds, it will fail.
+If the check takes more than 3 seconds, it will be considered as a failure.
 
 ### Log mindfully
 
@@ -138,7 +138,7 @@ Make sure that the logs are properly formatted (JSON format usually) for the log
 to process and parse.
 You should find the logs within the log manager that are not necessary but triggered thousands of times and remove those.
 
-## Conclusion
+## Conclusion 💸
 
 And that's a wrap, hopefully you found the insights you were looking for. Let me know in the comments if you have other
 cost saving strategies or divergent opinion. (The request vs limits can be quite polarizing among the community).
