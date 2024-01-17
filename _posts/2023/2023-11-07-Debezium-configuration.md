@@ -197,7 +197,7 @@ You can also try the `snapshot.select.overrides`, to create a new snapshot:
 {
   "config": {
     "snapshot.select.statement.overrides": "example.table",
-    "snapshot.select.statement.overrides.public.settlements": "SELECT * FROM example.table WHERE created_at > '2023-10-31'"
+    "snapshot.select.statement.overrides.example.table": "SELECT * FROM example.table WHERE created_at > '2023-10-31'"
   }
 }
 ```
