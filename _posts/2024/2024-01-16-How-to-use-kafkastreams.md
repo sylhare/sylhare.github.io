@@ -148,7 +148,8 @@ I have included the imports, let's decompose what we have:
 - The `application_id` is mandatory and used as the default Kafka consumer and producer `client.id` prefix, it should be unique.  
 - The _bootstrap server config_ is to connect to the broker; here it's local; in production you may have additional security configurations.
 - The [SerDe][3] (Serializer / Deserializer) for the key as string and for the record's value as an [avro][12] object.
-- A consumer configuration (you could have a producer configuration too), the auto offset is to read from the [earliest offset][10] if previous is not found
+- A consumer configuration (you could have a producer configuration too), the auto offset is to read from the [earliest offset][10]
+   if the previous is not found.
 
 
 ### Create the Topology
@@ -206,7 +207,7 @@ That's why we had one `testImplementation` dependency early on!
 Let's assume we have our production topology built, we want to be able to test the logic 
 without running kafka and that's where the `TopologyTestDriver` is useful.
 
-First we will setup everything we need, the avro schema (that's in the test resources), and
+First, we will set up everything we need, the avro schema (that's in the test resources), and
 mock our external dependencies like the registry:
 
 ```kotlin
@@ -287,8 +288,8 @@ Although it has some more complexity upfront, it fits very well in an event-base
 bullet, and if you are using SpringBoot's `@KafkaHandler` you can achieve something very similar coding wise as what
 the KafkaStreams as to offer. But if you look into the internals, I can see some added [benefits][4] at [no extra costs][1].
 
-What's the best feature you like about KafkaStreams? Or maybe you had a bad experience with it? I'd love to hear more
-about it! 🤓
+What is the feature you like most about KafkaStreams? Or maybe you had a bad experience with it? 
+I'd love to hear more about it! 🤓
 
 [^1]: 
       <a href="https://docs.confluent.io/platform/current/streams/concepts.html#kstreams-concepts" alt="confluent">
