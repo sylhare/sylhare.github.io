@@ -8,7 +8,7 @@ tags: [js]
 ## Some context
 
 NodeJS ecosystem is built on top of countless packages that sometimes feel all dependent on each other. Usually you
-start up a project with all up-to-date dependencies everything works well.
+start up a project with all up-to-date dependencies, everything works well.
 
 Then you get security alerts, vulnerability issues and all sorts of incentive making you update the packages whenever you
 get prompted to do so by some [dependabot][1] 🤖. Until a point where the newer version introduces a breaking change, or
@@ -41,7 +41,7 @@ npm update {dependency}
 This way you'll be able to update the dependency to the latest version that is not a breaking change, run the tests, 
 build and compile if you are using typescript, to make sure everything is still ok.
 
-But that's to avoid the problems 😈 so let's see how to identify the problems when things start breaking.
+But that's to avoid the problems, 😈 so let's see how to identify the problems when things start breaking.
 
 ### 2. Check your package.json and package-lock.json
 
@@ -74,7 +74,8 @@ flowchart LR
   end
 
   subgraph DS[Sub Dependency S]
-    PS[package.json] %% --> PSL[package-lock.json]
+    PS[package.json] 
+    %% --> PSL[package-lock.json]
   end
 
   R{npm \n resolves}
@@ -94,7 +95,7 @@ Sometimes the `package-lock.json` doesn't reflect what's actually installed in t
 when installing some packages, and discarding the changes on the lock files. Or any other reason after some manual
 changes.
 
-To see what's directly installed use the [listing command][3] of npm:
+To see what's directly installed, use the [listing command][3] of npm:
 
 ```bash
 # List all packages locally installed
@@ -123,7 +124,7 @@ npm when updating your packages, stick with one.
 Also, if you have two dependencies using two different major versions, you might be able to resolve on a version, but
 your project may not behave like expected.
 
-> For example some test may start failing for weird reason saying that some unknown method "_is not a function_".
+> For example, some tests may start failing for weird reason, saying that some unknown method "_is not a function_".
 
 Then try to update the version of your dependencies, so they depend on the same sub dependencies' version. You can check
 directly in the `node_modules/*` or using `npm list package`.
@@ -205,7 +206,7 @@ plugin and its _host_ library.
 In our case we use a flexible version (`"1.4.x"`)for the pear dependency to avoid unnecessary conflicts Now by default
 with npm v7+ the peer dependencies are installed automatically.
 
-### 8. Hanlde multiple common dependencies
+### 8. Handle multiple common dependencies
 
 When multiple of your dependencies relies on different versions of the same package, there could be some interferences.
 To force a version on certain package, you can use the `overrides` which will force a specific version.
