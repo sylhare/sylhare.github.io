@@ -2,7 +2,7 @@
 layout: post
 title: GraphQL API client 📡 in a React component
 color: rgb(215, 132, 217)
-tags: [graphql]
+tags: [react]
 ---
 
 Now that we've seen how to create a GraphQL API from [Apollo Server][10], [Advanced Queries][11] and [Mutation][12] to

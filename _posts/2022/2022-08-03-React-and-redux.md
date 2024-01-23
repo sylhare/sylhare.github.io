@@ -2,7 +2,7 @@
 layout: post
 title: React and redux
 color: rgb(166,10,111)
-tags: [js]
+tags: [react]
 ---
 
 ## Introduction

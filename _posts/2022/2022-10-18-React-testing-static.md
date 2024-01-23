@@ -2,7 +2,7 @@
 layout: post
 title: Static React Testing
 color: rgb(242,62,61)
-tags: [js]
+tags: [react]
 ---
 
 In this article we'll have a look at the React [testing library], some of its packages and the main APIs to use in

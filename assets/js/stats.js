@@ -381,7 +381,8 @@ const colors = {
 }
 
 const classic20 = {
-    'js': '#1f77b4',
+    'js': '#2385ca',
+    'react': '#2c92da',
     'database': '#aec7e8',
     'java': '#ff7f0e',
     'agile': '#ffbb78',
@@ -395,12 +396,12 @@ const classic20 = {
     'tips': '#c49c94',
     'graphql': '#e377c2',
     'git': '#f7b6d2',
-    '-': '#7f7f7f',
+    'opensource': '#7f7f7f',
     'grey': '#c7c7c7',  // css, ruby, open source, docker, misc
     'ctf': '#bcbd22',
     '--': '#dbdb8d',
     'kubernetes': '#17becf',
-    'open source': '#9edae5'
+    '-': '#9edae5'
 };
 
 const Blues8 = ['#deebf7', '#c6dbef', '#9ecae1', '#6baed6', '#4292c6', '#2171b5', '#08519c', '#08306b'];

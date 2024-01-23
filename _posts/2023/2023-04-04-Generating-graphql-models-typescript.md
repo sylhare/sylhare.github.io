@@ -61,7 +61,6 @@ generates:
       
       # Providing our context's interface ensures our
       # context's type is set for all of our resolvers.
-
       # This file path starts from the location of the
       # file where you generate types.
       contextType: "../index#MyContext"

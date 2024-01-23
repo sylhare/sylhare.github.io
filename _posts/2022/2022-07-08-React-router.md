@@ -2,7 +2,7 @@
 layout: post
 title: Introduction to React router
 color: rgb(4,178,217)
-tags: [js]
+tags: [react]
 ---
 
 Assuming you have been interested in React and started creating simple apps, you now want to make it

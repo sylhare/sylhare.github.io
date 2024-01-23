@@ -2,7 +2,7 @@
 layout: post
 title: A journey in React ⚛ territory
 color: rgb(96,216,251)
-tags: [js]
+tags: [react]
 ---
 
 [React](https://reactjs.org/) is a well known javascript library for building user interfaces.

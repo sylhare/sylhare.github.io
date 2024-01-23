@@ -2,7 +2,7 @@
 layout: post
 title: Interactive React Testing
 color: rgb(2, 94, 115)
-tags: [js]
+tags: [react]
 ---
 
 Welcome into the React Testing part 2! If you've missed out part 1, that's because it is obnoxiously but simply named:
