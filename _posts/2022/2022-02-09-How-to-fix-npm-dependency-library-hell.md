@@ -31,6 +31,19 @@ easy fix is to use the `npm audit fix` which will look for updates that can be u
 But it only changes dependencies in the `package-lock.json` and you might be better off updating the parent dependency
 in the `package.json` instead to keep it consistent.
 
+```bash
+npm audit       
+# npm audit report
+
+@babel/traverse  <7.23.2
+Severity: critical
+Babel vulnerable to arbitrary code execution when compiling specifically crafted malicious code - https://github.com/advisories/GHSA-67hx-6x53-jw92
+fix available via `npm audit fix`
+node_modules/@babel/traverse
+
+# Other vulnerabilities...
+```
+
 You don't have to blindly update everything at once just to realize that everything is now broken, take it step-by-step
 one vulnerability at a time using:
 
@@ -106,6 +119,28 @@ npm view {package}
 ```
 
 This will show you precisely what has been installed. It will also warn you if something is missing or invalid.
+Even better, you can also easily target which package may have trigger a vulnerability alert so you can update the main
+repo instead of fixing the `package-lock.json` file:
+
+```bash
+npm list @babel/traverse 
+example@0.0.0 /Users/me/projects/example
+├─┬ jest-circus@27.5.1
+│ └─┬ jest-snapshot@27.5.1
+│   └── @babel/traverse@7.12.13
+└─┬ ts-jest@27.1.5
+  └─┬ @babel/core@7.12.13
+    ├─┬ @babel/helper-module-transforms@7.12.13
+    │ ├─┬ @babel/helper-replace-supers@7.12.13
+    │ │ └── @babel/traverse@7.12.13 deduped
+    │ └── @babel/traverse@7.12.13 deduped
+    ├─┬ @babel/helpers@7.12.13
+    │ └── @babel/traverse@7.12.13 deduped
+    └── @babel/traverse@7.12.13 deduped
+```    
+
+It seems like it depends on both `jest-circus` and `ts-jest` in this case, better update those to a later version to get
+rid of the vulnerability with [@babel/traverse@7.12.13][8].
 
 ### 4. Update a package
 
@@ -235,4 +270,5 @@ before installing it again.
 [5]: https://docs.npmjs.com/cli/v8/commands/npm-install#description
 [6]: https://nodejs.org/en/blog/npm/peer-dependencies/
 [7]: https://docs.npmjs.com/cli/v8/commands/npm-dedupe
+[8]: https://github.com/advisories/GHSA-67hx-6x53-jw92
 [10]: {% post_url 2022/2022-05-18-Version-control-git %}
