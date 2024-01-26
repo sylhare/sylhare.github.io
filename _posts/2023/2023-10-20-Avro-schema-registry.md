@@ -31,7 +31,7 @@ import com.github.davidmc24.gradle.plugin.avro.GenerateAvroJavaTask
 plugins {
  kotlin("jvm") version "1.3.50"
  java
- id( "com.github.davidmc24.gradle.plugin.avro-base") version "1.2.0"
+ id("com.github.davidmc24.gradle.plugin.avro-base") version "1.2.0"
 }
 
 repositories {
