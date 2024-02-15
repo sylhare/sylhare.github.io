@@ -7,9 +7,9 @@ tags: [misc]
 
 ## _A Story about a Monolith ..._
 
-A Monolith is a single codebase that contains all the functionality of an application. It is a good pattern to get 
-started, because it allows faster development for a new application. Having one service instead of a fleet of microservices
-tends to be slightly easier to manage from an infrastructure point of view.
+A Monolith is usually an enormous application with multiple functionalities within one repository. 
+It is a good pattern to get started, because it allows faster development for a new application. 
+Having one service instead of a fleet of microservices tends to be slightly easier to manage from an infrastructure point of view.
 
 However, as the application grows, the monolith becomes harder to maintain and scale. We're not here to start a debate,
 chances are that if you’re looking at this article, yours might have already grown beyond sanity!
