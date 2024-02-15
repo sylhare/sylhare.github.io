@@ -18,7 +18,7 @@ Try the [online editor](https://mermaid-js.github.io/mermaid-live-editor/edit/) 
 So let's have a simple example. We will be mapping with some notes and colors the simple call flow of a client talking
 to an app. This is pretty basic but covers most of our daily needs.
 
-Writing down in simple mermaid script a call flow:
+Writing down in a simple mermaid script a call flow:
 
 ```bash
 sequenceDiagram
@@ -53,18 +53,18 @@ sequenceDiagram
   participant A as App
   participant B as Database
   rect rgba(216,240,232, .7)
-  C -->> A : Init connection
+  C -->> A: Init connection
   A -->> C: Acknowledge connection
   end
-  C ->> A : Send request
+  C ->> A: Send request
   Note over C,A : Each request have a unique ID
-  A ->> B : Query the database
+  A ->> B: Query the database
   opt Concurrency
-    B -->> B : Other operation occuring in the database
+    B -->> B: Other operation occurring in the database
   end
-  B ->> A : Retrieve information
+  B ->> A: Retrieve information
   Note left of B: Retrieve time < 10ms
-  A ->> C : Send requested information
+  A ->> C: Send requested information
 </div>
 
 ### Cheat sheet
