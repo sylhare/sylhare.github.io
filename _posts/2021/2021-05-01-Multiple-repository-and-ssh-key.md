@@ -29,11 +29,16 @@ Some caveat for it to work:
    - the public one 👨‍💻 can be named the default name `id_rsa` 
    - the other one 🕵️‍️ can be named  `id_rsa_private`
 - Make sure that each SSH key is registered in the correct account online
+  - Give them some meaningful name, and add each to the relevant remote git repository
+
+Now that the SSH keys are created, you will need to do a bit of configuration to make it work.
 
 ### Set up SSH config
 
 To start using different ssh key depending on the repository.
-In `~/.ssh/config` you can set it like:
+Create a new file in the ssh folder as `~/.ssh/config`.
+This will allow you to override the checking mechanism to specify which ssh key to use based on the host,
+even if it's the same host name.
 
 ```ssh
 #public account
@@ -54,7 +59,9 @@ We have two Hosts:
   - The normal GitHub host: `Host github.com`
   - With a hyphen after: `Host github.com-private`
 
-It is small drawback, as the ssh key can't be contextually. It will make sense in the usage part.
+It is small drawback, as the ssh key can't be contextually by the folder it's called from.
+Confused as to how it works? It will make sense in the usage part, as long as the `HostName` is still `github.com`, 
+the host doesn't matter much.
 
 ## Local Git configuration
 
@@ -72,7 +79,8 @@ Make sure you have your repositories separated in different folders depending on
           └── my_repo
 ```
 
-In your `~/.gitconfig` you will put the default `[user]` information, here the public one:
+On your Home, not shown in the above folder structure, you have the master config file for git. 
+In this file: `~/.gitconfig`, you will put the default `[user]` information, here the public one:
 
 ```bash
 [user]
