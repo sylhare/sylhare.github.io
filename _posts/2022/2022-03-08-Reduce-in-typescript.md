@@ -252,7 +252,7 @@ If you don't care about the types (which is not the case for most people), you c
 
 ```ts
 const groupedCreatures = sea.reduce((typedCreatures, creature) => {
-    typedCreatures.set(creature.type, [...typedCreatures.get(creature.type) || [], creature])
+    return typedCreatures.set(creature.type, [...typedCreatures.get(creature.type) || [], creature])
 }, new Map());
 ```
 
