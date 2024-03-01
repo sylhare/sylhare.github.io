@@ -163,6 +163,17 @@ Scale the deployment of an application, here the nginx app:
 kubectl scale deployment nginx --replicas=3
 ```
 
+Scale one or multiple deployment to 0 to remove any running resources in them: 
+
+```shell
+# In default namespace (or use --namespace=<namespace name> to scale down in a specific one)
+kubectl get deployments -o jsonpath='{.items[*].metadata.name}' | xargs kubectl scale deployment --replicas=0
+# To scale down all deployment in all namespace
+kubectl get deployments --all-namespaces -o jsonpath='{range .items[*]}{@.metadata.namespace} {@.metadata.name} {end}' | xargs -n2 bash -c 'kubectl scale deployment $1 --replicas=0 --namespace=$0'
+```
+
+You can use the same command to scale them back up. 
+
 ### Namespace
 
 A namespace is a way to separate your cluster or components. For example having a `prod` and a `test` namespace can help
@@ -199,7 +210,10 @@ kubectl config use-context test
 To see which namespace you are in, you can use:
 
 ```bash
+# To display the current one
 kubectl config current-context
+# To display the current one and the other available ones
+kubectl config get-contexts
 ```
 
 ### Volumes
@@ -395,7 +409,7 @@ spec:
               run: access
 ```
 
-## Single service ingress
+#### Single service ingress
 
 The simple ingress usage is with one address, and one service associated to it. The service associated needs to
 have `CLusterIP` in the `spec.type`.
@@ -416,7 +430,7 @@ spec:
       host: poddy.com
 ```
 
-## Simple fanout
+#### Simple fanout
 
 This time we're going to deploy Simple fanout type that exposing multiple services on same host, but via different
 paths. This type is very handy when you running in CloudProvider and want to cut cost on creating LoadBalancers for each
