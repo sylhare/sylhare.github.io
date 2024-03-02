@@ -155,6 +155,8 @@ CMD ['echo $FIRST $SECOND']
 
 ## Use your container with files
 
+To enable the transfer of data files with the container, during creation or while running.
+
 ### Adding files
 #### Directly in your dockerfile
 
@@ -189,7 +191,7 @@ ENTRYPOINT ["/bin/bash"]
 With that we have a user `username` as part of a group `groupname` that have access rights on the work directory only created.
 By using `USER username`, the entrypoint will use that user to perform any commands, limiting the security risks.
 
-###@ Mount files in your container
+#### Mount files in your container
 
 For bigger volumes, you can directly mount in your docker files using `-v`. 
 Note that you need to give the absolute path on the host for it work, you can use `$PWD` which give your current location.
