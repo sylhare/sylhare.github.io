@@ -390,6 +390,14 @@ start working in Kubernetes.
 Kubernetes has different options of Ingress Controllers, and, if needed, we can also build our own. Most popular Ingress
 Controllers implementations are `Haproxy`, `Traefic`, `Nginx`.
 
+Find all the ingresses in your cluster for all namespaces using:
+
+```shell
+kubectl get ingress -A 
+```
+
+This will list them, displaying among other things their name, hosts and ports.
+
 #### NetworkPolicy
 
 ```yaml

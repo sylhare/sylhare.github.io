@@ -181,6 +181,7 @@ since root is the default one, once compromise it can do a lot of damage using t
 FROM ubuntu:16.04
 
 WORKDIR /app
+# For alpine images: RUN addgroup -S groupname && adduser -S username -G groupname 
 RUN groupadd -r groupname && useradd -r username -g groupname
 COPY --chown=username:groupname . ./
 USER username

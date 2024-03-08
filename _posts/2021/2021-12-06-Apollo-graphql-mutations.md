@@ -8,9 +8,8 @@ tags: [graphql]
 Let's have a look at mutations! 🔭
 
 The type `Mutation` is where you stack all of your [mutations][1] in GraphQL. The basic mechanism stay the same as
-queries, so if you have read the [Apollo 🚀 and GraphQL]({% post_url 2021/2021-07-26-Apollo-and-graphql %})
-and the [Advanced 🛰 Apollo Graphql queries]({% post_url 2021/2021-11-06-Advance-apollo-graphql-queries %}) article, you
-should be all set!
+queries, so if you have read the [Apollo 🚀 and GraphQL][20] and the [Advanced 🛰 Apollo Graphql queries][21] article, 
+you should be all set!
 
 ## Definitions
 
@@ -301,3 +300,5 @@ Find the working examples in [sylhare/Apollo](https://github.com/sylhare/Apollo)
 [8]: https://productionreadygraphql.com/2020-08-01-guide-to-graphql-errors "UserError Result"
 [9]: https://sachee.medium.com/200-ok-error-handling-in-graphql-7ec869aec9bc "Twitter Custom Error Result"
 [10]: https://www.apollographql.com/blog/graphql/error-handling/full-stack-error-handling-with-graphql-apollo/ "Apollo Error"
+[20]: {% post_url 2021/2021-07-26-Apollo-and-graphql %}
+[21]: {% post_url 2021/2021-11-06-Advance-apollo-graphql-queries %}
