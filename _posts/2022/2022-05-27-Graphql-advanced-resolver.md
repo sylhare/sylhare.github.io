@@ -80,6 +80,44 @@ But for the purpose of this article, let's review each of them, directly from th
 - **info**: Contains core information specified by GraphQL such as path, root, field name that qre queried and so on.
   Apollo Server extends it with a cacheControl field.
 
+### Usage
+
+#### Use of `parent`
+
+Useless for mutation, it becomes relevant when querying custom type's fields.
+
+For example, when creating a resolver for the field `user` in the GraphQL type `Example` the _parent_ will not be undefined.
+Because it will first hit the `Example` and retrieves the `id` before trying to resolve the `user`.
+
+If you look at a resolver defined like:
+
+```ts
+const Resolvers = {
+  Query: { example, exampleWithArgs },
+  Example: {
+    user
+  }
+}
+```
+
+We will have for `user` a resolver that could be looking like:
+
+```ts
+export async function user(
+  parent: Omit<Example, 'user'>,
+  _: undefined, // No arguments here
+  context: AppContext,
+): Promise<User> {
+  return context.findUserFrom(parent.id);
+}
+```
+
+The [`Omit`][14] type in typescript allow to create a type minus some keys. 
+In this case we know that the parent is of type `Example` but the `user` from this type is not yet resolved and not part
+of the parent, hence using `Omit` for clarity.
+
+You can find more about field resolvers in this [aritcle][21] about [advanced graphql queries][21].
+
 #### Use of `info`
 
 The [info][1] is mostly for more advanced use case as you'd normally not need it.
@@ -216,4 +254,6 @@ The [apollo client][9] reads and interprets the fragments thanks to its [cache][
 [11]: https://www.prisma.io/blog/graphql-server-basics-demystifying-the-info-argument-in-graphql-resolvers-6f26249f613a
 [12]: https://graphql.org/
 [13]: https://www.npmjs.com/package/graphql-parse-resolve-info
+[14]: https://www.typescriptlang.org/docs/handbook/utility-types.html
 [20]: {% post_url 2021/2021-12-06-Apollo-graphql-mutations %}
+[21]: {% post_url 2021/2021-11-06-Advance-apollo-graphql-queries %}
