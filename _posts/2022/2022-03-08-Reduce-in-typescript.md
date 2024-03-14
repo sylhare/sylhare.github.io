@@ -36,7 +36,7 @@ export const sea: SeaCreature[] = [
 ];
 ```
 
-Our data is setup and as you all know, the deadliest creature `deadliestCreature` is the shrimp 🦐 !
+Our data is set up and as you all know, the deadliest creature `deadliestCreature` is the shrimp 🦐 !
 Now that you have that set up, you can start playing with `.reduce()`.
 
 ## 2. Reduce Introduction 
@@ -46,7 +46,7 @@ Now that you have that set up, you can start playing with `.reduce()`.
 The reduce function can be written such as:
 
 ```ts
-array.reduce((result, current) => { ... }, initialValue)
+array.reduce((result, current) => { /* ... */ }, initialValue)
 ```
 
 I have added the data to give some context, hopefully it will help you understand when and how you can use it.
@@ -61,6 +61,7 @@ the expected typescript type.
 Let's set `deadliestCreature` as the initial value:
 
 ```ts
+const deadliestCreature = '🦐';
 sea.reduce((result, _) => result, deadliestCreature)
 // returns the deadliestCreature -> '🦐'
 ```
@@ -71,9 +72,29 @@ In the end nothing happens and the result is the initial value: `deadliestCreatu
 
 If you don't set the initial value, the result of the reduction will be the **first** element of the array.
 
-### 2.3. Sum of elements in an array
+### 2.3. Inferring types 
 
-One of the most practical use when reducing to a value is to do the sum of elements
+In typescript, the type of the `reduce` produced result is [inferred][10] from the initial value, 
+if not set it will be taken from the first element of the reduced array.
+To avoid unnecessary casting for the initial value working with objects you can use `<>` in front of the `reduce` function
+to infer the type of the initial value. 
+Which by extension is the returned type of the computation:
+
+```ts
+type Creature = { name: string };
+const creatures: Creature[] = sea
+  .reduce<Creature[]>(
+    (result, current) => [...result, { name: current.emoji }],
+    []);
+```
+
+Without the inferred type `<Creature[]>`, it wouldn't compile, as `name` does not exist on `SeaCreature`.
+By specifying the type, the compiler knows that the result is an array of `Creature` and not `SeaCreature`.
+The other option is to cast the array or create a typed initial value as `Creature[]`.
+
+### 2.4. Sum of elements in an array
+
+One of the most practical uses when reducing to a value is to do the sum of elements
 in one array such as:
 
 ```ts
@@ -89,8 +110,8 @@ In here, `a` represents the sum and `b` the current element of the array.
 ### 3.1. Reduce an array to a value
 
 Another usage is when you want to reduce an array to one value.
-For example, if your program wants to know if it's safe to swim, it will want to know
-if there is any deadly animals in the sea (the name of our dataset):
+For example, if your program wants to know if it's safe to swim, 
+it will want to know if there are any deadly animals in the sea (the name of our dataset):
 
 ```ts
 const isDangerous = sea.reduce((a, b) => a || b.deadly, false);
@@ -110,8 +131,8 @@ then it will return true.
 
 When you have `[{ a: 'a1', b: 'b1' }, { a: 'a2', b: 'b2' }]` and you want `{ a: ['a1', 'a2'], b: ['b1', 'b2'] }`.
 
-The same way you can reduce an array to a value, you can do it to an object as well. First let's define the type we
-expect at the end:
+The same way you can reduce an array to a value, you can do it to an object as well. 
+First, let's define the type we expect at the end:
 
 ```ts
 export type SortedCreatures = { deadly: SeaCreature[], safe: SeaCreature[] };
@@ -121,23 +142,24 @@ Something that can't be done with a [map][6] function. Let's use our sea data an
 `SeaCreatures` into an object containing an array of the safe ones and an array of the deadly ones.
 
 ```ts
-const reducedCreatures: SortedCreatures = sea.reduce((result: SortedCreatures, creature: SeaCreature) => {
-    return creature.deadly ?
-      { ...result, deadly: [...result.deadly, creature] } :
-      { ...result, safe: [...result.safe, creature] }
-  },
-  { deadly: [], safe: [] }
-);
+const reducedCreatures: SortedCreatures = sea
+  .reduce((result: SortedCreatures, creature: SeaCreature) => {
+      return creature.deadly ?
+        { ...result, deadly: [...result.deadly, creature] }
+        : { ...result, safe: [...result.safe, creature] }
+    },
+    { deadly: [], safe: [] }
+  );
 ```
 
 In this case we transform an array based on the attribute of its values (that are `SeaCreature` objects).
-In the end we have an object with all creatures filtered in deadly and safe arrays.
+In the end, we have an object with all creatures filtered in deadly and safe arrays.
 
 When the _reducer_ method gets too complicated, you can extract it, for that,
 declare the type of the result and create the reducer function such as:
 
 ```ts
-const creatureReducer = (result: SortedCreatures, creature: SeaCreature) => creature.deadly ?
+const sortReducer = (result: SortedCreatures, creature: SeaCreature) => creature.deadly ?
   { ...result, deadly: [...result.deadly, creature] } 
   : { ...result, safe: [...result.safe, creature] };
 ```
@@ -145,7 +167,7 @@ const creatureReducer = (result: SortedCreatures, creature: SeaCreature) => crea
 Now it will be much simpler to read:
 
 ```ts
-sea.reduce(creatureReducer, { deadly: [], safe: [] });
+sea.reduce(sortReducer, { deadly: [], safe: [] });
 ```
 
 This trick can be useful is you need to process your data in multiple chained commands,
@@ -183,10 +205,11 @@ For that we're just going to change the initial value of our reducer to an objec
 and use the [computed property names][7] notation `[keyName]:value` to create our object.
 
 ```ts
-const groupedCreatures: { [key: string]: SeaCreature[] } = sea.reduce((result, creature) => ({
-  ...result,
-  [creature.type]: [...(result[creature.type] || []), creature]
-}), {} as { [key: string]: SeaCreature[] });
+const groupedCreatures = sea
+  .reduce<{ [key: string]: SeaCreature[] }>((result, creature) => ({
+    ...result,
+    [creature.type]: [...(result[creature.type] || []), creature]
+  }), {});
 ```
 
 We're using the destructuring notation (`...`) to get all previous creatures of the same type
@@ -195,52 +218,56 @@ With that you'll have `groupedCreatures.fish` that will return a list of all the
 
 Since we don't know what value the type of the `SeaCreature` can be, only that it's a string.
 So we're using `[key: string]` and not a more specific type.
-I used `{} as { [key: string]: SeaCreature[] }` for the default value, but you could define an empty value as well to 
-avoid the cast (See an example after).
+I inferred the type via the reducer `<>`, 
+so it knows that the default value `{}` is of type `{ [key: string]: SeaCreature[] }`.
 
 ### 4.2. Group an array to a typed object
 
 In the case, we know what we expect, even if the object has unexpected types, they can be filtered out in the reducer.
 But for simplicity sack, let's assume you know the keys of the object you are grouping. 
-Let's have a new sea with only 3 possible types. 
-We are going to use an enum for the type and create a new `SeaCreatureType` type.
+Let's create a sea ecosystem with only 3 possible types. 
+We are going to use an enum for the type and create a new `MarineType` enum:
 
 ```ts
-enum SeaCreatureType {
+enum MarineType {
   CRUSTACEAN = 'crustacean',
   FISH = 'fish',
   SHARK = 'shark',
 }
 
-type SeaCreatureTyped = {
-  type: SeaCreatureType,
+type MarineCreature = {
+  type: MarineType,
   emoji: string,
   deadly: boolean,
 };
 
-type GroupedCreatures = {
-  crustacean: SeaCreature[],
-  fish: SeaCreature[],
-  shark: SeaCreature[],
+type SeaEcosystem = {
+  crustacean: MarineCreature[],
+  fish: MarineCreature[],
+  shark: MarineCreature[],
 };
 ```
 
-If you hate casting like `(sea as SeaCreatureTyped[])`, then you can always refactor the `sea` from the beginning so it
-uses the correct type.
-Since we don't want to deal with undefined and null checks, we'll have an empty group as our base:
+Now if you don't want `enum`, you could resort to use `keyof SeaEcosystem` for the type of the `MarineCreature`,
+but an `enum` seems more readable in this particular case.
+
+If you hate casting like `(sea as MarineCreature[])`, then you can always refactor the `sea` from the beginning,
+so it uses the correct type as `seaTyped`.
+Now let's group our typed sea into one known ecosystem:
 
 ```ts
-const emptyGroup: GroupedCreatures = { crustacean: [], fish: [], shark: [] };
+const emptyGroup: SeaEcosystem = { crustacean: [], fish: [], shark: [] };
 
-const groupedCreatures: GroupedCreatures = seaTyped.reduce((result: GroupedCreatures, creature: SeaCreatureTyped) => ({
-  ...result,
-  [creature.type]: [...(result[creature.type] || []), creature]
-}), emptyGroup);
+const ecosystem: SeaEcosystem = seaTyped
+  .reduce((result: SeaEcosystem, creature: MarineCreature) => ({
+    ...result,
+    [creature.type]: [...(result[creature.type] || []), creature]
+  }), emptyGroup);
 ```
 
-And with that our reduce function leverages the expected types to create the `groupCreatures` value, no more `any`!
-Now if you don't want `enum`, you could resort to use `keyof GroupedCreatures` for the type, but an `enum` seems more readable
-in this particular case.
+We have an empty group as our base, since we want a default value for each key of the `SeaEcosystem` to facilitate
+the work of the reducer function.
+That way, there are no more unknowns since we defined it all from the start with our types.
 
 You don't need to set the type for the reducer parameters as it will be [inferred][10] from the default value and the
 targeted array's type.
@@ -251,12 +278,15 @@ Find out more about the notation used in a previous article about [javascript ES
 If you don't care about the types (which is not the case for most people), you can group to a map object:
 
 ```ts
-const groupedCreatures = sea.reduce((typedCreatures, creature) => {
+const mappedCreatures = sea
+  .reduce((marineCreatures, creature) => {
     return typedCreatures.set(creature.type, [...typedCreatures.get(creature.type) || [], creature])
-}, new Map());
+  }, new Map<string, SeaCreature[]>());
 ```
 
-Where you will be able to get the fish by doing `groupedCreatures.get('fish')`. 
+Where you will be able to get the fish by doing `mappedCreatures.get('fish')`.
+You don't have to set the type of the map when adding it as the initial value, 
+but by doing so you can set what's expected.
 Whatever rocks your boat, choose the way you prefer. 
 
 ## 5. Group from an object's values
@@ -281,12 +311,12 @@ but we still need to deal with it.
 Let's create some of the expected types, from the one defined before:
 
 ```ts
-type NamedSeaCreature = SeaCreatureTyped & { name: string };
+type MarineLife = MarineCreature & { name: string };
 
-type GroupedNamedCreatures = {
-  crustacean: NamedSeaCreature[],
-  fish: NamedSeaCreature[],
-  shark: NamedSeaCreature[],
+type MarineEcosystem = {
+  crustacean: MarineLife[],
+  fish: MarineLife[],
+  shark: MarineLife[],
 };
 ```
 
@@ -307,24 +337,24 @@ from the _seaObject_'s entries, which are key, value pairs.
 And group that into an object using the type as the new object's key:
 
 ```ts
-const emptyGroup: GroupedNamedCreatures = { crustacean: [], fish: [], shark: [] };
+const emptyGroup: MarineEcosystem = { crustacean: [], fish: [], shark: [] };
 
-const grouped: GroupedNamedCreatures = Object.entries(seaObject).reduce((result, [key, value]) => ({
-  ...result,
-  [value.type]: [...(result[value.type] || []), ({ ...value, name: key })],
-}), emptyGroup);
+const marineEcosystem: MarineEcosystem = Object.entries(seaObject)
+  .reduce((result, [key, value]) => ({
+    ...result,
+    [value.type]: [...(result[value.type] || []), ({ ...value, name: key })],
+  }), emptyGroup);
 ```
 
 Since we want to keep the key which is not part of the value, I am adding it using `name`.
-Now we should have something similar to the previous `groupedCreatures` with the addition
-of the name 👌.
+Now we should have something similar to the previous `ecosystem` with the addition of the name 👌.
 
 ## 6. Conclusion
 
 I have edited the examples with more explicit typing and type declaration, 
 so it is easier to follow within the article when you don't have an IDE open to try it out. I do hope it's more 
 approachable that way, let me know in the comment section!
-If you still feel there are not enough types, check my article about [type inference][10],
+If you still feel there are not enough types, check my article about [type inference][10];
 my preference leans towards a more inferred approach.  
 
 Reduce is not that easy at first, but once you get the fundamentals, it can become a really
