@@ -163,10 +163,10 @@ Scale the deployment of an application, here the nginx app:
 kubectl scale deployment nginx --replicas=3
 ```
 
-Scale one or multiple deployment to 0 to remove any running resources in them: 
+Scale one or multiple deployments to 0 to remove any running resources in them: 
 
 ```shell
-# In default namespace (or use --namespace=<namespace name> to scale down in a specific one)
+# In default namespace (or use --namespace=<namespace name> on both side of '|' to scale down in a specific one)
 kubectl get deployments -o jsonpath='{.items[*].metadata.name}' | xargs kubectl scale deployment --replicas=0
 # To scale down all deployment in all namespace
 kubectl get deployments --all-namespaces -o jsonpath='{range .items[*]}{@.metadata.namespace} {@.metadata.name} {end}' | xargs -n2 bash -c 'kubectl scale deployment $1 --replicas=0 --namespace=$0'

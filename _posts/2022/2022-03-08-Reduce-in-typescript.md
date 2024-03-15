@@ -129,9 +129,14 @@ then it will return true.
 
 ### 3.2. Reduce an array to an object
 
-When you have `[{ a: 'a1', b: 'b1' }, { a: 'a2', b: 'b2' }]` and you want `{ a: ['a1', 'a2'], b: ['b1', 'b2'] }`.
+When you have an object like this:
+- `[{ a: 'a1', b: 'b1' }, { a: 'a2', b: 'b2' }]` 
+and you want to transform it into:
+- `{ a: ['a1', 'a2'], b: ['b1', 'b2'] }`.
 
-The same way you can reduce an array to a value, you can do it to an object as well. 
+You can apply `.reduce` to an array of an object to transform it into another object of arrays.
+Here is how to do it in typescript.
+
 First, let's define the type we expect at the end:
 
 ```ts
