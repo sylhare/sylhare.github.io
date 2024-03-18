@@ -5,14 +5,15 @@ color: rgb(54,45,85)
 tags: [misc]
 ---
 
-GitHub copilot is an AI that sometime suggest you some snippets, it tries to determine what could help based
+GitHub copilot is an AI that sometimes suggests some snippets to you, it tries to determine what could help based
 on the context of the file(s) you are working on.
 
 It's not limited to code, It also works with text completion, 
 which can be useful when writing some documentation within the repo itself or for architecture documentation.
 
 So for fun is going to be written with the co piloting mode ON 🙃 and when writing _GitHub copilot is..._ at the start 
-of this article, I could see all the marketing pushed to me with heavy suggestion like "is... like pair programming with an AI"
+of this article.
+I could see all the marketing pushed to me with _heavy suggestion_ like "is... like pair programming with an AI"
 or "is... a tool that helps you write better code" and even "is... like autocomplete but better". Which is a bit too much
 of self-promotion right of the bat! 
 
@@ -30,7 +31,7 @@ according to the [website][2], from GitHub itself.
 
 I don't have more information about the inner working of GitHub copilot, and it does not seem to be suggesting anything
 about it. [Research paper][10] online were more concentrated on it efficiency and its suggestions based on code description
-input. But if you do know more, let me know in a comment! 🤓
+input. But if you do know more, let me know in the comment! 🤓
 
 ### Utilisation
 
@@ -49,17 +50,17 @@ hopeless.
 
 ## The advantages
 
-On library suggestion with javascript, to detect and give good suggestion on what option to pass
+On library suggestion with javascript, to detect and give a good suggestion on what option to pass
 in a library's constructor/function. (You may need to go to the plugin to refresh to get a better suggestion).
 
 I tried it with [express and jwt][11], and it managed to give me some valid input for the options. (For example what
 was to be passed in the [expressjwt][4] middleware).
 
-It was pretty bad at first for simple autocompletion but after some tries, it got better. For example, 
+It was pretty bad at first for simple autocompletion, but after some tries, it got better. For example, 
 with some clear context, it can write the end of a line for you. If you ignore some missing columns, 
 brackets or invented variable name, it's still better than what I was expecting.
 
-For writing technical documentation in markdown, the AI is actually very good, and provides some interesting suggestions.
+For writing technical documentation in markdown, the AI is actually great, and provides some interesting suggestions.
 If you're having a blank page syndrome, it can suggest you multiple entry points, to get started. 
 So for an internal work document, it can be pretty powerful. 
 
@@ -71,25 +72,25 @@ look in the literature for confirmation. (I couldn't get copilot to give me its 
 
 By default, it utilizes whatever you are typing to train itself, so you may want to manually update the confidentiality
 settings in your profile to disable it.
-I guess the downside, is that it will be slower to learn from you, but it's rather hard to assess. 
+I guess the downside is that it will be slower to learn from you, but it's rather hard to assess. 
 
 I did find that the first few suggestions were either not useful or just plain annoying, so don't expect it to be
 at full speed before a couple of weeks.
 
-It can be totally off the marks with a suggestion that looks real but is actually not good at all, the longer the 
+It can be totally off the marks with a suggestion that looks real but is actually not good at all. The longer the 
 amount of line suggested, the more likely you'll have to revisit it. So don't expect it to do your work, (...wait, 
 I guess that's a good point? 😅).
 
-You can turn the _co-piloting_ off for some files, project or languages, if it doesn't work in that particular situation.
+You can turn the _co-piloting_ off for some files, project or languages if it doesn't work in that particular situation.
 
 Some suggestions can get in the way when you know what you are doing, and it tries to help for example:
 - It will suggest some random copy/paste when the code you are working on has some similarities with another file. And 
 since duplicating code is not a good practice, having as a suggestion encouraging it is not a good idea either.
-- It seems to try to coerce you into writing some block of code, that may not be relevant or that goes to another 
+- It seems to try to coerce you into writing some block of code, that may not be relevant or that goes in another 
 direction than the one you want to take. I find it harder to focus on what you truly want to do when that happens. 
-The copilot can be misleading you into thinking that you are on the right track, when you are not.
+The copilot can mislead you into thinking that you are on the right track, when you are not.
 
-With multiple people in a team using AI tools, it can be hard to review, because the author may not fully understand
+With multiple people in a team using AI tools, it can be hard to review. The author may not fully understand
 what the code is doing, or just dump whatever the tool suggested without further tailoring to it (Extra comments, 
 unnecessary guard cases, different coding style, ...).
 
@@ -121,13 +122,13 @@ I was hoping for good suggestion after adding the 4 suggested steps:
 
 And fiddlesticks! Still no answers, no code is being shown, could the copilot be pouting because of what I said earlier?
 🥸 So I went directly into the suggestion, fiddling with the description to see what kind of result I would get.
-The code was still not being prompted within the text file, so it's a two click process to get the suggestions. And the
-results were ... mitigated, it did have some fizzbuzz looking answer, some not working at first glance and some other
-suggestion that were out of mark totally.
+The code was still not being prompted within the text file, so it's a two-click process to get the suggestions. And the
+results were ... mitigated, it did have some fizzbuzz looking answers, some not working at first glance and some other
+suggestion that were out of the mark totally.
 
 {% include aligner.html images="copilot-solution-1.png,copilot-solution-2.png,copilot-solution-3.png" column=3 %}
 
-Maybe it's because I used so many comments to describe the solution, that some suggestion were entirely commented, but
+Maybe it's because I used so many comments to describe the solution, that some suggestions were entirely commented, but
 that reduced the _helpfulness_ of it.
 Finally, the best result I had was when I started typing `function`, I guess after that copilot knew it was the real deal,
 and I wanted to implement it.
