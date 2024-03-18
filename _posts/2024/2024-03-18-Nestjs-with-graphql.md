@@ -1,0 +1,241 @@
+---
+layout: post
+title: Create a NestJS GraphQL API
+color: rgb(230, 129, 104)
+tags: [graphql]
+---
+
+We have talked previously about [NestJS][20] to create a REST backend API, 
+but its purpose is greater, and it can also be used with GraphQL.
+If you are new to [GraphQL][21], check out this [article][21] for some of the basics.
+
+## Installation
+
+Create a new NestJS application, and use the _generate resource_ command for GraphQL to get started.
+
+```shell
+npm install -g @nestjs/cli
+nest new example -p npm
+# Generate a new resource, select GraphQL
+npm g resource book
+```
+
+Or follow the [quick start guide][1] on the NestJS documentation.
+
+## GraphQL
+
+### Schema first or code first?
+
+One of the issue with GraphQL, is that you have the schema which represents what can be queried,
+and then you have the resolvers which should match that schema and _resolves_ the values for it.
+
+In order to avoid duplication and possible mistakes, you can either decide to choose as a source of truth:
+- The _code_ which means the implementation will drive the creation of the schema
+  - Perfect for a simple standalone GraphQL API 
+  - Perfect when you don't _need_ to manage the schema
+- The _schema_ which means the schema will be used to build the implementation objects
+  - Perfect when you need to integrate with other teams (both can agree on the schema in advance)
+  - Perfect to enforce GraphQL schema standard and a better GraphQL file structure
+
+Both schema-first and code-first option are worth considering depending on your use case, but we are going
+to explore the "_code first_" option here.
+
+I do prefer the "_schema first_" approach, because you have to think it through before implementing.
+But we have already talked about this approach with [GraphQL codegen][22], and NestJS has a similar approach where it can
+dynamically or manually generate the objects from the schema. 
+
+### Nest - GraphQL Integration
+
+By default, NestJS is pushing for [Apollo][21] under the hood for the GraphQL driver.
+To enable the GraphQL integration add the `GraphQLModule` from `@nestjs/graphql` in your _AppModule_.
+This is a configuration for a _code-first approach_ with GraphQL:
+
+```ts
+@Module({
+  imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      playground: true,
+      context: ({ req }) => new AppContext(req),
+    }),
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+})
+
+export class AppModule {}
+```
+
+For the GraphQL module option, we have:
+- The `driver` to set the driver for the GraphQL module.
+- The `autoSchemaFile` to set the path to generate the schema from the code.
+- The `playground` is an apollo feature that lets you explore the GraphQL API when browsing to [localhost:3000/graphql]().
+- The `context` function will be called once for each request, the created context will be passed down to each resolver. (It is usually used for authentication)
+
+There are more options available, but those are the essential ones to get started.
+
+> The schema gets auto-generated when `autoSchemaFile` is set when the app is started `npm start`.
+
+If you have already created the GraphQL resource earlier, then you should have pretty much everything you need.
+Else you can create a resolver using the nest cli:
+
+```shell
+nest g resolver book
+```      
+
+This will create the `book/book.resolver.ts` file to handle resolving the book resource.
+For the unit tests, you can call the resolver function directly and assert the retrieved object.
+
+### Resolver Implementation
+
+#### GraphQL entity
+
+As for the REST controller, NestJS has a whole set of annotations for resolvers.
+Let's create our Book entity:
+
+```ts
+import { Field, Int, ObjectType } from '@nestjs/graphql';
+
+@ObjectType({ description: 'Book' })
+export class Book {
+  @Field(() => Int, { description: 'Id of the Book' })
+  id: number;
+  @Field({ description: 'Title of the Book' })
+  title: string;
+  @Field(() => String, { description: 'Author of the Book' })
+  author: string;
+}
+```
+
+We have multiple annotations, you may have heard of them as [decorators][2] in typescript:
+- The `@ObjectType` defines the class as a GraphQL type
+- The `@Field` defines a GraphQL field of the type 
+  - Adding a member to a class without this annotation won't be resolved by the GraphQL API (but will be returned in the unit test)
+  - You can specify the GraphQL return type of the field, by default `number` is a GraphQL `Float`, we set it to `Int` with `() => Int`
+  - Setting the GraphQL return type is optional when the typescript type can be directly converted to the GraphQL one (e.g. with _String_).
+
+There's an option for all the GraphQL decorator to add the description of the field.
+This will be used when generating the schema as GraphQL documentation.
+
+#### GraphQL Query
+
+Now that we have the entity, we can create a method to resolve it in the created _resolver_ file generated by the CLI.
+
+```ts
+@Resolver()
+export class BookResolver {
+  @Query(() => Book, { name: 'book' })
+  async getBook(
+    @Args('id', { type: () => Int }) id: number,
+    @Context() context: AppContext,
+  ) {
+    return new Book(id);
+  }
+}
+```
+
+Let's decompose what we have here:
+- The `@Resolver` annotation which define a GraphQL resolver class in NestJS for both queries and mutations
+  - You can specify the return type of the resolver and use `@ResolveField` if you want a custom field resolver for a GraphQL Object. 
+    In this case you can use the `@Parent` to get the parent-resolved object
+- The `@Query` annotation which tells NestJS to resolve the `book` query using the `getBook` method.
+  - The _name_ is optional, the GraphQL query will use the method name by default.
+- The `@Args` annotation defines a GraphQL argument of the query, named `id`, and we use the `type` to specify that the number should be a GraphQL _Int_.
+- The `@Context` annotation is used to get the context (from the executed function from the GraphQL module).
+  - This is optional, in this example we don't use it.
+
+As you may have noticed, I didn't need to create a `Book` dto, I can just return my entity and it works.
+
+#### GraphQL Schema
+
+Based on the implementation of our _Book_ entity and its query resolver, at the start of the application,
+the generated graphql will look like this:
+
+```graphql
+"""Book"""
+type Book {
+  """Id of the Book"""
+  id: Int!
+
+  """Title of the Book"""
+  title: String!
+
+  """Author of the Book"""
+  author: String!
+}
+
+type Query {
+  book(id: Int!): Book!
+}
+```
+
+As you can see the description from the annotation for each field is using `"""` on top of it.
+
+### End-to-end test
+
+To make an end-to-end test to your GraphQL API, you need to use same structure as in the `app.e2e-spec.ts` that was 
+auto-generated when building the application so it can mount the application from the _AppModule_ which will have
+the resolvers in it.
+
+Then you can add your test as:
+
+```ts
+it('queries the book', async () => {
+  const payload = await request(app.getHttpServer())
+    .post('/graphql')
+    .send({
+      query: `query bookQuery($id: Int!) {
+        book(id: $id) {
+          id
+          author
+          title
+        }
+      }`,
+      variables: { id: 1 },
+    })
+  expect(payload.status).toEqual(200);
+  expect(payload.body.data.book).toEqual({ id: 1, author: 'author', title: 'title' });
+});
+```
+
+In this test a GraphQL request to query the book is being made. 
+As you can see the GraphQL endpoint is `/graphql` and using _supertest's_ `request` object we can craft a GraphQL query
+to try against the server.
+If the queries become too bulky, save the same as constant or build them using fragments with gql:
+
+```ts
+import { gql } from 'graphql-request';
+
+// GraphQL fragment
+const bookFragment = gql`
+      fragment book on Book {
+          id
+          author
+          title
+      }
+  `;
+// Query to send
+const bookQuery = gql`
+      ${bookFragment}
+      query bookQuery($id: Int!) {
+          book(id: $id) {
+              ...book
+          }
+      }
+  `;
+```
+
+As you can see, in this case it's bulkier, but as you expand your API, 
+having fragments of the returned object will make the query lighter.
+Now to try it out in the test, you can just use `query: bookQuery` which at least makes it much less verbose. 👌
+
+We had talked about [fragments][23] in this article about [advanced resolver][23] in GraphQL, you might want to check it out.
+On the topic of today's article, that's all I have for now! 🙂
+
+[1]: https://docs.nestjs.com/graphql/quick-start
+[2]: https://www.typescriptlang.org/docs/handbook/decorators.html
+[20]: {% post_url 2024/2024-03-08-Nestjs-typescript-backend %}
+[21]: {% post_url 2021/2021-07-26-Apollo-and-graphql %}
+[22]: {% post_url 2023/2023-04-04-Generating-graphql-models-typescript %}
+[23]: {% post_url 2022/2022-05-27-Graphql-advanced-resolver %}
