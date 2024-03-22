@@ -266,6 +266,14 @@ spec:
 Here the pvc claim the above `mysql-pv` one, using the label in order to select it, and the `accessModes` for how it is
 supposed to be accessed.
 
+Delete all permanent volume claims using:
+
+```shell
+kubectl delete pvc --all -n <namespace>
+```
+
+It also works for permanent volumes, swap `pvc` by `pv` to delete them all as well. 
+
 ### Secrets
 
 Kubernetes' secrets allow users to define sensitive information outside of containers and expose that information to
