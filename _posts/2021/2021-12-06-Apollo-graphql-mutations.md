@@ -13,7 +13,7 @@ you should be all set!
 
 ## Definitions
 
-We have [mutations][1], to explicitly separate in GraphQL the calls that:
+We have [mutations][1], to separate explicitly in GraphQL the calls that:
 
 - fetch information from the API → Query
 - modify information using the API → Mutation
@@ -25,15 +25,16 @@ Delete), we have the queries for the **R** and the mutations for the **CUD** ope
 
 There are multiple [guidelines][4] out there on how to name and design your mutations.
 
-> Overall set of graphql guidelines available at [graphql-rules.com][4] and on this [article][8]
+> [GraphQL guidelines][4] presented as linter rules are available on [Apollo GraphQL Docs][4].
 
 But the basic is that you'll add a new field on the `Mutation` type that will most likely take some parameters and
-return something.
+return the resulted object.
+Let's get to it!
 
 ### Input
 
-The input, what the mutation takes as an argument should be one parameter of type `MutationNameInput`. It's a pattern
-used for example by [GitHub][5] or [Shopify][7] on their public GraphQL API.
+The input, the mutation takes as an argument should be one parameter of type `MutationNameInput`. 
+It's a pattern used, for example, by [GitHub][5] or [Shopify][7] on their public GraphQL API.
 
 ```graphql
 type Mutation {
@@ -78,12 +79,12 @@ differently depending on the naming.
     - e.g. Purchase a book not released yet
     - e.g. Set a book title with a title that goes over the max size limit.
 
-On the first version, all mutation would return [HTTP 200 OK][10] (now we can set up some other http codes if need). But
+On the first version, all mutations would return [HTTP 200 OK][10] (now we can set up some other http codes if need). But
 the [mindset][9] remains, to let the user know if there's any business error, while returning a 200 OK.
 
 #### UserErrors in Payload
 
-With the payload, you'll have a unique per mutation user error union that represents all the possible business failure
+With the payload, you'll have a unique per-mutation user error union that represents all the possible business failure
 cases. They will all implement the [UserError][8] interface.
 
 ```graphql
@@ -107,8 +108,9 @@ type AddBookPayload {
 union AddBookError = InvalidBookTitle | InvalidAuthorName | DuplicatedBookError
 ```
 
-The example payload have its own set of error. The `AddBookError` is a union meaning it regroups all the types
-between `|` which in this case implements, the previously defined interface:
+The example payload has its own set of errors.
+The `AddBookError` is a union meaning it regroups all the types between `|` which in this case implements,
+the previously defined interface:
 
 ```graphql
 type InvalidBookTitle implements UserError {
@@ -117,8 +119,8 @@ type InvalidBookTitle implements UserError {
 }
 ```
 
-The payload's book is the created book from the mutation. Since the whole updated object is returned, you don't need to
-re-query it behind.
+The payload's book is the book created by the mutation. 
+Since the whole updated object is returned, you don't need to re-query it behind.
 
 #### Custom Errors in Results
 
@@ -139,11 +141,12 @@ type InvalidAuthorBooks implements UserError {
 ```
 
 We can also use `UserError` in this case, or even go further and have another union for the errors. This is great when
-the schema has been figured out and won't evolve since you can really taylor your query on each field. But it does make
-evolving the graph difficult, since it'll get [tightly coupled][8] to the types and query used on the client side.
+the schema has been figured out and won't evolve since you can really tailor your query to each field. 
+But it does make evolving the graph difficult, since it'll get [tightly coupled][8] to the types and query used on the client side.
 
-You can keep your query generic, but then you loose on the benefits of Result, so why not use the userError handling in
+You can keep your query generic, but then you lose on the benefits of Result, so why not use the userError handling in
 with Payload instead.
+There's this article "[_A Guide to GraphQL Errors_][8]" by _Marc-Andre Giroux's_ that I appreciated, it may help you too.
 
 ## Mutation on the client side
 
@@ -196,7 +199,7 @@ mutation {
 }
 ```
 
-Each possible results needs to be addressed so that you don't miss it, which makes it hard to
+Each possible result needs to be addressed so that you don't miss it, which makes it hard to
 maintain in case we add new fields or types.
 
 But it does read nicely for each defined case.
@@ -205,8 +208,9 @@ But it does read nicely for each defined case.
 
 ### Resolver field
 
-As explained in the [previous article]({% post_url 2021/2021-11-06-Advance-apollo-graphql-queries %}), 
-to implement the mutation, we need to add a resolver function corresponding to the new Mutation field.
+In a [previous article][21], we went through the implementation of more complex queries, and in a way it's very similar
+to how we would implement a new mutation.
+For a mutation, we need to add a resolver function corresponding to a field in the `Mutation` graphql type.
 So we will now have:
 
 ```typescript
@@ -227,7 +231,7 @@ So we'll review only one of them.
 ### Resolver function
 
 So we've re-created the interfaces / classes necessary to match our GraphQL schema for the entities, input,
-payload and errors.
+ payload, and errors.
 Now that the resolver's function has been set in the schema, we can create a function that will handle it.
 Let's focus on `addBook`:
 
@@ -250,14 +254,14 @@ Let's recap on the input for this mutation:
 - The expected input needs to be an object hence the redundancy with `{ input }` not being directly an AddBookInput.
 
 We use an async function, because the call to the dataSource to create a book returns a Promise 
-that we await in the case where there are no user error detected via the `validateInput`.
-The validation function is where you place your _business logic_ to run against the input, it will return
-user error such as `InvalidBookTitle` or `InvalidAuthorName`.
+that we await in the case where there are no user errors detected via the `validateInput`.
+The validation function is where you place your _business logic_ to run against the input.
+It will return user error such as `InvalidBookTitle` or `InvalidAuthorName`.
 
 ### Context and DataSource
 
 With mutation, you usually need a database to save permanently the changes you've made.
-In Apollo, you'd need a dataSource which is an interface to your database. 
+In Apollo, you'd need a dataSource, which is an interface to your database. 
 Those dataSources are accessible via the context we've seen in the mutation.
 Let's see how the dataSource(s) are passed to the ApolloServer:
 
@@ -268,7 +272,7 @@ const apolloServer: ApolloServer = new ApolloServer({
 });
 ```
 
-The dataSources could be one or more source (like multiple collection of a db).
+The `dataSources` could be one or more sources (like a database, cache, queues, and so on).
 You can also have the http context, everything is defined within the `GraphQLServerOptions` interface:
 
 ```typescript
@@ -283,7 +287,7 @@ export interface GraphQLServerOptions<
 }
 ```
 
-In our case we would define one for the books holding all the necessary logic to create the new book in the db.
+In our case, we would define one of the books holding all the necessary logic to create the new book in the db.
 That `BookDataSource` would then be next to a `AuthorDataSource` within my `AppDataSources` which contains all the 
 datasource of my apps. That I can use from the Context in the mutation.
 
@@ -293,7 +297,7 @@ Find the working examples in [sylhare/Apollo](https://github.com/sylhare/Apollo)
 [1]: https://graphql.org/learn/queries/#mutations "mutation"
 [2]: https://www.apollographql.com/blog/graphql/basics/mutation-vs-query-when-to-use-graphql-mutation/ "mutation vs query"
 [3]: https://en.wikipedia.org/wiki/Create,_read,_update_and_delete "CRUD"
-[4]: https://graphql-rules.com/rules "Rules"
+[4]: https://www.apollographql.com/docs/graphos/delivery/linter-rules/#naming-rules "Rules"
 [5]: https://docs.github.com/en/graphql/reference/mutations "GitHub Input"
 [6]: https://engineering.zalando.com/posts/2021/04/modeling-errors-in-graphql.html "Zalando Result and Field"
 [7]: https://shopify.dev/api/admin-graphql/2021-01/input-objects/MoneyInput

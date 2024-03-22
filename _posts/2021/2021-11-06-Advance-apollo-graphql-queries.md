@@ -177,8 +177,11 @@ is an object containing the name of the author to filter on.
 ## Circular resolver
 
 Adding the `books` field to the `Author` type we created a _circular resolver_ in our graph.
-Circular dependency is not recommended, because it can break your app with infinite query loop.
-You could query it ever and ever:
+Circular dependency can become a vulnerability,
+while not overly recommended because there's no default protection for it,
+it is to be expected when we are talking about Graphs.
+
+You could have an endless nesting which can break your application:
 
 ```
 query {
@@ -197,11 +200,12 @@ query {
 }
 ```
 
-In this case, you would need a depth limiter, that will throw an error when you go on too many level in your query.
+In this case, you would need a depth limiter that will throw an error when you go on too many levels in your query.
 Here there are already more than 4 levels in depth.
 
-There are more caveat to look after in the [Apollo Federation][2]
-documentation. For this particular problem, you can use the [_graphql-depth-limit_][3] library which fix it for you.
+There are more caveats to look after in the [Apollo Federation][2]documentation. 
+For this particular problem, you can use the [_graphql-depth-limit_][3] library or implement your own depth limiter to 
+fix this issue.
 
 
 [1]: https://www.apollographql.com/docs/apollo-server/data/resolvers/ "resolver"
