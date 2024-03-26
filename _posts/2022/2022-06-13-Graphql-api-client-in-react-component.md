@@ -26,8 +26,8 @@ If you like one, you can give back to the community by contributing to it. 💛
 
 ## ⚙️ Implementation
 
-We're assuming here, that you have a working GraphQL server that is advertising the used query and mutations, in our
-case it would be an [Apollo GraphQL server][10].
+We're assuming here that you have a working GraphQL server advertising the used query and mutations. 
+In our case, it would be an [Apollo GraphQL server][10].
 
 > "Apollo to React?, ...Apollo to React! Do you copy?"
 
@@ -35,8 +35,8 @@ Let's see how we can bring the two together!
 
 ### Add a simple GraphQL Query
 
-The `gql` is from graphql, so it shouldn't be anything new if you have worked with GraphQL before.
-Import it from `graphql-request`, so you can define your query with a graphql fragment such as:
+The `gql` is from GraphQL, so it shouldn't be anything new if you have worked with GraphQL before.
+Import it from `graphql-request`, so you can define your query with a GraphQL fragment such as:
 
 ```ts
 import { gql } from 'graphql-request';
@@ -50,7 +50,7 @@ const bookQuery = gql`
 `
 ```
 
-Then you can use `request` and your query to create an asynchronous method to execute the graphql query.
+Then you can use `request` and your query to create an asynchronous method to execute the GraphQL query.
 This is actually the interesting part where you call the API with the library:
 
 ```ts
@@ -59,7 +59,7 @@ import request from 'graphql-request';
 const queryBook = async (title: string): Promise<BookData> => request(endpoint, bookQuery, { title })
 ```
 
-The last parameters is to pass _variables_ which will then be interpreted in the query fragment.
+The last parameter is to pass _variables_ which will then be interpreted in the query fragment.
 The `request` will return the value within `data` defined as `BookData`:
 
 ```ts
@@ -69,7 +69,7 @@ interface BookData {
 ```
 
 Now we just need to add this query into a hook in order to use it efficiently within our React component.
-The hook is almost mandatory, because it makes it so much easier to handle asynchronous call in our component.
+The hook is almost mandatory because it makes it so much easier to handle asynchronous call in our component.
 
 ### Create a hook
 
@@ -84,7 +84,7 @@ export const useQueryBook = (title: string): UseQueryResult<BookData | undefined
 };
 ```
 
-With that you can use the hook within a component!
+With that, you can use the hook within a component!
 For [mutations][7] which you may want to trigger at the click of a button, you can wrap them with `useMutation` instead, 
 and then call the `mutate` asynchronous function to make the actual call.
 
@@ -123,13 +123,13 @@ Consider this one more as a contract test. I kept it simple here.
 
 For some really basic e2e tests, you can use `nock` which is a library providing some simple tools to mock your 
 backend apis.
-This is an alternative to mocking the whole hook with [jest][8], at least here you can test the basic functionality of 
-your hook.
+This is an alternative to mocking the whole hook with [jest][8]. 
+At least here you can test the basic functionality of your hook.
 
 ### Create a simple mock server 
 
 There are a lot of other ways you can fake a web server, like having an actual _fake_ GraphQL server. But in our case,
-we'll use `nock` as a dummy web server that sends back some pre-entered data:
+we'll use `nock` as a _dummy_ web server that sends back some pre-entered data:
 
 ```ts
 import nock from 'nock';
@@ -141,7 +141,8 @@ nock('http://localhost')
   });
 ```
 
-As you can see, there are no checks on the schema since we mock the answer, this solution is more for a simple test.
+As you can see, there are no checks on the schema since we mock the answer. 
+This solution is more for a simple test.
 
 ### Create a test wrapper for your hook
 
@@ -185,20 +186,22 @@ it('should query a book', async () => {
 });
 ```
 
-Since you are making a http call, you need to wait for the result. Make sure your test is asynchronous and is waiting for
-the call to be successful before asserting anything, or you'll get `undefined`.
+Since you are making an HTTP call, you need to wait for the result. 
+Make sure your test is asynchronous and is waiting for the call to be successful before asserting anything, 
+or you'll get `undefined`.
 
 If you are working with GraphQL data, the best would be to have everything built from the schema you are consuming, so
 that your tests can be created from it ensuring you're dealing with the right interface.
 
 ## 🚚 Batching request
 
-When you need to combine, or merge multiple graphql operation into one call.
+When you need to combine or merge multiple GraphQL operations into one call.
 There's no need to add a new library or make complex manipulation of the GraphQL schemas because it's already included
 in the `graphql-request` library, and it's pretty neat.
 
 You can use it with `useQuery` or `useMutation`, the only difference if you want the call to happen on mount or
-triggered by an event. Bottom line, for query; _useQuery_, for mutation; _useMutation_.
+triggered by an event. 
+- Bottom line, for a query; _useQuery_, for mutation; _useMutation_.
 You could mix them but the `useQuery` has a cache by default which might produce some undesirable behaviour 
 when trying to mutate something.
 
@@ -206,7 +209,7 @@ when trying to mutate something.
 
 Here's an example creating multiple books on our API in a React hook using `react-query` and `batchRequests` from 
 `graphql-request` in typescript.
-First we need our mutation gql such as:
+First, we need our mutation gql such as:
 
 ```ts
 const addBook = gql`
@@ -217,16 +220,16 @@ const addBook = gql`
     }`
 ```
 
-Here we'll use only one mutation to create book, we could define other mutation, like create author or update book in
-different fragments.
-It all depend on your use case and the granularity of your mutations.
+Here we'll use only one mutation to create a book, but we could define another mutation  
+(like create author or update a book in a different fragment).
+It all depends on your use case and the granularity of your mutations.
 
 ### Create the hook
 
 For our batch creation, it's better to have `useMutation` so we have control as to when we want those books 📚 to be
 created.
-As you see, there's no need to alter the mutation for the batch request, it will be done by the library dynamically, now
-you can create multiple book via the hook:
+As you see, there's no need to alter the mutation for the batch request.
+It will be done by the library dynamically, now you can create multiple books via the hook:
 
 ```ts
 export const useAddBooks = (): useMutationResult<AddBookData[] | undefined, Error, void> => {
@@ -252,7 +255,7 @@ interface AddBookData {
 
 The type can be a bit complicated, but well-defined interfaces will help us keep track of what is happening in the 
 long run.
-We keep it simple for the example, but instead of static input (here I am creating always the same three books), 
+We kept it simple for this example, but instead of static input (here I am creating the same books thrice), 
 you could pass it in the hook to make it smarter. 
 
 Now let's see how we're going to use it!
@@ -277,7 +280,7 @@ export function AddBooksItems(): JSX.Element {
 }
 ```
 
-In this example, you'll see a button, once clicked, it will create the three books defined by the input in the hook.
+In this example, you'll see a button; once clicked, it will create the three books defined by the input in the hook.
 This happens thanks to the `mutate()` function from the hook which is the asynchronous call to the API.
 
 Then the mutation will be marked as _succeeded_ and will display the created book from the mutation's queried payload. 

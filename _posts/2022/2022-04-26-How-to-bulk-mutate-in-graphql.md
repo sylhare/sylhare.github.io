@@ -5,17 +5,21 @@ color: rgb(220, 121, 62)
 tags: [graphql]
 ---
 
-In this article we will talk about bulk mutation, the desire to update multiple entity with a single input. Some common
-use case would be if one wants to disable multiple user at the same time or change their permission or whichever use
-case made lend in this page from the internet.
+In this article we will talk about bulk mutation, the desire to update multiple entities with a single input. 
+Some common use case would be if we had queries or mutations that take one entity at a time, and we want to:
+- Query multiple entities at once
+- Create/Update/Delete multiple entities at the same time
+- Enable/Disable multiple entities at once
+
+Or whichever use-case you might have had in mind when landing here from the internet. 🌈
 
 But first if you are not familiar with mutations, you can get a refresher with [Apollo GraphQL 👩‍🚀 mutations][10].
-If you're all set let's review how you can make a bulk mutations, then check the schema recommendation available.
+If you're all set, let's review how you can make a bulk mutation, then check the schema recommendation available.
 
 ### Multiple mutations in one request
 
 We can use the already existing mutation, in this example to update an entity.
-GraphQL provides the capability to send multiple mutations at once. If you need to use multiple time the same
+GraphQL provides the ability to send multiple mutations at once. If you need to use multiple time the same
 mutation, you can use [aliases][1] (to avoid any duplicate name in the mutation).
 
 ```graphql
@@ -48,21 +52,23 @@ in a big json file:
   "inputOne": { ... },
   "inputTwo": { ... },
   "inputThree": { ... },
-  "inputFour": { ... },
+  "inputFour": { ... }
 }
 ```
 
-The downside of this method, is that you might hit a gateway cap or the http timeout if you stack too many of them.
+The downside of this method is that you might hit a gateway cap or the http timeout if you stack too many of them.
 If on the back-end there's a database call, it might not be the most efficient way to interact with it.
-In the end, you it will depend on your system's capability to handle "_x many_" synchronous mutation at a time.
+In the end, it will depend on your system's ability to handle "_x many_" synchronous mutation at a time.
 
 ### One mutation on multiple entities
 
-If you have a fair amount of entities you need to modify, and that you can optimize your back-end in a way which makes
-it faster to deal them at once, then having a synchronous "_bulk_" mutation could do the trick.
+Assuming that you can't optimize your back-end in a way which makes it faster to deal with them with multiple single 
+mutations.
+If you have a fair amount of entities that you need to modify, 
+then having a synchronous "_bulk_" mutation could do the trick.
 
-That is useful when all the entity your touching are indexed via a common parent id, or in a way where fetching as a group
-is actually faster than fetching them individually.
+That is useful when all the entities you are touching are indexed via a common parent id, 
+or in a way where fetching as a group is actually faster than fetching them individually.
 
 ```graphql
 mutation {
@@ -75,8 +81,8 @@ type EnableEntitiesInput {
 }
 ```
 
-This way you can pass a list of entities from the same parentId and update them. In this case we'll want to "_enable_"
-them, but that's just for the example.
+This way you can pass a list of entities from the same parentId and update them. 
+In this case we'll want to "_enable_" them, but that's just for the example.
 You can then have the payload incorporating errors that should be individually linked to the entity it's coming from.
 
 ```graphql
@@ -85,17 +91,18 @@ type EnableEntitiesPayload {
     userErrors: [EnableEntitiesError!]!
 }
 
-union EnableEntitiesError = MaxAmountOfEntityReached | InvalidParentId | EnablingError
+union EnableEntitiesError = MaxAmountOfEntityReached | InvalidEntityError | EnableEntityError
 ```
 
 As describe in our previous mutation [article][10] we would have the errors as a union with that are implementing the same
 `UserError` interface.
 
-> Pagination on a mutation does not make sense, it should only be on queries where you can call the query again to get
+> Pagination on a mutation does not make sense; it should only be on queries where you can call the query again to get
 > the next page.
 
-You could send back a `MaxAmountOfEntityReached` to limit the amount of ids, i.e. entities your bulk mutation can handle
-in a single synchronous mutation, as you don't want to hit a gateway timeout.
+You could send back a `MaxAmountOfEntityReached` to limit the number of ids, i.e. entities your bulk mutation can handle
+in a single synchronous mutation. 
+If you don't want to hit a gateway timeout, you need to set boundaries for your API.
 
 ### Bulk asynchronous mutation
 
@@ -119,7 +126,7 @@ sequenceDiagram
   U -->> P: Load data
   U ->> P: Send Bulk Mutation 
   Note over P: Will use data loaded <br> to run the mutations
-  Loop For all input in the loaded data
+  Loop For all inputs in the loaded data
     P ->> B: createUser
     P ->> B: addUserToGroup
     Note over P: Based on previous mutation <br> to get the created User's ID
@@ -132,13 +139,13 @@ The _load data_ and _send bulk mutation_, could be done in one step here. But yo
 for that which the proxy would call. The bulk mutation would use the saved data id to retrieve it.
 The proxy system will run the mutation for you on the back-end in the background.
 
-The [shopify][2] version have more steps to load your data and is a bit less flexible,
-but it provides subscription that you can subscribe to in order to know when the bulk operation is done.
+The [shopify][2] version has more steps to load your data and is a bit less flexible,
+but it provides a subscription that you can subscribe to in order to know when the bulk operation is done.
 
 #### Schema of an asynchronous mutation
 
-Your asynchronous mutation can be simpler as long as it returns a process id. That's the key so your system can do the
-processing while giving the opportunity for the user to check the status.
+Your asynchronous mutation can be simpler as long as it returns a process id. 
+With it, your system can do the processing while giving the opportunity for the user to check the status.
 
 In the case where you don't need so much data for your mutation, you can have an asynchronous mutation that 
 will handle the modification of your entities from a simpler input:
@@ -154,7 +161,8 @@ type query {
 ```
 
 This use case would be for creating/modifying multiple resources similarly or following a set logic so that the
-input doesn't grow too big. In this case the creation could be done via a set of rule instead of input variables.
+input doesn't grow too big. 
+In this case, the creation could be done via a set of rules instead of input variables.
 The `TriggerEntityBulkCreationPayload` would follow the same principle as before and return an _entityBulkCreationProcessId_
 which would then be used in the query to fetch the process.
 
@@ -171,10 +179,11 @@ type EntityBulkCreationProcess {
 ```
 
 The process would yield a timestamp for the creation and completion date, with a status to make it more visible if it is
-_completed_, _completedWithErrors_, _started_, _pending_, _errored_, and so on, as string because you may want to 
-keep the flexibility that an enum does not provide for a free text field intended mostly to the user.
+_completed_, _completedWithErrors_, _started_, _pending_, _errored_, and so on.
+The `status` is a marked as a `String` because you may want to keep the flexibility that an enum does not provide to add
+new statuses as your asynchronous process flow evolves.
 
-The processErrors, would be similar to the `UserError` that we've seen [before][10] and could be related to the process 
+The `processErrors` would be similar to the `UserError` that we've seen [before][10] and could be related to the process 
 itself of the entity or some problem with the input.
 
 You may also have a paginated query to return all the entities you have created, but that's outside the scope of our bulk

@@ -81,7 +81,7 @@ what is happening in the backend.
 SELECT * FROM movies WHERE id = 7
 ```
 
-2. Then for each actor we have an independent call to db each time the resolver is called with the actor's id:
+2. Then for each actor, we have an independent call to db each time the resolver is called with the actor's id:
 
 ```sql
 SELECT * FROM movies WHERE id = 1
@@ -89,11 +89,11 @@ SELECT * FROM movies WHERE id = 2
 SELECT * FROM movies WHERE id = 3
 ```
 
-With a movie with many actors, the performance may decrease with the amount of calls to the db to make.
+With a movie with many actors, the performance may decrease with the amount of calls made to the database.
 
 ### Flow Diagram
 
-When we see how each fields is getting resolved, it may become clearer. This flow diagram represents the fields
+When we see how each field is getting resolved, it may become clearer. This flow diagram represents the fields
 being resolved, we have `Movie` which resolve the queried one and the `actors` field on the movie type is resolved by
 multiple single resolver:
 
@@ -132,11 +132,11 @@ application within a different domain and team ownership.
 In the case where we add the `actors` field is federated but within the app, we should also take into account that
 the `__resolveReference` on the _Actor_ type will be called next, and might trigger another database call.
 
-The resolver is called with its parent, so if it already contains the fetched entity there should be some logic within
+The resolver is called with its parent, so if it already contains the fetched entity, there should be some logic within
 the resolve reference, so it does not call the database again.
 Because it would mean that it has been resolved by its parent resolver.
 
-In those case, **you will have to make a choice** depending on how the users use your query:
+In those cases, **you will have to make a choice** depending on how the users use your query:
 - which fields should always be returned?
 - which should be fetched on demand?
 So you gain maximum performance on your GraphQL query.
@@ -162,15 +162,15 @@ query Movie {
 ```
 
 If we know that only the `id` are going to be resolved from the actor, then since we by default receive those by
-[federation][16] on the resolver, we can skip the call to the database and return directly the output.
+[federation][16] on the resolver, we can skip the call to the database and return the output directly.
 
 But when you actually need information from the database, this solution won't reduce the amount of calls made.
 
 ### Use a DataLoader?
 
-The last solution we can leverage is the [Dataloader][1] which as its name says will solve the problem of calling the
-database for each individual actor. The `dataloader` will gather the calls to the actors database and use a
-bulk load function to get them all at once.
+The last solution we can leverage is the [Dataloader][1] which, as its name says, will solve the problem of calling the
+database for each individual actor. 
+The `dataloader` will gather the calls to the actors' database and use a bulk load function to get them all at once.
 
 ```sql
 -- Transforming those queries
@@ -181,8 +181,8 @@ SELECT * FROM movies WHERE id = 3
 SELECT * FROM actors WHERE id IN (1, 2, 3)
 ```
 
-This will reduce the amount of calls to the database for a resolved entity in this case. Why? 🥲 Because we are making
-$$n$$ amount of calls depending on the amount of actors that starred in the movie. With the dataloader [pattern][13],
+This will reduce the number of calls to the database for a resolved entity in this case. Why? 🥲 Because we are making
+$$n$$ number of calls depending on the amount of actors that starred in the movie. With the dataloader [pattern][13],
 those calls will be caught and transformed into one call.
 
 Here is how you would [instantiate][14] the Dataloader from [graphql/dataloader][1], you can have it defined in your
