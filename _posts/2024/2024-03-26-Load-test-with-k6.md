@@ -1,8 +1,8 @@
 ---
 layout: post
-title: load test with k6
+title: Load test with k6
 color: rgb(125, 100, 255)
-tags: [open-source]
+tags: [open source]
 ---
 
 [K6][1] made by [Grafana][2] is an open-source load testing tool which offers the ability to write scenarios to simulate
