@@ -7,28 +7,61 @@ tags: [kubernetes]
 
 ## Components Hands-on
 
-To get a better grasp of kubernetes components and commands. You can set up a kubernetes cluster on your own following:
-- [kubeadm installation script](https://github.com/sylhare/Linux/blob/master/Kubernetes/kubernetes.sh)
+### Kubernetes setup
+
+Find a quick summary on the [kubernetes main concept][10] to refresh your memory in a [previous article][10], or go
+straight ahead with the hands-on examples.
+
+To get a better grasp of Kubernetes components and commands, 
+it is recommended to have a working Kubernetes cluster running.
+You can set up a Kubernetes cluster on your own following:
+- [kubeadm installation script][2]
+
+Once you have a kubernetes cluster setup, you might want to test the following commands in a test cluster:
+
+```shell
+kubectl config set-context test
+```
+
+This will create the context `test` in your kubeconfig file. You can then switch to it using:
+
+```shell
+# To display the current contexts and their namespace
+kubectl config get-contexts
+# To use the created `test` context
+kubectl config use-context test
+```
+
+To test it out, find the current context using
+
+```shell
+# To display the current context
+kubectl config current-context
+```
+
+For the following example, the `apiVersion` in the presented yaml files are compatible with certain versions of Kubernetes.
+It might not be compatible with the version you are using, but the syntax should be fairly similar. 
+I'll try to keep it up to date, so if you find a deprecated notation, let me know in the comments. 🙂
 
 ### Kubectl main commands
 
-kubectl is a command line interface for running commands against Kubernetes clusters. In all of them, you can
-replace `<component>` with any of the kubernetes component (pods, node, deployments, services, ...)
+`kubectl` is a command line interface for running commands against Kubernetes clusters. 
+In all of them, you can replace `<component>` with any of the kubernetes component (pods, node, deployments, services, ...)
 
-To get definition and information on the different kubernetes elements
+To get definition and information on the different Kubernetes elements
 
 ```bash
 kubectl explain <component>
 ```
 
-To create a kubernetes component that is define inside the file.yaml. It uses the kubernetes API server to schedule the
+To create a kubernetes component that is defined inside the file.yaml. It uses the kubernetes API server to schedule the
 creation of the component based on the yaml file.
 
 ```bash
 kubectl create -f file.yaml
 ```
 
-Give the basic information of the components, (number, status, Age)
+Give the basic information of the components (number, status, Age)
 
 ```bash
 kubectl get <component>
@@ -39,21 +72,21 @@ kubectl logs -l app=my-component
 
 To remove a component.
 
-```
-kubectl delete <component's name>
+```sh
+kubectl delete <component name>
 ```
 
-Describe will give you the information of the scheduled component. If there is a name used for multiple component, you
-can specify witch one using `<component>/<component's name>`
+Describe will give you the information of the scheduled component. 
+If there is a name used for multiple components, you can specify witch one using `<component>/<component name>`:
 
-```
-kubectl describe <component's name>
+```sh
+kubectl describe <component name>
 ```
 
 You can label components to organize your resources. It can then be used for network or access restrictions.
 
-```
-kubectl label <component> <component's name> env=test
+```sh
+kubectl label <component> <component name> env=test
 ```
 
 ### Pods
@@ -73,7 +106,7 @@ spec:
         - containerPort: 8080
 ```
 
-Each created pods have its own ip, they also have labels that are used to identify and query them.
+Each created pod has its own ip, they also have labels that are used to identify and query them.
 
 > ImagePullPolicy, determines when to pull the image of the container(s) inside the pod. 
 > It is recommended to put "always" so it always pull the image (to avoid some trouble).
@@ -103,20 +136,20 @@ spec:
 Here we have 2 replicas of the specified pods named `poddy-<random stuff>` that will be created. The
 replicationController finds the pods using their label here `poddy-app` - called a ReplicaSet.
 
-- If you add another similar pods with the same label the replicationController will associate it and terminates one
+- If you add another similar pod with the same label, the replicationController will associate it and terminates one
   pods since it will have 3.
 
 ### Service
 
-A Kubernetes Service is an abstraction which defines a logical set of Pods and a policy by which to access them -
-sometimes called a micro-service. It is a group of pods acting as one, exposing the pods under one IP.
+A Kubernetes Service is an abstraction that defines a logical set of Pods and a policy by which to access them.
+It is a group of pods acting as one, exposing the pods under one IP.
 
 > Since ReplicaSet can kill and recreate Pods, the pod ips can change meaning you never know how to reach them.
 
 Basically a service has:
 
 - A static IP to reach the application
-- A Selector to select the pods part of the service
+- A Selector to select the pod part of the service
 
 ```yaml
 apiVersion: v1
@@ -135,9 +168,9 @@ spec:
 
 In service spec you can find the `type`, it can be either:
 
-- ClusterIP: Exposes the service on a cluster-internal IP. Choosing this value makes the service only reachable from
+- ClusterIP: Exposes the service to a cluster-internal IP. Choosing this value makes the service only reachable from
   within the cluster using the `{NodeIP}`, it is the default.
-- NodePort: Exposes the service on each Node’s IP at a static port (the NodePort). You’ll be able to contact the
+- NodePort: Exposes the service on each Node’s IP to a static port (the NodePort). You’ll be able to contact the
   NodePort service, from outside the cluster, by requesting `{NodeIP}:{NodePort}`.
 
 ### Deployment
@@ -176,7 +209,7 @@ You can use the same command to scale them back up.
 
 ### Namespace
 
-A namespace is a way to separate your cluster or components. For example having a `prod` and a `test` namespace can help
+A namespace is a way to separate your cluster or components. For example, having a `prod` and a `test` namespace can help
 deploy new software in the appropriate place.
 
 Here is how we create a namespace
@@ -204,17 +237,21 @@ To set that new namespace as the default namespace (When not specified `default`
 every command):
 
 ```bash
-kubectl config use-context test
+kubectl config set-context --current --namespace=<namespace>
 ```
 
-To see which namespace you are in, you can use:
+To see the namespaces in your context, you can use:
 
 ```bash
-# To display the current one
-kubectl config current-context
-# To display the current one and the other available ones
-kubectl config get-contexts
+kubectl get namespaces
+#NAME              STATUS   AGE
+#kube-system       Active   173m
+#kube-public       Active   173m
+#kube-node-lease   Active   173m
+#default           Active   173m
 ```
+
+Kubernetes starts with four [namespaces][1]: `kube-system`, `kube-public`, `kube-node-lease`, and `default`.
 
 ### Volumes
 
@@ -319,11 +356,13 @@ spec:
 
 ### Jobs
 
-A Job creates one or more pods and ensures that a specified number of them successfully complete. A job keeps track of
-successful completion of a pod. The job will start a new pod if the pod fails or is deleted due to hardware failure.
+A Job creates one or more pods and ensures that a specified number of them are successfully completed. 
+A job keeps track of the pod's successful completion. 
+The job will start a new pod if the pod fails or is deleted due to hardware failure.
 
-Jobs are complementary to Replica Set. A Replica Set manages pods which are not expected to terminate (e.g. web servers)
-, and a Job manages pods that are expected to terminate (e.g. batch jobs).
+Jobs are complementary to the Replica Set. 
+A Replica Set manages pods which are not expected to terminate (e.g. web servers),
+and a Job manages pods that are expected to terminate (e.g. batch jobs).
 
 #### Non Parallel Job
 
@@ -373,7 +412,7 @@ A Cron Job is a job that runs on a given schedule, written in Cron format. There
 - Repeatedly at a specified point in time
 
 ```yaml
-apiVersion: batch/v1beta1
+apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: poddy-cron
@@ -431,29 +470,32 @@ The simple ingress usage is with one address, and one service associated to it. 
 have `CLusterIP` in the `spec.type`.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: poddy-ingress
 spec:
   rules:
-    - http:
+    - host: poddy.com
+      http:
         paths:
-          - path: /
+          - pathType: Prefix
+            path: "/"
             backend:
-              serviceName: poddy-service
-              servicePort: 80
-      host: poddy.com
+              service:
+                name: poddy-service
+                port:
+                  number: 80
 ```
 
 #### Simple fanout
 
-This time we're going to deploy Simple fanout type that exposing multiple services on same host, but via different
+This time we're going to deploy Simple fanout type that exposing multiple services on the same host, but via different
 paths. This type is very handy when you running in CloudProvider and want to cut cost on creating LoadBalancers for each
-of you application.
+of your applications.
 
 ```yaml
-apiVersion: extensions/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: simple-fanout-rules
@@ -462,12 +504,22 @@ spec:
     - host: poddy.com
       http:
         paths:
-          - path: /hello                            # poddy.com/hello
+          - pathType: Prefix
+            path: "/hello"      #poddy.com/hello
             backend:
-              serviceName: poddy-service-1
-              servicePort: 80
-          - path: /world                            # poddy.com/world
+              service:
+                name: poddy-service-1
+                port:
+                  number: 80
+          - pathType: Prefix
+            path: "/world"     #poddy.com/world
             backend:
-              serviceName: poddy-service-2
-              servicePort: 80
+              service:
+                name: poddy-service-2
+                port:
+                  number: 80
 ```
+
+[1]: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
+[2]: https://github.com/sylhare/Linux/blob/master/Kubernetes/kubernetes.sh
+[10]: {% post_url 2019/2019-08-15-Kubernetes-basic-components %}
