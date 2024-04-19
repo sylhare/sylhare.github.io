@@ -10,10 +10,11 @@ tags: [jekyll]
 [Reveal.js](https://github.com/hakimel/reveal.js) is an open source HTML presentation framework.
 With [Reveal Jekyll](https://github.com/sylhare/Reveal-Jekyll), the goal is to make it easier to manage your presentation and just focus on the content in markdown.
 
-Basically you can see it as a boiler plate for your reveal.js presentation. 
+You can see it as a boilerplate for your reveal.js presentation. 
 You can either write your slides as separate markdown files or put everything in one. [Check it out!](https://sylhare.github.io/Reveal-Jekyll/#/)
 
-What's more! All default plugins are pre bundled with it and almost all reveal.js features are compatible with your reveal jekyll presentation.
+What's more! All default plugins are pre bundled with it,
+and almost all reveal.js features are compatible with your reveal jekyll presentation.
 
 > Get started with your presentation in less than 5min
 
@@ -23,7 +24,7 @@ What's more! All default plugins are pre bundled with it and almost all reveal.j
 You can go on [Reveal Jekyll](https://github.com/sylhare/Reveal-Jekyll) and click on [Use this template](https://github.com/sylhare/Reveal-Jekyll/generate)
 to clone and create your own repository.
 
-Then locally, make sure to install bundle which will ease the installation of jekyll:
+Then locally, make sure to install `bundle` which will ease the installation of jekyll:
 
 ```bash
 gem install bundle
@@ -69,14 +70,14 @@ Slide content in markdown
 
 > Don't forget to add the two `---`.
 
-To order the presentation you can do something like `01-First-slide-title.md`, `02-Second-slide-title.md`.
+To order the presentation, you can do something like `01-First-slide-title.md`, `02-Second-slide-title.md`.
 
 #### Basement slides
 
 Basement slides can be put in the `_basements` folder.
 The Basement slides are slides that will be accessible using the down arrow when on a particular slide.
 
-They are the sub sections of your presentation:
+They are the subsections of your presentation:
 
 ```yaml
 
@@ -116,7 +117,7 @@ Try it at [.../Reveal-Jekyll/?print-pdf](https://sylhare.github.io/Reveal-Jekyll
 ### Use as a gem
 
 There is a `Dockerfile` available, check it out to see how to use the theme in a Docker.
-Basically you need 4 things to make it work as a gem:
+You need 4 things to make it work as a gem:
 
 - The Gemfile with the [reveal-jekyll gem](https://rubygems.org/gems/reveal-jekyll): `gem 'reveal-jekyll', '~> 0.0.2'`
 - The `index.html` which is the entrypoint of your jekyll site and presentation (with explained above configuration)
@@ -133,3 +134,5 @@ One you all set, you can run locally using:
 ```bash
 bundle exec jekyll serve
 ```
+
+And it should be available at `localhost:4000` 🌈

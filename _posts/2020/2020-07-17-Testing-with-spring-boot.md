@@ -6,9 +6,9 @@ tags: [kotlin]
 ---
 
 
-Since we had a look at spring and springboot in a previous [article]({% post_url 2020/2020-06-22-Springboot-basics %}).
+Since we had a look at spring and springboot in a previous [article][10].
 Let review how we can test the beast! 
-Because like all good developer, you like writing good tested code with TDD aka Test Driven Development.
+Because like all good developers, you like writing good tested code with TDD aka Test Driven Development.
 Where you usually _start_ with test... 😅 
 
 ## Test a simple Rest spring application
@@ -36,7 +36,7 @@ The `@RequestMapping("/v1")` annotation will prepend _/v1_ to all endpoints defi
 ### Bring in your test dependencies
 
 The springboot dependencies will be automatically deduced by the plugin.
-That's why when importing springboot test packages you may want to exclude the old junit v4 
+That's why, when importing springboot test packages, you may want to exclude the old junit v4 
 to start fresh with mockK and Junit5.
 
 Here would be a simplified snippet of our _build.gradle.kts_ for our test dependencies:
@@ -62,15 +62,15 @@ dependencies {
 ```
 
 Although mockito should still be compatible with Kotlin, 
-the syntax gets weird because it's conflicting with some Kotlin key words like `when()`.
+the syntax gets weird because it's conflicting with some Kotlin keywords like `when()`.
 So usually when using Kotlin, you'll go with [mockK](https://mockk.io/) instead.
 
-And to avoid interferences we exclude Mockito from _spring-boot-starter-test_ as well.
+And to avoid interference, we exclude Mockito from _spring-boot-starter-test_ as well.
 
 ### Spring application test class
 
 Let's create our _ApplicationTest_ class to test our springboot REST application.
-Basically you would find some annotation in order to resolve the bean in the context load,
+You would find some annotation to resolve the bean in the context load,
 specify some information and properties.
 
 ```kotlin
@@ -106,7 +106,7 @@ You can see other annotations:
 - `@TestConfiguration`: This is to define the test configuration, you can mock or update beans there.
 
 The `ControllerTestConfig` is here if you have some configuration you want to mock or modify for the test.
-For example here we are mocking the bean `foo` meaning that any autowire of that bean will take this mock version.
+For example, here we are mocking the bean `foo` meaning that any autowire of that bean will take this mock version.
 
 ### Write your first test
 
@@ -138,11 +138,12 @@ Be careful, if you set the result body type to `Void::class.java` you won't get 
 
 ## Mock your beans
 
-Obviously here you're testing end to end your application, and in some case it may connect to other part of the system.
+Obviously here you're testing end to end your application, and in some cases it may connect to another part of the system.
 In order to simplify the testing, you can mock external dependencies for your test to run smoothly.
 
-If there are bits of logic of a spring component you want to test, you can still "_autowire_" them in another test file,
-Thus you can test different niche behaviour or custom error handling.
+If there are some bits of logic from a spring component that you want to test,
+you can still "_autowire_" them in another test file!
+Thus, you can test different niche behaviour or custom error handling.
 
 ### Using mockK only
 
@@ -162,7 +163,7 @@ fun foo(): Foo {
 }
 ```
 
-So here you can see three behaviours that was defined for our Beans.
+So here you can see three behaviours that were defined for our Beans.
 We define the behaviour of some method, define a return value or throw an exception.
 This way we can test some custom behaviour.
 
@@ -185,3 +186,5 @@ lateinit var foo: Foo
 And then you can use " _every { ... }_ + behaviour" the mockK way to define the behaviour of the mockkBean
 in each test. 
 Make sure you have Mocktio excluded for this one, as it's strongly recommended.
+
+[10]: {% post_url 2020/2020-06-22-Springboot-basics %}

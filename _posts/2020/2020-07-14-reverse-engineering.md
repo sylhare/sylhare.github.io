@@ -21,12 +21,12 @@ Like:
 >> Yeah you found the flag!
 ```
 
-And in this example _s0m3th!ng_ would be the flag. 
-You don't know it in advance so you'll have to find it.
+And in this example, _s0m3th!ng_ would be the flag. 
+You don't know it in advance, so you'll have to find it.
 
 ### Write-up Sources
 
-I chose this one because it had a lot of write ups including one with angr,
+I chose this one because it had a lot of write-ups, including one with angr,
 So it would be a good choice to practice with radare2 and angr with a chance of succeeding
 while being a total beginner.
 
@@ -43,7 +43,7 @@ I will be using file, strings, binwalk, radare2 and angr for the binary analysis
 
 ### References
 
-Whenever you see something `0x45` it's an hexadecimal representation of a byte.
+Whenever you see something `0x45` it's a hexadecimal representation of a byte.
 Here are the common registers in memory:
 
 | 8-byte register | Bytes 0-3 | Bytes 0-1 | Byte 0 |
@@ -80,7 +80,7 @@ Ascii tables with hexadecimal and char values:
 
 ### Pre Analysis
 
-First we are going to explore a bit into this binary with our simple tools in case the flag is easy to get:
+First, we are going to explore a bit into this binary with our simple tools in case the flag is easy to get:
 
 ```bash
 file serial
@@ -103,7 +103,7 @@ Use binwalks to scan the file for a specific sequence of bytes:
 binwalk -R serial
 ```
 
-Unfortunately the _flag_ can't be found that easily.
+Unfortunately, the _flag_ can't be found that easily.
 We will need to do some analysis ...
 
 
@@ -113,8 +113,8 @@ First we need to analyse with `aaa` with radare2.
 
 #### Overview of the binary
 
-That the time where we look at the disassembled main to understand what is happening.
-Radare2 is very good at deciphering through the assembly instructions, 
+That's the time when we look at the disassembled main to understand what is happening.
+Radare2 is excellent at deciphering through the assembly instructions, 
 We can view the disassembled view with `pdf @ main` 
 
 We can deduce that the variable s `rbp-0x200` is the entered input here. 
@@ -140,7 +140,7 @@ Then we can see that the first byte `al` of the input is compared with `E` (1 AS
 |       ,=< 0x00400a45      740e           je 0x400a55                 ; jump when equal to 0x400a55
 ```
 
-Then a hard coded value `var_1f1h` at `rbp-0x1f1` is added and the result is compared with the three first bytes of the input. 
+Then a hard coded value `var_1f1h` at `rbp-0x1f1` is added, and the result is compared with the three first bytes of the input. 
 So we can skip and try to find all of the easy constraints we can find. 
 There are `16` hard coded values, so I guess each one is used to validate each character of the serial number.
 Since the addition of the bytes for `E` and `var_1f1h` equals `155`, in ASCII that would mean `var_1f1h` equals `V` because `86 =155 - 69`
@@ -220,7 +220,7 @@ Then you can get started, if you have any issue you can follow the [documentatio
 
 #### What you need to know
 
-With angr, what we want to achieve is arriving at the state where the serial number input is valid.
+With angr, what we want to achieve is arriving in the state where the serial number input is valid.
 So in radare2 we can do `iz` which will give us the strings and their data location,
 this is more precise than `strings` or `binwalk`:
 
