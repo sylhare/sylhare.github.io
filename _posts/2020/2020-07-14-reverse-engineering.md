@@ -31,7 +31,7 @@ So it would be a good choice to practice with radare2 and angr with a chance of 
 while being a total beginner.
 
 - [xil.se](https://github.com/xil-se/xil.se/blob/cbeb4ecc509b0590a7c246096a45e132fe8ce32e/content/post/sharifctf-2016-re6-serial.md)
-- [grazfather](http://grazfather.github.io/ctf/re/2016/02/07/Sharif-CTF-RE150-Serial-Writeup.html)
+- [grazfather](https://grazfather.github.io/posts/2016-02-06-sharif-ctf-re150-serial-writeup/)
 - [0x90r00t](https://0x90r00t.com/2016/02/07/sharif-university-ctf-2016-reverse-150-serial-write-up/)
 - [Michael Bann](https://bannsecurity.com/index.php/home/10-ctf-writeups/29-sharif-university-ctf-2016-serial)
 - [Aldeid](https://www.aldeid.com/wiki/SharifCTF-2016/serial)
