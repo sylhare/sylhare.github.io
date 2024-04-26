@@ -50,7 +50,7 @@ g {
   }
 
   .edgeLabel {
-    background-color: transparent !important;
+    background-color: var(--selection) !important;
     color: var(--text) !important;
   }
 }
