@@ -106,10 +106,49 @@ Finally, the last one is the `!` in front of the next command allow me to execut
 This way you can install packages directly from your jupyter notebook, but you can also run other bash commands or
 scripts.
 
+#### Using `%store`
+
+The `%store` magic command allows you to store variables locally to be used in another notebook or
+another session.
+It's not part of IPython anymore, you now need to install [pickleshare][5] to use it.
+
+```shell
+pip install pickleshare
+```
+
+Once installed you can start saving cells or value with `%store`:
+
+```python
+my_value = {'value': 'hello world'}
+%store
+my_value
+```
+
+Then in another cell or another notebook you can retrieve the value with:
+
+```python
+%store - r
+my_value
+```
+
+Now even if the notebook was stopped, you can still retrieve the `my_value` variable without having to run the previous
+cell to define it.
+
+> Be careful to not store too many variables as it uses the disk to store them.
+> Use `%store - d variable_name` to delete a variable or `%store -z` to delete all stored variables.
+
+That way, critical computed values can be stored and experimented against without having to re-do length computation to
+get them.
+
 ### Conclusion
 
 There's so much you can do with jupyter notebook, and it makes temporary scripting with python so much easier!
 Also find a fully functional example in [_/assets/notebook/_][1] where I used all the tricks in this article within 🎉
 
 [1]: https://github.com/sylhare/sylhare.github.io/blob/master/assets/notebook/Jupyter%20Notebook%20Example.ipynb
-[2]: https://www.dataquest.io/blog/jupyter-notebook-tutorial[3]: https://towardsdatascience.com/7-essential-tips-for-writing-with-jupyter-notebook-60972a1a8901[4]: https://ipython.readthedocs.io/en/stable/interactive/magics.html[5]: https://pypi.org/project/pickleshare/[6]: https://jupyter4edu.github.io/jupyter-edu-book/jupyter.html#:~:text=The%20Jupyter%20system%20supports%20over,%2C%20Scala%2C%20and%20many%20more[10]: {% post_url 2021/2021-05-19-Manage-your-python-environments %}
+[2]: https://www.dataquest.io/blog/jupyter-notebook-tutorial
+[3]: https://towardsdatascience.com/7-essential-tips-for-writing-with-jupyter-notebook-60972a1a8901
+[4]: https://ipython.readthedocs.io/en/stable/interactive/magics.html
+[5]: https://pypi.org/project/pickleshare/
+[6]: https://jupyter4edu.github.io/jupyter-edu-book/jupyter.html#:~:text=The%20Jupyter%20system%20supports%20over,%2C%20Scala%2C%20and%20many%20more
+[10]: {% post_url 2021/2021-05-19-Manage-your-python-environments %}
