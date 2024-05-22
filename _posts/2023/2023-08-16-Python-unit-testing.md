@@ -40,23 +40,21 @@ Let's start with `square_test.py` in the `test` folder which should contain the 
 our tests:
 
 ```python
-#!/usr/bin/env python3
- 
 import unittest
 
 class SquareTest(unittest.TestCase):
-"""
-SquareTest class to test the square function.
-"""
+    """
+    SquareTest class to test the square function.
+    """
 
 if __name__ == "__main__":
-unittest.main()
+    unittest.main()
 ```
 
 Let's describe what we have here:
 - `#!/usr/bin/env python3` is the shebang, it tells the shell which interpreter to use to run the script.
 - `unittest` is the default python library for unit testing
-- `unittest.main()` under the if statement is so that we can run the test using `python test/square_test.py`
+- `unittest.main()` under the _if_ statement is so that we can run the test using `python test/square_test.py`
 
 Then we have the `SquareTest` class which inherits from the class `unittest.TestCase`. With that, it offers
 all the assertion methods that you will use to test your code.
@@ -82,15 +80,15 @@ class SquareTest(unittest.TestCase):
         self.assertEqual(9, square(-3))
 ```
 
-As you can see, we won't go with a complicated method to implement, it's plain simple math for this example.
+As you can see, we won't go with a complicated method to implement; it's plain simple math for this example.
 In the test, the `self` refers to the object (like `this` in Java), 
 you need to use it to access the assertion methods provided from the `unittest.TestCase` class.
 
 > **tips**: Don't test the internals of the method, but the result.
 
-This is a simple case, but as your projects gets bigger you might be tempted to verify that some actions were performed
+This is a simple case, but as your projects get bigger, you might be tempted to verify that some actions were performed
 or called during the test. While they may not be always avoidable, it's more relevant to test for the result, or
-expected behaviour, so if the implementation change, the tests don't.
+expected behaviour, so if the implementation changes, the tests don't.
 
 ### Implementation
 
@@ -129,7 +127,7 @@ For the next features, if you want to go further, you may want to make it possib
 
 Well done on implementing your first test case in python! 🎉
 
-And now that you are done with  all the test cases you could add a docstring `"""` to describe what
+And now that you are done with all the test cases you could add a docstring `"""` to describe what
 it is doing (e.g. `""" :return: the square of the input number """`).
 
 They are _not_ mandatory, and can be used like _javadocs_ to describe the function and its parameters.
