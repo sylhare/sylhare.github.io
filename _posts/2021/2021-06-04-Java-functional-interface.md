@@ -13,9 +13,8 @@ also utilizing the lambdas. So to add a twist, we're going to add some generics 
 
 ## Generics
 
-Java is a typed language, everything should have a type. Generics, or [_generic
-type_](https://docs.oracle.com/javase/tutorial/java/generics/types.html) is a generic class or interface that is
-parameterized over types. 
+Java is a typed language, everything should have a type. Generics, or [_generic type_](https://docs.oracle.com/javase/tutorial/java/generics/types.html) 
+is a generic class or interface that is parameterized over types. 
 
 Without going into details, you may have seen `<T>` in java like:
 
@@ -100,4 +99,4 @@ Where the lambda function returns an `Optional<String>` that we can leverage.
 
 Generics allow to be very flexible with our lambda and are a necessary fit in your refactoring toolbox. Functional
 interface made me think of `typealias` in Kotlin where you can simplify types with an alias, but this is mostly cosmetic
-as you can pass lambda as type without interface in Kotlin.
+as you can pass lambda as a type without an interface in Kotlin.
