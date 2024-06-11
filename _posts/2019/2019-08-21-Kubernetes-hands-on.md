@@ -7,15 +7,29 @@ tags: [kubernetes]
 
 ## Components Hands-on
 
-### Kubernetes setup
-
 Find a quick summary on the [kubernetes main concept][10] to refresh your memory in a [previous article][10], or go
 straight ahead with the hands-on examples.
 
-To get a better grasp of Kubernetes components and commands, 
+### Kubernetes setup
+
+To get a better grasp of Kubernetes components and commands,
 it is recommended to have a working Kubernetes cluster running.
+
 You can set up a Kubernetes cluster on your own following:
 - [kubeadm installation script][2]
+
+Or via [docker desktop][3] which provides one by default now.
+
+You can also setup a temporary kubernetes configuration if you are working with a cloud provider by downloading the
+configuration file and set it up:
+
+```shell
+export KUBECONFIG=/path/to/the/kubeconfig
+```
+
+This should give you access to the cluster in that terminal session.
+
+### Kubernetes get started
 
 Once you have a kubernetes cluster setup, you might want to test the following commands in a test cluster:
 
@@ -23,7 +37,8 @@ Once you have a kubernetes cluster setup, you might want to test the following c
 kubectl config set-context test
 ```
 
-This will create the context `test` in your kubeconfig file. You can then switch to it using:
+This will create the context `test` in your kubeconfig file. 
+You can then switch to it using:
 
 ```shell
 # To display the current contexts and their namespace
@@ -46,47 +61,49 @@ I'll try to keep it up to date, so if you find a deprecated notation, let me kno
 ### Kubectl main commands
 
 `kubectl` is a command line interface for running commands against Kubernetes clusters. 
-In all of them, you can replace `<component>` with any of the kubernetes component (pods, node, deployments, services, ...)
+In all of them, you can replace `<resource>` with any of the kubernetes resource (pods, node, deployments, services, ...).
+You can also use `kubectl explain pod` to get the definition of what is a pod, but it's not very useful in practice.
 
-To get definition and information on the different Kubernetes elements
+- Describe will give you the detail information of the resource.  
+  If there is a name used for multiple resources, you can specify witch one using `<resource>/<resource name>`:
 
-```bash
-kubectl explain <component>
+```sh
+kubectl describe <resource name>
 ```
 
-To create a kubernetes component that is defined inside the file.yaml. It uses the kubernetes API server to schedule the
-creation of the component based on the yaml file.
+- Give the basic information of the resource for a quick overview (name, status, Age, replicas)
+
+```bash
+kubectl get <resource>
+
+# Get the logs for one application
+kubectl logs -l app=my-app
+```
+
+- To create a kubernetes resource defined inside the file.yaml. 
+  It uses the kubernetes API server to schedule the creation of the resource based on the yaml file.
 
 ```bash
 kubectl create -f file.yaml
 ```
 
-Give the basic information of the components (number, status, Age)
-
-```bash
-kubectl get <component>
-
-# Get the logs for one application / component
-kubectl logs -l app=my-component
-```
-
-To remove a component.
+- To remove a resource.
 
 ```sh
-kubectl delete <component name>
+kubectl delete <resource name>
 ```
 
-Describe will give you the information of the scheduled component. 
-If there is a name used for multiple components, you can specify witch one using `<component>/<component name>`:
+- To edit a resource via an editor (like vim) you can use:
 
 ```sh
-kubectl describe <component name>
-```
+kubectl edit <resource> <resource name>
+# example: kubectl edit deployment nginx-deployment
+````
 
-You can label components to organize your resources. It can then be used for network or access restrictions.
+- You can label kubernetes resources. It can then be used for network or access restrictions.
 
 ```sh
-kubectl label <component> <component name> env=test
+kubectl label <resource> <resource name> env=test
 ```
 
 ### Pods
@@ -522,4 +539,5 @@ spec:
 
 [1]: https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/
 [2]: https://github.com/sylhare/Linux/blob/master/Kubernetes/kubernetes.sh
+[3]: https://docs.docker.com/desktop/kubernetes/
 [10]: {% post_url 2019/2019-08-15-Kubernetes-basic-components %}
