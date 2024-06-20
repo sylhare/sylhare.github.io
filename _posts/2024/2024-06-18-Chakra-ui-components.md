@@ -13,6 +13,11 @@ examples to get started.
 
 For the [Chakra UI components][4] we are going to talk about, knowing about [CSS flexbox][10] is a plus. 
 It's used to display and style the Chakra UI component and can be passed as props for finer control.
+Here are the main libraries to install:
+
+```shell
+yarn add react @chakra-ui/react @emotion/react @emotion/styled framer-motion
+```
 
 Chakra UI is to be used with [react][11], so you will want to be familiarized with it. 
 While it can be used without any framework, it may require some boilerplate to be able to start your frontend application
