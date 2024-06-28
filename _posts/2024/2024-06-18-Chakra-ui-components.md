@@ -2,7 +2,7 @@
 layout: post
 title: Building a layout with Chakra UI
 color: rgb(76, 201, 195)
-tags: [js]
+tags: [react]
 ---
 
 [Chakra UI][1] provides a range of flexible and composable components that can be used to build complex layouts. 
