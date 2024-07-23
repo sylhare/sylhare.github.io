@@ -5,19 +5,21 @@ color: rgb(21,194,19)
 tags: [js]
 ---
 
-We have talked briefly about [Jest][4] before in this [blog][10] before, but only on how to write basic test and set it
-up within your project.
+We have talked briefly about [Jest][4] before in this [blog][10] before, 
+but only on how to write a basic test and set it up within your project.
 
 Let's dive a bit further with some interesting cases and advanced features that jest has to offer. If I didn't talk 
-about your favourite jest feature, let me know in the comment 🧡
+about your favourite jest feature, let me know in the comment. 🧡
 
 ### Timeout and retries
 
-When testing asynchronous connection or with weird setup you may encounter flaky tests which will fail in the pipeline
-due to timeout issues (jest's default timeout is 5seconds) or because the test is flaky by design.
+When testing asynchronous connection or with a unique setup, 
+you may encounter flaky tests which will fail in the pipeline due to timeout issues
+(jest's default timeout is 5seconds). 
 
-The ideal solution would be to spend the required amount of time and fix the codebase and its tests, but that's not 
-always possible or realistic. In those occasion you can use:
+Although the test can be flaky by design. 
+The ideal solution would be to spend the required amount of time and fix the codebase and its tests, 
+but that's not always possible or realistic. On those occasions you can use:
 
 ```js
 jest.retryTimes(3);
@@ -33,7 +35,7 @@ That's some ducktape 🦆 but it does the job when you need to patch stuff quick
 
 ### `toBe` vs `toEqual`
 
-This one, is not really an advanced feature, but can give you a hard time debugging when you don't know about it.
+This one is not really an advanced feature, but can give you a hard time debugging when you don't know about it.
 The `.toBe` and `toEqual` do not react the same way in front of equality.
 
 I prefer `toEqual` as it yields results corresponding to my expectation. Let's take this constant as an example and
@@ -67,8 +69,9 @@ it('should work', () => {
 });  
 ```
 
-Here the test does not pass even-though the two variables expected looks similar to our value. That's because [toBe] 
-compares the reference of the object, the only way it can be true is if we do `expect(hello).toBe(hello);`.
+Here the test does not pass even-though the two variables expected look similar to our value. 
+That's because [toBe] compares the reference of the object, 
+the only way it can be true is if we do `expect(hello).toBe(hello);`.
 It should only be used if you want to test that the object has the same reference and is the same still.
 
 I also had with typescript the case where the use of [toBe] lead to cryptic errors such as:
@@ -78,10 +81,10 @@ I also had with typescript the case where the use of [toBe] lead to cryptic erro
 TypeError: (0 , _jestGetType.default) is not a function
 ```
 
-Which seems to be occurring within the internal of jest, replacing it with a [toEqual] fixed it. I could replace one by 
-the other because I didn't care for it to be the same object, just the same value. 
+Which seems to be occurring within the internal of jest, replacing it with a [toEqual] fixed it. 
+I could replace one by the other because I didn't care for it to be the same object, just the same value. 
 
-Hopefully these kinds of unhelpful error messages gets fixed/caught as jest evolves.
+Hopefully, these kinds of unhelpful error messages get fixed/caught as jest evolves.
 
 ### Using `.each` in tests
 
@@ -98,8 +101,9 @@ it.each([null, undefined, ''])('"%s" should be falsy', (input: any) => {
 });
 ```
 
-Note the `%s` which is going to be populated with the current stringified version of the variable tested from the
-[.each] method. Useful to identify which use case have failed.
+Note the `%s` which is going to be populated with the current "_stringified_" version of the variable tested from the
+[.each] method. 
+Useful to identify which use case has failed.
 
 #### With `describe`
 
@@ -123,8 +127,8 @@ Useful if you need to test multiple inputs yielding the same output.
 
 ## Extend expects matchers
 
-This is useful to reduce the extra syntax used to verify one use case. You can also use it to customize the error 
-message to more helpful to future contributors working on the project.
+This is useful to reduce the extra syntax used to verify one use case. 
+You can also use it to customise the error message to more helpful to future contributors working on the project.
 
 ### Matcher
 
@@ -146,8 +150,8 @@ And a `message` that will be display when it's not passing.
 
 ### With typescript
 
-With Typescript, your new custom matcher won't be recognized unless you tell jest it exists. To do so, you need to have
-in another file (by that I mean not a file with tests in it):
+With Typescript, your new custom matcher won't be recognised unless you tell jest it exists. 
+To do so, you need to have in another file (by that I mean not a file with tests in it):
 
 ```ts
 declare global {
@@ -199,13 +203,45 @@ can be displayed for the user based on our implementation.
 A couple of examples for the main use-cases you may encounter when trying to mock stuff in typescript. 
 Check this [jest mocking strategies][2]' article for an even finer depictions of the jest possibilities in terms of mocking.
 
+### `clearAllMocks` vs `resetAllMocks`
+
+Mokcs can be re-used, but they do keep their state in between tests which may cause interference between tests.
+Fortunately clearing or resetting mocks can be done all at once using `jest.clearAllMocks()` or `jest.resetAllMocks()`.
+Let's see what each do, so you can use them wisely:
+
+- _ClearAllMocks_: This is to clear the invocation data (calls and instances on the mock) but leave the mocked value.
+
+```ts
+cont mock = jest.fn().mockReturnValue('hello');
+expect(mock()).toEqual('hello');
+expect(mock).toHaveBeenCalledTimes(1);
+jest.clearAllMocks();
+expect(mock).not.toHaveBeenCalled();         // Invocation data is cleared
+expect(mock()).toEqual('hello');             // Mocked value is still there
+```        
+
+- _ResetAllMocks_: This is to reset the mock to its initial state, so it will remove the mocked value and clear the invocation data.
+
+```ts
+const mock = jest.fn().mockReturnValue('Hello World!');
+expect(mock()).toEqual('Hello World!');
+expect(mock).toHaveBeenCalledTimes(1);
+jest.resetAllMocks();
+expect(mock).not.toHaveBeenCalled();        // Invocation data is cleared
+expect(mock()).toBeUndefined();             // Mocked value is removed
+````
+
+If the mocked value never needs to change, it's better to use `clearAllMocks`, if you need to use `resetAllMocks`,
+it might create some problem with [react][11] and make sure you add the mocked value back when needed.
+
 ### Mock a class
 
 When mocking, a limitation with Typescript, is that the object's type must match (it can't be a "relaxed" mock). 
-In the case of your own objects, you may not have too many fields to mock, making it manageable. But once you start
-creating classes inheriting from others or libraries you might find yourself forced to add private method to your mock.
+In the case of your own objects, you may not have too many fields to mock, making it manageable. 
+But once you start creating classes inherited from others or libraries, 
+you might find yourself forced to add private method to your mocks.
 
-This is less than ideal and the only way to prevent it is to use an interface for your object.
+This is less than ideal, and the only way to prevent it is to use an interface for your object.
 A lesser evil to avoid painful creation of unnecessary fields.
 
 ```ts
@@ -241,11 +277,11 @@ If you just need to mock that one particular function calling an external depend
 `spy` which will let you use the real implementation of your object for the rest.
 
 To create it, use [jest.spyOn] and pass the object and the method's name as a string which you want to "spy" on. Here 
-are two examples, by default the spied method rejects (like for a missing dependencies) but with the spy you can change 
+are two examples, by default, the spied method rejects (like for a missing dependencies), but with the spy you can change 
 the behaviour and make it resolve to what you want for your test.
 
-Same as before, we're here testing the mock, I do hope you see the potential for a real use case when you need to mock
-one of your dependencies.
+Same as before, we're here testing the mock. 
+I do hope you see the potential for a real use case when you need to mock one of your dependencies.
 
 ```ts
 describe('with spy on service', () => {
@@ -272,7 +308,7 @@ It's less messy, and you have better control on what the internal method should 
 
 ### Mock bits of a library
 
-If you work with multiple functions or a library, and they are being called by one of the object you are testing, you
+If you work with multiple functions or a library, and they are being called by one of the objects you are testing, you
 can use the `jest.mock` on the library itself to mock part of it. The [jest.requireActual] allows you not to have
 to mock everything and use the actual values for the rest.
 
@@ -293,7 +329,7 @@ You don't have to believe me, it's all available [there][3] for you to test if y
 
 ### Mock with export and export default
 
-An export and an export default gets compiled and imported a bit differently, so when mocking a file you might be
+Export and an export default get compiled and imported a bit differently, so when mocking a file, you might be
 surprised by the behaviour of your mock.
 
 Let's say you had:
@@ -339,8 +375,8 @@ jest.mock('module', () => ({
 ```
 
 This way your `doStuff` method will be mocked and behave as expected, it's a bit lengthier that the first version, but
-it also highlights one of the key difference when you `export` and when you `export default`. So be aware of those tiny
-details as they can through you into a debugging rabbit hole. 🐇
+it also highlights one of the key differences when you `export` and when you `export default`. 
+So be aware of those tiny details as they can through you into a debugging rabbit hole. 🐇
 
 [1]: https://jestjs.io/docs/expect#expectextendmatchers
 [2]: https://mercedesbernard.com/blog/jest-mocking-strategies
@@ -354,3 +390,4 @@ details as they can through you into a debugging rabbit hole. 🐇
 [jest.requireActual]: https://jestjs.io/docs/jest-object#jestrequireactualmodulename
 [jest.mock]: https://jestjs.io/docs/jest-object#jestmockmodulename-factory-options
 [10]: {% post_url 2020/2020-03-24-Testing-with-js-with-jest %}
+[11]: {% post_url 2022/2022-10-18-React-testing-static %}
