@@ -9,7 +9,7 @@ Type inference is the ability of a language to deduce the type of expressions at
 Languages such as [Kotlin][1] or [Typescript][2] do support it by default while other like [Java][3] are looking into it.
 
 What it means is that type inference allows you to omit the type annotation of variable. But this feature can be quite
-dividing for users, as some would have argument in favor or against it. So in this article I wanted to look in details
+dividing for users, as some would have argument in favour or against it. So in this article I wanted to look in details
 the type inference advantages, its weak spots what the industry is saying and find out what I should be doing.
 
 ## Type inference
@@ -24,21 +24,23 @@ let x = 3;
 
 Type inference can help remove some visual clutter around the types.
 
-However, that does not mean that since type can be inferred, you should remove them all. They are used in typed languages
-after all, so the types should remain in the code! Inferrable types is not a silver
-bullet and is known to fail short in some occasion. Which we'll try to demonstrate in the next part.
+However, that does not mean that since types can be inferred, you should remove them all. 
+They are used in typed languages after all, so the types should remain in the code! 
+Inferrable types is not a _panacea_ and is known to fail short on some occasions. 
+Which we'll try to demonstrate in the next part.
 
 ## Weak spot
 
 The principal weak spot of type inference is when it doesn't work or get it wrong, and usually that's on generic 
-invocation or with dynamic types. In those case inferable type are never recommended. But let's see what it means.
+invocation or with dynamic types. 
+In those cases inferable types are never recommended. But let's see what it means.
 
 ### Dart
 
 In Dart, the type can't be inferred everywhere, and they do tell you in the guideline to add it when necessary. For
-example here with Generic invocation where the type can't be inferred successfully.
+example, here with Generic invocation where the type can't be inferred successfully.
 
-```dart
+```ts
 // ✅ Good - Specify the generic type
 var playerScores = <String, int>{};
 final events = StreamController<Event>();
@@ -71,35 +73,37 @@ class Jep286 {
 
 If we were to create a variable for `getById` with inferrable types, it would still "work" but always return false. 
 Why? Because the `contains` method on `Set` accept any `Object` and a `String` is unlikely to be in a `Set<Long>`. 
-A simple test would help find the problem, and in most case the IDE would highlight the code with a warning message
+A simple test would help find the problem, and in most cases, the IDE would highlight the code with a warning message
 such as:
 
 - From IntelliJ: _'Set&lt;Long&gt;' may not contain objects of type 'String'_
 
-So in all fairness even if the code compiles, the problems does not seem to be the inferrable type. Let's try it out in
-Kotlin by converting the code, here is what we have:
+So in all fairness, even if the code compiles, the problems do not seem to be the inferrable type. 
+Let's try it out in Kotlin by converting the code, here is what we have:
 
 ```kotlin
-fun hasId(ids: Set<Long>): Boolean {
-    return ids.contains(getId())
-// Type inference failed. The value of the type parameter T should be mentioned in input types (argument types, receiver type or expected type). 
-// Try to specify it explicitly.
+fun getId(): String {
+  return "id"
 }
 
-fun getId(): String {
-    return "id"
+fun hasId(ids: Set<Long>): Boolean {
+    return ids.contains(getId())
+    /**                 ^^^^^^^
+     * Type inference failed. The value of the type parameter T should be mentioned in input types (argument types, receiver type or expected type). 
+     * Try to specify it explicitly.
+     **/
 }
 ```
 
-I am using Kotlin **1.4** and so far it seems to work and compile, however contrary to Java there's a warning by the 
+I am using Kotlin **1.4** and so far it seems to work and compile, however, contrary to Java, there's a warning by the 
 compiler:
 
 > Type inference failed.<br> 
 > The value of the type parameter T should be mentioned in input types (argument types, receiver type or expected type).<br>
 > Try to specify it explicitly..
 
-Which is the same message as the warning my IDE gives, plus the special mention _This will become an error in Kotlin 1.5_,
-the smart potatoes at Kotlin have anticipated the issue and will now make bad inference failure a compile-time error!
+Which is the same message as the warning my IDE gives, plus the special mention _This will become an error in Kotlin 1.5_.
+The smart potatoes at Kotlin have anticipated the issue and will now make bad inference failure a compile-time error!
 
 ### Typescript
 
@@ -133,7 +137,7 @@ const furby = {
 }
 ```
 
-In this case _elmo_ will be considered as a `Toy` and if the interface change, then the object needs to change as well.
+In this case _elmo_ will be considered as a `Toy` and if the interface changes, then the object needs to change as well.
 Otherwise, you will get a typescript error such as:
 
 - **TS2741**: _Property '...' is missing in type '{ ... }' but required in type 'Toy'_
@@ -174,7 +178,7 @@ Type inference recommended: ✅
 
 For [Dart][6] a UI language developed by Google, and they have a very complete [design guideline page][7]. In which you 
 find several rules in favour of type inference such as:
-- DON’T redundantly type annotate initialized local variables.
+- DON’T redundantly type annotate initialised local variables.
   - _Omitting the type focuses the reader’s attention on the more important name of the variable and its initialized value._
 - DON’T annotate inferred parameter types on function expressions.
   - _Anonymous functions are almost always immediately passed to a method taking a callback of some type. Dart infers the function’s parameter types based on the expected type_
@@ -192,26 +196,26 @@ is actually needed (Inferable types does not mean remove all types everywhere).
 
 Type inference recommended: ✅
 
-Ok, there's no clear recommendation, however when you look at the effort being made behind [type inference][1] in Kotlin
+Ok, there's no clear recommendation, however, when you look at the effort being made behind [type inference][1] in Kotlin
 it is clear that it has been well-thought-out in the language genesis. 
 
 The fact that Kotlin is more concise (around [40% cut in lines of code][10]) and that all the [basic syntax][11] revolves 
 around the usage of inferred types, you can see that it is intended to be used.
 
 And from what we have seen in the weak spot session, they do everything necessary to make sure that if ever an inferred
-type is yielding an error it will break during compile time, so you feel safe using it.
+type is yielding an error, it will break during compile time. So you feel safe using it.
 
 ## Conclusion
 
-Not all languages using type inference are using the same strategy to prevent errors and those are most likely due to
+Not all languages using type inference are using the same strategy to prevent errors, and those are most likely due to
 bad design or bad usage from the user and not the feature or the language itself.
 
-Depending on the language, there's no black and white answer, regarding type inference. It's a feature that do remove
+Depending on the language, there's no black and white answer, regarding type inference. It's a feature that does remove
 some redundancy and clutter in the code. However, there are some opposite views regarding those benefits, such as
 Austin Henley who argue the opposite and vouch for [explicitness][12].
-However, I have to admit that without the IDE while reviewing PR on GitHub it can be harder to get the inferred type.
-I hope that at least to a degree when can agree that on a poor quality piece of code, type inference or not, fixing the
-design, the bad naming, bad whatever is the main factor to reduce cognitive load. 
+However, I have to admit that without the IDE while reviewing PR on GitHub, it can be harder to get the inferred type.
+I hope that at least to a degree when can agree that on a poor quality piece of code, type inference or not; fixing the
+design, the bad naming can be considered one of the main factors to reduce the cognitive load. 
 
 To be fair on a nice piece of software, I do feel like type inference makes up for the best code, but that would be my
 own subjective view.
