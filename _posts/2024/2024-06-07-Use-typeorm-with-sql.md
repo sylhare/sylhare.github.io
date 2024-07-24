@@ -1,11 +1,11 @@
 ---
 layout: post
-title: Connect a NestJS application to an SQL ⛁ database 
+title: Connect a NestJS application to an SQL ⛁ database
 color: rgb(254, 9, 2)
 tags: [js]
 ---
 
-To connect a NestJS application to an SQL database, 
+To connect a NestJS application to an SQL database,
 we are going to use [typeorm][3] which has a built-in integration with NestJS.
 
 The [official documentation][1] for typeorm integration with your NestJS application is pretty lengthy!
@@ -16,7 +16,7 @@ If you are not familiar with [NestJS][12], check that article for a quick introd
 
 Add the typeorm dependency to your NestJS project:
 
-```ts
+```bash
 npm i --save @nestjs/typeorm typeorm pg  
 ```
 
@@ -47,17 +47,22 @@ export class User {
 ```
 
 In this example, we are doing a couple of things, let's describe it:
+
 - `@Entity('nest_users')`: This will create a table named `nest_users` in the database.
 - `@PrimaryGeneratedColumn()`: This will create a primary key that is auto-incremented.
-  - Each new user entity created will have a new id when saved in the database.
-  - This is the equivalent of `SERIAL` in postgres, to have a `uuid` instead of a number use: `@PrimaryGeneratedColumn('uuid')`.
-  - You can also use `@PrimaryColumn()` if you want to define the primary key yourself.
-- `@Column({ length: 500, nullable: true })`: This will create a column in the table with a length of 500 characters that can be null.
-  - The arguments are optional and can be omitted.
-  - The name of the column is `name` from the variable, but you could also change it passing the name as an argument: `@Column({ name: 'first_name' })`.
-- `@CreateDateColumn({ type: 'timestamp' })`: This will create a column in the table with the current timestamp when the entity is created.
-  - For updates, you can find the equivalent called: `@UpdateDateColumn`.
-  - You can set different types of dates, like `date`, `time`, `timestamptz`, etc.
+    - Each new user entity created will have a new id when saved in the database.
+    - This is the equivalent of `SERIAL` in postgres, to have a `uuid` instead of a number
+      use: `@PrimaryGeneratedColumn('uuid')`.
+    - You can also use `@PrimaryColumn()` if you want to define the primary key yourself.
+- `@Column({ length: 500, nullable: true })`: This will create a column in the table with a length of 500 characters
+  that can be null.
+    - The arguments are optional and can be omitted.
+    - The name of the column is `name` from the variable, but you could also change it passing the name as an
+      argument: `@Column({ name: 'first_name' })`.
+- `@CreateDateColumn({ type: 'timestamp' })`: This will create a column in the table with the current timestamp when the
+  entity is created.
+    - For updates, you can find the equivalent called: `@UpdateDateColumn`.
+    - You can set different types of dates, like `date`, `time`, `timestamptz`, etc.
 
 I find it similar to the equivalent Java library [hibernate][10] with the annotations.
 
@@ -90,6 +95,7 @@ export default
 
 In this setup, most of the information is passed through environment variables, to avoid "_hardcoding_" the database
 credentials which could be sensitive information.
+
 - The `entities` option is to let typeorm know where to find the entities to persist in the database.
 - The `migrations` option refers to the different changes that happened to your database schema over time.
 
@@ -109,8 +115,8 @@ And now you should be all set to create the tables in the database.
 
 The entity is not saved in the database until you create a migration and run it against the database.
 
-A migration is a file that contains the changes between the defined entities in your code and the current database schema
-structure.
+A migration is a file that contains the changes between the defined entities in your code and the current database
+schema structure.
 To generate a migration, you can run:
 
 ```shell
@@ -119,7 +125,7 @@ yarn typeorm migration:generate migrations/AddInitialTables
 
 This will create a new file with a timestamp in the `migrations` folder.
 
-The entity is still not persisted yet, you will now need to run that migration in order to commit the change to the 
+The entity is still not persisted yet, you will now need to run that migration in order to commit the change to the
 database:
 
 ```shell
@@ -134,14 +140,13 @@ Which means, everytime you modify an entity in the code, a migration should be c
 > 😬 I messed up the database how do I reset it?
 
 If you have made a mistake or the database is in an odd state (maybe due to a test with your local setup), you can drop
-the schema and recreate it with:
+the schema. Then you can rerun the migration to recreate the tables:
 
 ```shell
 yarn typeorm schema:drop
 ```
 
-⚠️ Don't drop the schema in production, you will lose all your data! 
-Then you can rerun the migration to recreate the tables.
+⚠️ Don't drop the schema in production, you will lose all your data!
 
 ## Interact with the database
 
@@ -197,7 +202,8 @@ to be able to connect to the database.
 ### Using the repository
 
 Now that we have the module setup, we can create our user service.
-A service that can be used to retrieve the users or create a new one (possibly in association with a [REST][12] or [GraphQL][11] API).
+A service that can be used to retrieve the users or create a new one (possibly in association with a [REST][12]
+or [GraphQL][11] API).
 
 ```ts
 export class UserService {
@@ -217,13 +223,14 @@ export class UserService {
 ```
 
 Let's describe the User service to see how we interact with the database:
+
 - The `@InjectRepository(User)` is used to inject the `UserRepository` into the service.
-  - This repository allows us to interact with the _User_'s table in the database
+    - This repository allows us to interact with the _User_'s table in the database
 - We use the `save` method to insert a new user in the database.
-  - We could use `const user = new User()`, set the name and then `this.userRepository.save(user)`.
-  - ⚠️ The `userRepository.create` makes a user entity copy, but it does not insert anything in the database.
+    - We could use `const user = new User()`, set the name and then `this.userRepository.save(user)`.
+    - ⚠️ The `userRepository.create` makes a user entity copy, but it does not insert anything in the database.
 - We use the `find` method to retrieve all the users from the database.
-  - There are other find methods like `findOne`, `findByIds`, `findAndCount`, etc.
+    - There are other find methods like `findOne`, `findByIds`, `findAndCount`, etc.
 
 You can find more advanced usage of the repository in the typeorm [official documentation][4].
 This should be enough for now to get you started! 🎉
