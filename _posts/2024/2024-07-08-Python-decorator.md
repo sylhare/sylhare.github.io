@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Create your own python decorator
+title: Create your own Python decorator
 color: rgb(3,140,23)
 tags: [python]
 ---

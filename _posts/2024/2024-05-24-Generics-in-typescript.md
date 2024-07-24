@@ -50,7 +50,7 @@ export interface Walking<T> {
 
 When implementing the interface, you need to add in your class a `walk` method that takes the type `T` passed to the 
 interface as an argument and return the same type.
-In other words, you could have that `walk` use the parametrized type in either the return or argument.
+In other words, you could have that `walk` use the parametrised type in either the return or argument.
 
 If the generic `T` of the interface is not used by any member, then it can be removed to simplify the code.
 
