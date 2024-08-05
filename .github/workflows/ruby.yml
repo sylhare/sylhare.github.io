@@ -40,9 +40,11 @@ jobs:
         run: bundle exec jekyll build
       - name: Gems
         run: |
+          gem cleanup type-on-strap
           gem install type-on-strap
           gem install jekyll-theme-type-on-strap
       - name: GPR
         run: |
-          gem install type-on-strap --version "2.4.9" --source "https://rubygems.pkg.github.com/sylhare"
+          gem cleanup type-on-strap
+          gem install type-on-strap --version "2.4.10" --source "https://rubygems.pkg.github.com/sylhare"
 
