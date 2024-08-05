@@ -12,9 +12,12 @@ script:
   - bundle install
   - bundle exec jekyll build
   
-after_script:  
+after_script:
+  - gem cleanup type-on-strap
   - gem install type-on-strap
+  - gem cleanup type-on-strap
   - gem install jekyll-theme-type-on-strap
+  - gem install type-on-strap --source "https://rubygems.pkg.github.com/sylhare"
   - docker build . -t sylhare-blog
   - docker pull sylhare/jekyll
   - docker pull sylhare/type-on-strap
