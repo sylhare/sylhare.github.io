@@ -151,14 +151,18 @@ Use what makes sense in your case.
 If you plan on deploying your jekyll website on GitHub page, be warned that your local gem/ruby version might 
 not be the one actually used in the GitHub servers to render your website.
 
-To check compatibility you can use:
+To check compatibility, you can find it [online][6] or via the gem:
 
 ```bash
+# directly
 github-pages versions
+# via bundler
+bundle exec github-pages versions
 ```
 
-And you can add that in your Gemfile, the `:jekyll_plugins` group is not mandatory, but a cool feature offered by
-jekyll:
+And you can add that in your Gemfile, the `:jekyll_plugins` group is optional, but a cool feature offered by jekyll.
+It offers a neat way to manage Jekyll's plugin dependencies, 
+when you specify in your Gemfile and run `bundle install`, they will be installed and added as required when running the site:
 
 ```ruby
 # Gems loaded irrespective of site configuration.
@@ -167,7 +171,8 @@ group :jekyll_plugins do
 end
 ```
 
-The `github-pages` gems are deemed "_safe_" by GitHub, hence they are the only one allowed when deploying your jekyll
+It makes your Gemfile more structured with all plugins' dependencies in one place.
+The `github-pages` gems are deemed "_safe_" by GitHub; hence they are the only one allowed when deploying your jekyll
 website on GitHub page.
 
 ## 6. Use extra tools 🛠
@@ -176,7 +181,7 @@ As mentioned before, I use [gulp][10] to automate some blogging tasks, like mini
 computation on css or js files.
 
 You can also pre-build your jekyll site locally and push the `_site` folder, on which you may have applied some
-reducing tasks to skim the size of the files. Building your site locally also mean you can use some gem not allowed by
+reducing tasks to skim the size of the files. Building your site locally also means you can use some gems not allowed by
 GitHub page! Once built you're just using GitHub's page as a web server.
 There's also [GitHub's action][11] that you can leverage to automate part of your workflow as well.
 
@@ -189,5 +194,6 @@ so you can customize the look and feel with more ease.
 [3]: https://github.com/benbalter/jekyll-include-cache
 [4]: https://jekyllrb.com/docs/configuration/
 [5]: https://jekyllrb.com/docs/assets/#sassscss
+[6]: https://pages.github.com/versions/
 [10]: {% post_url 2020/2020-07-03-Manage-jekyll-blog-gulp %}
 [11]: {% post_url 2021/2021-09-03-Ruby-setup-from-test-to-deploy %}

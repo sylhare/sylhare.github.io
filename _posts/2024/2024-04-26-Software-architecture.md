@@ -5,17 +5,17 @@ color: rgb(55, 92, 140)
 tags: [agile]
 ---
 
-Let's talk about software architecture, how you come about them, how to make architecture decision and what influences
-them and finally how to categorize the different type of architecture.
+Let's talk about software architecture, how you come about them, how to make architecture decisions and what influences
+ them, and finally, how to categorize the different type of architecture.
 
 ### Approaches
 
-There are usually three ways to go with software architecture, besides all the none-functional ones:
+There are usually three ways to go with software architecture, beside all the none-functional ones:
 - Good: With a proposed solution that's technically sound. 
-  - (But it takes too long to implement, or the organization lacks skill knowledge, personnel to support it).
+  - (But it takes too long to implement, or the organisation lacks skill knowledge, personnel to support it).
 - Right: With a proposed solution answering the customer or stakeholder's problem. 
-  - (But adds technical debts, is a short term solution or does not account for growth or some possible future extra functionality).
-- Successful: With a proposed solution that brings value to both the user (customer or stakeholder) and the organization (The company developing and supporting the software). 
+  - (But adds technical debts, is a short-term solution or does not account for growth or some possible future extra functionality).
+- Successful: With a proposed solution that brings value to both the user (customer or stakeholder) and the organisation (The company developing and supporting the software). 
   - (A compromise that benefits both sides.)
 
 Looking at a new software architecture, it may not always be unanimously agreed upon. 
@@ -23,7 +23,7 @@ However, it's often better to start acting on it rather than stay in an analysis
 
 How so? By being flexible. 
 Architecture direction can change, as long as the proposed solution provides an improvement, it may be sufficient for some to yield.
-Meaning that we can argue of which direction to take at the moment, but some decisions can't be delayed forever.
+Meaning that we can argue which direction to take at the moment, but some decisions can't be delayed forever.
 
 ### Architecture Decision
 
@@ -88,7 +88,7 @@ I had written an [article][10] following the cross-cutting approach for a more p
 Not as a reference to Facebook's head company but as _meta architecture_.
 Which means architecting about architecture or rather the generic architecture principles that can be applied independently of the project.
 
-It usually features guidelines, policies, key concepts and mechanisms explanation and so on...
+It usually features guidelines, policies, key concepts and mechanisms' explanation and so on...
 For example:
   - codestyle or preferred syntax.
   - framework to use when starting.
@@ -132,7 +132,7 @@ Conceptual architecture helps in aligning technical decisions with business need
 
 #### Logical
 
-When the architecture gets actionable documented in a tech design, ADR or RFC.
+When the architecture gets actionable and documented in a tech design, ADR or RFC.
 
 - Tech design (Technical Design Document): It is a document that captures every necessary information for any developer 
   in the team to be able to implement the described solution. 
@@ -166,9 +166,9 @@ Small architecture decisions to make while implementing the expected design from
 - Deal with integration issues (system configuration, access rights)
 - Decide on run time properties (the actual code)
 
-It links the conceptual and logical steps while applying the meta one (with the guidelines).
+It links the conceptual and logical steps while applying the _meta_ one (with the guidelines).
 
-This type of architecture is usually undocumented, but is reviewed as part of code reviews.
+This type of architecture is usually undocumented but is reviewed as part of code reviews.
 That's the daily decisions a developer needs to make, _how to name that variable?_, _what pattern should I use?_,
 _how can I make it "better"?_.
 
@@ -191,7 +191,7 @@ flowchart LR
     E -->|implementation| S((System))
 ```
 
-The conceptual side is not often under any particular rules, so meta architecture doesn't really apply.
+The conceptual side is not often under any particular rules, so meta-architecture doesn't really apply.
 But you could have in a different company, a tool of preference to write the diagrams or a specific colour scheme.
 I did not mention it, but as opposed to the high-level view, 
 the low-level architecture is when you start touching the actual code of the system deep inside one of its components.
