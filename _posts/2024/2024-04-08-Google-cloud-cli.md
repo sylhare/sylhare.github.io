@@ -188,6 +188,29 @@ totally up and running.
 Now if you [execute a command][10] locally via `kubectl` to scale up/down or change the deployment in any way, 
 you will see that the "local" (but not so local because it's actually running in GCP) changes are reflected in the cloud console.
 
+#### With multinode autoscaling
+
+To enable autoscaling in Google Cloud, you need the "Kubernetes Engine Cluster Admin" role to modify a cluster's settings.
+Then run the following command:
+
+```bash
+gcloud container clusters update <cluster> \
+  --enable-autoscaling \
+  --min-nodes=1 \
+  --max-nodes=10 \
+  --zone <zone> \
+  --node-pool <pool>
+```
+
+The `cluster` and `zone` should be the same as the one defined earlier, the `pool` should be the node pool's name
+of the cluster. 
+A node is a VM instance in Google Compute Engine, the node pool represents some nodes available in your GKE cluster.
+You can have multiple node pools in a cluster, each with different specifications. For autoscaling to work,
+you need to enable it on the node pool's configuration first.
+
+With this configuration the cluster will have autoscaling enabled
+and will scale between 1 and 10 nodes depending on the workload.
+
 ## Conclusion
 
 Now you are all set to work with Google Cloud from your terminal, you can create and manage your deployments from there
