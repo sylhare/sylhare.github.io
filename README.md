@@ -4,6 +4,7 @@
 
 ### You like this theme? 🎨 It is the jekyll theme [Type-on-Strap](https://github.com/sylhare/Type-on-Strap). To get started you can clone it or use it as a [template](https://github.com/sylhare/Type-on-Strap) 😉
 ### 이 테마가 마음에 드십니까? 🎨 그것은 jekyll 테마 [Type-on-Strap](https://github.com/sylhare/Type-on-Strap) 입니다. 시작하려면 복제하거나 [템플릿으로](https://github.com/sylhare/Type-on-Strap) 사용할 수 있습니다 😉
+### क्या आपको यह थीम पसंद है? 🎨 यह jekyll थीम [Type-on-Strap](https://github.com/sylhare/Type-on-Strap) है। शुरुआत करने के लिए आप इसे क्लोन कर सकते हैं या [टेम्पलेट](https://github.com/sylhare/Type-on-Strap) के रूप में इसका उपयोग कर सकते हैं 😉
 
 ### Blog's content
 
