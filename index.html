@@ -1,3 +1,53 @@
 ---
-layout: home
+layout: default
 ---
+
+{% if site.baseurl == "" %}
+  {% assign isValidBaseUrl = true %}
+{% else %}
+  {% assign isValidBaseUrl = false %}
+{% endif %}
+{% if isValidBaseUrl and site.url contains "https://sylhare" %}
+  {% assign isValidUrl = true %}
+{% else %}
+  {% assign isValidUrl = false %}
+{% endif %}
+{% if isValidBaseUrl and site.url contains "https://localhost" %}
+  {% assign isLocalhost = true %}
+{% else %}
+  {% assign isLocalhost = false %}
+{% endif %}
+
+{% if isValidUrl or isLocalhost %}
+<div class="home">
+    <style scoped>
+        {% assign image = site.header_feature_image | relative_url | split: '.' %}
+        .call-out_img {
+            background-image: url('{{ image | join: '.' }}');
+        }
+        {% if site.header_feature_image_responsive %}
+        @media screen and (max-width: 768px) {
+            .call-out_img {
+                background-image: url('{{ image[0] | append: '-medium.' | append: image[1] | default: image}}');
+            }
+        }
+        @media screen and (max-width: 576px) {
+            .call-out_img {
+                background-image: url('{{ image[0] | append: '-small.' | append: image[1] }}');
+            }
+        }
+        {% endif %}
+    </style>
+    <div id="main" class="call-out call-out_img">
+        <h1> {{ site.header_text | default: "Change <code>header_text</code> in <code>_config.yml</code>"}} </h1>
+    </div>
+    {% capture _blog %}{% include blog/blog.liquid %}{% endcapture %}
+    {{ _blog | split: " " | join: " "}}
+</div>
+{% else %}
+<div style="padding: 20%">
+    <h1>Please do not publish or host me.</h1>
+    <p>I am already available at <a href="https://sylhare.github.io">https://sylhare.github.io</a></p>
+    <b>If you like the theme, fork it out! It's called <a href="https://github.com/sylhare/Type-on-Strap">Type-on-Strap</a> 🎉</b>
+</div>
+{% endif %}
