@@ -1,4 +1,4 @@
-# My Blog! [![Netlify Status](https://api.netlify.com/api/v1/badges/5b30c2f8-7871-4750-b788-703a6a1a12c8/deploy-status)](https://app.netlify.com/sites/sylhare/deploys) ![view](https://komarev.com/ghpvc/?username=sylhare&label=View%20Counter&color=0e75b6&style=flat)
+# My Blog! ![view](https://komarev.com/ghpvc/?username=sylhare&label=View%20Counter&color=0e75b6&style=flat)
 
 > 🖥️ [sylhare.github.io](https://sylhare.github.io/)
 
