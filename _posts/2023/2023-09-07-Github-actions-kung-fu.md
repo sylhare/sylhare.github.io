@@ -76,6 +76,7 @@ There's also a trigger for the issues. You can also fine-tune it, check the [doc
 ### Manually
 
 This one is to be able to go in the [action tab][3] and run the workflow manually.
+To set it up, you need to use the [workflow dispatch][9] event:
 
 ```yaml
 on:
@@ -84,6 +85,29 @@ on:
 
 You will see a [new button][3] _Run workflow_ showing up in the action tab that will trigger the `workflow_dispatch` event.
 It's not incompatible with other events, so you can have a workflow that runs on push and manually.
+
+If you want to parametrise the button with some input, you can use the `inputs` keyword:
+
+```yaml
+on:
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      tags:
+        description: 'Test scenario tags'
+        required: true
+        type: string
+```
+
+Use the {% raw %}`${{ inputs.logLevel }}`{% endraw %} to access the value in your workflow.
 
 ### After another workflow
 
@@ -114,7 +138,49 @@ jobs:
 ```
 {% endraw %}
 
-You have access to the [workflow's conclusion][5], and can use it in you configuration.
+You have access to the [workflow's conclusion][5], and can use it in your configuration.
+
+## Reuse a _workflow ..._
+
+Prevent duplication with the [reusing][10] capabilities of workflows with GitHub actions.
+
+### From a local file
+
+You can use a workflow from a local file in your repository:
+
+```yml
+jobs:
+  call-workflow-2-in-local-repo:
+    uses: ./.github/workflows/workflow-2.yml
+
+  other-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a script
+        run: echo "Hello world"
+```
+
+This will run the `workflow-2.yml` file in the `.github/workflows` folder.
+Then you can have a job that runs after the completion of the workflow.
+You can call [multiple workflows][10] referencing them in the `jobs` section.
+
+### From a public repository
+
+It's also possible to use a workflow from a public repository (but organization can disable it).
+Any called workflow can have input parameters that can be passed to them:
+
+```yml
+jobs:
+  call-workflow-passing-data:
+    uses: octo-org/example-repo/.github/workflows/reusable-workflow.yml@main
+    with:
+      config-path: .github/labeler.yml
+    secrets:
+      envPAT: ${{ secrets.MY_TOKEN }}
+```
+
+Here the `reusable-workflow.yml` from the `octo-org/example-repo` repository would be used (but it does not exist).
+To pass secrets we use the `secrets` keyword, and to pass parameters we use the `with` keyword.
 
 ## Run that _workflow in ..._
 
@@ -217,3 +283,5 @@ This can be useful when you want to run the following steps that may not be depe
 [6]: https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstrategymatrix
 [7]: https://docs.github.com/en/actions/using-jobs/running-jobs-in-a-container
 [8]: https://docs.github.com/en/actions/using-workflows/about-workflows
+[9]: https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/triggering-a-workflow#defining-inputs-for-manually-triggered-workflows
+[10]: https://docs.github.com/en/actions/sharing-automations/reusing-workflows
