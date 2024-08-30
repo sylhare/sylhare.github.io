@@ -64,14 +64,14 @@ Not mandatory, you can also trigger it the workflow only for certain branches (h
 
 ### On a pull request
 
-You can also have repository events as triggers such as the pull request:
+You can also have repository events as triggers, such as the pull request:
 
 ```yaml
 on:
   pull_request:
 ```
 
-There's also a trigger for the issues. You can also fine tune it, check the [documentation][1] for reference.
+There's also a trigger for the issues. You can also fine-tune it, check the [documentation][1] for reference.
 
 ### Manually
 
@@ -101,7 +101,7 @@ on:
 
 ```
 
-This workflow needs to be named differently from the one it's waiting for, and will only run when the previous workflow 
+This workflow needs to be named differently from the one it's waiting for and will only run when the previous workflow 
 succeeded.
 
 {% raw %}
@@ -131,7 +131,7 @@ defaults:
 ```
 
 Here the build step will use the `src` folder as the root folder.
-Or directly in the step if you need to execute action in a different folder:
+Or directly in the step if you need to execute an action in a different folder:
 
 ```yaml
 jobs:
@@ -154,12 +154,13 @@ If you need to run your step [in a container][7], like a docker image
 ```yaml
 name: CI
 
-on: [push]
+on: [ push ]
 
 jobs:
   container-job:
     runs-on: ubuntu-latest
-    container: node:14.16
+    container:
+      image: node:20
       env:
         NODE_ENV: development
       ports:
@@ -183,12 +184,12 @@ You can also use a [matrix][6] to perform a job with multiple values, here an ex
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['2.7', '3.0', '3.1' ]
-
-        - name: Set up Ruby
-          uses: ruby/setup-ruby@v1
-          with:
-            ruby-version: ${{ matrix.ruby-version }}
+        ruby-version: [ '2.7', '3.0', '3.1' ]
+    steps:
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
 ```
 {% endraw %}
 
