@@ -90,6 +90,7 @@ If you want to look at how the HTML is constructed, click on _Details_ to expand
 like: `div > svg > g > circle`
 
 <details>
+<summary>Details</summary>
 {% highlight html %}
 <div id="d3example"> 
     <svg width="450" height="450">
