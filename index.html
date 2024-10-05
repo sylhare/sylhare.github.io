@@ -12,7 +12,7 @@ layout: default
 {% else %}
   {% assign isValidUrl = false %}
 {% endif %}
-{% if isValidBaseUrl and site.url contains "https://localhost" %}
+{% if isValidBaseUrl and site.url contains "localhost" %}
   {% assign isLocalhost = true %}
 {% else %}
   {% assign isLocalhost = false %}
