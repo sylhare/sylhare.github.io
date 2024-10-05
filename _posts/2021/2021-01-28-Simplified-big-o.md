@@ -15,11 +15,13 @@ It is something you can enjoy [mastering][2], if you need to build particularly 
 But for most of the people, we just need a general idea of how slow our algorithm. 
 
 Big O notation is really useful when you know you'll have a tone of data to process,
-then you'll be interested to have am algorithm that performs well on average and not too bad at worst.
+then you'll be interested to have an algorithm that performs well on average and not too bad at worst.
 
-It's like you would not want to use a chainsaw to cut flowers, you can do it manually. 
-But when it comes to tree, the chainsaw's far more useful. 
-
+The time or space complexity matters depending on the likelihood of operations. 
+The more operation will be performed, the more time or memory it will take,
+which will either slow down your program or make it crash.
+So it's not about optimising at all costs, 
+but optimise where it matters and knowing the strength and weakness of your algorithm.
 
 ## The simplified version
 
@@ -31,14 +33,15 @@ Basically:
 
 Nowadays, Big O is mostly used to describe as tightly as possible the algorithm.
 
-There's an infinite number of Big O notation, and you need to understand the concept to grasp it fully. 
-However, there are some notation that you'll see more often than others. Here is what to consider:
+There's an infinite number of Big O notations, and you need to understand the concept to grasp it fully. 
+However, there are some notations that you'll see more often than others. 
+Here is what to consider:
  - $$1$$ usually means it's a constant time
- - $$N$$ in the notation usually mean the number of element (like in an array)
+ - $$N$$ in the notation usually means the number of elements (like in an array)
  - We consider the notation in terms of "power" ($$2N$$ is considered equal as $$N$$ but is faster than $${N}^{2}$$ and slower than $${\mathrm{log}}\left(N\right)$$)
- - Any other letter, means there's two operation with different size (like on will be $$A$$, and the other $$B$$)
+ - Any other letter, means there are two operations with different size (like on will be $$A$$, and the other $$B$$)
  
-So let's review the main ones in example.
+So let's review the main ones.
 
 ## Examples
 
@@ -126,12 +129,15 @@ $${\mathrm{log}}_{b}\left(x\right)=y\Leftrightarrow {b}^{y}=x$$
 
 Basically, to find the good $$O$$ notation, you need to pay attention to three things mostly:
   - The number of loops (multiplying inner loops)
-  - The size of the data (is it one size n, multiple size a, b, ..)
-  - How you go through the data (is it fixed amount of loop, or does it change like for the logarithmic time example)
+  - The size of the data (is it one size $$n$$, multiple size $$a$$, $$b$$, ...)
+  - How you go through the data (is it a fixed amount of loop, or does it change like for the logarithmic time example)
+
+Also find the bigO [cheat sheet][7] online for an easy reminder when choosing your data structure.
+
+{% include aligner.html images="big-o-cheat-sheet.png" column=1 %}
   
-This will help you improve your algorithm, and if you want to know even more, there lots of [examples][5]
+This will help you improve your algorithm, and if you want to know even more, there are lots of [examples][5]
 out there and tones of good explanations.
-Also find the bigO [cheat sheet][10] online for an easy reminder when choosing your data structure.
 
 [1]: https://en.wikipedia.org/wiki/Big_O_notation
 [2]: https://yourbasic.org/algorithms/big-o-notation-explained/
@@ -139,3 +145,4 @@ Also find the bigO [cheat sheet][10] online for an easy reminder when choosing y
 [4]: https://courses.lumenlearning.com/waymakercollegealgebra/chapter/convert-between-logarithmic-and-exponential-form/
 [5]: https://stackoverflow.com/a/36877205/7747942
 [6]: https://www.bigocheatsheet.com/
+[7]: https://www.bigocheatsheet.com/
