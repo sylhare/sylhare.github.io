@@ -55,6 +55,9 @@ To open filename in this depository
 - <kbd>d</kbd> <kbd>d</kbd> delete the selected line
 - <kbd>y</kbd> <kbd>y</kbd> Copy the selected line
 - <kbd>p</kbd> past the line where the cursor is or at the end by default
+- <kbd>$</kbd> Go to the end of the line
+- <kbd>0</kbd> Go to the beginning of the line
+- <kbd>e</kbd> Go the end of the word to the right
 
 
 ## Emacs
