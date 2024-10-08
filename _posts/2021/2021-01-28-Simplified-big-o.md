@@ -60,6 +60,10 @@ fun constantTime() {
 ```
 
 Sure doing that 100000 times is a bit long and tedious, but the `constantTime()` function will always execute it the same way.
+For example, accessing an element (`array[0]`) in an array is a constant time operation $$O(1)$$, 
+because it doesn't matter how big the array is, the memory address of the array's element can be calculated directly.
+However, looking for an element in an array (`array.contains(element)`) is a linear time operation $$O(n)$$, 
+because you need to go through the array to find it.
 
 ### Linear Time
 
@@ -74,6 +78,15 @@ fun notConstantTime(n: Int) {
 ```
 
 This time you can see that `notConstantTime(n)` execution time will vary depending on n.
+If there are too loops one after the other that go through $$n$$ then $$m$$ elements, the time complexity is $$O(n+m)$$.
+
+```kotlin
+(0..n).forEach{ i -> print("Big O - [$i]") }
+(0..m).forEach{ j-> print("Big O - [$j]") }
+```
+
+The difference between $$O(n)$$ and $$O(n+m)$$ is good to know,
+but it could still be considered in the range of $$O(n)$$, with the idea that the time complexity is not that notable.
 
 ### Polynomial time
 
@@ -125,6 +138,16 @@ It is logarithmic on [base 2][4], for example:
 
 $${\mathrm{log}}_{b}\left(x\right)=y\Leftrightarrow {b}^{y}=x$$
 
+For the logarithmic time, so if you have two loops, with the first one going through $$n$$ elements and the second
+inner loop going through $$n/2$$ elements (skipping elements), then the time complexity is $$O(n{\mathrm{log}}\left(n\right))$$
+and not $$O(n^{2})$$.
+
+```kotlin
+(0..n).forEach{ i -> (0..n/2).forEach{ j-> print("Big O - [$i, $j]")}}
+```
+
+The time complexity between $$O(n{\mathrm{log}}\left(n\right))$$ and $$O(n^{2})$$ can be quite notable!
+
 ## To go further
 
 Basically, to find the good $$O$$ notation, you need to pay attention to three things mostly:
@@ -134,10 +157,18 @@ Basically, to find the good $$O$$ notation, you need to pay attention to three t
 
 Also find the bigO [cheat sheet][7] online for an easy reminder when choosing your data structure.
 
-{% include aligner.html images="big-o-cheat-sheet.png" column=1 %}
-  
 This will help you improve your algorithm, and if you want to know even more, there are lots of [examples][5]
 out there and tones of good explanations.
+
+{% include aligner.html images="big-o-cheat-sheet.png" column=1 %}
+
+On the cheat sheet, it shows for common data structure the time complexity scenarios for the 
+access, search, insert and delete operations. 
+What's important is the time complexity is given for the average case and worst case scenario depending on the inputs. 
+For the space complexity, it's always looking at the worst case (with $$n$$ elements in the data structure). 
+
+On the right, it's the same principle but for some common sorting algorithm, 
+with the best, average and worst possible time complexity as well as the space complexity for each algorithm.
 
 [1]: https://en.wikipedia.org/wiki/Big_O_notation
 [2]: https://yourbasic.org/algorithms/big-o-notation-explained/
