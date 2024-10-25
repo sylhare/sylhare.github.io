@@ -7,10 +7,10 @@ tags: [js]
 
 Multi package project, that's how I would call a project with multiple packages in it. For example, you have your main
 application and then extract some functionalities as dependant libraries from it. To make it more manageable (dealing
-with tests, vulnerabilities, and updates), or to make them available to other application.
+with tests, vulnerabilities, and updates), or to make them available to other applications.
 
-But there's the "_monorepo_" concept which utilises this pattern to the extreme, where an organization have a single 
-repository for all its code! I like Babel's example which even explain its [reasoning][1] for this choice.
+But there's the "_monorepo_" concept which utilises this pattern to the extreme, where an organization has a single 
+repository for all its code! I like Babel's example which even explains its [reasoning][1] for this choice.
 
 ## Monorepo culture?
 
@@ -18,12 +18,20 @@ The [monorepo][3] culture is pretty divisive, we have players like Google and Fa
 are absolutely hate it.
 
 In the case of Google where [95%][2] of its code is in a single repository, we can see that it can be done at a big 
-scale for billions of line of code. However, however they have a dedicated team to manage it and multiple tools 
+scale for billions of lines of code. However, they have a dedicated team to manage it and multiple tools 
 have been developed to make it work.
 
-So we won't go too much into why too much code in one repo is hard to manage or why having all your dependency in one 
-repo is cool to make updates and have visibility. We'll just try to make our multi package project work in Typescript,
-and I'm going to call that a [monorepo][4] because it's shorter. But let me know your thoughts in the comment section 🙃. 
+So we won't go too much into why too much code in one repo is hard to manage or why having all your dependencies in one 
+repo is cool to make updates and have visibility. We'll just try to make our multi-package project work in Typescript,
+and I'm going to call that a [monorepo][4] because it's shorter. But let me know your thoughts in the comment section 🙃.
+
+But if you are interested, checkout [monorepo.tools][6] which has some keen insight about the question.
+I have extracted those diagrams which give a good overview of the monorepo concept:
+
+{% include aligner.html images="nx-polyrepo.png,nx-monorepo.png" column=2 caption="Representation of a poly repo setup versus a monorepo" %}
+
+It is summarised with "_A monorepo is a single repository containing multiple distinct projects, 
+with well-defined relationships._"
 
 ## Monorepo with Typescript
 
@@ -113,8 +121,9 @@ dependency.
 
 #### Jest dependency
 
-Now that we have our monorepo setup, when you start writing code and tests, you will want to be able to run them from
-either one sub package (like only the one for the express app) or for each sub packages.
+Now that we have our monorepo setup, when you start writing code and tests.
+And You will want to be able to run them from either one sub package (like only the one for the express app),
+or for each sub packages.
 In order to do that, I am going to use jest and some configuration voodoo to make it work.
 
 Here are the version for jest are ts-jest that I am using:
@@ -224,3 +233,4 @@ I am not going to expand too much on it now, but I might write another article a
 [3]: https://semaphoreci.com/blog/what-is-monorepo
 [4]: https://github.com/NiGhTTraX/ts-monorepo
 [5]: https://lerna.js.org/
+[6]: https://monorepo.tools/
