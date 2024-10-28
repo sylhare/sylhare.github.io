@@ -28,7 +28,7 @@ and I'm going to call that a [monorepo][4] because it's shorter. But let me know
 But if you are interested, checkout [monorepo.tools][6] which has some keen insight about the question.
 I have extracted those diagrams which give a good overview of the monorepo concept:
 
-{% include aligner.html images="nx-polyrepo.png,nx-monorepo.png" column=2 caption="Representation of a poly repo setup versus a monorepo" %}
+{% include aligner.html images="nx-polyrepo.png,nx-monorepo.png" column=2 caption="Representation of a poly repo setup versus a monorepo (source: monorepo.tools)" %}
 
 It is summarised with "_A monorepo is a single repository containing multiple distinct projects, 
 with well-defined relationships._"
