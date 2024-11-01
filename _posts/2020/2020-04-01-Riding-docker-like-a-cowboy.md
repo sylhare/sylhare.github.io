@@ -26,6 +26,13 @@ We use the `--name` to give a name to our container (so it's not randomly genera
 
 Let's explore the mysteries behind running a docker container.
 
+Start the container and go into its shell. This will let you debug and check what's inside your container:
+
+```bash
+docker run -it image /bin/sh
+```
+
+
 ### Difference between ENTRYPOINT and CMD
 
 Let's say you have a dockerfile like that:
@@ -37,7 +44,7 @@ ENTRYPOINT ["echo", "Hello"]
 CMD ["World"]
 ```
 
-If you run the docker you should get:
+If you run the docker, you should get:
 
 ```bash
 docker --rm run --name mycontainer image
@@ -52,7 +59,7 @@ Basically, you can use both or just one of them. When you run the docker they wi
 
 ### Some override examples
 
-Here are some tips, I found useful in different occasion to make your docker run.
+Here are some tips, I found useful on different occasions to make your docker run.
 
  - Running detached using `-d`:
  
@@ -234,7 +241,8 @@ And based on those the subsequent commands might differ.
 
 ### Centos
 
-This is a centos one, you can use `yum` or `dnf`:
+This is a CentOS one, derived from Red Hat Enterprise Linux (RHEL) with a full operating system.
+You can use `yum` or `dnf`:
 
 ```dockerfile
 FROM centos:centos8
@@ -245,7 +253,8 @@ RUN yum install python3-pip
 
 ### Debian
 
-This one is using debian, which is the base of the Ubuntu's software packaging system.
+This one is using Debian, which is the base of the Ubuntu's software packaging system.
+It is smaller than the CentOS one, and comes with a full-featured operating system.
 
 ```dockerfile
 FROM python:3.6
@@ -255,7 +264,8 @@ RUN apt-get install <package>
 
 ### Alpine
 
-Those have the `-alpine` on them. They are light distribution of Unix.
+Those have the `-alpine` on them. It is a light distribution of Unix that's security oriented.
+It is small and might not have all the packages you need.
 You use `apk` to add package like:
 
 ```dockerfile
