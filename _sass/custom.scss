@@ -1,0 +1,140 @@
+//custom
+$font-family-logo: 'Pacifico', 'Source Sans Pro', Helvetica, Arial, sans-serif;
+$font-family-main: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+
+.site-header .site-title {
+  line-height: 1em;
+  font-family: $font-family-logo;
+}
+
+.call-out h1 {
+  font-family: $font-family-logo;
+  @media screen and (min-width: 800px) {
+    font-size: 4em !important;
+  }
+}
+
+pre.highlight {
+  @media screen and (min-width: 640px) {
+    margin: 1em 2em;
+  }
+}
+
+//chartjs
+.chart {
+  margin: 0 auto;
+  min-width: 50%;
+  max-width: 100%;
+  min-height: 250px;
+  padding-bottom: 1em;
+}
+
+//mermaidjs
+/* MERMAID */
+$actor: #447fcf;
+$note: #ed9d13;
+
+%mermaid-color {
+  fill: lighten($actor, 25%) !important;
+  stroke: $actor !important;
+}
+
+.mermaid {
+  text, tspan {
+    font-family: $font-family-main !important;
+  }
+}
+
+g {
+  .classGroup {
+    rect, line {
+      @extend %mermaid-color
+    }
+  }
+
+  .cluster rect {
+    fill: lighten($note, 40%) !important;
+    stroke: $note !important;
+  }
+
+  .note {
+    fill: lighten($note, 25%) !important;
+    stroke: $note !important;
+  }
+
+  .actor, .labelBox, .label-container, .title-state, .divider {
+    @extend %mermaid-color
+  }
+
+  .edgeLabel {
+    background-color: var(--selection) !important;
+    color: var(--text) !important;
+  }
+}
+
+// Native Theme
+html, html[data-theme="light"] {
+  --base00: #404040; // Default Background
+  --base01: #404040; // Lighter Background (Used for status bars) - NOT USED
+  --base02: #666666; // Selection Background
+  --base03: #999999; // Comments, Invisible, Line Highlighting
+  --base04: #aaaaaa; // Dark Foreground (Used for status bars)
+  --base05: #ffffff; // Punctuation
+  --base06: #d0d0d0; // Highlight, Light Background
+  --base07: #dddddd; // Default Foreground, Default text color
+  --base08: #d8a2fc; // Operators (and Parenthesis, Caret, Delimiters) #B17DD4 #AD67DB #AA82C4
+  --base09: #6ab825; // Classes, Markup Bold, Search Text Background
+  --base0a: #ed9d13; // Strings, Inherited Class, Markup Code, Diff Inserted
+  --base0b: #447fcf; // Functions, Methods, Attribute IDs, Headings
+  --base0c: #399BA6; // Support, Regular Expressions, Escape Characters, Markup Quotes
+  --base0d: #6ab825; // Keywords, Storage, Selector, Markup Italic, Diff Changed
+  --base0e: #40ffff; // Integers, Boolean, Constants, XML Attributes, Markup Link Url
+  --base0f: #ffa500; // Deprecated, Opening/Closing Embedded Language Tags e.g.
+}
+
+/* THEME COLOR SCHEMES */
+html, html[data-theme="light"] {
+  --background: #ffffff;
+  --blockquote: #eef7fa;
+  --selection: #d4d4d4;
+  --meta: #595959;
+  --link: #337ab7;
+  --header-background: #24292e;
+  --header-text: #ffffff;
+  --header-link: #383838;
+  --code-background: #f5f5f5;
+  --code-inline: #E74C3C;
+  --text-shadow: #3f3f3f;
+  --text: #262626;
+  --h1: #262626;
+  --h2: #262626;
+  --h3: #262626;
+  --h4: #262626;
+  --h5: #262626;
+  --h6: #262626;
+  --border: rgba(0, 0, 0, 0.1);
+  --td-border: rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="dark"] {
+  --background: #22272e; // brand, background
+  --blockquote: #373e47; // blockquote
+  --selection: #545d68; // selection
+  --meta: #909dab; // meta
+  --link: #00a8e0; // theme, link, link shadow header bg
+  --header-background: #2A3444; // Color before header image load
+  --header-text: #e7f3f4; // header text, feature img text
+  --header-link: #adbac7; // header link, search color
+  --code-background: #2A3444;
+  --code-inline: #d9b600;
+  --text-shadow: #2d333b; // text shadow
+  --text: #cdd9e5; // text
+  --h1: #d40059; // headers
+  --h2: #b37eff;
+  --h3: #ff66c2;
+  --h4: #00af9e;
+  --h5: #6bac00;
+  --h6: #ff5c00;
+  --border: rgba(255, 255, 255, 0.5); // border
+}
+
