@@ -87,7 +87,7 @@ flowchart TD
         direction TB
         Backend[Backend<br>Feature 1, 2, 3] -.-> Test
         Frontend[Frontend<br>Feature 1, 2, 3] -.-> Test
-        Test[End to end Tests] -.->|all or nothing| D1
+        Test[QA Validation] -.->|all or nothing| D1
     end
 
     subgraph Bet with slices
@@ -98,19 +98,19 @@ flowchart TD
         subgraph Feature1
             direction TB
             A[Backend] -.-> B[frontend]
-            B -.-> T1[E2E Tests]
+            B -.-> T1[Validation]
             T1 -.->|feature 1 delivered| D2
         end
         subgraph Feature2
             direction TB
             C[Backend] -.-> D[frontend]
-            D -.-> T2[E2E Tests]
+            D -.-> T2[Validation]
             T2 -.->|feature 2 delivered| D2
         end
         subgraph Feature3
             direction TB
             E[Backend] -.-> F[frontend]
-            F -.-> T3[E2E Tests]
+            F -.-> T3[Validation]
             T3 -.->|feature 3 delivered| D2
         end
     end
