@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Shape Up - Product oriented Delivery
-color: rgb(166 109 3)
+color: rgb(166, 23, 35)
 tags: [agile]
 ---
 
@@ -42,6 +42,8 @@ It is presented as a mean to solve some growing pains when dealing with engineer
     - Ramping up a new hire on a project takes a lot of knowledge transfers.
     - Key people become bottlenecks that we are waiting on for approvals/reviews.
 
+While it promise to solve some of the growing pains, it is not a silver bullet.
+
 ### How will shape up fix those issues?
 
 The goal is to take the critical early on by having the stakeholders actively participating,
@@ -68,14 +70,16 @@ and a betting phase where the project is selected and prioritized:
 gantt
     title Shape Up Cycle
     dateFormat  YYYY-MM-DD
+    axisFormat  %b %Y
     section Product
-    Shaping Phase       :done, 2024-01-01, 2024-01-14
-    Betting Phase       :done, 2024-01-15, 2024-01-21
-    Shaping Phase       :active, 2024-02-24, 2024-03-09
-    Betting Phase       : 2024-03-10, 2024-03-17
+    Shaping       :done, 2024-01-01, 2024-01-14
+    Betting       :done, 2024-01-14, 2024-01-21
+    Shaping       :active, 2024-02-25, 2024-03-10
+    Betting       : 2024-03-10, 2024-03-17
     section Devs
-    Building Phase      :active, 2024-01-22, 2024-03-03
-    Cool Down Phase     : 2024-03-04, 2024-03-17
+    Cool Down     :done, 2024-01-07, 2024-01-21
+    Building      :active, 2024-01-21, 2024-03-03
+    Cool Down     : 2024-03-03, 2024-03-17
 ```
 
 The features are usually well-defined during the shaping phase (like an epic in scrum), and then broken down by the team.
@@ -99,7 +103,7 @@ It is usually shared between product people refining the scope and some senior e
 With Shape up, there's a fixed time and a variable scope.
 This means we can fit in a full-blown new user experience in a 6 weeks cycle, 
 instead we gauge the _appetite_ of the team to tackle the problem and focus on a quick win.
-With the right _apetite_, the team is more likely to be invested and motivated to deliver.
+With the right _appetite_, the team is more likely to be invested and motivated to deliver.
 
 It's all about delivering a MVP _Minimum Viable  Product_,
 that gives a new end-to-end but smaller functionality to the customer.
@@ -243,4 +247,4 @@ And you can always let me know what you think in the comments!
 [8]: https://www.theverge.com/2021/5/3/22418208/basecamp-all-hands-meeting-employee-resignations-buyouts-implosion
 [9]: https://www.theguardian.com/commentisfree/2021/may/08/the-meltdown-at-basecamp-shows-even-small-tech-firms-are-sociopathic
 [20]: {% post_url 2015/2015-01-23-Working-with-agile %}
-[21]: ...
+[21]: {% post_url 2024/2024-12-19-Shape-up-dev %}
