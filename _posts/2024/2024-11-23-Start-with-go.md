@@ -100,7 +100,9 @@ func Modify(a *int, b int) (int, int) {
 ```
 
 Now you can call the `Modify` function with pointers.
-This will copy the value of `b` and pass a reference to `a` and return the value of each increased by 1:
+> The `*a` returns the value `int` instead of a pointer `*int`.
+
+This will copy the value of `b` and pass a reference to `a` and return the value of each increased by 1.
 
 ```go
 a, b := 2, 2
