@@ -177,7 +177,7 @@ Let's describe them, the name should be good indication as to what they are supp
 Since those are hooks, we have the prefix `use` which is common in React:
 
 - `useAppDispatch`: takes a reducer as parameter to modify our state.
-- `useAppSelector`: takes a method as parameter to select and return part of the state.
+- `useAppSelector`: takes a function as parameter to select and return part of the state.
 
 ### Add a Provider to your App
 
@@ -226,7 +226,7 @@ to get and display the counter's new value from the store.
 ### Render wrapper
 
 To test our components correctly, we'll need to have the store while rendering them. Instead of adding
-a Provider component each time, we're going to create a render method that will extend the current test 
+a Provider component each time, we're going to create a render function that will extend the current test 
 render function.
 
 It will take as an argument a store and a preloaded state to ease the testing based on the store's state

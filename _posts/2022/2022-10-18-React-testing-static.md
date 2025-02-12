@@ -17,7 +17,7 @@ I have compiled into this cheat sheet all you need to know about it, so you beco
 There are some packages from [@testing-library] that I usually use in my React apps, let's give them a small
 introduction before we get started:
 
-- **[@testing-library/react]** → The backbone library for our test which will hold all the methods to interact with our
+- **[@testing-library/react]** → The backbone library for our test which will hold all the functions to interact with our
   React components
 - **[@testing-library/jest-dom]** → To use with jest (the test framework) and to provide useful matchers to assert the state
   of the DOM in our tests.

@@ -58,7 +58,7 @@ sumButler(1, 3)(sum)(); // returns 4
 
 Let's decompose it, you have:
 
-  - `sumButler` method that ask for the first two parameters, then the function that will apply on them.
+  - `sumButler` function that ask for the first two parameters, then the function that will apply on them.
   - `sumButler(1, 3)(sum)` returns the arrow function from the two set of parameter
   - You need `()` to execute the return function in order to yield the final result.
 

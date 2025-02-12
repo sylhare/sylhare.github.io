@@ -195,12 +195,12 @@ Here is what's going on, we will have:
 ### Mock, Spy, Wut?
 
 A **Mock** is created from the class by Mockito, so that you can use the framework capabilities to _verify_ that it has been called,
-or _stub_ the response when a certain method get called and so on.
+or _stub_ the response when a certain function gets called and so on.
 
 A **Spy** will wrap an existing instance of the object, meaning that you can use the framework to _verify_ and _stub_,
 but it can also go through the actual code within it.
 
-Which in our case is interesting, because the SimpleService annoted as a spy gets also _injected_ within ComplexService.
+Which in our case is interesting, because the SimpleService annotated as a spy gets also _injected_ within ComplexService.
 So you will be able to have flow go through the extracted code within the same test as before.
 
 > ⚠️ I had to use `MockitoAnnotations.openMocks(this)` to initiate the mock in the setup method for the `@Spy` to be injected correctly.

@@ -33,7 +33,7 @@ folders.
 ### Update an input
 
 For this series of test, we are going to have a simple stateful component with an _input_ field.
-When that field is updated, the `onChange` method will be called, and it will update the value via its setter method.
+When that field is updated, the `onChange` function will be called, and it will update the value via its setter function.
 
 ```tsx
 const Example = (): JSX.Element => {
@@ -62,7 +62,7 @@ By default, events follow this structure:
 
 The value of the event when it's a number is usually stringified, so make sure you always send a string in your test, or
 you might have some cast errors otherwise.
-We will send the event directly to the `onChange` method of the input and assert that it has changed:
+We will send the event directly to the `onChange` function of the input and assert that it has changed:
 
 ```ts
 it('updates an input with fire event', () => {
@@ -102,8 +102,8 @@ Besides, inputting some data, you can also click on elements. Although for our e
 buttons, you can as well click on other HTML elements. Make sure you have an `onClick` property on them which will
 handle the click event.
 
-For this example, we are going to pass a method to the component. It is usually not necessary because you will likely
-handle click event via methods or hooks within the component. This is a synchronous call.
+For this example, we are going to pass a function to the component. It is usually not necessary because you will likely
+handle click event via handlers or hooks within the component. This is a synchronous call.
 
 ```tsx
 const Example = ({ onSubmit }): JSX.Element => {
