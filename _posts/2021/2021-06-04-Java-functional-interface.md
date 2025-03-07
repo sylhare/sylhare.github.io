@@ -20,7 +20,7 @@ Without going into details, you may have seen `<T>` in java like:
 
 ```java
 public class Box<T> {
-    public T exampleMethod() { ...}
+    public T exampleMethod() { /* ... */ }
 }
 ```
 
