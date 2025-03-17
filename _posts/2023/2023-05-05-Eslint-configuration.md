@@ -20,6 +20,8 @@ If you are not familiar with typescript and eslint configuration, check this [ar
 We're going to assume that we have an [existing configuration][4] in a `eslintrc.json` that we want to 
 share with other projects.
 
+> ⚠️ This becomes [deprecated in v9][6], but you can use `npx @eslint/migrate-config .eslintrc.json` to migrate it.
+
 For example here would be a simple configuration (I skipped the rules part) that uses the typescript
 and jest plugins and extends from the jest recommended rules:
 
@@ -185,3 +187,4 @@ as a base.
 [3]: https://eslint.org/
 [4]: https://github.com/sylhare/Typescript/blob/c2dd72e2cdfa8234882fff2c8516896fe1322562/.eslintrc.yml
 [5]: https://www.npmjs.com/search?q=eslint-config
+[6]: https://eslint.org/docs/latest/use/configure/migration-guide#migrate-your-config-file
