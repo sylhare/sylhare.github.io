@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How to do object-oriented programming in Go
-color: rgb(140 3 28)
+color: rgb(0, 125, 156)
 tags: [go]
 ---
 
