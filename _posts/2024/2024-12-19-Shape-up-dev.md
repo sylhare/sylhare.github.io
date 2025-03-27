@@ -18,8 +18,8 @@ and the guidelines given to actual make the [bet][1] successful.
 
 ## From idea to project
 
-There are no backlog in Shape Up, and so the ideas and feedbacks are collected in document,
-they can live as feedbacks or previous idea's pitch that were delivered or as a separate pitch.
+There are no backlog in Shape Up, and so the ideas and feedback are collected in document,
+they can live as feedback or previous idea's pitch that were delivered or as a separate pitch.
 The pitch can be entirely _product_ focused (like a new feature) or _engineering driven_ (like hardening, tooling, bug
 fixing).
 
@@ -161,7 +161,7 @@ At this time those raw requests must not be taken on right away, to take the app
 
 A gentle "_no for now_" allows you to look into it in the future and concentrate on the next highest priorities. 
 It prevents any hijacking of the process.
-Also often raw feedbacks may reflect the view of one customer or might come from a misunderstanding of the feature. It's
+Also often raw feedback may reflect the view of one customer or might come from a misunderstanding of the feature. It's
 better to let it soak and avoid re-work (and re-rework possibly thereafter 😱)
 
 There's always a cool down period after cycle, 

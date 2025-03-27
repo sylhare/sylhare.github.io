@@ -102,9 +102,9 @@ flowchart TD
     style DE fill:#d3d3d3, stroke:#cbcbcb
     style DS fill:#d3d3d3, stroke:#cbcbcb
     A[vision] --> |becomes| C{Team\nRoadmap}
-    C -.->|refined with| DC(Value Stream,\nCustomer feedbacks\nMVP)
+    C -.->|refined with| DC(Value Stream,\nCustomer feedback\nMVP)
     C -->|splits into| D[Epics] 
-    D -.->|refined with| DE(Tech Designs,\nUser journey,\nSpike,\nTeam feedbacks)
+    D -.->|refined with| DE(Tech Designs,\nUser journey,\nSpike,\nTeam feedback)
     D -->|breaks down| S[Stories]
     S -.->|refined with| DS(Description,\nDiagrams,\n Acceptance Criteria)
 </div>

@@ -199,7 +199,7 @@ then the team should be encouraged to shape solutions to those issues and bet on
 So they don't ignore the bug (which are usually the symptoms) and target the deeper issue for continuous improvement,
 all while being transparent with the stakeholders.
 
-Also, feedbacks or polishing requests once the feature is delivered should not be part of the initial project.
+Also, feedback or polishing requests once the feature is delivered should not be part of the initial project.
 Instead, they should be grouped and shaped to bring the most relevant ones to the next cycle.
 
 ## Conclusion

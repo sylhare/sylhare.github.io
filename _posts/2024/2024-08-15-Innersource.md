@@ -188,7 +188,7 @@ graph LR
 We have in this example a project that is set up with a CI/CD pipeline, so testing and deployment are done
 automatically. (The code in the PR is also tested)
 The external contributor proposes a change, which is reviewed by the team maintaining the repository.
-Feedbacks can be addressed by the external contributor or the owning team, once approved, it can be merged and deployed.
+Feedback can be addressed by the external contributor or the owning team, once approved, it can be merged and deployed.
 
 To improve reliability, knowing how and what to review will become important skills. Check this article for some [tips][15].
 To ensure quality, you may also buff your automated pipeline with static code and artifact analysis tools,
