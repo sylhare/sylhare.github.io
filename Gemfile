@@ -9,3 +9,4 @@ gem 'type-on-strap', ">= 2.4.10", "< 3.0"
 # bundler: failed to load command: jekyll (/opt/homebrew/lib/ruby/gems/3.3.0/bin/jekyll)
 # /opt/homebrew/Cellar/ruby/3.3.0/lib/ruby/3.3.0/bundled_gems.rb:74:in `require': cannot load such file -- webrick (LoadError)
 gem 'webrick'
+gem 'csv'
