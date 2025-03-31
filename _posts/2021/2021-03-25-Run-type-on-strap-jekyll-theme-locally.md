@@ -184,6 +184,7 @@ Then you can start running the theme using:
 
 ```bash
 bundle exec jekyll serve
+bundle exec jekyll serve --livereload # To automatically refresh your browser when you make changes
 ```
 
 The theme should be available and running at [localhost:4000](http://localhost:4000).
