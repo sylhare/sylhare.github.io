@@ -95,7 +95,7 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'SimpleJekyllSearch',
-      fileName: 'simple-jekyll-search.js',
+      fileName: (_format) => 'simple-jekyll-search.js',
       formats: ['umd'],
     },
     minify: false,
