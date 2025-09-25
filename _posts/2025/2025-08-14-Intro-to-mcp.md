@@ -2,7 +2,7 @@
 layout: post
 title: Making the AI use custom tooling through MCP
 color: rgb(2 115 94)
-tags: [ misc ]
+tags: [ ai ]
 ---
 
 ### TL;DR
