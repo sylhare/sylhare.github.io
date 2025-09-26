@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Generating AI images
+title: Generating images with AI
 color: rgb(242,159,5)
 tags: [ai]
 ---
