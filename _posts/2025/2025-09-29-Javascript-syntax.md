@@ -222,6 +222,7 @@ console.log(str.toLowerCase()); // 'hello world'
 - **Math functions**
 
 ```javascript
+Infinity            // Represents infinity
 Math.max(1, 2, 3);  // 3
 Math.min(1, 2, 3);  // 1
 Math.floor(4.7);    // 4

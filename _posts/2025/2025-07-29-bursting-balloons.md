@@ -9,32 +9,11 @@ Let's use an example of a dynamic programming problem to illustrate the concept.
 I didn't choose an easy example, since it would fit more in the 2D Dynamic Programming category.
 
 ## Introduction
-### What is Dynamic Programming
-
-This problem cannot be solved using a greedy approach, as the optimal solution requires considering all possible orders
-of bursting balloons.
-
-We can solve this problem using dynamic programming, for that we need to understand these concepts:
-
-- **State**: A state represents a unique configuration of the problem that encapsulates all the necessary information,
-  to make decisions and compute results for that specific sub-problem.
-
-- **Base Case**: The base case is the simplest, smallest instance of the problem that can be solved directly without
-  further recursion or iteration, serving as the foundation for building up the solution.
-
-- **Transition**: The transition defines the relationship between the current state and smaller sub-problems,
-  specifying how to compute the result for a larger problem using the results of its sub-problems.
-
-We can implement this solution either iteratively (building the state bottom-up from the base case to get the next until the optimal one),
-or recursively (solving problem by applying getting the optimal solution through recursively building top-down the state).
-
-We store the state in a table or array in an iterative solution, but in a recursive solution we use _memoization_,
-where you store previously computed sub-problems (similar yet different).
 
 ### Problem Statement
 
 You are given an array of $$n$$ integers representing the coins in balloons 🎈
-When you burst a balloon 💥, you gain coins equal to the product of the coins in the balloon and the ones adjacent.
+When you burst a balloon 💥, you gain coins 🪙 equal to the product of the coins in the balloon and the ones adjacent.
 If there are no adjacent balloons, we consider _virtual balloon_ with a value of $$1$$.
 
 For a range of balloons from $$3, 1, 5$$:
@@ -133,9 +112,34 @@ characteristics:
   - Future decisions depend on past choices (available balloons change)
 
 There's no greedy choice that guarantees the optimal solution, as the order of bursting balloons matters.
-Popping a balloon that gives the max coin first won't always yield the best result.
+As greedy is about choosing the best option at each step, without considering the overall problem.
+
+Here, popping a balloon that gives the max coin first won't always yield the best result.
 (ex in `3, 1, 2, 1, 5`, bursting 5 gives more coins at first but bursting `2`,
 then all the `1` first will yield more coins overall).
+
+### What is Dynamic Programming
+
+This problem cannot be solved using a greedy approach, as the optimal solution requires considering all possible orders
+of bursting balloons.
+
+We can solve this problem using dynamic programming, for that we need to understand these concepts:
+
+- **State**: A state represents a unique configuration of the problem that encapsulates all the necessary information,
+  to make decisions and compute results for that specific sub-problem.
+
+- **Base Case**: The base case is the simplest, smallest instance of the problem that can be solved directly without
+  further recursion or iteration, serving as the foundation for building up the solution.
+
+- **Transition**: The transition defines the relationship between the current state and smaller sub-problems,
+  specifying how to compute the result for a larger problem using the results of its sub-problems.
+
+We can implement this solution either iteratively (building the state bottom-up from the base case to get the next until the optimal one),
+or recursively (solving problem by applying getting the optimal solution through recursively building top-down the state).
+
+We store the state in a table or array in an iterative solution, but in a recursive solution we use _memoization_,
+where you store previously computed sub-problems (similar yet different).
+
 
 ### Decomposing the problem
 
@@ -168,47 +172,70 @@ graph TD
 ```
 
 Looking at this tree we can draw some conclusions:
-  - cases where it's only $$1$$ balloon left are simple to calculate
+  - cases where it's only $$1$$ balloon left are simple to calculate, but not easy to reach
     - If there's only one balloon left, the value gained is equal to the balloon's value since virtual balloons are treated as $$1$$.
-    - simple cases like this one are called base cases
+    - but a simple cases is when you know the left and right balloons (either real or virtual).
   - there are multiple paths leading to the same sub-problem.
+    - Multiple arrows point to the same sub-problem $$[5]$$ or $$[1]$$ or $$[3]$$, indicating that different sequences of bursting balloons can lead to the same configuration.
 
-So let's look at the sub-problem $$[1, 5]$$, which can also be represented by a new choice, which balloon to burst last from it ?
+So let's look at the sub-problem $$[1, 5]$$, which can also be represented by a new choice, which balloon was burst before?
 
 ```mermaid
 graph TD
-    B(1, 5) --> F(5)
-    B --> E(1)
+    A1["(1), 3, 1, 5, (1)"] --> C1["(1), 1, 5, (1)"]
 ```
 
 Independently of the order of bursting the balloons, when we arrive at the problem the maximum coins will depend on
 the current amount of coins plus the coins obtained from bursting the last balloon in this range.
 
-Now looking at the amount of coins obtained when bursting either $$1$$ or $$5$$ it is tempting to write:
-- Bursting $$\textcolor{#6897bb}{1}$$ last: $$ \textcolor{#6897bb}{1} \times [\textcolor{#6897bb}{1}] \times \textcolor{#6897bb}{1} = \textcolor{#6897bb}{1}$$
-- Bursting $$\textcolor{#6897bb}{5}$$ last: $$ \textcolor{#6897bb}{1} \times [\textcolor{#6897bb}{5}] \times \textcolor{#6897bb}{1} = \textcolor{#6897bb}{5}$$
+Here it is simple, there's only one path going to the sub-problem $$[\textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$, we know that only $$\textcolor{#6897bb}{3}$$ was burst before.
+Considering the known previous step (bursting $$\textcolor{#6897bb}{3}$$ gave $$3$$ coins), we can calculate the maximum coins obtainable for the range $$[\textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$.
 
-However, this sub-problems consider a range $$[\textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$ in the bigger $$[\textcolor{#6897bb}{3}, \textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$ problem,
-and not just the last balloon, so we need to consider the left and right balloons of the range.
+- Bursting $$\textcolor{#6897bb}{1}$$ last gives us:
+$$ 
+\begin{aligned}
+  total &= (\text{coins from bursting \textcolor{#6897bb}{3} first}) + (\text{coins from bursting \textcolor{#6897bb}{5} next}) + (\text{coins from bursting \textcolor{#6897bb}{1} last})\\
+  &= 3 + 1 \textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5} \times 1 + 1 \times \textcolor{#6897bb}{1} \times 1 \\
+  &= 3 + 5 + 1 \\
+  &= 9
+  \end{aligned}
+$$
+- Bursting $$\textcolor{#6897bb}{1}$$ last gives us:
+$$
+  \begin{aligned}
+  total &= (\text{coins from bursting \textcolor{#6897bb}{3} first}) + (\text{coins from bursting \textcolor{#6897bb}{1} next}) + (\text{coins from bursting \textcolor{#6897bb}{5} last})\\
+  &= 3 + 1 \times \textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5} + 1 \times \textcolor{#6897bb}{5} \times 1 \\
+  &= 3 + 5 + 5 \\
+  &= 13
+  \end{aligned}
+$$
 
-- Bursting $$\textcolor{#6897bb}{1}$$ last gives us $$[\textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5}] \times \text{right(=1)} +  \text{left(=3)} \times [\textcolor{#6897bb}{1}] \times \text{right(=1)} = \textcolor{#6897bb}{8}$$
-- Bursting $$\textcolor{#6897bb}{5}$$ last gives us $$\text{left(=3)} \times [\textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5}] + \text{left(=3)} \times [\textcolor{#6897bb}{5}] \times \textcolor{#6897bb}{1} = \textcolor{#6897bb}{30}$$
+The coins obtainable in the range $$\max(\text{bursting 5 last}, \text{bursting 1 last})$$ when $$3$$ is burst first,
+is $$13$$ coins.
 
-The maximum coins obtainable is $$\max(\text{bursting 5 last}, \text{bursting 1 last})$$ which is $$\max(8, 30) = 30$$,
-so the maximum coins obtainable for the range $$[\textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$ is $$30$$.
+> But if $$3$$ was burst last, the coins obtained would be $$30$$ coins!
+> So the maximum for the range $$[1, 5]$$ is $$30$$ coins 😵‍💫
 
-Now we should be able to calculate and store the maximum coins obtainable for any range of balloons in the array.
-Let's define the state and transition function formally to solve this problem.
+That maximum is what we want to store in our state. 
+And the how to get there, is what the transition function will help us with.
+Let's define them formally to solve this problem.
 
 ## Solving the problem
 
 ### Defining the state
 
-In our case, the state can be defined by the range of balloons we are considering. 
-We'll use in this case an array of arrays to represent all possible sub-problems for each range of balloons.
-Usually the state variable is called `dp` and is initialized with zeros.
+For the state we care about storing the best outcome based on the popped balloons.
+We can pop them in any order from the start to the end or randomly.
+Since I want to try every combination, I also want to know which combination gives the best outcome.
 
-We'll fill it using the transition function.
+So I will represent the state as a 2D array, 
+where each cell `dp[i][j]` represents the maximum coins obtainable for that range.
+The maximum coin will be in `dp[0][n-1]` which represent the range with every balloon popped.
+
+Bursting some balloon within a range, means I would need to consider the balloon to the left and right of the range as well.
+The bigger the balloon next to my range, the more chance I'll get the max amount of coins.
+To find that out, we'll be using the transition function, that uses the best from the previous ranges to calculate the next one.
+Basically what are the best balloon's value around the range that will give me the most coins.
 
 ### Formulating the transition function
 
