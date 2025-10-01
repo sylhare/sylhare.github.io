@@ -188,35 +188,36 @@ graph TD
 Independently of the order of bursting the balloons, when we arrive at the problem the maximum coins will depend on
 the current amount of coins plus the coins obtained from bursting the last balloon in this range.
 
-Here it is simple, there's only one path going to the sub-problem $$[\textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$, we know that only $$\textcolor{#6897bb}{3}$$ was burst before.
-Considering the known previous step (bursting $$\textcolor{#6897bb}{3}$$ gave $$3$$ coins), we can calculate the maximum coins obtainable for the range $$[\textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$.
+Here it is simple, there's only one path going to the sub-problem $$[\textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$,
+either 3 was burst before, or 3 was burst after.
 
 - Bursting $$\textcolor{#6897bb}{1}$$ last gives us:
+
 $$ 
 \begin{aligned}
-  total &= (\text{coins from bursting \textcolor{#6897bb}{3} first}) + (\text{coins from bursting \textcolor{#6897bb}{5} next}) + (\text{coins from bursting \textcolor{#6897bb}{1} last})\\
-  &= 3 + 1 \textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5} \times 1 + 1 \times \textcolor{#6897bb}{1} \times 1 \\
-  &= 3 + 5 + 1 \\
-  &= 9
+  total &= (\text{coins from bursting \textcolor{#6897bb}{5} first}) + (\text{coins from bursting \textcolor{#6897bb}{1} last})\\
+  &= 1 \textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5} \times 1 + \text{left (1 or 3)} \times \textcolor{#6897bb}{1} \times 1 \\
+  &= 5 + \text{left} \times 1 \\
+  &= \in [6, 9]
   \end{aligned}
 $$
-- Bursting $$\textcolor{#6897bb}{1}$$ last gives us:
+
+- Bursting $$\textcolor{#6897bb}{5}$$ last gives us:
+
 $$
   \begin{aligned}
-  total &= (\text{coins from bursting \textcolor{#6897bb}{3} first}) + (\text{coins from bursting \textcolor{#6897bb}{1} next}) + (\text{coins from bursting \textcolor{#6897bb}{5} last})\\
-  &= 3 + 1 \times \textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5} + 1 \times \textcolor{#6897bb}{5} \times 1 \\
-  &= 3 + 5 + 5 \\
-  &= 13
+  total &= (\text{coins from bursting \textcolor{#6897bb}{1} first}) + (\text{coins from bursting \textcolor{#6897bb}{5} last})\\
+  &= \text{left (1 or 3)} \times \textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5} + \text{left (1 or 3)} \times \textcolor{#6897bb}{5} \times 1 \\
+  &= \text{left} \ times 5 + \text{left} \ times 5 \\
+  &= \in [10, 30]
   \end{aligned}
 $$
 
-The coins obtainable in the range $$\max(\text{bursting 5 last}, \text{bursting 1 last})$$ when $$3$$ is burst first,
-is $$13$$ coins.
+The coins obtainable in the range $$\max(\text{bursting 5 last}, \text{bursting 1 last})$$ is when $$3$$ was not burst yet,
+and bursting $$5$$ last gives us the maximum coins.
+That's not the best result for the range $$[3, 1, 5]$$ but it's the best for the sub-problem $$[1, 5]$$.
 
-> But if $$3$$ was burst last, the coins obtained would be $$30$$ coins!
-> So the maximum for the range $$[1, 5]$$ is $$30$$ coins 😵‍💫
-
-That maximum is what we want to store in our state. 
+That range maximum is what we want to store in our state. 
 And the how to get there, is what the transition function will help us with.
 Let's define them formally to solve this problem.
 
