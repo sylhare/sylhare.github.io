@@ -232,7 +232,7 @@ function removeRoot(heap: number[]): number | null {
   heap.pop();
 
   let current = 0;
-  while (true) {
+  while (2 * current + 1 < heap.length) { // Check if the left child exists
     let smallest = current;
     const left = 2 * current + 1;
     const right = 2 * current + 2;
