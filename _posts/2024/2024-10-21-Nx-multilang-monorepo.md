@@ -2,7 +2,7 @@
 layout: post
 title: Using Nx to build a multilang monorepo
 color: rgb(223 71 210)
-tags: [open-source]
+tags: [open source]
 ---
 
 We have talked previously about creating a [multi-package typesript project][10] using only node's workspace feature.

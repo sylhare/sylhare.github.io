@@ -2,8 +2,10 @@
 layout: post
 title: Testing GitHub copilot 🤖
 color: rgb(54,45,85)
-tags: [misc]
+tags: [ai]
 ---
+
+> **edit**: The technology has evolved exponentially and may not reflect current state of the tool.
 
 GitHub copilot is an AI that sometimes suggests some snippets to you, it tries to determine what could help based
 on the context of the file(s) you are working on.
