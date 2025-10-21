@@ -130,7 +130,16 @@ arr.unshift(0); // [0, 2, 3, 4, 5]
 ```javascript
 const original = [1, 2, 3, 4, 5];
 const sliced = original.slice(1, 3);  // [2, 3] (non-mutating)
-original.splice(2, 1);                // Removes 1 element at index 2 (mutating)
+original.splice(2, 1);                // orignal: [1, 2, 4, 5] Removes 1 element at index 2 (mutating)
+original.splice(0);                    // original: [] Removes all elements from index 0
+```
+
+- **Filling an array**
+    - `fill`: $$O(n)$$, where `n` is the size of the array.
+
+```javascript
+const arr = new Array(5).fill(0); // [0, 0, 0, 0, 0]
+arr.fill(1, 2, 4);                // [0, 0, 1, 1, 0]
 ```
 
 - **Iteration methods**
