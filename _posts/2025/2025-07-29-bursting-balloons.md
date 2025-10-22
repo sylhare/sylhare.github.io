@@ -8,7 +8,7 @@ tags: [math]
 Let's use an example of a dynamic programming problem to illustrate the concept.
 I didn't choose an easy example, since it would fit more in the 2D Dynamic Programming category.
 
-## Introduction
+## I. Introduction
 
 ### Problem Statement
 
@@ -97,7 +97,7 @@ us a total of `35` coins.
 But building this tree explicitly would be inefficient, especially for larger arrays of balloons.
 Instead, we can use dynamic programming to efficiently compute the maximum coins for any subarray of balloons.
 
-## Dynamic Programming Approach
+## II. Dynamic Programming Approach
 
 ### How do we know it's a dynamic programming problem?
 
@@ -111,35 +111,35 @@ characteristics:
   - There is choice to make at each step (which balloon to burst)
   - Future decisions depend on past choices (available balloons change)
 
-There's no greedy choice that guarantees the optimal solution, as the order of bursting balloons matters.
-As greedy is about choosing the best option at each step, without considering the overall problem.
+A greedy solution is about choosing the best option at each step, without considering the overall problem.
+But here there's no greedy choice that guarantees the optimal solution, as the order of bursting balloons matters.
 
-Here, popping a balloon that gives the max coin first won't always yield the best result.
-(ex in `3, 1, 2, 1, 5`, bursting 5 gives more coins at first but bursting `2`,
-then all the `1` first will yield more coins overall).
+Popping a balloon that gives the max coin first won't always yield the best result.
+(In `3, 1, 5, 8`, bursting `5` gives more coins at first but end up at `96` while bursting the `1` first will yield up to the optimal solution at `167` coins).
 
 ### What is Dynamic Programming
 
-This problem cannot be solved using a greedy approach, as the optimal solution requires considering all possible orders
-of bursting balloons.
+We can solve this problem using dynamic programming,
+where the overall solution will be computed from the result for a larger problem using the results of its sub-problems.
 
-We can solve this problem using dynamic programming, for that we need to understand these concepts:
-
-- **State**: A state represents a unique configuration of the problem that encapsulates all the necessary information,
-  to make decisions and compute results for that specific sub-problem.
+For that we need to understand these concepts:
 
 - **Base Case**: The base case is the simplest, smallest instance of the problem that can be solved directly without
-  further recursion or iteration, serving as the foundation for building up the solution.
+ recursion or iteration, serving as the foundation for building up the solution.
 
-- **Transition**: The transition defines the relationship between the current state and smaller sub-problems,
-  specifying how to compute the result for a larger problem using the results of its sub-problems.
+- **State**: A state represents a unique configuration of the problem that encapsulates all the necessary information,
+  to make decisions and compute results for every sub-problem which build up to include the final solution.
 
-We can implement this solution either iteratively (building the state bottom-up from the base case to get the next until the optimal one),
-or recursively (solving problem by applying getting the optimal solution through recursively building top-down the state).
+- **Transition formula**: The transition defines the formula to build the solution of the current sub problem from the previous state.
+  That solution is then stored in the state to calculate the next one.
 
-We store the state in a table or array in an iterative solution, but in a recursive solution we use _memoization_,
-where you store previously computed sub-problems (similar yet different).
+We can implement this solution either iteratively (bottom up) or recursively (top down).
+- The iteration build up the state from the base case to the final solution applying the transition function at each step.
+- The recursion goes from the final solution down to the base case, applying the transition function recursively.
 
+We usually store the state in an array that represent all the cases.
+We call it `dp` in an iterative solution, but in a recursive solution it is referred to as `memo` since we use it for
+_memoization_ to avoid recomputing the same sub-problems on recursion.
 
 ### Decomposing the problem
 
@@ -153,8 +153,8 @@ Solving those problems independently allows us to build up the optimal solution.
 Here we want to _calculate the maximum coins_ which depends on the neighbours of the balloon we burst,
 and so on until there's no balloon.
 
-In order to better visualize the issue, we should represent the problem as a tree. 
-The virtual balloon at the beginning and end of the array will be represented as $$1$$ (as they don't contribute to the coins).
+With the `[3, 1, 5]` example, I represented each range we would get when popping a balloon.
+The virtual balloon at the beginning and end of the array will be represented as $$(1)$$ (as they don't contribute to the coins).
 
 We start with $$n + 2$$ balloons (including the virtual ones, but we can only burst the actual ones).
 
@@ -174,54 +174,34 @@ graph TD
 Looking at this tree we can draw some conclusions:
   - cases where it's only $$1$$ balloon left are simple to calculate, but not easy to reach
     - If there's only one balloon left, the value gained is equal to the balloon's value since virtual balloons are treated as $$1$$.
-    - but a simple cases is when you know the left and right balloons (either real or virtual).
+    - But we don't know the total coin since it depends on which balloons were burst before.
   - there are multiple paths leading to the same sub-problem.
     - Multiple arrows point to the same sub-problem $$[5]$$ or $$[1]$$ or $$[3]$$, indicating that different sequences of bursting balloons can lead to the same configuration.
 
-So let's look at the sub-problem $$[1, 5]$$, which can also be represented by a new choice, which balloon was burst before?
+The choice we have, is at any given time which balloon to burst last? 
+Knowing that, we can either:
+- ask the same question again for the remaining range, until there's just one balloon remaining. (Top-down approach)
+- calculate each maximum coins obtained for every increasing subset based on smaller ones' maximum to get to the solution for the full range (Bottom-up approach)
 
-```mermaid
-graph TD
-    A1["(1), 3, 1, 5, (1)"] --> C1["(1), 1, 5, (1)"]
-```
+## III. Solving the problem
 
-Independently of the order of bursting the balloons, when we arrive at the problem the maximum coins will depend on
-the current amount of coins plus the coins obtained from bursting the last balloon in this range.
+### Setting up the base case
 
-Here it is simple, there's only one path going to the sub-problem $$[\textcolor{#6897bb}{1}, \textcolor{#6897bb}{5}]$$,
-either 3 was burst before, or 3 was burst after.
+When there are no balloon to burst, the coins collected is obviously $$0$$, those are trivial cases.
+The base case is when there's only one balloon left to burst.
 
-- Bursting $$\textcolor{#6897bb}{1}$$ last gives us:
+Considering a range $$[i]$$ in $$nums$$ with $$i \in [1, \text{length}(\text{nums - 1})]$$ (since we padded nums with the virtual balloons),
+there's only one balloon $$nums[i]$$ to burst.
+The coins collected can be calculated with:
 
-$$ 
-\begin{aligned}
-  total &= (\text{coins from bursting \textcolor{#6897bb}{5} first}) + (\text{coins from bursting \textcolor{#6897bb}{1} last})\\
-  &= 1 \textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5} \times 1 + \text{left (1 or 3)} \times \textcolor{#6897bb}{1} \times 1 \\
-  &= 5 + \text{left} \times 1 \\
-  &= \in [6, 9]
-  \end{aligned}
-$$
+$$ coins = nums[i-1] \times nums[i] \times nums[i+1] $$
 
-- Bursting $$\textcolor{#6897bb}{5}$$ last gives us:
+So for example in our `[3, 1, 5]` example, we use the virtual balloons at the edges:
+- Bursting `3` gives `(1) * 3 * 1 = 3` coins.
+- Bursting `1` gives `3 * 1 * 5 = 15` coins.
+- Bursting `5` gives `1 * 5 * (1) = 5` coins.
 
-$$
-  \begin{aligned}
-  total &= (\text{coins from bursting \textcolor{#6897bb}{1} first}) + (\text{coins from bursting \textcolor{#6897bb}{5} last})\\
-  &= \text{left (1 or 3)} \times \textcolor{#6897bb}{1} \times \textcolor{#6897bb}{5} + \text{left (1 or 3)} \times \textcolor{#6897bb}{5} \times 1 \\
-  &= \text{left} \ times 5 + \text{left} \ times 5 \\
-  &= \in [10, 30]
-  \end{aligned}
-$$
-
-The coins obtainable in the range $$\max(\text{bursting 5 last}, \text{bursting 1 last})$$ is when $$3$$ was not burst yet,
-and bursting $$5$$ last gives us the maximum coins.
-That's not the best result for the range $$[3, 1, 5]$$ but it's the best for the sub-problem $$[1, 5]$$.
-
-That range maximum is what we want to store in our state. 
-And the how to get there, is what the transition function will help us with.
-Let's define them formally to solve this problem.
-
-## Solving the problem
+That's the base to calculate the next ranges.
 
 ### Defining the state
 
@@ -233,17 +213,16 @@ So I will represent the state as a 2D array,
 where each cell `dp[i][j]` represents the maximum coins obtainable for that range.
 The maximum coin will be in `dp[0][n-1]` which represent the range with every balloon popped.
 
-Bursting some balloon within a range, means I would need to consider the balloon to the left and right of the range as well.
-The bigger the balloon next to my range, the more chance I'll get the max amount of coins.
-To find that out, we'll be using the transition function, that uses the best from the previous ranges to calculate the next one.
-Basically what are the best balloon's value around the range that will give me the most coins.
+To find that out, we'll be using the transition function, 
+to use the maximum coins obtained when bursting a balloon last in a given range.
 
 ### Formulating the transition function
 
 #### Finding the transition function
 We can formulate the sub-problems as follows:
 
-For any range $$[\textcolor{#E6B800}{i}, \textcolor{#E6B800}{j}]$$, we consider each balloon $$\textcolor{#FFA500}{k}$$ between $$\textcolor{#E6B800}{i}$$ and $$\textcolor{#E6B800}{j}$$ as potentially the last one to burst:
+For any range $$[\textcolor{#E6B800}{i}, \textcolor{#E6B800}{j}]$$ within $$nums$$,
+we consider each balloon $$\textcolor{#FFA500}{k}$$ between $$\textcolor{#E6B800}{i}$$ and $$\textcolor{#E6B800}{j}$$ as potentially the last one to burst:
 
 1. **When $$\textcolor{#FFA500}{k}$$ is the last balloon to burst**:
     - Its adjacent balloons are the ones at the boundaries of the current range.
@@ -299,8 +278,10 @@ with more `k` we would have taken the maximum of all the possible values.
 
 ### Applying the transition
 
-Applying the formula for all possible ranges of balloons will allow us to fill the DP table iteratively.<br>
-Here is what it would give us for `[3, 1, 5]`:
+Applying the formula for all possible ranges of balloons will allow us to fill the DP table iteratively.
+We need to loop from smaller ranges (omitting the virtual balloons) to larger ranges as the transition depends on previously computed values.
+
+The state for `[3, 1, 5]` would look like:
 
 ```ts
 // State for (1) [3, 1, 5] (1)
@@ -314,7 +295,8 @@ const dp = [
   [0, 0, 0, 0, 0]
 ];
 ```
-The DP table is filled based on the transition function, 
+
+The `dp` table is filled based on the transition function, 
 where each cell `dp[i][j]` represents the maximum coins obtainable by bursting all balloons in the range `[i, j]`.
 
 If we were to represent in a diagram with a bit more information:
@@ -368,7 +350,9 @@ The rest correspond at the maximum obtained when bursting the balloons in the ra
 You can find that it matches the result we had found in the first diagram when calculating the maximum coins for each
 path through the tree.
 
-### Implementation
+## IV. Implementation
+
+### Algorithm description
 
 For the implementation, let's list the step based on our above analysis:
 
@@ -387,6 +371,8 @@ For the implementation, let's list the step based on our above analysis:
    - Saving or updating the max with `dp[i][j] = max(dp[i][j], dp[i][k] + nums[i] * nums[k] * nums[j] + dp[k][j])`
    - This ensures that we consider all possible last balloons to burst in the current subarray and only keep the max possible value.
 7. **Return the final result**: The maximum coins obtainable by bursting all balloons is stored in `dp[0][n-1]`.
+
+### Typescript example
 
 Here's the TypeScript implementation of the `maxCoins` function:
 

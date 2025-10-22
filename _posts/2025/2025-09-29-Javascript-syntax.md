@@ -352,6 +352,9 @@ if (num > 5) {
 const result = num > 5 ? "Greater" : "Smaller";
 ```
 
+> Consider built-in methods for simplification where applicable.
+> `a > 0 ? 1 : 1 - a` can be simplified to `Math.max(1, 1 - a)`
+
 - **Switch statement**
 
 ```javascript
