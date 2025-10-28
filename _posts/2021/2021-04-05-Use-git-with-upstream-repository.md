@@ -5,21 +5,21 @@ color: rgb(224, 181, 137)
 tags: [open source]
 ---
 
-In some occasion you can't work with only the <strike>master</strike> _main_ branch. 
+In some occasion you can't work with only the <strike>master</strike> _main_ branch.
 For example when working with open source, the upstream repository is not owned by you.
 So in order to add your contribution you'd likely need to fork it and make a pull request.
 
-> As of the release of this article, most online git like [GitHub](https://github.com/github/renaming#new-repositories-use-main-as-the-default-branch-name) renamed `master` into `main` for the default branch.
+> As of the release of this article, most online git like [GitHub][1] renamed `master` into `main` for the default branch.
 
 ## Practice environment
 
 In order to practice all that without making pointless pull request to actual project.
-You can either do it on one your own repository, or use this demo **[Upstream Organization](https://github.com/UpstreamOrg)** on GitHub.
+You can either do it on one your own repository, or use this demo **[Upstream Organization][2]** on GitHub.
 
-Make sure your GitHub account is set up. Or follow "[Get started With GitHub]({% post_url 2017/2017-04-19-Get-started-with-GitHub %})" 
+Make sure your GitHub account is set up. Or follow "[Get started With GitHub][3]"
 for a quick ramp up.
 
-For the example, you can fork this **[Upstream Repository](https://github.com/UpstreamOrg/UpstreamRepo)** for this example.
+For the example, you can fork this **[Upstream Repository][4]** for this example.
 You should now have `<your username>/UpstreamRepo` in your GitHub repositories.
 Then clone your fork locally:
 
@@ -51,15 +51,14 @@ upstream   nope (push)
 ```
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
-      gitGraph
-        commit
-        commit
-        branch origin/main
-        checkout upstream/main
-        commit
-        commit
-        commit
+%%{init: { 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false}} }%%
+gitGraph
+  commit
+  commit tag: "fork point"
+  branch upstream
+  commit
+  commit
+  commit tag: "upstream ahead"
 ```
 
 You should have `origin` as the forked repository and `upstream` as the upstream repository.
@@ -85,17 +84,16 @@ git push origin
 ```
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
-      gitGraph
-        commit
-        commit
-        branch origin/main
-        checkout upstream/main
-        commit
-        commit
-        commit
-        checkout origin/main
-        merge upstream/main
+%%{init: { 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false}} }%%
+gitGraph
+  commit
+  commit
+  branch upstream
+  commit
+  commit tag: "fetch upstream"
+  commit 
+  checkout main
+  merge upstream tag: "rebase"
 ```
 
 This way you can keep your main branch as a mirror of upstream's main.
@@ -112,29 +110,30 @@ That will track locally the remote origin/main branch.
 Once your fork is up-to-date, you can create a feature branch using:
 
 ```bash
-git checkout -b feature-branch # Create and go on branch
-git push -u origin feature-branch # To push branch remotely
+# Create and go on branch
+git checkout -b feature-branch 
+# To push branch remotely
+git push -u origin feature-branch 
 ```
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
-      gitGraph
-        commit
-        commit
-        branch origin/main
-        checkout upstream/main
-        commit
-        commit
-        commit
-        checkout origin/main
-        merge upstream/main
-        branch origin/feature-1
-        commit
-        commit
-        checkout upstream/main
-        merge origin/feature-1
-        checkout origin/main
-        merge upstream/main
+%%{init: { 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false}} }%%
+gitGraph
+  commit
+  commit
+  branch upstream
+  commit
+  commit
+  commit
+  checkout main
+  merge upstream tag: "sync fork"
+  branch feature-1
+  commit
+  commit
+  checkout upstream
+  merge feature-1 tag: "PR merged"
+  checkout main
+  merge upstream tag: "sync after PR"
 ```
 
 Don't forget to sync your fork's origin with upstream/main once your PR gets merged, so that you won't be creating your next feature branch on an old version of the code.
@@ -155,29 +154,27 @@ git push colleague
 ```
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
-      gitGraph
-        commit
-        commit
-        branch origin/main order: 1
-        checkout origin/main
-        checkout upstream/main
-        commit
-        branch colleague/feature-2 order: 3
-        commit
-        checkout upstream/main
-        commit
-        checkout origin/main
-        merge upstream/main
-        branch origin/feature-1 order: 2
-        commit
-        commit
-        checkout upstream/main
-        merge origin/feature-1
-        checkout colleague/feature-2
-        commit
-        checkout upstream/main
-        merge colleague/feature-2
+%%{init: { 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false}} }%%
+gitGraph
+  commit
+  commit
+  branch upstream
+  commit
+  branch colleague-feature
+  commit
+  checkout upstream
+  commit
+  checkout main
+  merge upstream tag: "sync"
+  branch feature-1
+  commit
+  commit tag: "push origin"
+  checkout upstream
+  merge feature-1 tag: "your PR merged"
+  checkout colleague-feature
+  commit tag: "push colleague"
+  checkout upstream
+  merge colleague-feature tag: "colleague PR merged"
 ```
 
 When pushing on "colleague", you are not pushing to your fork, but to your colleague's branch on his fork.
@@ -197,27 +194,25 @@ What it does is to fetch all the commits from _upstream/main_ and add them to yo
 That may produce merge conflicts that you will need to solve. Then you can force push to remote once your branch is up to date.
 
 ```mermaid
-%%{init: { 'logLevel': 'debug', 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false, 'mainBranchName': 'upstream/main'}} }%%
-      gitGraph
-        commit
-        commit
-        branch origin/main
-        checkout origin/main
-        checkout upstream/main
-        commit
-        commit
-        checkout origin/main
-        merge upstream/main
-        branch origin/feature-3
-        commit
-        checkout upstream/main
-        commit
-        commit
-        checkout origin/feature-3
-        merge upstream/main
-        commit
-        checkout upstream/main
-        merge origin/feature-3
+%%{init: { 'theme': 'base', 'gitGraph': {'showBranches': true, 'showCommitLabel':false}} }%%
+gitGraph
+  commit
+  commit
+  branch upstream
+  commit
+  commit
+  checkout main
+  merge upstream tag: "sync"
+  branch feature-3
+  commit
+  checkout upstream
+  commit tag: "fetch"
+  commit
+  checkout feature-3
+  merge upstream tag: "rebase"
+  commit
+  checkout upstream
+  merge feature-3 tag: "PR merged"
 ```
 
 You will see this error if you don't force push with `-f` to rewrite the history of your fork with the changes that were merged into main.
@@ -230,14 +225,15 @@ hint: 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 
-Branches is asynchronous change by default so that's why you can have change made *behind* of your own commits.
+Branches allow asynchronous changes by default, which is why you can have changes made *behind* your own commits.
 
 ### Suppress your feature-branch
 
 When you're done with a `feature-branch` or when you've messed up locally, you can always delete it with:
 
 ```bash
-git branch -D feature-branch # -D for force delete, otherwise -d 
+# -D for force delete, otherwise -d
+git branch -D feature-branch
 ```
 
 ## Automation 🤖
@@ -259,9 +255,9 @@ You got it, it should make your life easier.
 ### Bash script
 
 This one is mainly to automate the creation of an upstream repository's fork from GitHub.
-Basically it needs two inputs: 
-    - Your fork repository's SSH address
-    - The Upstream organisation name
+Basically it needs two inputs:
+- Your fork repository's SSH address
+- The Upstream organisation name
 
 Here is the `clone` script that should be in your `~/.zshenv`:
 
@@ -289,3 +285,8 @@ clone UpstreamOrg git@github.com:<your username>/UpstreamRepo.git
 
 The auto checkout to another branch in the end is to avoid any mistaken commit to main,
 as previously stated we want to keep it clean to sync up with upstream.
+
+[1]: https://github.com/github/renaming#new-repositories-use-main-as-the-default-branch-name
+[2]: https://github.com/UpstreamOrg
+[3]: {% post_url 2017/2017-04-19-Get-started-with-GitHub %}
+[4]: https://github.com/UpstreamOrg/UpstreamRepo
