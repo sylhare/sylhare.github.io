@@ -2,7 +2,7 @@
 layout: post
 title: Use git with an upstream 🚰 repository
 color: rgb(224, 181, 137)
-tags: [open source]
+tags: [git]
 ---
 
 In some occasion you can't work with only the <strike>master</strike> _main_ branch.
