@@ -55,7 +55,7 @@ This can be done via your CI/CD which can include:
 
 A well build CI/CD helps the whole team contributing to the project, not just vibe coders!
 
-### Guidelines
+### Task Guidelines
 
 Once the process is set and clear for everyone, you can have some more rules,
 and guidelines that the vibe coders should follow.
@@ -131,6 +131,145 @@ If you are looking into how the agent can be set up,
 you can check out the [CL4R1T4S project][6] which drops the full system prompts and guidelines 
 from AI models or agents of famous provides.
 
+### CLAUDE.md
+
+[Claude][7] may read an `ai_rules.md` but the documentation also recommends to have a `claude.md` file.
+Don't worry it will also be either ignored or not read most of the time by Claude itself, 
+but at least you can just refer back to it instead of copy/pasting the rules every time.
+
+{% highlight markdown %}
+# CLAUDE.md
+
+This file provides guidance to Claude Code when working with code in this repository.
+
+## Project Overview
+
+[ Brief description of your project ]
+[ Brief description of the tech stack ]
+
+## Core Development Principles
+
+For decision making, ranking the principles with the order of importance helps Claude prioritize.
+(Correctness > Security > Consistency > Readability > Performance)
+
+## Quick Command Reference
+
+[ List the specific commands used in your project ]
+
+## Development Patterns
+
+### Code Documentation Rules
+
+- **JSDoc Only**: Use JSDoc comments for exported functions, types, and classes
+  - *Why: Documents public API and generates documentation automatically*
+- **No Inline Comments**: Code should be self-explanatory through clear naming and structure
+  - *Why: Comments become outdated; well-named functions and variables are self-documenting*
+- **Example**:
+  - ❌ BAD: Inline comments explaining the implementation
+  ```typescript
+  export function calculateTotal(items: Item[]) {
+    // Sum up all the prices
+    let total = 0;
+    for (const item of items) {
+      // Add item price to total
+      total += item.price;
+    }
+    return total;
+  }
+  ```
+
+  - ✅ GOOD: JSDoc at the top, self-explanatory code
+  ```typescript
+  /**
+   * Calculates the total price of all items in the cart.
+   * @param items - Array of cart items
+   * @returns Total price sum
+   */
+  export function calculateTotal(items: Item[]): number {
+    return items.reduce((sum, item) => sum + item.price, 0);
+  }
+  ```
+
+### Component/Module Organization
+
+- **Small, focused modules** with single responsibilities
+  - *Why: Easier to test, understand, and maintain*
+- **Keep files under ~300 lines**; refactor if larger
+  - *Why: Large files indicate mixed responsibilities*
+- **Co-locate** related code (component + styles + types in same file)
+  - *Why: Related code is easier to find and modify together*
+
+**Decision-Making Guidelines:**
+
+*When to create a new module vs modify existing:*
+- **Create new** if:
+  - Logic is unrelated to existing modules
+  - Module would be reusable across features
+  - Existing module is already >250 lines
+  - Creating a new module improves clarity
+- **Modify existing** if:
+  - Functionality is closely related
+  - Module is <250 lines
+  - Change is a simple enhancement or bug fix
+
+### Testing Principles
+
+1. **No Comments**: Tests must be self-documenting through clear `describe` and `it` descriptions
+  - *Why: Test names serve as living documentation*
+  - Good: `it('throws error when email format is invalid')`
+  - Bad: Adding comments to explain what the test does
+
+2. **Test Structure**:
+   ```typescript
+   describe('UserService', () => {
+     describe('createUser', () => {
+       it('creates user with valid data', async () => {
+         const user = await userService.createUser({ email: 'test@example.com', name: 'Test' });
+         expect(user.email).toBe(userData.email);
+         expect(user.id).toBeDefined();
+       });
+
+       it('throws error when email is invalid', async () => {
+         const userData = { email: 'invalid', name: 'Test' };
+         await expect(userService.createUser(userData)).rejects.toThrow('Invalid email format');
+       });
+     });
+   });
+   ```
+
+3. **Test Coverage**: Every module needs tests for:
+  - Happy path (successful operations)
+  - Error cases and edge cases
+  - Boundary conditions
+  - Input validation
+
+### [ More principles ]
+
+More principles can be added here as needed, with the what, why and patterns to follow.
+(e.g., Error Handling, Performance Optimization, Security Practices, Code format, etc.)
+
+## Common Workflows
+
+How the AI agent should approach common development tasks. (adding a new feature, fixing a bug, refactoring code, etc.)
+This needs to be specified in the prompt, allows to standardize the approach (like making a plan, TDD, review steps, running test or linter etc.)
+
+## Common Pitfalls
+
+Add here all the use cases where the AI got it wrong, and why with the correct way to do it, 
+to reduce the chance of it happening again.
+{% endhighlight %}
+
+When asked Claude directly how it likes his `claude.md` file to be structured,
+it provided the following guidelines:
+
+1. **Be Specific**: Include actual commands, file paths, and examples from your project
+2. **Explain Why**: Always include rationale ("Why:") for rules and patterns
+3. **Show Examples**: Use good/bad comparisons to make patterns clear
+4. **Prioritize**: Put most important info first (Quick Command Reference)
+5. **Keep Updated**: Review and update as project patterns evolve
+6. **Decision Frameworks**: Help AI make choices with "when to X vs Y" sections
+7. **Stay Concise**: Focus on what matters, not exhaustive documentation
+
 ## Conclusion
 
 Setting up guidelines is as much as to help us guarantee quality in our codebase, reduce friction with the developers,
@@ -145,4 +284,5 @@ and give that touch of polish that makes a product truly great!
 [4]: https://docs.github.com/en/communities/setting-up-your-project-for-healthy-contributions/setting-guidelines-for-repository-contributors
 [5]: https://docs.cursor.com/context/rules
 [6]: https://github.com/elder-plinius/CL4R1T4S/tree/main
+[7]: https://platform.claude.com/docs/en/intro
 [10]: {% post_url 2022/2022-05-18-Version-control-git %}
