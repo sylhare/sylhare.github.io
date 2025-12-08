@@ -103,7 +103,7 @@ Now that you have your repository set up, you can create worktrees for different
 
 ```bash
 # Create worktrees for different tasks
- git worktree add ../new-user-api -b feature/new-user-api
+git worktree add ../new-user-api -b feature/new-user-api
 git worktree add ../dependency-update -b chore/dependency-update
 git worktree add ../security-patch -b fix/security-patch
 ```
@@ -172,6 +172,23 @@ and you should prune it to remove the references.
 # Clean up stale worktrees
 git worktree prune
 ```
+
+#### Alias
+
+To make it easier to work with worktrees, you can set up some Git aliases.
+
+```bash
+# Add these to your global git config
+[alias]
+        bare = "!f() { d=\"${2:-$(basename \"$1\" .git)}\"; git clone --bare \"$1\" \"$d\" && (cd \"$d\" && git --git-dir=. config remote.origin.fetch \"+refs/heads/*:refs/remotes/origin/*\" && git --git-dir=. fetch); }; f"
+        tree = "!f() { git worktree add -b \"$1\" \"$1\"; }; f"
+```
+
+The first one will create a new bare repository from a remote URL, and set the fetch config.
+The second one will create a new worktree for the specified branch name in a folder with the same name.
+
+Remember to push your branch to origin after creating it in the worktree or have the aut remote setup enabled
+with `git config --global push.autoSetupRemote true`.
 
 ### Stacked Diff with Git Worktrees
 
