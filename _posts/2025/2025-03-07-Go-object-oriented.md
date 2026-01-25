@@ -41,12 +41,12 @@ Let's say I have a `Human` struct with:
 
 ```go
 type Human struct {
-	ID   int    
-	name string 
+    ID   int
+    name string
 }
 
 func (h Human) Name() string {
-	return h.name
+    return h.name
 }
 ```
 
@@ -55,12 +55,12 @@ It will have the same fields and methods as the _Human_ struct, and I can add mo
 
 ```go
 type Licence struct {
-	Number string
+    Number string
 }
 
 type Doctor struct {
     Licence Licence // Composed with Licence struct
-	Human           // Embedded with Human struct
+    Human           // Embedded with Human struct
 }
 
 // doctor.Name() will call Human.Name()
@@ -73,7 +73,7 @@ I can do so by defining a new `Name` method in it, and I will even have access t
 
 ```go
 func (d Doctor) Name() string {
-    return 	return "Dr. " + d.name
+    return "Dr. " + d.name
 }
 ```
 
@@ -91,9 +91,9 @@ type Butcher struct {
 }
 
 type Surgeon struct {
-	Doctor
+    Doctor
     Butcher
-	// ...other surgeon specific fields
+    // ...other surgeon specific fields
 }
 ```
 
@@ -118,7 +118,7 @@ type surgeon struct {
 
 func NewSurgeon(human Human) Surgeon {
     return surgeon{
-        Doctor: Doctor{Licence: Licence{Number: "1234"}, Human: human},
+        Doctor:  Doctor{Licence: Licence{Number: "1234"}, Human: human},
         Butcher: Butcher{Human: human},
     }
 }
@@ -144,11 +144,11 @@ We'll keep it relatively simple, heal could be called and return a boolean if th
 
 ```go
 type Healer interface {
-	Heal() bool
+    Heal() bool
 }
 
 func (d Doctor) Heal() bool {
-	return true
+    return true
 }
 ```
 
@@ -156,11 +156,11 @@ Let's have now a human `Sorcerer` 🧙‍♂️ which can also heal with his mag
 
 ```go
 type Sorcerer struct {
-	Human
+    Human
 }
 
 func (m Sorcerer) Heal() bool {
-	return true
+    return true
 }
 ```
 
@@ -170,11 +170,11 @@ it will be a simple function that would represent the healer nursing someone bac
 
 ```go
 func healPatient(h Healer) {
-	if h.Heal() {
-		fmt.Println("Patient healed. 💪")
-	} else {
-		fmt.Println("Failed. 😵")
-	}
+    if h.Heal() {
+        fmt.Println("Patient healed. 💪")
+    } else {
+        fmt.Println("Failed. 😵")
+    }
 }
 
 // healPatient(doctor)
@@ -214,7 +214,7 @@ You can even embed multiple interfaces by listing them in the struct definition:
 
 ```go
 type DoctorInterface interface {
-	Healer
+    Healer
     Name() string
 }
 
@@ -251,22 +251,21 @@ Let's refactor the objects we have created previously in packages:
 package hospital
 
 import (
-	"fmt"
-	"src/internal/healer"
+    "fmt"
+    "src/internal/healer"
 )
 
-
 type Hospital struct {
-	healers []healer.Healer
+    healers []healer.Healer
 }
 
 type Patient interface {
-	Name() string
+    Name() string
 }
 
 func (h Hospital) Treat(patient Patient) {
-	fmt.Printf("Treating patient %s...\n", patient.Name())
-	// loop through healers and treat the person with `healPatient` from before
+    fmt.Printf("Treating patient %s...\n", patient.Name())
+    // loop through healers and treat the person with `healPatient` from before
 }
 ```
 
@@ -279,16 +278,16 @@ This means that the hospital package is now dependent on the healer package:
 package healer
 
 import (
-	"src/internal/person"
+    "src/internal/person"
 )
 
 type Healer interface {
-	Heal() bool
+    Heal() bool
 }
 
 type Doctor struct {
-	License string
-	person.Human
+    License string
+    person.Human
 }
 
 func New(name string) Doctor {
@@ -299,11 +298,11 @@ func New(name string) Doctor {
 }
 
 func (d Doctor) Name() string {   
-	return "Dr. " + d.Human.Name()     // d.name is only exposed if in the same package as Human
+    return "Dr. " + d.Human.Name()     // d.name is only exposed if in the same package as Human
 }
 
 func (d Doctor) Heal() bool {
-	return true
+    return true
 }
 ```
 
@@ -319,16 +318,16 @@ The person package is the same as before, there's just one function now necessar
 package person
 
 import (
-	"math/rand"
+    "math/rand"
 )
 
 /* ...same Human struct and function definition */
 
 func New(name string) Human { // name is private, so we need a "constructor" to initialize it
-	return Human{
-		ID:   rand.New(rand.NewSource(2)).Int(),
-		name: name,
-	}
+    return Human{
+        ID:   rand.New(rand.NewSource(2)).Int(),
+        name: name,
+    }
 }
 ```
 
@@ -370,13 +369,13 @@ Here is an example, if we were to update or Patient interface:
 
 ```go
 type HealthProfile struct {
-	Age    int
-	Weight int
+    Age    int
+    Weight int
 }
 
 type Patient interface {
-	Name() string
-	Profile() HealthProfile
+    Name() string
+    Profile() HealthProfile
 }
 ```
 
