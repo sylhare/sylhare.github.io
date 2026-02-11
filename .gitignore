@@ -34,3 +34,4 @@ package-lock.json
 **/.ipynb_checkpoints/**
 *-ignore.jpg
 .jekyll-metadata
+/.ruby-version
