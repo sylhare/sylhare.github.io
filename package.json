@@ -18,12 +18,13 @@
   "bugs": {
     "url": "https://github.com/Sylhare/Type-on-Strap/issues"
   },
-  "engines" : {
-    "node" : ">=12.0.0 <16.0.0"
+  "engines": {
+    "node": ">=18.0.0"
   },
+  "type": "module",
   "homepage": "https://github.com/Sylhare/Type-on-Strap#readme",
   "devDependencies": {
-    "gulp": "^4.0.2",
-    "gulp-imagemin": "^7.1.0"
+    "gulp": "^5.0.0",
+    "gulp-imagemin": "^9.0.0"
   }
 }
