@@ -134,8 +134,9 @@ efficiently.
 
 This is a part that's happening often in software development through agile based process via retrospective for example.
 I don't think I've ever iterated on how or why I write, there's no official KPIs for it.
-The [stats page][10] or other [analytics][11] is not used to direct what article to write, 
-but it could be since I can find my most popular articles.
+
+The [stats page][10] or other [analytics][11] are not used to influence what article to write based on views per topic. 
+But it is still interesting to find which ones are my most popular articles.
 
 {% include aligner.html images="ga-top-article-2025.png" column=1 caption="Current top article according to Google Analytics" %}
 

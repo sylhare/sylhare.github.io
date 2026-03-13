@@ -64,6 +64,8 @@ python mcp_echo_server.py
 # Then connect with your MCP host (CLI/inspector/Claude Desktop) via stdio
 ```
 
+You can find a quick start [guide][3] to create your own.
+
 ### Common pitfalls
 
 When building MCP servers, keep these in mind:
@@ -71,6 +73,8 @@ When building MCP servers, keep these in mind:
 - Avoid tool name collisions across servers via namespacing (ex: `github.echo_upper`)
 - Handle long‑running jobs gracefully; provide progress updates or cancellation options.
 - Handle large payloads carefully; prefer streaming or pagination.
+
+Checkout this [GitHub article][6] about it.
 
 ## Example
 
@@ -204,15 +208,6 @@ MCP offers many benefits for AI assistants and LLMs.
 - **Separation of concerns**: Hosts enforce auth, rate limits, and permissions. The host store tokens so that it's not exposed tokens to the LLM. 
   The servers focus on capability and the LLM focuses on reasoning.
 - **Composability**: Multiple servers can be mounted, the LLM sees a merged tool palette.
-
-## Footnotes and further reading
-
-- [MCP specification and docs][1] — Architecture, messages, server/client features
-- [GitHub blog: What the heck is MCP?][6] — Intro to MCP, its goals, and how it works
-- [Quickstart guides][3] — How to build your first MCP server and client
-
-Spin up the echo server, connect with an MCP inspector, and extend it with a second tool (for example,
-`reverse(text: string)`) to see the flow end-to-end.
 
 [1]: https://modelcontextprotocol.info/
 [2]: https://modelcontextprotocol.info/docs/introduction

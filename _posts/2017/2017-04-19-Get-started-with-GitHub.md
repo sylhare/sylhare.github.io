@@ -102,7 +102,7 @@ You don't want people stealing your private key and committing in your name.
 >
 > It will use the `~/.ssh/id_ed25519.pub`
 
-You could also set up a GPG key for additional protection with a provider like [keybase][8], 
+You could also set up a [GPG key][21] for additional protection with a provider like [keybase][8], 
 but that's for a bit more advanced when you need extra security. 
 
 ## Clone a project
@@ -140,3 +140,4 @@ issues on [GitHub][13].
 [12]: https://git-fork.com/
 [13]: https://docs.github.com/en/authentication/troubleshooting-ssh
 [20]: {% post_url 2021/2021-05-01-Multiple-repository-and-ssh-key %}
+[21]: {% post_url 2026/2026-03-12-Gpg-with-git %}
