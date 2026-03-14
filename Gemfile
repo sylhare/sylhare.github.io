@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 gem 'github-pages', group: :jekyll_plugins
-gem 'type-on-strap', ">= 2.4.13", "< 3.0"
+gem 'type-on-strap', ">= 2.5.0", "< 3.0"
 
 # /opt/homebrew/lib/ruby/gems/3.3.0/gems/jekyll-3.9.5/lib/jekyll/commands/serve/servlet.rb:3:
 # warning: webrick was loaded from the standard library, but is not part of the default gems since Ruby 3.0.0.
@@ -13,3 +13,9 @@ gem 'csv'
 # warning: logger was loaded from the standard library, but will no longer be part of the default gems starting from Ruby 3.5.0.
 # You can add logger to your Gemfile or gemspec to silence this warning.
 gem 'logger'
+# warning: base64 used to be loaded from the standard library, but is not part of the default gems since Ruby 3.4.0.
+gem 'base64'
+# warning: bigdecimal used to be loaded from the standard library, but is not part of the default gems since Ruby 3.4.0.
+gem 'bigdecimal'
+# Dependency Error: Yikes! It looks like you don't have kramdown-parser-gfm or one of its dependencies installed.
+gem 'kramdown-parser-gfm'
