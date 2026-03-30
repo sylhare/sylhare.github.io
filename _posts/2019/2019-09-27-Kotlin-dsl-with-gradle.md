@@ -17,7 +17,7 @@ So here a bit of details:
 Kotlin dsl with gradle means to use the kotlin `build.gradle.kts` instead of the groovy `build.gradle`.
 Kotlin is so general that it reaches specific programming niche.
 
-> Everything is hosted on GitHub: [sylhare/kotlin][4] 
+> Everything is hosted on GitHub: [sylhare/kotlin][4] you will also find more up-to-date examples.
 
 ## Basic set up
 
@@ -241,7 +241,7 @@ Then you'll be able to use `./gradlew` instead of gradle, and your project shoul
 [1]: https://en.wikipedia.org/wiki/Domain-specific_language "Wikipedia DSL"
 [2]: https://docs.gradle.org/current/userguide/working_with_files.html#sec:creating_uber_jar_example "uber jar"
 [3]: https://docs.gradle.org/current/userguide/application_plugin.html#sec:application_usage "gradle.org"
-[4]: https://github.com/sylhare/Kotlin/tree/master/hello-kotlin "Hello Kotlin"
+[4]: https://github.com/sylhare/Kotlin/tree/08a79288f9b8a0e2b46dc56bf7354a59a9b26663/hello-kotlin "Hello Kotlin"
 [5]: https://blog.outadoc.fr/2020/06/converting-gradle-to-gradle-kts/ "Migrate from groovy to kotlin dsl"
 [6]: https://stackoverflow.com/a/61373175/7747942 "mainfest Kotlin Jar"
 [7]: https://gradle.org/releases/ "gradle releases"
