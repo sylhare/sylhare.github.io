@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Lightweight state management with React provider
+title: State management with React Context Provider
 color: rgb(97, 136, 140)
 tags: [ react ]
 ---
