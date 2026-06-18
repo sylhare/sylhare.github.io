@@ -2,6 +2,7 @@
 layout: post
 title: Make Claude smarter and more efficient
 tags: [ ai ]
+color: rgb(217, 119, 87)
 ---
 
 Claude Code starts every session without memory of the last one.
@@ -276,7 +277,8 @@ unlocks [the features a bare command lacks][21]:
 ---
 name: test-all
 description: Run lint, typecheck, unit tests, and e2e tests in order
-allowed-tools: Bash
+allowed-tools: Read, Grep, Bash(node:*), Bash(echo:*), Bash(npm:*), Bash(yarn:*), Bash(pnpm:*), Bash(bun:*)
+model: haiku
 ---
 
 - Package manager: !`node -p "(require('./package.json').packageManager||'npm@').split('@')[0]"
@@ -307,6 +309,9 @@ The [frontmatter fields][21] that matter most, with their *actual* semantics:
 Two of these are easy to get backwards: `allowed-tools` *grants* permission, it does not restrict
 (use `disallowed-tools` for that), and `disable-model-invocation` is about *who* can trigger the
 skill, [not a read-only mode][22].
+If you don't trust the model you may want to be more restrictive for the tools allowed (like allowing specific bash commands instead of all bash).
+Usually faster model are less trustworthy but cheaper for *deterministic* skills, 
+so you can automate simple repetitive tasks of the workflow.
 
 The `` !`command` `` prefix injects live command output before the skill content is sent, so the
 skill [sees actual data rather than the command string][23].
