@@ -50,9 +50,9 @@ Imports resolve relative to the file that references them and can nest up to fou
 Use it to split instructions into focused documents that are easier to maintain independently.
 
 [**Global instructions**][17] go in `~/.claude/CLAUDE.md`. 
-Keep project-specific rules in the project's own `CLAUDE.md`.
+Keep project-specific rules in the project's own *CLAUDE.md*.
 
-The two are not mutually exclusive: Claude loads every `CLAUDE.md` from the filesystem root down
+The two are not mutually exclusive: Claude loads every *CLAUDE.md* from the filesystem root down
 to your working directory and concatenates them, so the file closest to where you launched Claude
 is read last and [wins on conflicts][1].
 
@@ -61,11 +61,11 @@ is read last and [wins on conflicts][1].
 `CLAUDE.md` is Claude-specific. `AGENTS.md` is not.
 
 The [OpenCode][7] convention, used by OpenCode and a growing set of AI coding
-tools, establishes `AGENTS.md` as the tool-agnostic layer for repo instructions.
+tools, establishes *AGENTS.md* as the tool-agnostic layer for repo instructions.
 Any assistant that follows the convention reads it,
 which matters for teams that use multiple tools or might switch assistants over time.
 
-Claude Code does **not** read `AGENTS.md` natively, it [reads `CLAUDE.md`][11],
+Claude Code does **not** read *AGENTS.md* natively, it [reads `CLAUDE.md`][11],
 so you need to add `@AGENTS.md` in it to bridge the gap.
 
 ```
@@ -75,13 +75,13 @@ AGENTS.md       ← All tools: build commands, file map, gotchas
 ```
 
 While it may add up noise in the repository, the separation is intentional.
-Put everything that should work with *any* agent in `AGENTS.md`, and have `CLAUDE.md` for extra Claude instructions.
+Put everything that should work with *any* agent in *AGENTS.md*, and have *CLAUDE.md* for extra Claude instructions.
 If your team is all in with Claude you can leverage the `.claude/` directory to [share projects skills and commands][24],
 or create your own harness which will feed it.
 
 ## Reflexes via AGENTS.md
 
-While `CLAUDE.md` handles routing, `AGENTS.md` is where the real reflex-encoding lives.
+While *CLAUDE.md* handles routing, `AGENTS.md` is where the real reflex-encoding lives.
 A well-written AGENTS.md turns one-time corrections into rules Claude will break less often (depending on the model and context).
 Opus tends to be more disciplined than it's fellow lower Claude model.
 
@@ -145,7 +145,7 @@ Each entry should be for one class of mistake:
 Every time you correct Claude on something, ask yourself (or ask it 😅): *does this belong in AGENTS.md?*
 The answer should not be always yes, as some of them could be one off setup or could be improvements items that are worth implementing / fix in the code.
 
-Because this approach does not scale without limit, though, and that is the catch. `CLAUDE.md` and
+Because this approach does not scale without limit, though, and that is the catch. *CLAUDE.md* and
 anything it imports load in full at the start of *every* session, spending tokens before you type
 a word, and the docs are explicit that longer files reduce how reliably Claude follows them.
 The documentation recommends to keep it under [~200 lines][12] and give some gimmicks to expand it via:
@@ -157,7 +157,7 @@ The documentation recommends to keep it under [~200 lines][12] and give some gim
 
 ## Persistent Memory
 
-`AGENTS.md` is for conventions everyone knows upfront.
+*AGENTS.md* is for conventions everyone knows upfront.
 Memory is for things you had to learn the hard way. Without it, you re-teach them every session.
 
 ### Memory mechanism
@@ -166,7 +166,7 @@ Claude Code actually has [two memory systems][14], and it helps to keep them str
 
 - **`CLAUDE.md` files** are what *you* write. Loaded in full every session, they are instructions
   and rules. Everything above this section is about them.
-- **Auto memory** is what *Claude* writes. On by default (v2.1.59+, toggle with `/memory`), Claude
+- **Auto memory** is what *Claude* writes. On by default (toggle with `/memory`), Claude
   decides what is worth remembering as it works, build commands it figured out, a debugging insight,
   a preference you corrected, and [saves it without you asking][15].
 
@@ -174,15 +174,15 @@ Auto memory files live at `~/.claude/projects/<project>/memory/`, indexed by `ME
 `<project>` path is derived from the git repo, so every worktree and subdirectory of the same repo
 shares one memory directory, and it is **machine-local**, [not shared across machines or teammates][16].
 
-Memory also splits between per-project and general, much like `CLAUDE.md` does. Auto memory is
+Memory also splits between per-project and general, much like *CLAUDE.md* does. Auto memory is
 scoped *per repository*; there is no single global auto-memory store. The general half lives in the
-user-level `CLAUDE.md` at `~/.claude/CLAUDE.md` (and user rules in `~/.claude/rules/`), which apply
-to [every project on your machine][17]. Machine-wide habits therefore go in user-level `CLAUDE.md`,
+user-level *CLAUDE.md* at `~/.claude/CLAUDE.md` (and user rules in `~/.claude/rules/`), which apply
+to [every project on your machine][17]. Machine-wide habits therefore go in user-level *CLAUDE.md*,
 while repo-specific learnings accumulate in that repo's auto memory on their own.
 
 ### Auto memory categories
 
-Only the first 200 lines (or 25 KB) of `MEMORY.md` load at session start, so Claude keeps the index
+Only the first 200 lines (or 25 KB) of *MEMORY.md* load at session start, so Claude keeps the index
 lean and pushes detail into [topic files it reads on demand][18].
 Here is a list of memory type categories it can store:
 
@@ -197,7 +197,7 @@ The user one is very useful to tailor the code style and behaviour of the LLM to
 Less prompt fixing when the LLM knows how you like things.
 A feedback memory is most valuable when it describes a specific recurring mistake and exactly
 what to do instead. 
-As with gotchas reviewing the feedback may help consolidate the `CLAUDE.md` or improving the codebase.
+As with gotchas reviewing the feedback may help consolidate the *CLAUDE.md* or improving the codebase.
 
 ```markdown
 ---
@@ -221,7 +221,7 @@ or whether the same type is defined separately in `api/` and `packages/shared/`.
 If a cast is genuinely right, add a comment explaining why the runtime guarantee holds.
 ```
 
-The `MEMORY.md` index loads first, one line per entry:
+The *MEMORY.md* index loads first, one line per entry:
 
 ```markdown
 # Project Memory
@@ -341,15 +341,20 @@ Skills are **not** global-only, they can be [project-scoped too][24]:
 
 The plugin ones usually don't collide as they are called via `/plugin:name`, 
 but the project and personal ones share the same namespace and can step on each other.
-In that case it's like the `CLAUDE.md` the personal one wins against the project one.
+In that case it's like the *CLAUDE.md*, the personal one wins against the project one.
 
-Project skills could be committed and shared with the team. 
-Personal ones could be added to the [marketplace][8] to share the love or added to your team ai skill repo if one exists.
+> Create the best skill by analyzing your previous sessions to find repeated instructions or corrective actions that could be automated.
+ 
+Personal ones could be added to the [marketplace][8] to share the love or added to your team AI skill repo if one exists.
+Project skills could be committed and shared with the team and are usually only relevant in the context of the project.
 
 ## Hooks
 
 Commands and skills run on demand or when Claude feels like it. 
 Hooks run *automatically* [when specific events fire][3].
+
+{% include aligner.html images="claude-hooks-lifecycle.svg" column=1 caption="The hook lifecycle: at each event Claude Code checks the matcher and runs the configured command." %}
+
 Configure them in [`.claude/settings.json`][25]:
 
 ```json
