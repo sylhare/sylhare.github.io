@@ -2,7 +2,7 @@
 layout: post
 title: Redpanda another kafka
 color: rgb(191 54 4)
-tags: [kafka]
+tags: [database]
 ---
 
 
