@@ -35,3 +35,4 @@ package-lock.json
 *-ignore.jpg
 .jekyll-metadata
 /.ruby-version
+assets/notebook/__marimo__/**
