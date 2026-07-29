@@ -9,10 +9,22 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the site in the jekyll/builder container
-      run: |
-        docker run \
-        -v ${{ github.workspace }}:/srv/jekyll -v ${{ github.workspace }}/_site:/srv/jekyll/_site \
-        jekyll/builder:latest /bin/bash -c "chmod -R 777 /srv/jekyll && jekyll build --future"
+      - uses: actions/checkout@v4
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.4'
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Install github-pages gem
+        run: |
+          gem install github-pages
+          gem update --system
+      - name: Install
+        run: bundle install
+      - name: Build jekyll site
+        run: bundle exec jekyll build --future
+      - name: Start Jekyll site
+        run: timeout 10s bundle exec jekyll serve
+        continue-on-error: true
